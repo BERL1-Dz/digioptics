@@ -8,9 +8,7 @@
               <!-- Logo -->
               <div class="app-brand justify-content-center">
                 <a href="/" class="app-brand-link gap-2">
-                 <img src="../assets/img/logo.jpg" style="
-    width: 300px;
-">
+                 <img src="../assets/img/logo.jpg" style="width: 300px;">
                 </a>
               </div>
               <!-- /Logo -->
