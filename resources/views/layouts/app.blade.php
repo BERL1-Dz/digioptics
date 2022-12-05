@@ -95,7 +95,7 @@
                   </a>
                 </li>
                 <li class="menu-item">
-                  <a href="forms-input-groups.html" class="menu-link">
+                  <a href="{{ url('/facture')}}" class="menu-link">
                     <div data-i18n="Input groups">Factures</div>
                   </a>
                 </li>

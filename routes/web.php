@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\PatientController;
 use App\Http\Controllers\DevisController;
+use App\Http\Controllers\FactureController;
 
 /*
 |--------------------------------------------------------------------------
@@ -25,6 +26,7 @@ Route::get('/dashboard', function () {
 
 Route::get('/patient', [PatientController::class, 'index'] )->middleware(['auth'])->name('patient');
 Route::get('/devis', [DevisController::class, 'index'] )->middleware(['auth'])->name('devis');
+Route::get('/facture', [FactureController::class, 'index'] )->middleware(['auth'])->name('facture');
 
 
 require __DIR__.'/auth.php';
