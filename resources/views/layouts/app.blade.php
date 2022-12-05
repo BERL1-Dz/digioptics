@@ -72,7 +72,7 @@
                 <div data-i18n="Analytics">Dashboard</div>
               </a>
             </li>
-            
+
 
             <!-- Layouts -->
             <li class="menu-header small text-uppercase">
@@ -90,7 +90,7 @@
                   </a>
                 </li>
                 <li class="menu-item">
-                  <a href="forms-input-groups.html" class="menu-link">
+                  <a href="{{ url('/devis') }}" class="menu-link">
                     <div data-i18n="Input groups">Devis</div>
                   </a>
                 </li>
@@ -161,7 +161,7 @@
         <div class="layout-page">
           <!-- Navbar -->
           @include('layouts.navigation')
-          
+
           <!-- / Navbar -->
 
           <!-- Content wrapper -->
