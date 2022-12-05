@@ -41,7 +41,7 @@
     <script src="../assets/vendor/js/helpers.js"></script>
 
     <!--! Template customizer & Theme config files MUST be included after core stylesheets and helpers.js in the <head> section -->
-    <!--? Config:  Mandatory theme config file contain global vars & default theme options, Set your preferred theme option in this file.  -->
+    <!--? Config:  Mandatory theme config file contain global lets & default theme options, Set your preferred theme option in this file.  -->
     <script src="../assets/js/config.js"></script>
   </head>
 
@@ -78,7 +78,7 @@
             <li class="menu-header small text-uppercase">
               <span class="menu-header-text">Fichiers &amp; Informations</span>
             </li>
-            <li class="menu-item">
+            <li class="menu-item" id='open'>
               <a href="javascript:void(0);" class="menu-link menu-toggle">
                 <i class="menu-icon tf-icons bx bx-receipt"></i>
                 <div data-i18n="Form Elements">Dossier</div>
@@ -198,5 +198,7 @@
 
     <!-- Place this tag in your head or just before your close body tag. -->
     <script async defer src="https://buttons.github.io/buttons.js"></script>
+
+   
   </body>
 </html>
