@@ -1,8 +1,5 @@
-
-
-<!--------------------------------------------------------------------------------------------------------------------------------->
 <!DOCTYPE html>
-<html lang="en">
+<html lang="fr">
   <head>
     <meta charset="utf-8" />
     <meta
@@ -88,8 +85,8 @@
               </a>
               <ul class="menu-sub">
                 <li class="menu-item">
-                  <a href="forms-basic-inputs.html" class="menu-link">
-                    <div data-i18n="Basic Inputs">Client</div>
+                  <a href="{{ url('/patient') }}" class="menu-link">
+                    <div data-i18n="Basic Inputs">Patient</div>
                   </a>
                 </li>
                 <li class="menu-item">
@@ -168,6 +165,7 @@
           <!-- / Navbar -->
 
           <!-- Content wrapper -->
+          @yield('content')
           {{ $slot }}
           <!-- Content wrapper -->
         </div>

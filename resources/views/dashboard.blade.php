@@ -1,6 +1,4 @@
 <x-app-layout>
-    
-
     <div class="content-wrapper">
             <!-- Content -->
 
