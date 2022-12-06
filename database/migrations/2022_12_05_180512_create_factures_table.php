@@ -15,6 +15,18 @@ class CreateFacturesTable extends Migration
     {
         Schema::create('factures', function (Blueprint $table) {
             $table->id();
+            $table->string('facture_pour');
+            $table->integer('n_facture');
+            $table->date('date');
+            $table->smallInteger('ref');
+            $table->string('n_r_c');
+            $table->string('a_i_n');
+            $table->string('n_r_f');
+            $table->string('designation');
+            $table->smallInteger('quantite');
+            $table->float('p_unitaire');
+            $table->float('montant');
+            $table->float('total');
             $table->timestamps();
         });
     }

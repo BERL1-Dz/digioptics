@@ -15,7 +15,7 @@ class CreateFournisseursTable extends Migration
     {
         Schema::create('fournisseurs', function (Blueprint $table) {
             $table->id();
-            $table->smallInteger('code_fournisseur');
+            $table->integer('code_fournisseur');
             $table->string('Nom');
             $table->string('fabricant_associe');
             $table->smallInteger('n_telephon');

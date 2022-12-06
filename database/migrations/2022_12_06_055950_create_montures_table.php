@@ -16,7 +16,7 @@ class CreateMonturesTable extends Migration
         Schema::create('montures', function (Blueprint $table) {
             $table->id();
             $table->string('code_monture');
-            $table->unsignedSmallInteger('code_fournisseur');
+            $table->integer('code_fournisseur')->unsigned();
             $table->string('nom_fournisseur');
             $table->string('marque_monture');
             $table->string('model_monture');
@@ -29,7 +29,6 @@ class CreateMonturesTable extends Migration
             $table->boolean('genre_monture');
             $table->float('pa_monture');
             $table->float('pv_monture');
-            $table->foreign('code_fournisseur')->references('code_fournisseur')->on('fournisseurs');
             $table->timestamps();
         });
     }
