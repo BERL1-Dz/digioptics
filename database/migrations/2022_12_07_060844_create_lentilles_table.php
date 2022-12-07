@@ -16,8 +16,7 @@ class CreateLentillesTable extends Migration
         Schema::create('lentilles', function (Blueprint $table) {
             $table->id();
             $table->string('code_lentille');
-            $table->string('code_fournisseur')->unsigned();
-            $table->string('nom_fournisseur')->unsigned();
+            $table->integer('code_fournisseur')->unsigned();
             $table->string('fabriquant_lentille');
             $table->string('type_lentille');
             $table->string('correction');
