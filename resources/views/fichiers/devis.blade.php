@@ -3,7 +3,7 @@
         <h1>Devis</h1>
         <!--Button-->
         <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exLargeModal">
-            Ajouter Patient
+            Nouvelle Devis
         </button>
         <!--Button End-->
         <!--Modal -->

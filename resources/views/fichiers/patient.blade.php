@@ -4,7 +4,7 @@
         <h4 class="fw-bold py-3 mb-4"><span class="text-muted fw-light">Dossier /</span> Patient</h4>
         <!--Button-->
         <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exLargeModal">
-            Ajouter Patient
+            Ajouter Un Patient
         </button>
         <!--Button End-->
         <!--Modal -->
