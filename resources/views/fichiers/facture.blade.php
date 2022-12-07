@@ -59,6 +59,7 @@
     
     document.querySelector('.menu-item').classList.remove('active')
     
+    
     const menuLength = menuItem.length;
      
     for (let i = 0; i < menuLength; i++){
