@@ -1,4 +1,5 @@
-<x-app-layout>
+@extends('layouts.app')
+@section('content')
     <div class="container-xxl flex-grow-1 container-p-y">
         <h4 class="fw-bold py-3 mb-4"><span class="text-muted fw-light">Dossier /</span> Facture</h4>
         <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exLargeModal">
@@ -13,27 +14,12 @@
                             <button type="button" class="btn-close" data-bs-dismiss="modal"
                                 aria-label="Close"></button>
                         </div>
+                         <form action="#" method="post" enctype="multipart/form-data">
+                           {{csrf_field()}}
                         <div class="modal-body">
-                            <div class="row">
-                                <div class="col mb-3">
-                                    <label for="nameExLarge" class="form-label">Name</label>
-                                    <input type="text" id="nameExLarge" class="form-control"
-                                        placeholder="Enter Name" />
-                                </div>
-                            </div>
-                            <div class="row g-2">
-                                <div class="col mb-0">
-                                    <label for="emailExLarge" class="form-label">Email</label>
-                                    <input type="text" id="emailExLarge" class="form-control"
-                                        placeholder="xxxx@xxx.xx" />
-                                </div>
-                                <div class="col mb-0">
-                                    <label for="dobExLarge" class="form-label">DOB</label>
-                                    <input type="text" id="dobExLarge" class="form-control"
-                                        placeholder="DD / MM / YY" />
-                                </div>
-                            </div>
+
                         </div>
+                        </form>
                         <div class="modal-footer">
                             <button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal">
                                 Close
@@ -65,4 +51,4 @@
             }
         }
     </script>
-</x-app-layout>
+@endsection

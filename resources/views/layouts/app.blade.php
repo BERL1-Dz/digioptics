@@ -159,7 +159,7 @@
 
                 <!-- Content wrapper -->
                 @yield('content')
-                {{ $slot }}
+              
                 <!-- Content wrapper -->
             </div>
             <!-- / Layout page -->

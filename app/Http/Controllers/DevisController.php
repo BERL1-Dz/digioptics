@@ -14,7 +14,7 @@ class DevisController extends Controller
      */
     public function index()
     {
-        return view('fichiers.devis');
+        return view('devis.index');
     }
 
     /**

@@ -26,7 +26,7 @@ Route::get('/dashboard', function () {
 
 Route::get('/patient', [PatientController::class, 'index'] )->middleware(['auth'])->name('patient');
 Route::get('/devis', [DevisController::class, 'index'] )->middleware(['auth'])->name('devis');
-Route::get('/facture', [FactureController::class, 'index'] )->middleware(['auth'])->name('facture');
+Route::get('/facture', [FactureController::class, 'index'] )->middleware(['auth'])->name('index');
 
 
 require __DIR__.'/auth.php';

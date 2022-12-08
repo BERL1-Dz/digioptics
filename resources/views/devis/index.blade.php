@@ -1,4 +1,5 @@
-<x-app-layout>
+@extends('layouts.app')
+@section('content')
     <div class="container-xxl flex-grow-1 container-p-y">
         <h1>Devis</h1>
         <!--Button-->
@@ -68,4 +69,4 @@
             }
         }
     </script>
-</x-app-layout>
+@endsection
