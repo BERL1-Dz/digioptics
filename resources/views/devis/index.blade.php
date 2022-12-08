@@ -17,26 +17,10 @@
                             <button type="button" class="btn-close" data-bs-dismiss="modal"
                                 aria-label="Close"></button>
                         </div>
+                        <form action="#" method="post" enctype="multipart/form-data">
+                          {{csrf_field()}}
                         <div class="modal-body">
-                            <div class="row">
-                                <div class="col mb-3">
-                                    <label for="nameExLarge" class="form-label">Name</label>
-                                    <input type="text" id="nameExLarge" class="form-control"
-                                        placeholder="Enter Name" />
-                                </div>
-                            </div>
-                            <div class="row g-2">
-                                <div class="col mb-0">
-                                    <label for="emailExLarge" class="form-label">Email</label>
-                                    <input type="text" id="emailExLarge" class="form-control"
-                                        placeholder="xxxx@xxx.xx" />
-                                </div>
-                                <div class="col mb-0">
-                                    <label for="dobExLarge" class="form-label">DOB</label>
-                                    <input type="text" id="dobExLarge" class="form-control"
-                                        placeholder="DD / MM / YY" />
-                                </div>
-                            </div>
+                          @include('devis.form')
                         </div>
                         <div class="modal-footer">
                             <button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal">
@@ -44,6 +28,7 @@
                             </button>
                             <button type="button" class="btn btn-primary">Save changes</button>
                         </div>
+                      </form>
                     </div>
                 </div>
             </div>

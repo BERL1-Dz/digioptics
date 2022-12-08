@@ -17,15 +17,16 @@
                          <form action="#" method="post" enctype="multipart/form-data">
                            {{csrf_field()}}
                         <div class="modal-body">
-
+                          @include('facture.form')
                         </div>
-                        </form>
+
                         <div class="modal-footer">
                             <button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal">
                                 Close
                             </button>
                             <button type="button" class="btn btn-primary">Save changes</button>
                         </div>
+                        </form>
                     </div>
                 </div>
             </div>
