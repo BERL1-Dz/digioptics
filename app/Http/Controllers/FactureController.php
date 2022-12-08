@@ -1,7 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
-
+use Illuminate\Support\Facades\DB;
 use App\Models\Facture;
 use Illuminate\Http\Request;
 
@@ -36,7 +36,24 @@ class FactureController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        //dd($request->all());
+        $facture = new Facture;
+
+        $facture->facture_pour = request('facture_pour');
+        $facture->ref = request('ref');
+        $facture->n_facture = request('n_facture');
+        $facture->date = request('date');
+        $facture->designation = request('designation');
+        $facture->quantite = request('quantite');
+        $facture->p_unitaire = request('p_unitaire');
+        $facture->montant = request('montant');
+        $facture->t_h_t = request('t_h_t');
+        $facture->t_v_a_p = request('t_v_a_p');
+        $facture->t_v_a = request('t_v_a');
+        $facture->t_t_c = request('t_t_c');
+        $facture->total = request('total');
+        $facture->save();
+        return back();
     }
 
     /**

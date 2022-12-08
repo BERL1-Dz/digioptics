@@ -29,4 +29,8 @@ Route::get('/devis', [DevisController::class, 'index'] )->middleware(['auth'])->
 Route::get('/facture', [FactureController::class, 'index'] )->middleware(['auth'])->name('index');
 
 
+//resource
+
+Route::post('/create',[FactureController::class, 'store']);
+
 require __DIR__.'/auth.php';
