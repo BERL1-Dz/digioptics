@@ -159,7 +159,7 @@
 
                 <!-- Content wrapper -->
                 @yield('content')
-              
+
                 <!-- Content wrapper -->
             </div>
             <!-- / Layout page -->
@@ -176,7 +176,6 @@
     <script src="../assets/vendor/libs/popper/popper.js"></script>
     <script src="../assets/vendor/js/bootstrap.js"></script>
     <script src="../assets/vendor/libs/perfect-scrollbar/perfect-scrollbar.js"></script>
-
     <script src="../assets/vendor/js/menu.js"></script>
     <!-- endbuild -->
 
@@ -189,12 +188,34 @@
     <!-- Page JS -->
     <script src="../assets/js/dashboards-analytics.js"></script>
 
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css">
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+
     <!-- Place this tag in your head or just before your close body tag. -->
     <script async defer src="https://buttons.github.io/buttons.js"></script>
     <script>
         if (location.pathname.split('/')[1] === '') {
             document.querySelector('#dash').classList.add('active')
         }
+    </script>
+
+    <script type="text/javascript">
+        $("#rowAdder").click(function() {
+            newRowAdd =
+                '<div id="row"> <div class="input-group mb-2 mt-2">' +
+                '<input type="text" class="form-control m-input">' +
+                '<div class="input-group-prepend">' +
+                '<button class="btn btn-danger" id="DeleteRow" type="button" style="border-radius: 0px 5px 5px 0;">' +
+                '<i class="bi bi-trash"></i> Delete</button> </div>' +
+                '</div> </div>';
+
+            $('#newinput').append(newRowAdd);
+        });
+
+        $("body").on("click", "#DeleteRow", function() {
+            $(this).parents("#row").remove();
+        })
     </script>
 </body>
 
