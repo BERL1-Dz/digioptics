@@ -48,31 +48,25 @@
 <div class="row g-2">
     <div class="col mb-0">
         <label for="emailExLarge" class="form-label">T.H.T</label>
-        <input type="text" id="emailExLarge" class="form-control" placeholder="T.H.T" name="t_h_t" required />
+        <input type="text" id="emailExLarge" class="form-control" placeholder="T.H.T" name="t_h_t" />
     </div>
     <div class="col mb-0">
         <label for="dobExLarge" class="form-label">T.V.A %</label>
-        <input type="text" id="dobExLarge" class="form-control" placeholder="T.V.A % " name="t_v_a_p" />
+        <input type="text" id="dobExLarge" class="form-control" placeholder="T.V.A % " name="t_v_a_p"/>
     </div>
 
     <div class="col mb-0">
         <label for="dobExLarge" class="form-label">T.V.A</label>
-        <input type="text" id="dobExLarge" class="form-control" placeholder="T.V.A " name="t_v_a" required />
+        <input type="text" id="dobExLarge" class="form-control" placeholder="T.V.A " name="t_v_a"/>
     </div>
 
     <div class="col mb-0">
         <label for="dobExLarge" class="form-label">T.T.C</label>
-        <input type="text" id="dobExLarge" class="form-control" placeholder="T.T.C " name="t_t_c" required/>
-    </div>
-
-
-    <div class="col mb-0">
-        <label for="dobExLarge" class="form-label">Montant</label>
-        <input type="text" id="dobExLarge" class="form-control" placeholder="Montant" name="montant" required />
+        <input type="text" id="dobExLarge" class="form-control" placeholder="T.T.C " name="t_t_c"/>
     </div>
 </div>
 
 <div class="col mb-0">
     <label for="nameExLarge" class="form-label">Total</label>
-    <input type="text" id="nameExLarge" class="form-control" placeholder="Total" name="total" required />
+    <input type="text" id="nameExLarge" class="form-control" placeholder="Total" name="total" required/>
 </div>
