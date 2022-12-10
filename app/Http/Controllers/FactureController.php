@@ -36,7 +36,7 @@ class FactureController extends Controller
      */
     public function store(Request $request)
     {
-        //dd($request->all());
+        dd($request->all());
         $facture = new Facture;
 
         $facture->facture_pour = request('facture_pour');

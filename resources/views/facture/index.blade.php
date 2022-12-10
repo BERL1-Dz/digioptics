@@ -11,21 +11,20 @@
                     <div class="modal-content">
                         <div class="modal-header">
                             <h5 class="modal-title" id="exampleModalLabel4">Nouvelle Facture</h5>
-                            <button type="button" class="btn-close" data-bs-dismiss="modal"
-                                aria-label="Close"></button>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                         </div>
-                         <form action="{{url('create')}}" method="post" enctype="multipart/form-data">
-                           @csrf
-                        <div class="modal-body">
-                          @include('facture.form')
-                        </div>
+                        <form action="{{ url('create') }}" method="post" enctype="multipart/form-data">
+                            @csrf
+                            <div class="modal-body">
+                                @include('facture.form')
+                            </div>
 
-                        <div class="modal-footer">
-                            <button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal">
-                                Close
-                            </button>
-                            <button type="submit" class="btn btn-primary">Save changes</button>
-                        </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal">
+                                    Close
+                                </button>
+                                <button type="submit" class="btn btn-primary">Save changes</button>
+                            </div>
                         </form>
                     </div>
                 </div>
@@ -35,18 +34,11 @@
     </div>
     <script>
         const currentLocation = location.pathname.split('/')[1];
-        console.log(currentLocation);
         const menuItem = document.querySelectorAll('.menu-item');
-
         document.querySelector('.menu-item').classList.remove('active')
-
-
         const menuLength = menuItem.length;
-
         for (let i = 0; i < menuLength; i++) {
-            console.log(menuItem[2].innerText.replace(/\s/g, ""));
             if (menuItem[i].innerText.toLowerCase().replace(/\s/g, "") === currentLocation) {
-                console.log('ta mere');
                 document.querySelector('#open').classList.add('open', 'active');
                 menuItem[i].classList.add('active');
             }
