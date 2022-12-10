@@ -6,12 +6,13 @@
 <div class="row g-3">
     <div class="col mb-0">
         <label for="nameExLarge" class="form-label">Ref.</label>
-
-        <input type="text" id="nameExLarge" class="form-control" placeholder="Ref." name="ref" required />
-        <button id="rowAdder" type="button" class="btn btn-dark">
-            <span class="bi bi-plus-square-dotted">
-            </span>
-        </button>
+        <div style="display:flex;align-items: baseline;">
+            <button id="rowAdder" type="button" class="btn btn-success" style="border-radius: 5px 0px 0px 5px;">
+                <i class='bx bxs-plus-square'></i>
+            </button>
+            <input type="text" id="nameExLarge" class="form-control" placeholder="Ref." name="ref" required
+                style="border-radius: 0px 5px 5px 0px;" />
+        </div>
         <div id="newinput"></div>
     </div>
 

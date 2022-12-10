@@ -159,7 +159,6 @@
 
                 <!-- Content wrapper -->
                 @yield('content')
-
                 <!-- Content wrapper -->
             </div>
             <!-- / Layout page -->
@@ -204,10 +203,10 @@
         $("#rowAdder").click(function() {
             newRowAdd =
                 '<div id="row"> <div class="input-group mb-2 mt-2">' +
-                '<input type="text" class="form-control m-input">' +
+                '<input id="nameExLarge" name="ref" type="text" class="form-control m-input" required>' +
                 '<div class="input-group-prepend">' +
                 '<button class="btn btn-danger" id="DeleteRow" type="button" style="border-radius: 0px 5px 5px 0;">' +
-                '<i class="bi bi-trash"></i> Delete</button> </div>' +
+                '<i class="bi bi-trash"></i></button> </div>' +
                 '</div> </div>';
 
             $('#newinput').append(newRowAdd);
