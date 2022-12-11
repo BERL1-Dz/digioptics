@@ -201,24 +201,21 @@
 
 
     <script>
-        let inc = 0;
-        document.querySelector('#rowAdder').addEventListener('click', function() {
-
-            const array = [];
-            const handles = test;
-
-            array.push(handles)
-            inc++
-        });
+        document.getElementById('ref_input').addEventListener('input', function() {
+            const conc = [...document.querySelectorAll('#ref_input [id^=ref_]')] // id starts with text
+                .filter(fld => fld.value.trim() !== "") // not empty
+                .map(fld => fld.value) // store value
+            document.getElementById('result_ref').value = conc.join(","); // join with comma
+        })
     </script>
 
     <script type="text/javascript">
-        let i_ref = 0;
+        let i_ref = 1;
         $("#rowAdder").click(function() {
 
             newRowAdd =
                 '<div id="row"> <div class="input-group mb-2 mt-2">' +
-                '<input id="' + i_ref + '" name="ref" type="text" class="form-control m-input" required>' +
+                '<input id="ref_' + i_ref + '" name="ref" type="text" class="form-control m-input" required>' +
                 '<div class="input-group-prepend">' +
                 '<button class="btn btn-danger" id="DeleteRow" type="button" style="border-radius: 0px 5px 5px 0;">' +
                 '<i class="bi bi-trash"></i></button> </div>' +

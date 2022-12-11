@@ -15,7 +15,7 @@
                         </div>
                         <form action="{{ url('create') }}" method="post" enctype="multipart/form-data">
                             @csrf
-                            <div class="modal-body">
+                            <div class="modal-body" id="myform">
                                 @include('facture.form')
                             </div>
 

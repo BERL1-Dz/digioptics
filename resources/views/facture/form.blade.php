@@ -4,17 +4,18 @@
 </div>
 
 <div class="row g-3">
-    <div class="col mb-0">
+    <div class="col mb-0" id="ref_input">
         <label for="nameExLarge" class="form-label">Ref.</label>
         <div style="display:flex;align-items: baseline;">
             <button id="rowAdder" type="button" class="btn btn-success valval"
                 style="border-radius: 5px 0px 0px 5px;">
                 <i class='bx bxs-plus-square'></i>
             </button>
-            <input type="text" id="nameExLarge" class="form-control ref" placeholder="Ref." name="ref" required
+            <input type="text" id="ref_0" class="form-control ref" placeholder="Ref." required
                 style="border-radius: 0px 5px 5px 0px;" />
         </div>
         <div id="newinput"></div>
+        <input type="text" id="result_ref" name="ref">
     </div>
 
     <div class="row g-2">
