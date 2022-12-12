@@ -186,6 +186,7 @@
 
     <!-- Page JS -->
     <script src="../assets/js/dashboards-analytics.js"></script>
+    <script src="../assets/js/facture-form.js"></script>
 
 
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css">
@@ -200,36 +201,7 @@
     </script>
 
 
-    <script>
-        document.getElementById('ref_input').addEventListener('input', function() {
-            const conc = [...document.querySelectorAll('#ref_input [id^=ref_]')] // id starts with text
-                .filter(fld => fld.value.trim() !== "") // not empty
-                .map(fld => fld.value) // store value
-            document.getElementById('result_ref').value = conc.join(","); // join with comma
-        })
-    </script>
 
-    <script type="text/javascript">
-        let i_ref = 1;
-        $("#rowAdder").click(function() {
-
-            newRowAdd =
-                '<div id="row"> <div class="input-group mb-2 mt-2">' +
-                '<input id="ref_' + i_ref + '" name="ref" type="text" class="form-control m-input" required>' +
-                '<div class="input-group-prepend">' +
-                '<button class="btn btn-danger" id="DeleteRow" type="button" style="border-radius: 0px 5px 5px 0;">' +
-                '<i class="bi bi-trash"></i></button> </div>' +
-                '</div> </div>';
-
-            $('#newinput').append(newRowAdd);
-            i_ref++
-        });
-
-        $("body").on("click", "#DeleteRow", function() {
-            $(this).parents("#row").remove();
-            i_ref--;
-        })
-    </script>
 </body>
 
 </html>
