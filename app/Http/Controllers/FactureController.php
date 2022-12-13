@@ -14,8 +14,9 @@ class FactureController extends Controller
      */
     public function index()
     {
-        //
-        return view("facture.index");
+        $factures = Facture::all();
+        //dd($factures);
+        return view("facture.index", compact("factures"));
     }
 
     /**
@@ -62,9 +63,14 @@ class FactureController extends Controller
      * @param  \App\Models\Facture  $facture
      * @return \Illuminate\Http\Response
      */
-    public function show(Facture $facture)
+    public function show(Facture $facture, Request $request)
     {
-        //
+        $request = $service->id;
+        $all_data = DB::table("factures")
+            ->where("id", "like", $request)
+            ->get();
+        dd($all_data);
+        return view("LinkPage", compact("all_data", $all_data));
     }
 
     /**
