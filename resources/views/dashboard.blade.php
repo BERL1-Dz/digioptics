@@ -1,4 +1,5 @@
-<x-app-layout>
+@extends('layouts.app')
+@section('content')
     <div class="content-wrapper">
             <!-- Content -->
 
@@ -571,4 +572,4 @@
 
             <div class="content-backdrop fade"></div>
           </div>
-</x-app-layout>
+@endsection
