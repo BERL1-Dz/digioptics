@@ -11,11 +11,11 @@
                 style="border-radius: 5px 0px 0px 5px;">
                 <i class='bx bxs-plus-square'></i>
             </button>
-            <input type="text" id="ref_0" class="form-control ref" placeholder="Ref." required
+            <input type="text" name="ref[]" id="ref_0" class="form-control ref" placeholder="Ref." required
                 style="border-radius: 0px 5px 5px 0px;" />
         </div>
         <div id="newinput"></div>
-        <input type="text" id="result_ref" name="ref">
+        {{-- <input type="text" id="result_ref" name="ref[]"> --}}
     </div>
 
     <div class="row g-2">
@@ -76,7 +76,7 @@
 
         <div class="col mb-0">
             <label for="dobExLarge" class="form-label">T.T.C</label>
-            <input type="tnumber" id="dobExLarge" class="form-control" placeholder="T.T.C " name="t_t_c" />
+            <input type="number" id="dobExLarge" class="form-control" placeholder="T.T.C " name="t_t_c" />
         </div>
     </div>
 
