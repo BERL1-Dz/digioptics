@@ -31,7 +31,7 @@
             </div>
         </div>
          <!-- Responsive Table -->
-         <div class="card">
+         <div class="card mt-2" style="position: fixed !important;">
             <h5 class="card-header">Tabeau des factures</h5>
             <div class="table-responsive text-nowrap">
               <table class="table">
