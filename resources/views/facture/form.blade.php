@@ -7,15 +7,14 @@
     <div class="col mb-0" id="ref_input">
         <label for="nameExLarge" class="form-label">Ref.</label>
         <div style="display:flex;align-items: baseline;">
-            <button id="rowAdder" type="button" class="btn btn-success valval"
+            <button id="rowAdder_ref" type="button" class="btn btn-success valval"
                 style="border-radius: 5px 0px 0px 5px;">
                 <i class='bx bxs-plus-square'></i>
             </button>
             <input type="text" name="ref[]" id="ref_0" class="form-control ref" placeholder="Ref." required
                 style="border-radius: 0px 5px 5px 0px;" />
         </div>
-        <div id="newinput"></div>
-        {{-- <input type="text" id="result_ref" name="ref[]"> --}}
+        <div id="newinput_ref"></div>
     </div>
 
     <div class="row g-2">
@@ -36,22 +35,43 @@
     <div class="row g-2">
         <div class="col mb-0">
             <label for="emailExLarge" class="form-label">Designation</label>
-            <input type="text" id="emailExLarge" class="form-control" placeholder="Designation" name="designation"
-                required />
+            <div style="display:flex;align-items: baseline;">
+            <button id="rowAdder_des" type="button" class="btn btn-success valval"
+                style="border-radius: 5px 0px 0px 5px;">
+                <i class='bx bxs-plus-square'></i>
+            </button>
+            <input type="text" id="emailExLarge" class="form-control" placeholder="Designation" name="designation[]"
+            style="border-radius: 0px 5px 5px 0px;"  required />
+            </div>
+            <div id="newinput_des"></div>
         </div>
 
         <div class="col mb-0">
             <label for="dobExLarge" class="form-label">Quantite</label>
-            <input type="number" id="dobExLarge" class="form-control" placeholder="Quantite" name="quantite"
-                required />
+            <div style="display:flex;align-items: baseline;">
+                <button id="rowAdder_quantite" type="button" class="btn btn-success valval"
+                    style="border-radius: 5px 0px 0px 5px;">
+                    <i class='bx bxs-plus-square'></i>
+                </button>
+            <input type="number" id="dobExLarge" class="form-control" placeholder="Quantite" name="quantite[]"
+            style="border-radius: 0px 5px 5px 0px;" required />
+            </div>
+            <div id="newinput_quantite"></div>
         </div>
     </div>
 
     <div class="row g-2">
         <div class="col mb-0">
             <label for="emailExLarge" class="form-label">Prix Unitaire</label>
-            <input type="number" id="emailExLarge" class="form-control" placeholder="Prix Unitaire" name="p_unitaire"
-                required />
+            <div style="display:flex;align-items: baseline;">
+                <button id="rowAdder_p-uni" type="button" class="btn btn-success valval"
+                    style="border-radius: 5px 0px 0px 5px;">
+                    <i class='bx bxs-plus-square'></i>
+                </button>
+            <input type="number" id="emailExLarge" class="form-control" placeholder="Prix Unitaire" name="p_unitaire[]"
+            style="border-radius: 0px 5px 5px 0px;" required />
+            </div>
+            <div id="newinput_p-uni"></div>
         </div>
         <div class="col mb-0">
             <label for="dobExLarge" class="form-label">Montant</label>

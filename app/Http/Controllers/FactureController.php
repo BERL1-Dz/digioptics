@@ -38,7 +38,6 @@ class FactureController extends Controller
     {
         //dd($request->all());
         $facture = new Facture();
-
         $facture->facture_pour = request("facture_pour");
         $facture->ref = request("ref");
         $facture->n_facture = request("n_facture");

@@ -10,5 +10,8 @@ class Facture extends Model
     use HasFactory;
     protected $casts = [
         "ref" => "array",
+        "designation" => "array",
+        "quantite" => "array",
+        "p_unitaire" => "array",
     ];
 }
