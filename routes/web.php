@@ -36,5 +36,6 @@ Route::get('/facture/delete/{id}', [FactureController::class, 'destroy'] )->midd
 //resource
 
 Route::post('/create',[FactureController::class, 'store']);
+Route::post('/create_patient',[PatientController::class, 'store']);
 
 require __DIR__.'/auth.php';
