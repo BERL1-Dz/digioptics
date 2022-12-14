@@ -30,66 +30,76 @@
                 </div>
             </div>
         </div>
-         <!-- Responsive Table -->
-         <div class="card mt-2" style="position: fixed !important;">
+        <!-- Responsive Table -->
+        <div class="card mt-2" style="position: fixed !important;">
             <h5 class="card-header">Tabeau des factures</h5>
             <div class="table-responsive text-nowrap">
-              <table class="table">
-                <thead>
-                  <tr class="text-nowrap">
-                    <th>#</th>
-                    <th>FACTURE POUR</th>
-                    <th>REFERENCE</th>
-                    <th>N° FACTURE</th>
-                    <th>DATE</th>
-                    <th>DESIGNATION</th>
-                    <th>QUANTITE</th>
-                    <th>PRIX UNITAIRE</th>
-                    <th>MONTANT</th>
-                    <th>TOTAL</th>
-                    <th>ACTION</th>
-                  </tr>
-                </thead>
-                <tbody>
-                    @foreach($factures as $facture)
-                  <tr>
-                    <th scope="row">{{$facture->id}}</th>
-                    <td>{{$facture->facture_pour}}</td>
-                    <td>@foreach($facture->ref as $reference)
-                        <li>{{$reference}}</li>
+                <table class="table">
+                    <thead>
+                        <tr class="text-nowrap">
+                            <th>#</th>
+                            <th>FACTURE POUR</th>
+                            <th>REFERENCE</th>
+                            <th>N° FACTURE</th>
+                            <th>DATE</th>
+                            <th>DESIGNATION</th>
+                            <th>QUANTITE</th>
+                            <th>PRIX UNITAIRE</th>
+                            <th>MONTANT</th>
+                            <th>TOTAL</th>
+                            <th>ACTION</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach ($factures as $facture)
+                            <tr>
+                                <th scope="row">{{ $facture->id }}</th>
+                                <td>{{ $facture->facture_pour }}</td>
+                                <td>
+                                    @foreach ($facture->ref as $reference)
+                                        <li>{{ $reference }}</li>
+                                    @endforeach
+                                </td>
+                                <td>{{ $facture->n_facture }}</td>
+                                <td>{{ $facture->date }}</td>
+                                <td>
+                                    @foreach ($facture->designation as $designation)
+                                        <li>{{ $designation }}</li>
+                                    @endforeach
+                                </td>
+                                <td>
+                                    @foreach ($facture->quantite as $quantite)
+                                        <li>{{ $quantite }}</li>
+                                    @endforeach
+                                </td>
+                                <td>
+                                    @foreach ($facture->p_unitaire as $p_unitaire)
+                                        <li>{{ $p_unitaire }}</li>
+                                    @endforeach
+                                </td>
+                                <td>{{ $facture->montant }}</td>
+                                <td>{{ $facture->total }}</td>
+                                <td>
+                                    <div class="dropdown">
+                                        <button type="button" class="btn p-0 dropdown-toggle hide-arrow"
+                                            data-bs-toggle="dropdown" aria-expanded="false">
+                                            <i class="bx bx-dots-vertical-rounded"></i>
+                                        </button>
+                                        <div class="dropdown-menu" style="">
+                                            <a class="dropdown-item" href="facture/{{ $facture->id }}"><i
+                                                    class="bx bx-edit-alt me-1"></i> Edit</a>
+                                            <a class="dropdown-item" href="facture/delete/{{ $facture['id'] }}"><i
+                                                    class="bx bx-trash me-1"></i>
+                                                Delete</a>
+                                        </div>
+                                    </div>
+                                </td>
+                            </tr>
                         @endforeach
-                    </td>
-                    <td>{{$facture->n_facture}}</td>
-                    <td>{{$facture->date}}</td>
-                    <td>@foreach($facture->designation as $designation)
-                        <li>{{$designation}}</li>
-                        @endforeach
-                    </td>
-                    <td>@foreach($facture->quantite as $quantite)
-                        <li>{{$quantite}}</li>
-                        @endforeach</td>
-                    <td>@foreach($facture->p_unitaire as $p_unitaire)
-                        <li>{{$p_unitaire}}</li>
-                        @endforeach
-                    </td>
-                    <td>{{$facture->montant}}</td>
-                    <td>{{$facture->total}}</td>
-                    <td><div class="dropdown">
-                        <button type="button" class="btn p-0 dropdown-toggle hide-arrow" data-bs-toggle="dropdown" aria-expanded="false">
-                            <i class="bx bx-dots-vertical-rounded"></i>
-                        </button>
-                        <div class="dropdown-menu" style="">
-                            <a class="dropdown-item" href="javascript:void(0);"><i class="bx bx-edit-alt me-1"></i> Edit</a>
-                            <a class="dropdown-item" href="javascript:void(0);"><i class="bx bx-trash me-1"></i>
-                                Delete</a>
-                        </div>
-                    </div></td>
-                  </tr>
-                  @endforeach
-                </tbody>
-              </table>
+                    </tbody>
+                </table>
             </div>
-          </div>
+        </div>
         <!--/ Table within card -->
     </div>
     <script>

@@ -65,12 +65,12 @@ class FactureController extends Controller
      */
     public function show(Facture $facture, Request $request)
     {
-        $request = $service->id;
-        $all_data = DB::table("factures")
-            ->where("id", "like", $request)
-            ->get();
-        dd($all_data);
-        return view("LinkPage", compact("all_data", $all_data));
+        // $request = $facture->id;
+        // $all_data = DB::table("factures")
+        //     ->where("id", "like", $request)
+        //     ->get();
+        // dd($all_data);
+        // return view("LinkPage", compact("all_data", $all_data));
     }
 
     /**
@@ -79,8 +79,12 @@ class FactureController extends Controller
      * @param  \App\Models\Facture  $facture
      * @return \Illuminate\Http\Response
      */
-    public function edit(Facture $facture)
+    public function edit(Facture $facture, $id)
     {
+        $data = Facture::find($id);
+        $i = 0;
+        //dd ($data);
+        return view("facture.edit", compact("data","id","i"));
         //
     }
 
@@ -91,9 +95,24 @@ class FactureController extends Controller
      * @param  \App\Models\Facture  $facture
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Facture $facture)
+    public function update(Request $request, Facture $facture, $id)
     {
-        //
+        $data = Facture::find($id);
+        $data->facture_pour = request("facture_pour");
+        $data->ref = request("ref");
+        $data->n_facture = request("n_facture");
+        $data->date = request("date");
+        $data->designation = request("designation");
+        $data->quantite = request("quantite");
+        $data->p_unitaire = request("p_unitaire");
+        $data->montant = request("montant");
+        $data->t_h_t = request("t_h_t");
+        $data->t_v_a_p = request("t_v_a_p");
+        $data->t_v_a = request("t_v_a");
+        $data->t_t_c = request("t_t_c");
+        $data->total = request("total");
+        $data->update();
+        return redirect('/facture');
     }
 
     /**
@@ -102,8 +121,10 @@ class FactureController extends Controller
      * @param  \App\Models\Facture  $facture
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Facture $facture)
+    public function destroy(Facture $facture, $id)
     {
-        //
+        $data = Facture::find($id);
+        $data->delete();
+        return redirect()->back();
     }
 }

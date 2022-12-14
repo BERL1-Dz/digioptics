@@ -1,5 +1,6 @@
 // --------------------    Ref input start --------------------
-let i_ref = 0;
+let i_reference = Number(document.getElementById("iteration").value);
+let i_ref = 1;
 $("#rowAdder_ref").click(function () {
     newRowAdd =
         '<div id="row"> <div class="input-group mb-2 mt-2">' +
@@ -17,7 +18,7 @@ $("#rowAdder_ref").click(function () {
     i_ref++;
 });
 
-$("body").on("click", "#DeleteRow_ref", function () {
+$("body").on("click", "#DeleteRow_ref", function () { 
     $(this).parents("#row").remove();
     i_ref--;
 });

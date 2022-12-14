@@ -26,8 +26,12 @@ Route::get('/dashboard', function () {
 
 Route::get('/patient', [PatientController::class, 'index'] )->middleware(['auth'])->name('patient');
 Route::get('/devis', [DevisController::class, 'index'] )->middleware(['auth'])->name('devis');
-Route::get('/facture', [FactureController::class, 'index'] )->middleware(['auth'])->name('index');
 
+//Factures
+Route::get('/facture', [FactureController::class, 'index'] )->middleware(['auth'])->name('index');
+Route::get('/facture/{id}', [FactureController::class, 'edit'] )->middleware(['auth'])->name('edit');
+Route::put('/facture/update/{id}', [FactureController::class, 'update'] )->middleware(['auth'])->name('update');
+Route::get('/facture/delete/{id}', [FactureController::class, 'destroy'] )->middleware(['auth'])->name('destroy');
 
 //resource
 
