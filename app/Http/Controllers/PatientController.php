@@ -66,9 +66,13 @@ class PatientController extends Controller
      * @param  \App\Models\Patient  $patient
      * @return \Illuminate\Http\Response
      */
-    public function edit(Patient $patient)
+    public function edit(Patient $patient, $id)
     {
-        //
+      //dd($request->all());
+        $data = Patient::find($id);
+        $i = 0;
+        //dd ($data);
+        return view("patient.edit", compact("data","id","i"));
     }
 
     /**
@@ -78,9 +82,16 @@ class PatientController extends Controller
      * @param  \App\Models\Patient  $patient
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Patient $patient)
+    public function update(Request $request, Patient $patient, $id)
     {
-        //
+        //dd($request->all());
+      $data = Patient::find($id);
+      $patient->nom = request('nom');
+      $patient->prenom = request('prenom');
+      $patient->age = request('age');
+
+      $data->update();
+      return redirect('/patient');
     }
 
     /**

@@ -61,7 +61,7 @@
                                   <div class="dropdown-menu" style="">
                                       <a class="dropdown-item" href=""><i
                                               class="bx bx-show me-1"></i> Show</a>
-                                      <a class="dropdown-item" href=""><i
+                                      <a class="dropdown-item" href="patientEdit/{{ $patient['id'] }}"><i
                                               class="bx bx-edit-alt me-1"></i> Edit</a>
                                       <a class="dropdown-item" href=""><i
                                               class="bx bx-trash me-1"></i>

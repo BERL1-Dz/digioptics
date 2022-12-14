@@ -27,12 +27,16 @@ Route::get('/dashboard', function () {
 Route::get('/patient', [PatientController::class, 'index'] )->middleware(['auth'])->name('patient');
 Route::get('/devis', [DevisController::class, 'index'] )->middleware(['auth'])->name('devis');
 
-//Factures
+//facture
 Route::get('/facture', [FactureController::class, 'index'] )->middleware(['auth'])->name('index');
 Route::get('/factureEdit/{id}', [FactureController::class, 'edit'] )->middleware(['auth'])->name('edit');
 Route::get('/factureShow/{id}', [FactureController::class, 'show'] )->middleware(['auth'])->name('show');
 Route::put('/facture/update/{id}', [FactureController::class, 'update'] )->middleware(['auth'])->name('update');
 Route::get('/facture/delete/{id}', [FactureController::class, 'destroy'] )->middleware(['auth'])->name('destroy');
+
+//patient
+Route::get('/patientEdit/{id}', [PatientController::class, 'edit'] )->middleware(['auth'])->name('edit');
+Route::put('/patient/update/{id}', [PatientController::class, 'update'] )->middleware(['auth'])->name('update');
 
 //resource
 
