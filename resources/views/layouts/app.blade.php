@@ -98,6 +98,13 @@
                                     <div data-i18n="Input groups">Facture</div>
                                 </a>
                             </li>
+
+                            <li class="menu-item">
+                                <a href="{{ url('/facture') }}" class="menu-link">
+                                    <div data-i18n="Input groups">Correction Visuelle
+ </div>
+                                </a>
+                            </li>
                         </ul>
                     </li>
                     <!-- Components -->
