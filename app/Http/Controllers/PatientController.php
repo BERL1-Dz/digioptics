@@ -91,6 +91,7 @@ class PatientController extends Controller
       $patient->age = request('age');
 
       $data->update();
+
       return redirect('/patient');
     }
 
@@ -100,8 +101,11 @@ class PatientController extends Controller
      * @param  \App\Models\Patient  $patient
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Patient $patient)
+    public function destroy(Patient $patient, $id)
     {
         //
+        $data = Patient::find($id);
+        $data->delete();
+        return redirect()->back();
     }
 }

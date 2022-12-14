@@ -37,6 +37,7 @@ Route::get('/facture/delete/{id}', [FactureController::class, 'destroy'] )->midd
 //patient
 Route::get('/patientEdit/{id}', [PatientController::class, 'edit'] )->middleware(['auth'])->name('edit');
 Route::put('/patient/update/{id}', [PatientController::class, 'update'] )->middleware(['auth'])->name('update');
+Route::get('/patient/delete/{id}', [PatientController::class, 'destroy'] )->middleware(['auth'])->name('destroy');
 
 //resource
 
