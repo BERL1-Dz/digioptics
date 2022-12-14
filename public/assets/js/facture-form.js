@@ -1,6 +1,6 @@
 // --------------------    Ref input start --------------------
-let i_reference = Number(document.getElementById("iteration").value);
-let i_ref = 1;
+//let i_reference = Number(document.getElementById("iteration").value);
+let i_ref = 0;
 $("#rowAdder_ref").click(function () {
     newRowAdd =
         '<div id="row"> <div class="input-group mb-2 mt-2">' +

@@ -31,20 +31,20 @@
             </div>
         </div>
         <!-- Responsive Table -->
-        <div class="card mt-2" style="position: fixed !important;">
+        <div class="card mt-2">
             <h5 class="card-header">Tabeau des factures</h5>
             <div class="table-responsive text-nowrap">
-                <table class="table">
+                <table class="table table-hover">
                     <thead>
                         <tr class="text-nowrap">
                             <th>#</th>
                             <th>FACTURE POUR</th>
-                            <th>REFERENCE</th>
+                            {{-- <th>REFERENCE</th> --}}
                             <th>N° FACTURE</th>
                             <th>DATE</th>
-                            <th>DESIGNATION</th>
+                            {{-- <th>DESIGNATION</th>
                             <th>QUANTITE</th>
-                            <th>PRIX UNITAIRE</th>
+                            <th>PRIX UNITAIRE</th> --}}
                             <th>MONTANT</th>
                             <th>TOTAL</th>
                             <th>ACTION</th>
@@ -55,14 +55,14 @@
                             <tr>
                                 <th scope="row">{{ $facture->id }}</th>
                                 <td>{{ $facture->facture_pour }}</td>
-                                <td>
+                                {{-- <td>
                                     @foreach ($facture->ref as $reference)
                                         <li>{{ $reference }}</li>
                                     @endforeach
-                                </td>
+                                </td> --}}
                                 <td>{{ $facture->n_facture }}</td>
                                 <td>{{ $facture->date }}</td>
-                                <td>
+                                {{-- <td>
                                     @foreach ($facture->designation as $designation)
                                         <li>{{ $designation }}</li>
                                     @endforeach
@@ -76,7 +76,7 @@
                                     @foreach ($facture->p_unitaire as $p_unitaire)
                                         <li>{{ $p_unitaire }}</li>
                                     @endforeach
-                                </td>
+                                </td> --}}
                                 <td>{{ $facture->montant }}</td>
                                 <td>{{ $facture->total }}</td>
                                 <td>
@@ -86,7 +86,9 @@
                                             <i class="bx bx-dots-vertical-rounded"></i>
                                         </button>
                                         <div class="dropdown-menu" style="">
-                                            <a class="dropdown-item" href="facture/{{ $facture->id }}"><i
+                                            <a class="dropdown-item" href="factureShow/{{ $facture['id'] }}"><i
+                                                    class="bx bx-show me-1"></i> Show</a>
+                                            <a class="dropdown-item" href="factureEdit/{{ $facture['id'] }}"><i
                                                     class="bx bx-edit-alt me-1"></i> Edit</a>
                                             <a class="dropdown-item" href="facture/delete/{{ $facture['id'] }}"><i
                                                     class="bx bx-trash me-1"></i>

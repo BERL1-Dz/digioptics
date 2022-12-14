@@ -63,14 +63,11 @@ class FactureController extends Controller
      * @param  \App\Models\Facture  $facture
      * @return \Illuminate\Http\Response
      */
-    public function show(Facture $facture, Request $request)
+    public function show(Facture $facture, Request $request, $id)
     {
-        // $request = $facture->id;
-        // $all_data = DB::table("factures")
-        //     ->where("id", "like", $request)
-        //     ->get();
-        // dd($all_data);
-        // return view("LinkPage", compact("all_data", $all_data));
+        $data = Facture::find($id);
+        //dd ($data);
+        return view("facture.show", compact("data","id"));
     }
 
     /**

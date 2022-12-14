@@ -29,7 +29,8 @@ Route::get('/devis', [DevisController::class, 'index'] )->middleware(['auth'])->
 
 //Factures
 Route::get('/facture', [FactureController::class, 'index'] )->middleware(['auth'])->name('index');
-Route::get('/facture/{id}', [FactureController::class, 'edit'] )->middleware(['auth'])->name('edit');
+Route::get('/factureEdit/{id}', [FactureController::class, 'edit'] )->middleware(['auth'])->name('edit');
+Route::get('/factureShow/{id}', [FactureController::class, 'show'] )->middleware(['auth'])->name('show');
 Route::put('/facture/update/{id}', [FactureController::class, 'update'] )->middleware(['auth'])->name('update');
 Route::get('/facture/delete/{id}', [FactureController::class, 'destroy'] )->middleware(['auth'])->name('destroy');
 
