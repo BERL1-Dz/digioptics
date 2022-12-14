@@ -15,13 +15,13 @@
                 <div class="row g-2">
                     <div class="col mb-0">
                         <label for="nameExLarge" class="form-label">Prenom</label>
-                        <input type="text" id="nameExLarge" class="form-control" placeholder="N° Facture"
+                        <input type="text" id="nameExLarge" class="form-control" placeholder=""
                             name="prenom" required value="{{ $data['prenom'] }}">
                     </div>
 
                     <div class="col mb-0">
                         <label for="dobExLarge" class="form-label">Nom</label>
-                        <input type="text" id="dobExLarge" class="form-control" placeholder="DD / MM / YY"
+                        <input type="text" id="dobExLarge" class="form-control" placeholder=""
                             name="nom" required value="{{ $data['nom'] }}">
                     </div>
                 </div>
@@ -29,7 +29,7 @@
 
                 <div class="col mb-0">
                     <label for="nameExLarge" class="form-label">Age</label>
-                    <input type="number" id="nameExLarge" class="form-control" placeholder="Total" name="age"
+                    <input type="number" id="nameExLarge" class="form-control" placeholder="" name="age"
                         required value="{{ $data['age'] }}">
                 </div>
             </div>

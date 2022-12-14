@@ -86,12 +86,10 @@ class PatientController extends Controller
     {
         //dd($request->all());
       $data = Patient::find($id);
-      $patient->nom = request('nom');
-      $patient->prenom = request('prenom');
-      $patient->age = request('age');
-
+      $data->prenom = request('prenom');
+      $data->nom = request('nom');
+      $data->age = request('age');
       $data->update();
-
       return redirect('/patient');
     }
 

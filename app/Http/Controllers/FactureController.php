@@ -94,6 +94,7 @@ class FactureController extends Controller
      */
     public function update(Request $request, Facture $facture, $id)
     {
+        //dd($request->all());
         $data = Facture::find($id);
         $data->facture_pour = request("facture_pour");
         $data->ref = request("ref");
