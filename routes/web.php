@@ -27,7 +27,7 @@ Route::get('/dashboard', function () {
 
 Route::get('/patient', [PatientController::class, 'index'] )->middleware(['auth'])->name('patient');
 Route::get('/devis', [DevisController::class, 'index'] )->middleware(['auth'])->name('devis');
-Route::get('/devis', [CorrectionController::class, 'index'] )->middleware(['auth'])->name('devis');
+Route::get('/correction', [CorrectionController::class, 'index'] )->middleware(['auth'])->name('correction');
 
 //facture
 Route::get('/facture', [FactureController::class, 'index'] )->middleware(['auth'])->name('index');

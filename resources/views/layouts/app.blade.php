@@ -100,7 +100,7 @@
                             </li>
 
                             <li class="menu-item">
-                                <a href="{{ url('/facture') }}" class="menu-link">
+                                <a href="{{ url('/correction') }}" class="menu-link">
                                     <div data-i18n="Input groups">Correction Visuelle
  </div>
                                 </a>
