@@ -14,11 +14,12 @@ class CreateCorrectionsTable extends Migration
     public function up()
     {
         Schema::create('corrections', function (Blueprint $table) {
-            $table->id();
+            $table->bigIncrements('id');
             $table->string('date')->nullable();
             $table->float('sphére');
-            $table->float('clyinder');	
+            $table->float('clyinder');
             $table->integer('axe');
+            $table->integer('patient_id')->unsigned();
             $table->timestamps();
         });
     }

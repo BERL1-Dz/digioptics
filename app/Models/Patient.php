@@ -8,4 +8,12 @@ use Illuminate\Database\Eloquent\Model;
 class Patient extends Model
 {
     use HasFactory;
+
+
+    public function patient()
+    {
+      // code...
+      return $this->hasOne(Correction::class);
+    }
+
 }
