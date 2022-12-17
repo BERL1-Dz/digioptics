@@ -2,24 +2,29 @@
   <div class="row align-items-start">
     <div class="col">
       <span>
-        <h1>-----</h1>
+      <span></span>
       </span>
     </div>
     <div class="col">
       <span>
-        <h5>Sphere</h5>
+        Sphere
+        <span>(SPH)</span>
       </span>
     </div>
     <div class="col">
-      <h5>Cylinder</h5>
+      <span>Cylinder<span>(CLY)</span>
+
+      </span> 
     </div>
     <div class="col">
-      <h5>Axis</h5>
+      <span>Axis
+        <span>(AXI)</span>
+      </span>
     </div>
   </div>
   <div class="row align-items-center">
     <div class="col">
-      <h5>Right</h5>
+      <span>Right</span>
     </div>
     <div class="col">
       two two
@@ -33,7 +38,7 @@
   </div>
   <div class="row align-items-end">
     <div class="col">
-      <h5>Left</h5>
+      <span>Left</span>
     </div>
     <div class="col">
       One two
@@ -46,14 +51,13 @@
     </div>
   </div>
 
-  <div class="row align-items-end">
+  <div class="row row-cols-auto">
     <div class="col">
-      One four
+      <h5>PD</h5>
     </div>
-  </div>
-  <div class="row align-items-end">
+
     <div class="col">
-      One four2
+      <h5>62</h5>
     </div>
   </div>
 </div>
