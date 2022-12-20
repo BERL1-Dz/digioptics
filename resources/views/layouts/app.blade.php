@@ -107,7 +107,7 @@
                             </li>
                             <li class="menu-item">
                                 <a href="{{ url('/fournisseur') }}" class="menu-link">
-                                    <div data-i18n="Input groups">Fournisseurs
+                                    <div data-i18n="Input groups">Fournisseur
                                     </div>
                                 </a>
                             </li>
@@ -117,9 +117,9 @@
                     <li class="menu-header small text-uppercase"><span class="menu-header-text">Stock</span></li>
                     <!-- User interface -->
                     <li class="menu-item">
-                        <a href="cards-basic.html" class="menu-link">
+                        <a href="{{ url('/verre') }}" class="menu-link">
                             <i class="menu-icon tf-icons bx bx-bullseye"></i>
-                            <div data-i18n="Basic">Verres</div>
+                            <div data-i18n="Basic">Verre</div>
                         </a>
                     </li>
                     <!-- Extended components -->

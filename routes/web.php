@@ -6,8 +6,7 @@ use App\Http\Controllers\DevisController;
 use App\Http\Controllers\FactureController;
 use App\Http\Controllers\CorrectionController;
 use App\Http\Controllers\FournisseurController;
-
-
+use App\Http\Controllers\VerreController;
 
 /*
 |--------------------------------------------------------------------------
@@ -32,6 +31,7 @@ Route::get('/patient', [PatientController::class, 'index'] )->middleware(['auth'
 Route::get('/devis', [DevisController::class, 'index'] )->middleware(['auth'])->name('devis');
 Route::get('/correction', [CorrectionController::class, 'index'] )->middleware(['auth'])->name('correction');
 Route::get('/fournisseur', [FournisseurController::class, 'index'] )->middleware(['auth'])->name('fournisseur');
+Route::get('/verre', [VerreController::class, 'index'] )->middleware(['auth'])->name('verre');
 
 //facture
 Route::get('/facture', [FactureController::class, 'index'] )->middleware(['auth'])->name('index');

@@ -1,9 +1,10 @@
 <?php
 
 namespace App\Http\Controllers;
-
+use App\Models\Fournisseur;
 use App\Models\Verre;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class VerreController extends Controller
 {
@@ -15,6 +16,12 @@ class VerreController extends Controller
     public function index()
     {
         //
+        $verres = Verre::all();
+        $fournisseurs = Fournisseur::all();
+
+        return view('verre.index', compact('verres','fournisseurs'));
+
+
     }
 
     /**
