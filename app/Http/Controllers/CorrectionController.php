@@ -15,7 +15,7 @@ class CorrectionController extends Controller
     public function index()
     {
         //
-        return view("correction.test");
+        return view("correction.index");
 
     }
 
