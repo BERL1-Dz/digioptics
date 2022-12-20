@@ -5,6 +5,9 @@ use App\Http\Controllers\PatientController;
 use App\Http\Controllers\DevisController;
 use App\Http\Controllers\FactureController;
 use App\Http\Controllers\CorrectionController;
+use App\Http\Controllers\FournisseurController;
+
+
 
 /*
 |--------------------------------------------------------------------------
@@ -28,6 +31,7 @@ Route::get('/dashboard', function () {
 Route::get('/patient', [PatientController::class, 'index'] )->middleware(['auth'])->name('patient');
 Route::get('/devis', [DevisController::class, 'index'] )->middleware(['auth'])->name('devis');
 Route::get('/correction', [CorrectionController::class, 'index'] )->middleware(['auth'])->name('correction');
+Route::get('/fournisseur', [FournisseurController::class, 'index'] )->middleware(['auth'])->name('fournisseur');
 
 //facture
 Route::get('/facture', [FactureController::class, 'index'] )->middleware(['auth'])->name('index');
@@ -41,9 +45,15 @@ Route::get('/patientEdit/{id}', [PatientController::class, 'edit'] )->middleware
 Route::put('/patient/update/{id}', [PatientController::class, 'update'] )->middleware(['auth'])->name('update');
 Route::get('/patient/delete/{id}', [PatientController::class, 'destroy'] )->middleware(['auth'])->name('destroy');
 
+// fournisseur
+Route::get('/fournisseurEdit/{id}', [FournisseurController::class, 'edit'] )->middleware(['auth'])->name('edit');
+Route::put('/fournisseur/update/{id}', [FournisseurController::class, 'update'] )->middleware(['auth'])->name('update');
+Route::get('/fournisseur/delete/{id}', [FournisseurController::class, 'destroy'] )->middleware(['auth'])->name('destroy');
+
 //resource
 
 Route::post('/create',[FactureController::class, 'store']);
 Route::post('/create_patient',[PatientController::class, 'store']);
+Route::post('/create_fournisseur',[FournisseurController::class, 'store']);
 
 require __DIR__.'/auth.php';

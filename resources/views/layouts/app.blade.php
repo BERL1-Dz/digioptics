@@ -105,6 +105,12 @@
                                     </div>
                                 </a>
                             </li>
+                            <li class="menu-item">
+                                <a href="{{ url('/fournisseur') }}" class="menu-link">
+                                    <div data-i18n="Input groups">Fournisseurs
+                                    </div>
+                                </a>
+                            </li>
                         </ul>
                     </li>
                     <!-- Components -->

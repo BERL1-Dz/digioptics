@@ -1,9 +1,12 @@
 <?php
 
 namespace App\Http\Controllers;
-
 use App\Models\Fournisseur;
 use Illuminate\Http\Request;
+use Illuminate\Http\Lentille;
+use Illuminate\Http\Verre;
+use Illuminate\Http\Monture;
+use Illuminate\Support\Facades\DB;
 
 class FournisseurController extends Controller
 {
@@ -15,6 +18,9 @@ class FournisseurController extends Controller
     public function index()
     {
         //
+        $fournisseurs = Fournisseur::all();
+        return view('fournisseur.index', compact("fournisseurs"));
+
     }
 
     /**
@@ -35,7 +41,17 @@ class FournisseurController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        //dd($request->all());
+
+        $fournisseur = new Fournisseur;
+        $fournisseur->code_fournisseur = request('code_fournisseur');
+        $fournisseur->nom = request('nom');
+        $fournisseur->fabricant_associe = request('fabricant_associe');
+        $fournisseur->mail_fournisseur = request('mail_fournisseur');
+        $fournisseur->numero_fournisseur = request('numero_fournisseur');
+
+        $fournisseur->save();
+        return back();
     }
 
     /**
@@ -55,9 +71,13 @@ class FournisseurController extends Controller
      * @param  \App\Models\Fournisseur  $fournisseur
      * @return \Illuminate\Http\Response
      */
-    public function edit(Fournisseur $fournisseur)
+    public function edit(Fournisseur $fournisseur, $id)
     {
         //
+        $data = Fournisseur::find($id);
+        $i = 0;
+
+        return view("fournisseur.edit", compact("data","id","i"));
     }
 
     /**
@@ -67,9 +87,21 @@ class FournisseurController extends Controller
      * @param  \App\Models\Fournisseur  $fournisseur
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Fournisseur $fournisseur)
+    public function update(Request $request, Fournisseur $fournisseur, $id)
     {
-        //
+        //dd($request->all());
+
+        $fournisseur = Fournisseur::find($id);
+
+        $fournisseur->code_fournisseur = request('code_fournisseur');
+        $fournisseur->nom = request('nom');
+        $fournisseur->fabricant_associe = request('fabricant_associe');
+        $fournisseur->mail_fournisseur = request('mail_fournisseur');
+        $fournisseur->numero_fournisseur = request('numero_fournisseur');
+
+        $fournisseur->update();
+        return redirect('/fournisseur');
+
     }
 
     /**
@@ -78,8 +110,11 @@ class FournisseurController extends Controller
      * @param  \App\Models\Fournisseur  $fournisseur
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Fournisseur $fournisseur)
+    public function destroy(Fournisseur $fournisseur, $id)
     {
         //
+        $fournisseur = Fournisseur::find($id);
+        $fournisseur->delete();
+        return redirect()->back();
     }
 }
