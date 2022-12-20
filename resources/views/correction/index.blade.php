@@ -1,15 +1,47 @@
 @extends('layouts.app')
 @section('content')
     <div class="container-xxl flex-grow-1 container-p-y">
-        <h4 class="fw-bold py-3 mb-4"><span class="text-muted fw-light">Dossier /</span> Correction</h4>
+        <h4 class="fw-bold py-3 mb-4"><span class="text-muted fw-light">Dossier /</span> Correction Visuelle</h4>
         <!--Button-->
-        <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exLargeModal">
+        {{-- <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exLargeModal">
             Nouvelle correction
-        </button>
+        </button> --}}
+
+        <div class="col-lg-4 col-md-6">
+            <div class="mt-3">
+                <button class="btn btn-primary" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasScroll"
+                    aria-controls="offcanvasScroll">
+                    Nouvelle Correction Visuelle
+                </button>
+                <div class="offcanvas offcanvas-end" data-bs-scroll="true" data-bs-backdrop="false" tabindex="-1"
+                    id="offcanvasScroll" aria-labelledby="offcanvasScrollLabel"
+                    style="width: 650px; box-shadow:1px 1px 3px 1px">
+                    <div class="offcanvas-header">
+                        <h5 id="offcanvasScrollLabel" class="offcanvas-title">Offcanvas Scroll</h5>
+                        <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas"
+                            aria-label="Close"></button>
+                    </div>
+                    <div class="offcanvas-body my-auto mx-0 flex-grow-0">
+                        <button id='vproche' type="button" class="btn btn-primary mb-2 d-grid w-100"
+                            data-bs-toggle="modal" data-bs-target="#exLargeModal-vproche">
+                            Vision Proche
+                        </button>
+                        <button id='vloin' type="button" class="btn btn-primary mb-2 d-grid w-100"
+                            data-bs-toggle="modal" data-bs-target="#exLargeModal-vloin">
+                            Vision Loin
+                        </button>
+                        <button id="close" type="button" class="btn btn-outline-secondary d-grid w-100"
+                            data-bs-dismiss="offcanvas">
+                            Cancel
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
         <!--Button End-->
         <!--Modal -->
         <div class="table-responsive text-nowrap">
-            <div class="modal fade" id="exLargeModal" tabindex="-1" aria-hidden="true">
+            <div class="modal fade" id="exLargeModal-vproche" tabindex="-1" aria-hidden="true">
                 <div class="modal-dialog modal-xl" role="document">
                     <div class="modal-content">
                         <div class="modal-header">
@@ -20,6 +52,30 @@
                             {{ csrf_field() }}
                             <div class="modal-body">
                                 @include('correction.form')
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal">
+                                    Close
+                                </button>
+                                <button type="button" class="btn btn-primary">Save changes</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="table-responsive text-nowrap">
+            <div class="modal fade" id="exLargeModal-vloin" tabindex="-1" aria-hidden="true">
+                <div class="modal-dialog modal-xl" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="exampleModalLabel4">Correction</h5>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div>
+                        <form action="#" method="post" enctype="multipart/form-data">
+                            {{ csrf_field() }}
+                            <div class="modal-body">
+                                @include('correction.form2')
                             </div>
                             <div class="modal-footer">
                                 <button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal">
@@ -66,6 +122,19 @@
 
     </div>
     <script>
+        let offcanvas = document.querySelector('.offcanvas');
+
+        let vproche = document.querySelector('#vproche');
+        let vloin = document.querySelector('#vloin');
+        let closeBtn = document.querySelector('#close');
+        vproche.addEventListener('click', function() {
+
+            closeBtn.click();
+        });
+        vloin.addEventListener('click', function() {
+            closeBtn.click();
+        });
+
         const currentLocation = location.pathname.split('/')[1];
         console.log(currentLocation);
         const menuItem = document.querySelectorAll('.menu-item');
