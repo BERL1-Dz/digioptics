@@ -47,7 +47,7 @@
                     <th>Diametre</th>
                     <th>Surface</th>
                     <th>SPH</th>
-                    <th>cly</th>
+                    <th>CLY</th>
                     <th>Option</th>
                     <th>Prix d'achat </th>
                     <th>Prix de vents</th>
@@ -58,19 +58,17 @@
                 @foreach ($verres as $verre)
                     <tr>
                         <th scope="row">{{ $verre->id }}</th>
-                        <td>{{ $verre->nom }}</td>
-                        <td>{{ $verre->code_fournisseur }}</td>
-                        <td>{{ $verre->index_verre}}</td>
-                        <td>{{ $verre->material }}</td>
-                        <td>{{ $verre->diametre }}</td>
-                        <td>{{ $verre->surface }}</td>
-                        <td>{{ $verre->diametre }}</td>
-                        <td>{{ $verre->sph }}</td>
-                        <td>{{ $verre->cly }}</td>
-                        <td>{{ $verre->option }}</td>
-                        <td>{{ $verre->pa_verre }}</td>
-                        <td>{{ $verre->pv_verre }}</td>
-
+                        <th scope="row">{{ $verre->code_verre }}</th>
+                        <th scope="row">{{ $verre->code_fournisseur }}</th>
+                        <th scope="row">{{ $verre->index_verre }}</th>
+                        <th scope="row">{{ $verre->material }}</th>
+                        <th scope="row">{{ $verre->diametre }}</th>
+                        <th scope="row">{{ $verre->surface }}</th>
+                        <th scope="row">{{ $verre->sph }}</th>
+                        <th scope="row">{{ $verre->cly }}</th>
+                        <th scope="row">{{ $verre->option }}</th>
+                        <th scope="row">{{ $verre->pa_verre }}</th>
+                        <th scope="row">{{ $verre->pv_verre }}</th>
                         <td>
                             <div class="dropdown">
                                 <button type="button" class="btn p-0 dropdown-toggle hide-arrow"
