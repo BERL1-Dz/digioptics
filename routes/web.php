@@ -53,6 +53,7 @@ Route::get('/fournisseur/delete/{id}', [FournisseurController::class, 'destroy']
 // verre
 Route::get('/verreEdit/{id}', [VerreController::class, 'edit'] )->middleware(['auth'])->name('edit');
 Route::put('/verre/update/{id}', [VerreController::class, 'update'] )->middleware(['auth'])->name('update');
+Route::get('/verre/delete/{id}', [VerreController::class, 'destroy'] )->middleware(['auth'])->name('update');
 
 
 //resource

@@ -12,7 +12,6 @@
     <label for="emailWithTitle" class="form-label"> Code verre</label>
     <input type="text" id="emailWithTitle" class="form-control"
     placeholder="048700"
-    required
     name="code_verre"
     />
 </div>
@@ -56,14 +55,12 @@
         <label for="dobWithTitle" class="form-label">Sphére</label>
         <input type="text" id="dobWithTitle" class="form-control"
             placeholder="Sph"
-            required
             name="sph"/>
     </div>
     <div class="col mb-0">
         <label for="dobWithTitle" class="form-label">Clynder</label>
         <input type="text" id="dobWithTitle" class="form-control"
             placeholder="Cly"
-            required
             name="cly" />
     </div>
 </div>

@@ -125,8 +125,12 @@ class VerreController extends Controller
      * @param  \App\Models\Verre  $verre
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Verre $verre)
+    public function destroy(Verre $verre, $id)
     {
         //
+        $data = Verre::find($id);
+        $data->delete();
+        return redirect()->back();
+
     }
 }
