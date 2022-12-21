@@ -32,7 +32,7 @@
     <div class="col mb-0">
         <label for="emailWithTitle" class="form-label">Material</label>
         <input type="text" id="emailWithTitle" class="form-control"
-            placeholder="Metal"
+            placeholder="Organique"
             required
             name="material"/>
     </div>
