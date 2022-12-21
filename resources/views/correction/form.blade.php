@@ -1,73 +1,70 @@
-<div class="col-md-7">
-    <div class="card">
-        <h5 class="card-header">Input Sizing</h5>
-        <div class="d-flex">
+<div class="">
+    <div class="d-flex">
+        <div class="d-flex-column tab">
+            <div class="cell cell-round"></div>
+            <div class="cell cell-round">Right (OD)</div>
+            <div class="cell cell-round">Left (OS)</div>
+        </div>
+        <div class="d-flex-column tab">
+            <div class="cell cell-round">Sphere (SPH)</div>
+            <div class="drop">
+                <select id="largeSelect" class="form-select form-select-custom form-select-lg">
+                    <option>None</option>
+                    <option value="1">One</option>
+                    <option value="2">Two</option>
+                    <option value="3">Three</option>
+                </select>
+            </div>
+            <div class="drop">
+                <select id="largeSelect" class="form-select form-select-custom form-select-lg">
+                    <option>None</option>
+                    <option value="1">One</option>
+                    <option value="2">Two</option>
+                    <option value="3">Three</option>
+                </select>
+            </div>
 
-            <div class="d-flex-column">
-                <div class="cell cell-round"></div>
-                <div class="cell cell-round">Right (OD)</div>
-                <div class="cell cell-round">Left (OS)</div>
+        </div>
+        <div class="d-flex-column tab">
+            <div class="cell cell-round">Cylinder (CYL)</div>
+            <div class="drop">
+                <select id="largeSelect" class="form-select form-select-custom form-select-lg">
+                    <option>None</option>
+                    <option value="1">One</option>
+                    <option value="2">Two</option>
+                    <option value="3">Three</option>
+                </select>
             </div>
-            <div class="d-flex-column">
-                <div class="cell cell-round">Sphere (SPH)</div>
-                <div class="drop">
-                    <select id="largeSelect" class="form-select form-select-lg">
-                        <option>Large select</option>
-                        <option value="1">One</option>
-                        <option value="2">Two</option>
-                        <option value="3">Three</option>
-                    </select>
-                </div>
-                <div class="drop">
-                    <select id="largeSelect" class="form-select form-select-lg">
-                        <option>Large select</option>
-                        <option value="1">One</option>
-                        <option value="2">Two</option>
-                        <option value="3">Three</option>
-                    </select>
-                </div>
-
+            <div class="drop">
+                <select id="largeSelect" class="form-select form-select-custom form-select-lg">
+                    <option>None</option>
+                    <option value="1">One</option>
+                    <option value="2">Two</option>
+                    <option value="3">Three</option>
+                </select>
             </div>
-            <div class="d-flex-column">
-                <div class="cell cell-round">Cylinder (CYL)</div>
-                <div class="drop">
-                    <select id="largeSelect" class="form-select form-select-lg">
-                        <option>Large select</option>
-                        <option value="1">One</option>
-                        <option value="2">Two</option>
-                        <option value="3">Three</option>
-                    </select>
-                </div>
-                <div class="">
-                    <select id="largeSelect" class="form-select form-select-lg">
-                        <option>Large select</option>
-                        <option value="1">One</option>
-                        <option value="2">Two</option>
-                        <option value="3">Three</option>
-                    </select>
-                </div>
+        </div>
+        <div class="d-flex-column tab">
+            <div class="cell cell-round">Axis (AXI)</div>
+            <div class="drop">
+                <select id="largeSelect" class="form-select form-select-custom form-select-lg">
+                    <option>None</option>
+                    <option value="1">One</option>
+                    <option value="2">Two</option>
+                    <option value="3">Three</option>
+                </select>
             </div>
-            <div class="d-flex-column">
-                <div class="cell cell-round">Axis (AXI)</div>
-                <div class="drop">
-                    <select id="largeSelect" class="form-select form-select-lg">
-                        <option>Large select</option>
-                        <option value="1">One</option>
-                        <option value="2">Two</option>
-                        <option value="3">Three</option>
-                    </select>
-                </div>
-                <div class="drop">
-                    <select id="largeSelect" class="form-select form-select-lg">
-                        <option>Large select</option>
-                        <option value="1">One</option>
-                        <option value="2">Two</option>
-                        <option value="3">Three</option>
-                    </select>
-                </div>
+            <div class="drop">
+                <select id="largeSelect" class="form-select form-select-custom form-select-lg">
+                    <option>None</option>
+                    <option value="1">One</option>
+                    <option value="2">Two</option>
+                    <option value="3">Three</option>
+                </select>
             </div>
         </div>
     </div>
+
 </div>
 <style type="text/css">
     .cell-round {
@@ -90,6 +87,7 @@
     }
 
     .drop {
+        border-top: 1px solid #dedede;
         border-bottom: 1px solid #dedede;
         color: #6b6b6b;
         font: 400 14px/17px Roboto, Arial, sans-serif;
@@ -97,5 +95,17 @@
         position: relative;
         white-space: nowrap;
         width: 100%;
+    }
+
+    .tab {
+        border-left: 1px solid #dedede;
+        border-right: 1px solid #dedede;
+        border-bottom: 1px solid #dedede;
+        width: 149px;
+    }
+
+    .form-select-custom {
+        border: 0px solid #dedede !important;
+        border-radius: 0rem !important;
     }
 </style>

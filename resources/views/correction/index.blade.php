@@ -42,7 +42,7 @@
         <!--Modal -->
         <div class="table-responsive text-nowrap">
             <div class="modal fade" id="exLargeModal-vproche" tabindex="-1" aria-hidden="true">
-                <div class="modal-dialog modal-xl" role="document">
+                <div class="modal-dialog" role="document">
                     <div class="modal-content">
                         <div class="modal-header">
                             <h5 class="modal-title" id="exampleModalLabel4">Correction</h5>
