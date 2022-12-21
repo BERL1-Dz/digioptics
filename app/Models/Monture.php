@@ -9,13 +9,9 @@ class Monture extends Model
 {
     use HasFactory;
 
-    public function fournisseurs
+    public function fournisseurs()
     {
-      // code...
-      public function fournisseur()
-      {
         // code...
         return $this->belongsTo(Fournisseur::class);
-      }
     }
 }

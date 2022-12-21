@@ -13,6 +13,6 @@ class Verre extends Model
     {
       // code...
       return $this->belongsTo(Fournisseur::class);
-      
+
     }
 }

@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\PatientController;
 use App\Http\Controllers\DevisController;
+use App\Http\Controllers\MontureController;
 use App\Http\Controllers\FactureController;
 use App\Http\Controllers\CorrectionController;
 use App\Http\Controllers\FournisseurController;
@@ -32,6 +33,7 @@ Route::get('/devis', [DevisController::class, 'index'] )->middleware(['auth'])->
 Route::get('/correction', [CorrectionController::class, 'index'] )->middleware(['auth'])->name('correction');
 Route::get('/fournisseur', [FournisseurController::class, 'index'] )->middleware(['auth'])->name('fournisseur');
 Route::get('/verre', [VerreController::class, 'index'] )->middleware(['auth'])->name('verre');
+Route::get('/monture', [MontureController::class, 'index'] )->middleware(['auth'])->name('monture');
 
 //facture
 Route::get('/facture', [FactureController::class, 'index'] )->middleware(['auth'])->name('index');
@@ -62,5 +64,6 @@ Route::post('/create',[FactureController::class, 'store']);
 Route::post('/create_patient',[PatientController::class, 'store']);
 Route::post('/create_fournisseur',[FournisseurController::class, 'store']);
 Route::post('/create_verre',[VerreController::class, 'store']);
+//Route::post('/create_monture',[Montu::class, 'store']);
 
 require __DIR__.'/auth.php';

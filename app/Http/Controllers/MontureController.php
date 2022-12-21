@@ -1,10 +1,10 @@
 <?php
 
 namespace App\Http\Controllers;
-
+use App\Models\Fournisseur;
 use App\Models\Monture;
 use Illuminate\Http\Request;
-
+use Illuminate\Support\Facades\DB;
 class MontureController extends Controller
 {
     /**
@@ -15,6 +15,10 @@ class MontureController extends Controller
     public function index()
     {
         //
+        $montures = Monture::all();
+        $fournisseurs = Fournisseur::all();
+
+        return view('monture.index', compact('montures','fournisseurs'));
     }
 
     /**

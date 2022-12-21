@@ -131,7 +131,7 @@
                     </li>
 
                     <li class="menu-item">
-                        <a href="cards-basic.html" class="menu-link">
+                        <a href="{{ url('/monture') }}" class="menu-link">
                             <i class="menu-icon tf-icons bx bx-glasses"></i>
                             <div data-i18n="Basic">Montures</div>
                         </a>
