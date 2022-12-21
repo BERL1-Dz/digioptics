@@ -50,10 +50,16 @@ Route::get('/fournisseurEdit/{id}', [FournisseurController::class, 'edit'] )->mi
 Route::put('/fournisseur/update/{id}', [FournisseurController::class, 'update'] )->middleware(['auth'])->name('update');
 Route::get('/fournisseur/delete/{id}', [FournisseurController::class, 'destroy'] )->middleware(['auth'])->name('destroy');
 
+// verre
+Route::get('/verreEdit/{id}', [VerreController::class, 'edit'] )->middleware(['auth'])->name('edit');
+Route::put('/verre/update/{id}', [VerreController::class, 'update'] )->middleware(['auth'])->name('update');
+
+
 //resource
 
 Route::post('/create',[FactureController::class, 'store']);
 Route::post('/create_patient',[PatientController::class, 'store']);
 Route::post('/create_fournisseur',[FournisseurController::class, 'store']);
+Route::post('/create_verre',[VerreController::class, 'store']);
 
 require __DIR__.'/auth.php';

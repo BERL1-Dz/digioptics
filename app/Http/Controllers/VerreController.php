@@ -42,7 +42,24 @@ class VerreController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        //dd($request->all());
+
+        $verre = new Verre;
+        $verre->code_fournisseur = request('code_fournisseur');
+        $verre->code_verre = request('code_verre');
+        $verre->index_verre = request('index_verre');
+        $verre->material = request('material');
+        $verre->diametre = request('diametre');
+        $verre->surface = request('surface');
+        $verre->sph = request('sph');
+        $verre->cly = request('cly');
+        $verre->option = request('option');
+        $verre->pa_verre = request('pa_verre');
+        $verre->pv_verre = request('pv_verre');
+
+        $verre->save();
+        return back();
+
     }
 
     /**
@@ -62,9 +79,14 @@ class VerreController extends Controller
      * @param  \App\Models\Verre  $verre
      * @return \Illuminate\Http\Response
      */
-    public function edit(Verre $verre)
+    public function edit(Verre $verre, $id)
     {
         //
+        $fournisseurs = Fournisseur::all();
+        $data = Verre::find($id);
+        $i = 0;
+        return view("verre.edit", compact("data", "fournisseurs","id","i"));
+
     }
 
     /**
@@ -74,9 +96,27 @@ class VerreController extends Controller
      * @param  \App\Models\Verre  $verre
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Verre $verre)
+    public function update(Request $request, Verre $verre, $id)
     {
-        //
+        //dd($request->all());
+        $verre = Verre::find($id);
+
+        $verre->code_fournisseur = request('code_fournisseur');
+        $verre->code_verre = request('code_verre');
+        $verre->index_verre = request('index_verre');
+        $verre->material = request('material');
+        $verre->diametre = request('diametre');
+        $verre->surface = request('surface');
+        $verre->sph = request('sph');
+        $verre->cly = request('cly');
+        $verre->option = request('option');
+        $verre->pa_verre = request('pa_verre');
+        $verre->pv_verre = request('pv_verre');
+
+        $verre->update();
+        return redirect('/verre');
+
+
     }
 
     /**
