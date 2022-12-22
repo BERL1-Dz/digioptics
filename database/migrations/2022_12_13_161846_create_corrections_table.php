@@ -15,11 +15,14 @@ class CreateCorrectionsTable extends Migration
     {
         Schema::create('corrections', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->string('date')->nullable();
-            $table->float('sphére');
-            $table->float('clyinder');
-            $table->integer('axe');
             $table->integer('patient_id')->unsigned();
+            $table->string('date')->nullable();
+            $table->float('sph_od');
+            $table->float('sph_og');
+            $table->float('cly_od');
+            $table->float('cly_og');
+            $table->integer('axe_od');
+            $table->integer('axe_og');
             $table->timestamps();
         });
     }

@@ -48,7 +48,7 @@
                             <h5 class="modal-title" id="exampleModalLabel4">Correction</h5>
                             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                         </div>
-                        <form action="#" method="post" enctype="multipart/form-data">
+                        <form action="{{ url('create_correction') }}" method="post" enctype="multipart/form-data">
                             {{ csrf_field() }}
                             <div class="modal-body">
                                 @include('correction.form')
@@ -57,7 +57,7 @@
                                 <button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal">
                                     Close
                                 </button>
-                                <button type="button" class="btn btn-primary">Save changes</button>
+                                <button type="submit" class="btn btn-primary">Save changes</button>
                             </div>
                         </form>
                     </div>
@@ -72,16 +72,16 @@
                             <h5 class="modal-title" id="exampleModalLabel4">Correction</h5>
                             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                         </div>
-                        <form action="#" method="post" enctype="multipart/form-data">
-                            {{ csrf_field() }}
+                        <form action="" method="post" enctype="multipart/form-data">
+                            @csrf
                             <div class="modal-body">
                                 @include('correction.form2')
                             </div>
                             <div class="modal-footer">
-                                <button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal">
-                                    Close
+                                <button type="submit" class="btn btn-outline-secondary" data-bs-dismiss="modal">
+                                    Close++
                                 </button>
-                                <button type="button" class="btn btn-primary">Save changes</button>
+                                <button type="submit" class="btn btn-primary">Save changes</button>
                             </div>
                         </form>
                     </div>

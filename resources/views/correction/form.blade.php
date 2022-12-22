@@ -1,4 +1,14 @@
 <div class="">
+
+    <div class="row">
+        Patient:
+        <select name="patient_id" class="form-control">
+            @foreach ($patients as $patients)
+                <option value="{{ $patients->nom }}">{{ $patients->nom }}</option>
+            @endforeach
+        </select>
+    </div>
+    <br>
     <div class="d-flex">
         <div class="d-flex-column tab">
             <div class="cell cell-round"></div>
@@ -8,19 +18,32 @@
         <div class="d-flex-column tab">
             <div class="cell cell-round">Sphere (SPH)</div>
             <div class="drop">
-                <select id="largeSelect" class="form-select form-select-custom form-select-lg">
-                    <option>None</option>
-                    <option value="1">One</option>
-                    <option value="2">Two</option>
-                    <option value="3">Three</option>
+
+                <select name="sph_od" id="largeSelect" class="form-select form-select-custom form-select-lg">
+                    <option value="None">None</option>
+                    @for ($i = -14.0; $i < 0.25; $i = $i + 0.25)
+                        <option value="{{ $i }}">{{ $i }}</option>
+                    @endfor
+                    <option value="SPH">SPH</option>
+                    <option value="None">None</option>
+                    @for ($i = 0.25; $i < 9.25; $i = $i + 0.25)
+                        <option value="+{{ $i }}">+{{ $i }}</option>
+                    @endfor
                 </select>
+
+
             </div>
             <div class="drop">
-                <select id="largeSelect" class="form-select form-select-custom form-select-lg">
-                    <option>None</option>
-                    <option value="1">One</option>
-                    <option value="2">Two</option>
-                    <option value="3">Three</option>
+                <select name="sph_og" id="largeSelect" class="form-select form-select-custom form-select-lg">
+                    <option value="None">None</option>
+                    @for ($i = -14.0; $i < 0.25; $i = $i + 0.25)
+                        <option value="{{ $i }}">{{ $i }}</option>
+                    @endfor
+                    <option value="SPH">SPH</option>
+                    <option value="None">None</option>
+                    @for ($i = 0.25; $i < 9.25; $i = $i + 0.25)
+                        <option value="+{{ $i }}">+{{ $i }}</option>
+                    @endfor
                 </select>
             </div>
 
@@ -28,38 +51,48 @@
         <div class="d-flex-column tab">
             <div class="cell cell-round">Cylinder (CYL)</div>
             <div class="drop">
-                <select id="largeSelect" class="form-select form-select-custom form-select-lg">
-                    <option>None</option>
-                    <option value="1">One</option>
-                    <option value="2">Two</option>
-                    <option value="3">Three</option>
+                <select name="cly_od"id="largeSelect" class="form-select form-select-custom form-select-lg">
+                    <option value="None">None</option>
+                    @for ($i = -5.0; $i <= 5; $i = $i + 0.25)
+                        <option value="{{ $i }}">{{ $i }}</option>
+                    @endfor
+                    <option value="SPH">SPH</option>
+                    <option value="None">None</option>
+                    @for ($i = 0.25; $i <= 5.0; $i = $i + 0.25)
+                        <option value="+{{ $i }}">+{{ $i }}</option>
+                    @endfor
                 </select>
             </div>
             <div class="drop">
-                <select id="largeSelect" class="form-select form-select-custom form-select-lg">
-                    <option>None</option>
-                    <option value="1">One</option>
-                    <option value="2">Two</option>
-                    <option value="3">Three</option>
+                <select name="cly_og" id="largeSelect" class="form-select form-select-custom form-select-lg">
+                    <option value="None">None</option>
+                    @for ($i = -5.0; $i <= 5; $i = $i + 0.25)
+                        <option value="{{ $i }}">{{ $i }}</option>
+                    @endfor
+                    <option value="SPH">SPH</option>
+                    <option value="None">None</option>
+                    @for ($i = 0.25; $i <= 5.0; $i = $i + 0.25)
+                        <option value="+{{ $i }}">+{{ $i }}</option>
+                    @endfor
                 </select>
             </div>
         </div>
         <div class="d-flex-column tab">
             <div class="cell cell-round">Axis (AXI)</div>
             <div class="drop">
-                <select id="largeSelect" class="form-select form-select-custom form-select-lg">
+                <select name="axe_od" id="largeSelect" class="form-select form-select-custom form-select-lg">
                     <option>None</option>
-                    <option value="1">One</option>
-                    <option value="2">Two</option>
-                    <option value="3">Three</option>
+                    @for ($j = 0; $j <= 180; $j = $j + 1)
+                        <option value="{{ $j }}"°>{{ $j }}°</option>
+                    @endfor
                 </select>
             </div>
             <div class="drop">
-                <select id="largeSelect" class="form-select form-select-custom form-select-lg">
+                <select name="axe_og" id="largeSelect" class="form-select form-select-custom form-select-lg">
                     <option>None</option>
-                    <option value="1">One</option>
-                    <option value="2">Two</option>
-                    <option value="3">Three</option>
+                    @for ($j = 0; $j <= 180; $j = $j + 1)
+                        <option value="{{ $j }}"°>{{ $j }}°</option>
+                    @endfor
                 </select>
             </div>
         </div>

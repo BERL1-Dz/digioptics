@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 use Illuminate\Support\Facades\DB;
 use App\Models\Correction;
+use App\Models\Patient;
 use Illuminate\Http\Request;
 
 class CorrectionController extends Controller
@@ -15,7 +16,10 @@ class CorrectionController extends Controller
     public function index()
     {
         //
-        return view("correction.index");
+        
+        $corrections = Correction::all();
+        $patients = Patient::all();
+        return view("correction.index", compact('corrections' ,'patients'));
 
     }
 
@@ -38,6 +42,8 @@ class CorrectionController extends Controller
     public function store(Request $request)
     {
         //
+        dd($request->all());
+        
     }
 
     /**
