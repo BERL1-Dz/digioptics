@@ -1,5 +1,5 @@
 <div class="">
-
+    <input type="text" name="type_vision" hidden value="0">
     <div class="row">
         <label for="html5-date-input" class="col-md-2 col-form-label">Date: </label>
         <div class="col-md-10">
