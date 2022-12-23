@@ -79,7 +79,7 @@
                             </div>
                             <div class="modal-footer">
                                 <button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal">
-                                    Close++
+                                    Close
                                 </button>
                                 <button type="submit" class="btn btn-primary">Save changes</button>
                             </div>
@@ -91,7 +91,7 @@
         <!--Modal End -->
         <!-- Responsive Table -->
         <div class="card mt-2">
-            <h5 class="card-header">Correction de Prée </h5>
+            <h5 class="card-header">Correction de Pres</h5>
             <div class="table-responsive text-nowrap">
                 <table class="table">
                     <thead>
