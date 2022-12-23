@@ -1,7 +1,7 @@
 <div class="">
-
-    <div class="mb-3 row">
-        <label for="html5-date-input" class="col-md-2 col-form-label">Date</label>
+    <input type="text" name="type_vision" hidden value="0">
+    <div class="row">
+        <label for="html5-date-input" class="col-md-2 col-form-label">Date: </label>
         <div class="col-md-10">
             <input name="date" class="form-control" type="date" value="2021-06-18" id="html5-date-input">
         </div>

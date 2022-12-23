@@ -15,6 +15,7 @@ class CreateCorrectionsTable extends Migration
     {
         Schema::create('corrections', function (Blueprint $table) {
             $table->bigIncrements('id');
+            $table->boolean('type_vision');
             $table->date('date')->nullable();
             $table->float('sph_od');
             $table->float('sph_og');
