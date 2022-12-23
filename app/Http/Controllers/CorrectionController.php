@@ -26,7 +26,8 @@ class CorrectionController extends Controller
 
     public function vision_p(Request $request)
     {
-        //dd($request->all());
+        //
+        dd($request->all());
         
         $correction = new Correction();
         $correction->type_vision = request('type_vision');
@@ -47,7 +48,8 @@ class CorrectionController extends Controller
 
     public function vision_l(Request $request)
     {
-        //dd($request->all());
+        //
+        dd($request->all());
 
         $correction = new Correction();
 

@@ -27,7 +27,7 @@
 
                 <select name="sph_od" id="largeSelect" class="form-select form-select-custom form-select-lg">
                     <option value="None">None</option>
-                    @for ($i = -14.0; $i < 0.25; $i = $i + 0.25)
+                    @for ($i = -14.00; $i < 0.25; $i = $i + 0.25)
                         <option value="{{ $i }}">{{ $i }}</option>
                     @endfor
                     <option value="SPH">SPH</option>
@@ -57,28 +57,31 @@
         <div class="d-flex-column tab">
             <div class="cell cell-round">Cylinder (CYL)</div>
             <div class="drop">
+
                 <select name="cly_od"id="largeSelect" class="form-select form-select-custom form-select-lg">
                     <option value="None">None</option>
-                    @for ($i = -5.0; $i <= 5; $i = $i + 0.25)
-                        <option value="{{ $i }}">{{ $i }}</option>
+                    @for ($k = -5.0; $k <= 5; $k = $k + 0.25)
+                        <option value="{{ $k }}">{{ $k }}</option>
                     @endfor
-                    <option value="SPH">SPH</option>
+                     <option value="SPH">SPH</option>
                     <option value="None">None</option>
-                    @for ($i = 0.25; $i <= 5.0; $i = $i + 0.25)
-                        <option value="+{{ $i }}">+{{ $i }}</option>
+                    @for ($k = 0.25; $k <= 5.0; $k = $k + 0.25)
+                        <option value="+{{ $k }}">+{{ $k }}</option>
                     @endfor
                 </select>
+
+                
             </div>
             <div class="drop">
                 <select name="cly_og" id="largeSelect" class="form-select form-select-custom form-select-lg">
                     <option value="None">None</option>
-                    @for ($i = -5.0; $i <= 5; $i = $i + 0.25)
-                        <option value="{{ $i }}">{{ $i }}</option>
+                    @for ($k = -5.0; $k <= 5; $k = $k + 0.25)
+                        <option value="{{ $k }}">{{ $k }}</option>
                     @endfor
                     <option value="SPH">SPH</option>
                     <option value="None">None</option>
-                    @for ($i = 0.25; $i <= 5.0; $i = $i + 0.25)
-                        <option value="+{{ $i }}">+{{ $i }}</option>
+                    @for ($k = 0.25; $k <= 5.0; $k = $k + 0.25)
+                        <option value="+{{ $k }}">+{{ $k }}</option>
                     @endfor
                 </select>
             </div>
