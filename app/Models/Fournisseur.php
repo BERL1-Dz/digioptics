@@ -14,7 +14,7 @@ class Fournisseur extends Model
     }
 
     public function verres(){
-      return  $this->hasMany(Verre::class);
+      return  $this->hasMany(Verre::class,'code_fournisseur');
     }
 
      public function lentilles()

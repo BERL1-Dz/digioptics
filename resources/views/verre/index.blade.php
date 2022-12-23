@@ -41,7 +41,7 @@
                 <tr>
                     <th>Id</th>
                     <th>Code</th>
-                    <th>Code Fournisseur</th>
+                    <th>Fournisseur</th>
                     <th>Indic</th>
                     <th>Material</th>
                     <th>Diametre</th>
@@ -59,7 +59,7 @@
                     <tr>
                         <th scope="row">{{ $verre->id }}</th>
                         <th scope="row">{{ $verre->code_verre }}</th>
-                        <th scope="row">{{ $verre->code_fournisseur }}</th>
+                        <th scope="row">{{ $verre->fournisseur->nom}}</th>
                         <th scope="row">{{ $verre->index_verre }}</th>
                         <th scope="row">{{ $verre->material }}</th>
                         <th scope="row">{{ $verre->diametre }}</th>

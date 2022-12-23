@@ -64,7 +64,6 @@ Route::post('/create',[FactureController::class, 'store']);
 Route::post('/create_patient',[PatientController::class, 'store']);
 Route::post('/create_fournisseur',[FournisseurController::class, 'store']);
 Route::post('/create_verre',[VerreController::class, 'store']);
-//Route::post('/create_monture',[Montu::class, 'store']);
 Route::post('/create_correction',[CorrectionController::class, 'vision_p']);
 
 require __DIR__.'/auth.php';

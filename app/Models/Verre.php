@@ -12,7 +12,7 @@ class Verre extends Model
     public function fournisseur()
     {
       // code...
-      return $this->belongsTo(Fournisseur::class);
+      return $this->belongsTo(Fournisseur::class, 'code_fournisseur', 'id');
 
     }
 }
