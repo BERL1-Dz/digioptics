@@ -13,14 +13,41 @@ class CorrectionController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
         //
         
         $corrections = Correction::all();
         $patients = Patient::all();
+        dd($patients);
         return view("correction.index", compact('corrections' ,'patients'));
 
+    }
+
+    public function vision_p(Request $request)
+    {
+        //dd($request->all());
+        
+        $correction = new Correction();
+
+        $correction->date = request('date');
+        $correction->patient_id = request('patient_id');
+        $correction->sph_od = request('sph_od');
+        $correction->sph_og = request('sph_og');
+        $correction->cly_od = request('cly_od');
+        $correction->cly_og = request('cly_og');
+        $correction->axe_od = request('axe_od');
+        $correction->axe_og = request('axe_og');
+        $correction->option = request('option');
+
+        $correction->save();
+        return back();
+
+    }
+
+    public function vision_l(Request $request)
+    {
+        //
     }
 
     /**
@@ -42,7 +69,7 @@ class CorrectionController extends Controller
     public function store(Request $request)
     {
         //
-        dd($request->all());
+        
         
     }
 

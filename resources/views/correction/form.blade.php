@@ -1,10 +1,16 @@
 <div class="">
 
+    <div class="mb-3 row">
+        <label for="html5-date-input" class="col-md-2 col-form-label">Date</label>
+        <div class="col-md-10">
+            <input name="date" class="form-control" type="date" value="2021-06-18" id="html5-date-input">
+        </div>
+    </div>
     <div class="row">
         Patient:
         <select name="patient_id" class="form-control">
             @foreach ($patients as $patients)
-                <option value="{{ $patients->nom }}">{{ $patients->nom }}</option>
+                <option value="{{ $patients->id }}">{{ $patients->nom }}</option>
             @endforeach
         </select>
     </div>
@@ -97,7 +103,13 @@
             </div>
         </div>
     </div>
-
+    <br>
+    <select name="option" class="form-select" aria-label="Default select example">
+        <option selected>Choisir votre type de verre</option>
+        <option value="HC">HC</option>
+        <option value="HMC">HMC</option>
+        <option value="BB">BB</option>
+    </select>
 </div>
 <style type="text/css">
     .cell-round {

@@ -1,7 +1,6 @@
 <?php
 
 namespace App\Models;
-
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
@@ -13,7 +12,7 @@ class Patient extends Model
     public function patient()
     {
       // code...
-      return $this->hasOne(Correction::class);
+      return $this->hasMany(Correction::class);
     }
 
 }
