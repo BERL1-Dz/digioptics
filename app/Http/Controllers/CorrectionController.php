@@ -17,9 +17,9 @@ class CorrectionController extends Controller
     {
         //
         
-        $corrections = Correction::all();
-        $patients = Patient::all();
-        dd($patients);
+        $corrections = Correction::with('patient')->get();
+        $patients = Patient::with('correction')->get();
+        //dd($corrections);
         return view("correction.index", compact('corrections' ,'patients'));
 
     }

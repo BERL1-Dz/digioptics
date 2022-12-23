@@ -9,10 +9,10 @@ class Correction extends Model
 {
     use HasFactory;
 
-    public function correction()
+    public function patient()
     {
       // code...
-      return $this->belongsTo(Patient::class, "patient_id");
+      return $this->belongsTo(Patient::class, "patient_id", 'id');
     }
 
     protected $fillabel =['nom','prenom','age'];

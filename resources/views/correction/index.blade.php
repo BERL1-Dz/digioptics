@@ -112,19 +112,19 @@
                     </thead>
                     <tbody>
                         @foreach ($corrections as $correction)
-                        <tr>
-                            <th scope="row">{{$correction->id}}</th>
-                            <td>{{$correction->patient->nom ?? 'none'}}</td>
-                            <td>{{$correction->date}}</td>
-                            <td>{{$correction->sph_od}}</td>
-                            <td>{{$correction->sph_og}}</td>
-                            <td>{{$correction->cly_od}}</td>
-                            <td>{{$correction->cly_og}}</td>
-                            <td>{{$correction->axe_od}}</td>
-                            <td>{{$correction->axe_og}}</td>
-                            <td>{{$correction->option}}</td>
-                            <td>Action</td>
-                        </tr>
+                            <tr>
+                                <th scope="row">{{ $correction->id }}</th>
+                                <td>{{ $correction->patient->nom }} {{ $correction->patient->prenom }}</td>
+                                <td>{{ $correction->date }}</td>
+                                <td>{{ $correction->sph_od }}</td>
+                                <td>{{ $correction->sph_og }}</td>
+                                <td>{{ $correction->cly_od }}</td>
+                                <td>{{ $correction->cly_og }}</td>
+                                <td>{{ $correction->axe_od }}</td>
+                                <td>{{ $correction->axe_og }}</td>
+                                <td>{{ $correction->option }}</td>
+                                <td>Action</td>
+                            </tr>
                         @endforeach
                     </tbody>
                 </table>
@@ -135,7 +135,6 @@
     </div>
     <script>
         let offcanvas = document.querySelector('.offcanvas');
-
         let vproche = document.querySelector('#vproche');
         let vloin = document.querySelector('#vloin');
         let closeBtn = document.querySelector('#close');

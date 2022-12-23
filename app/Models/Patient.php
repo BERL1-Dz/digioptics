@@ -9,10 +9,10 @@ class Patient extends Model
     use HasFactory;
 
 
-    public function patient()
+    public function correction()
     {
       // code...
-      return $this->hasMany(Correction::class);
+      return $this->hasMany(Correction::class, 'patient_id');
     }
 
 }
