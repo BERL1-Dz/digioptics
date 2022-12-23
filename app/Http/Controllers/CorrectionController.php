@@ -29,7 +29,7 @@ class CorrectionController extends Controller
         //dd($request->all());
         
         $correction = new Correction();
-
+        $correction->type_vision = request('type_vision');
         $correction->date = request('date');
         $correction->patient_id = request('patient_id');
         $correction->sph_od = request('sph_od');
@@ -47,11 +47,11 @@ class CorrectionController extends Controller
 
     public function vision_l(Request $request)
     {
-        //
-        dd($request->all());
+        //dd($request->all());
 
         $correction = new Correction();
 
+        $correction->type_vision = request('type_vision');
         $correction->date = request('date');
         $correction->patient_id = request('patient_id');
         $correction->sph_od = request('sph_od');
@@ -61,6 +61,9 @@ class CorrectionController extends Controller
         $correction->axe_od = request('axe_od');
         $correction->axe_og = request('axe_og');
         $correction->option = request('option');
+
+        $correction->save();
+        return back();
     }
 
     /**

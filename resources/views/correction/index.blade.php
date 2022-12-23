@@ -45,10 +45,10 @@
                 <div class="modal-dialog" role="document">
                     <div class="modal-content">
                         <div class="modal-header">
-                            <h5 class="modal-title" id="exampleModalLabel4">Vission de loin</h5>
+                            <h5 class="modal-title" id="exampleModalLabel4">Vission de Prés</h5>
                             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                         </div>
-                        <form action="{{ url('create_correction') }}" method="post" enctype="multipart/form-data">
+                        <form action="{{ url('correction_pres') }}" method="post" enctype="multipart/form-data">
                             {{ csrf_field() }}
                             <div class="modal-body">
                                 @include('correction.form')
@@ -69,7 +69,7 @@
                 <div class="modal-dialog" role="document">
                     <div class="modal-content">
                         <div class="modal-header">
-                            <h5 class="modal-title" id="exampleModalLabel4">Vision De Prés</h5>
+                            <h5 class="modal-title" id="exampleModalLabel4">Vision De Loin</h5>
                             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                         </div>
                         <form action="{{ url('correction_loin') }}" method="post" enctype="multipart/form-data">
