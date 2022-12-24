@@ -1,7 +1,7 @@
 @extends('layouts.app')
 @section('content')
     <div class="container-xxl flex-grow-1 container-p-y">
-        <h4 class="fw-bold py-3 mb-4"><span class="text-muted fw-light">Dossier /</span> Patient</h4>
+        <h4 class="fw-bold py-3"><span class="text-muted fw-light">Dossier /</span> Patient</h4>
         <!--Button-->
         <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exLargeModal">
             Nouveau Patient
@@ -34,44 +34,47 @@
             </div>
         </div>
         <!--Modal End -->
-        <div class="table-responsive text-nowrap">
-            <table class="table card-table">
-                <thead>
-                    <tr>
-                        <th>Id</th>
-                        <th>Nom</th>
-                        <th>Prénom</th>
-                        <th>Age</th>
-                        <th>Actions</th>
-                    </tr>
-                </thead>
-                <tbody class="table-border-bottom-0">
-                    @foreach ($patients as $patient)
+        <div class="card mt-2">
+            <h5 class="card-header">Tabeau des patients</h5>
+            <div class="table-responsive text-nowrap">
+                <table class="table card-table">
+                    <thead>
                         <tr>
-                            <th scope="row">{{ $patient->id }}</th>
-                            <td>{{ $patient->nom }}</td>
-                            <td>{{ $patient->prenom }}</td>
-                            <td>{{ $patient->age }}</td>
-                            <td>
-                                <div class="dropdown">
-                                    <button type="button" class="btn p-0 dropdown-toggle hide-arrow"
-                                        data-bs-toggle="dropdown" aria-expanded="false">
-                                        <i class="bx bx-dots-vertical-rounded"></i>
-                                    </button>
-                                    <div class="dropdown-menu" style="">
-                                        <a class="dropdown-item" href=""><i class="bx bx-show me-1"></i> Show</a>
-                                        <a class="dropdown-item" href="patientEdit/{{ $patient['id'] }}"><i
-                                                class="bx bx-edit-alt me-1"></i> Edit</a>
-                                        <a class="dropdown-item" href="patient/delete/{{ $patient['id'] }}"><i
-                                                class="bx bx-trash me-1"></i>
-                                            Delete</a>
-                                    </div>
-                                </div>
-                            </td>
+                            <th>Id</th>
+                            <th>Nom</th>
+                            <th>Prénom</th>
+                            <th>Age</th>
+                            <th>Actions</th>
                         </tr>
-                    @endforeach
-                </tbody>
-            </table>
+                    </thead>
+                    <tbody class="table-border-bottom-0">
+                        @foreach ($patients as $patient)
+                            <tr>
+                                <th scope="row">{{ $patient->id }}</th>
+                                <td>{{ $patient->nom }}</td>
+                                <td>{{ $patient->prenom }}</td>
+                                <td>{{ $patient->age }}</td>
+                                <td>
+                                    <div class="dropdown">
+                                        <button type="button" class="btn p-0 dropdown-toggle hide-arrow"
+                                            data-bs-toggle="dropdown" aria-expanded="false">
+                                            <i class="bx bx-dots-vertical-rounded"></i>
+                                        </button>
+                                        <div class="dropdown-menu" style="">
+                                            <a class="dropdown-item" href=""><i class="bx bx-show me-1"></i> Show</a>
+                                            <a class="dropdown-item" href="patientEdit/{{ $patient['id'] }}"><i
+                                                    class="bx bx-edit-alt me-1"></i> Edit</a>
+                                            <a class="dropdown-item" href="patient/delete/{{ $patient['id'] }}"><i
+                                                    class="bx bx-trash me-1"></i>
+                                                Delete</a>
+                                        </div>
+                                    </div>
+                                </td>
+                            </tr>
+                        @endforeach
+                    </tbody>
+                </table>
+            </div>
         </div>
         <!--/ Table within card -->
         <script>

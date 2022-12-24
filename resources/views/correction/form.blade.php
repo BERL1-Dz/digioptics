@@ -7,12 +7,14 @@
         </div>
     </div>
     <div class="row">
-        Patient:
-        <select name="patient_id" class="form-control">
-            @foreach ($patients as $patients)
-                <option value="{{ $patients->id }}">{{ $patients->nom }}</option>
-            @endforeach
-        </select>
+        <div class="col mb-0">
+            <label for="nameExLarge" class="form-label">Patient:</label>
+            <select name="patient_id" class="form-control">
+                @foreach ($patients as $patients)
+                    <option value="{{ $patients->id }}">{{ $patients->nom }}</option>
+                @endforeach
+            </select>
+        </div>
     </div>
     <br>
     <div class="d-flex">
@@ -27,7 +29,7 @@
 
                 <select name="sph_od" id="largeSelect" class="form-select form-select-custom form-select-lg">
                     <option value="None">None</option>
-                    @for ($i = -14.00; $i < 0.25; $i = $i + 0.25)
+                    @for ($i = -14.0; $i < 0.25; $i = $i + 0.25)
                         <option value="{{ $i }}">{{ $i }}</option>
                     @endfor
                     <option value="SPH">SPH</option>
@@ -63,14 +65,14 @@
                     @for ($k = -5.0; $k <= 5; $k = $k + 0.25)
                         <option value="{{ $k }}">{{ $k }}</option>
                     @endfor
-                     <option value="SPH">SPH</option>
+                    <option value="SPH">SPH</option>
                     <option value="None">None</option>
                     @for ($k = 0.25; $k <= 5.0; $k = $k + 0.25)
                         <option value="+{{ $k }}">+{{ $k }}</option>
                     @endfor
                 </select>
 
-                
+
             </div>
             <div class="drop">
                 <select name="cly_og" id="largeSelect" class="form-select form-select-custom form-select-lg">

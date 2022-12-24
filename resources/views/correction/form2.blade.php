@@ -7,12 +7,14 @@
         </div>
     </div>
     <div class="row">
-        Patient:
-        <select name="patient_id" class="form-control">
-            @foreach ($patients as $patients)
-                <option value="{{ $patients->id }}">{{ $patients->nom }}</option>
-            @endforeach
-        </select>
+        <div class="col mb-0">
+            <label for="nameExLarge" class="form-label">Patient:</label>
+            <select name="patient_id" class="form-control">
+                @foreach ($patients as $patients)
+                    <option value="{{ $patients->id }}">{{ $patients->nom }}</option>
+                @endforeach
+            </select>
+        </div>
     </div>
     <br>
     <div class="d-flex">

@@ -2,9 +2,10 @@
 @section('content')
     <!-- Vertically Centered Modal -->
     <div class="container-xxl flex-grow-1 container-p-y">
+        <h4 class="fw-bold py-3"><span class="text-muted fw-light">Dossier /</span> Fournisseur</h4>
         <!-- Button trigger modal -->
         <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#modalCenter">
-            Ajouter un Fournisseur
+            Nouveau Fournisseur
         </button>
 
         <!-- Modal -->
@@ -33,49 +34,52 @@
                 </div>
             </div>
         </div>
-        <div class="table-responsive text-nowrap mt-3">
-            <table class="table card-table">
-                <thead>
-                    <tr>
-                        <th>Id</th>
-                        <th>Nom</th>
-                        <th>Code Fournisseur</th>
-                        <th>Fabricant associe</th>
-                        <th>Telephone</th>
-                        <th>Mail</th>
-                        <th>Actions</th>
-                    </tr>
-                </thead>
-                <tbody class="table-border-bottom-0">
-                    @foreach ($fournisseurs as $fournisseur)
+        <div class="card mt-2">
+            <h5 class="card-header">Tabeau des fournisseurs</h5>
+            <div class="table-responsive text-nowrap mt-3">
+                <table class="table card-table">
+                    <thead>
                         <tr>
-                            <th scope="row">{{ $fournisseur->id }}</th>
-                            <td>{{ $fournisseur->nom }}</td>
-                            <td>{{ $fournisseur->code_fournisseur }}</td>
-                            <td>{{ $fournisseur->fabricant_associe }}</td>
-                            <td>{{ $fournisseur->numero_fournisseur }}</td>
-                            <td>{{ $fournisseur->mail_fournisseur }}</td>
-
-                            <td>
-                                <div class="dropdown">
-                                    <button type="button" class="btn p-0 dropdown-toggle hide-arrow"
-                                        data-bs-toggle="dropdown" aria-expanded="false">
-                                        <i class="bx bx-dots-vertical-rounded"></i>
-                                    </button>
-                                    <div class="dropdown-menu" style="">
-                                        <a class="dropdown-item" href=""><i class="bx bx-show me-1"></i> Show</a>
-                                        <a class="dropdown-item" href="fournisseurEdit/{{ $fournisseur['id'] }}"><i
-                                                class="bx bx-edit-alt me-1"></i> Edit</a>
-                                        <a class="dropdown-item" href="fournisseur/delete/{{ $fournisseur['id'] }}"><i
-                                                class="bx bx-trash me-1"></i>
-                                            Delete</a>
-                                    </div>
-                                </div>
-                            </td>
+                            <th>Id</th>
+                            <th>Nom</th>
+                            <th>Code Fournisseur</th>
+                            <th>Fabricant associe</th>
+                            <th>Telephone</th>
+                            <th>Mail</th>
+                            <th>Actions</th>
                         </tr>
-                    @endforeach
-                </tbody>
-            </table>
+                    </thead>
+                    <tbody class="table-border-bottom-0">
+                        @foreach ($fournisseurs as $fournisseur)
+                            <tr>
+                                <th scope="row">{{ $fournisseur->id }}</th>
+                                <td>{{ $fournisseur->nom }}</td>
+                                <td>{{ $fournisseur->code_fournisseur }}</td>
+                                <td>{{ $fournisseur->fabricant_associe }}</td>
+                                <td>{{ $fournisseur->numero_fournisseur }}</td>
+                                <td>{{ $fournisseur->mail_fournisseur }}</td>
+
+                                <td>
+                                    <div class="dropdown">
+                                        <button type="button" class="btn p-0 dropdown-toggle hide-arrow"
+                                            data-bs-toggle="dropdown" aria-expanded="false">
+                                            <i class="bx bx-dots-vertical-rounded"></i>
+                                        </button>
+                                        <div class="dropdown-menu" style="">
+                                            <a class="dropdown-item" href=""><i class="bx bx-show me-1"></i> Show</a>
+                                            <a class="dropdown-item" href="fournisseurEdit/{{ $fournisseur['id'] }}"><i
+                                                    class="bx bx-edit-alt me-1"></i> Edit</a>
+                                            <a class="dropdown-item" href="fournisseur/delete/{{ $fournisseur['id'] }}"><i
+                                                    class="bx bx-trash me-1"></i>
+                                                Delete</a>
+                                        </div>
+                                    </div>
+                                </td>
+                            </tr>
+                        @endforeach
+                    </tbody>
+                </table>
+            </div>
         </div>
     </div>
 
