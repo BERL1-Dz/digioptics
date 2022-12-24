@@ -21,8 +21,12 @@ class CreateCorrectionsTable extends Migration
             $table->float('sph_og');
             $table->float('cly_od');
             $table->float('cly_og');
+            $table->float('add_od');
+            $table->float('add_og');
             $table->integer('axe_od');
             $table->integer('axe_og');
+            $table->integer('PD');
+            $table->integer('Near_PD');
             $table->string('option');
             $table->unsignedBigInteger('patient_id')->nullable();
             $table->timestamps();
