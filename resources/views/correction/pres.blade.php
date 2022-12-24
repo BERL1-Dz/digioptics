@@ -107,6 +107,25 @@
                 </select>
             </div>
         </div>
+        <div class="d-flex-column tab">
+            <div class="cell cell-round">Add (add)</div>
+            <div class="drop">
+                <select name="axe_od" id="largeSelect" class="form-select form-select-custom form-select-lg">
+                    <option>None</option>
+                    @for ($j = 0; $j <= 180; $j = $j + 1)
+                        <option value="{{ $j }}"°>{{ $j }}°</option>
+                    @endfor
+                </select>
+            </div>
+            <div class="drop">
+                <select name="axe_og" id="largeSelect" class="form-select form-select-custom form-select-lg">
+                    <option>None</option>
+                    @for ($j = 0; $j <= 180; $j = $j + 1)
+                        <option value="{{ $j }}"°>{{ $j }}°</option>
+                    @endfor
+                </select>
+            </div>
+        </div>
     </div>
     <br>
     <select name="option" class="form-select" aria-label="Default select example">
