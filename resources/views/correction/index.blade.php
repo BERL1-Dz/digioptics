@@ -24,7 +24,7 @@
                     <div class="offcanvas-body my-auto mx-0 flex-grow-0">
                         <button id='vloin' type="button" class="btn btn-primary mb-2 d-grid w-100"
                             data-bs-toggle="modal" data-bs-target="#exLargeModal-vloin">
-                            
+
                             Vision de Loin
                         </button>
                         <button id='vproche' type="button" class="btn btn-primary mb-2 d-grid w-100"
@@ -43,7 +43,7 @@
         <!--Modal -->
         <div class="table-responsive text-nowrap">
             <div class="modal fade" id="exLargeModal-vloin" tabindex="-1" aria-hidden="true">
-                <div class="modal-dialog" role="document">
+                <div class="modal-dialog modal-lg" role="document">
                     <div class="modal-content">
                         <div class="modal-header">
                             <h5 class="modal-title" id="exampleModalLabel4">Vision De Loin</h5>
@@ -68,10 +68,10 @@
 
         <div class="table-responsive text-nowrap">
             <div class="modal fade" id="exLargeModal-vproche" tabindex="-1" aria-hidden="true">
-                <div class="modal-dialog" role="document">
+                <div class="modal-dialog modal-lg" role="document">
                     <div class="modal-content">
                         <div class="modal-header">
-                            <h5 class="modal-title" id="exampleModalLabel4">Vission de Pres</h5>
+                            <h5 class="modal-title" id="exampleModalLabel4">Vision de Pres</h5>
                             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                         </div>
                         <form action="{{ url('correction_pres') }}" method="post" enctype="multipart/form-data">

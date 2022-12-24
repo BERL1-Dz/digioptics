@@ -145,7 +145,7 @@
             </div>
         </div>
 
-        <div class="d-flex-column tab" style="margin-left: 50px;">
+        <div class="d-flex-column tab">
             <div class="cell cell-round">PD near (PD)</div>
         </div>
         <div class="d-flex-column tab">
@@ -179,7 +179,7 @@
     }
 
     .cell {
-        background-color: #f4f9ff;
+        background-color: #bbbcff;
         border-top: 1px solid #dedede;
         color: #3a4850;
         font: 700 14px/17px Roboto, Arial, sans-serif;
