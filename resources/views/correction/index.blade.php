@@ -22,13 +22,14 @@
                             aria-label="Close"></button>
                     </div>
                     <div class="offcanvas-body my-auto mx-0 flex-grow-0">
+                        <button id='vloin' type="button" class="btn btn-primary mb-2 d-grid w-100"
+                            data-bs-toggle="modal" data-bs-target="#exLargeModal-vloin">
+                            
+                            Vision de Loin
+                        </button>
                         <button id='vproche' type="button" class="btn btn-primary mb-2 d-grid w-100"
                             data-bs-toggle="modal" data-bs-target="#exLargeModal-vproche">
                             Vision de Pres
-                        </button>
-                        <button id='vloin' type="button" class="btn btn-primary mb-2 d-grid w-100"
-                            data-bs-toggle="modal" data-bs-target="#exLargeModal-vloin">
-                            Vision de Loin
                         </button>
                         <button id="close" type="button" class="btn btn-outline-secondary d-grid w-100"
                             data-bs-dismiss="offcanvas">
@@ -41,17 +42,17 @@
         <!--Button End-->
         <!--Modal -->
         <div class="table-responsive text-nowrap">
-            <div class="modal fade" id="exLargeModal-vproche" tabindex="-1" aria-hidden="true">
+            <div class="modal fade" id="exLargeModal-vloin" tabindex="-1" aria-hidden="true">
                 <div class="modal-dialog" role="document">
                     <div class="modal-content">
                         <div class="modal-header">
-                            <h5 class="modal-title" id="exampleModalLabel4">Vission de Pres</h5>
+                            <h5 class="modal-title" id="exampleModalLabel4">Vision De Loin</h5>
                             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                         </div>
-                        <form action="{{ url('correction_pres') }}" method="post" enctype="multipart/form-data">
-                            {{ csrf_field() }}
+                        <form action="{{ url('correction_loin') }}" method="post" enctype="multipart/form-data">
+                            @csrf
                             <div class="modal-body">
-                                @include('correction.form')
+                                @include('correction.loin')
                             </div>
                             <div class="modal-footer">
                                 <button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal">
@@ -64,18 +65,19 @@
                 </div>
             </div>
         </div>
+
         <div class="table-responsive text-nowrap">
-            <div class="modal fade" id="exLargeModal-vloin" tabindex="-1" aria-hidden="true">
+            <div class="modal fade" id="exLargeModal-vproche" tabindex="-1" aria-hidden="true">
                 <div class="modal-dialog" role="document">
                     <div class="modal-content">
                         <div class="modal-header">
-                            <h5 class="modal-title" id="exampleModalLabel4">Vision De Loin</h5>
+                            <h5 class="modal-title" id="exampleModalLabel4">Vission de Pres</h5>
                             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                         </div>
-                        <form action="{{ url('correction_loin') }}" method="post" enctype="multipart/form-data">
-                            @csrf
+                        <form action="{{ url('correction_pres') }}" method="post" enctype="multipart/form-data">
+                            {{ csrf_field() }}
                             <div class="modal-body">
-                                @include('correction.form2')
+                                @include('correction.pres')
                             </div>
                             <div class="modal-footer">
                                 <button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal">
