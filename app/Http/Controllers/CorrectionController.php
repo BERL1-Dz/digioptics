@@ -38,6 +38,10 @@ class CorrectionController extends Controller
         $correction->cly_og = request('cly_og');
         $correction->axe_od = request('axe_od');
         $correction->axe_og = request('axe_og');
+        $correction->add_od = request('add_od');
+        $correction->add_og = request('add_og');
+        $correction->PD = request('PD');
+        $correction->Near_Pd = request('Near_Pd');
         $correction->option = request('option');
 
         $correction->save();
@@ -47,7 +51,6 @@ class CorrectionController extends Controller
 
     public function vision_l(Request $request)
     {
-        //
         //dd($request->all());
 
         $correction = new Correction();
@@ -62,6 +65,7 @@ class CorrectionController extends Controller
         $correction->axe_od = request('axe_od');
         $correction->axe_og = request('axe_og');
         $correction->option = request('option');
+        $correction->PD = request('PD');
 
         $correction->save();
         return back();

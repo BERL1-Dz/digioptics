@@ -112,18 +112,18 @@
         <div class="d-flex-column tab">
             <div class="cell cell-round">Add (add)</div>
             <div class="drop">
-                <select name="axe_od" id="largeSelect" class="form-select form-select-custom form-select-lg">
+                <select name="add_od" id="largeSelect" class="form-select form-select-custom form-select-lg">
                     <option>None</option>
-                    @for ($j = 0; $j <= 180; $j = $j + 1)
-                        <option value="{{ $j }}"°>{{ $j }}°</option>
+                    @for ($j = 0.75; $j <= 3.50; $j = $j + 0.25)
+                        <option value="+{{ $j }}">+{{ $j }}</option>
                     @endfor
                 </select>
             </div>
             <div class="drop">
-                <select name="axe_og" id="largeSelect" class="form-select form-select-custom form-select-lg">
+                <select name="add_og" id="largeSelect" class="form-select form-select-custom form-select-lg">
                     <option>None</option>
-                    @for ($j = 0; $j <= 180; $j = $j + 1)
-                        <option value="{{ $j }}"°>{{ $j }}°</option>
+                    @for ($j = 0.75; $j <= 3.50; $j = $j + 0.25)
+                        <option value="+{{ $j }}">+{{ $j }}</option>
                     @endfor
                 </select>
             </div>
@@ -136,10 +136,10 @@
         </div>
         <div class="d-flex-column tab ">
             <div class="drop">
-                <select name="axe_og" id="largeSelect" class="form-select form-select-custom form-select-lg">
+                <select name="PD" id="largeSelect" class="form-select form-select-custom form-select-lg">
                     <option>None</option>
-                    @for ($j = 0; $j <= 180; $j = $j + 1)
-                        <option value="{{ $j }}"°>{{ $j }}°</option>
+                    @for ($j = 40; $j <= 80; $j = $j + 1)
+                        <option value="{{ $j }}">{{ $j }}</option>
                     @endfor
                 </select>
             </div>
@@ -150,10 +150,10 @@
         </div>
         <div class="d-flex-column tab">
             <div class="drop">
-                <select name="axe_og" id="largeSelect" class="form-select form-select-custom form-select-lg">
+                <select name="Near_Pd" id="largeSelect" class="form-select form-select-custom form-select-lg">
                     <option>None</option>
-                    @for ($j = 0; $j <= 180; $j = $j + 1)
-                        <option value="{{ $j }}"°>{{ $j }}°</option>
+                    @for ($j = 40; $j <= 80; $j = $j + 1)
+                        <option value="{{ $j }}">{{ $j }}</option>
                     @endfor
                 </select>
             </div>
