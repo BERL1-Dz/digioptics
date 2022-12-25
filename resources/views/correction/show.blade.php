@@ -9,7 +9,7 @@
                         <div class="d-flex-column mr-2">
                             <ul>
                                 <li>
-                                    <h5>Prescripteur: Nour Optique</h5>
+                                    <h5>{{$corrections->patient->nom}} {{$corrections->patient->prenom}}</h5>
                                 </li>
                                 <li>
                                     <h5>Obsevation: Sans observation </h5>

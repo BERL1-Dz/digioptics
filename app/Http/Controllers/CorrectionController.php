@@ -16,7 +16,7 @@ class CorrectionController extends Controller
     public function index(Request $request)
     {
         //
-        
+
         $corrections = Correction::with('patient')->get();
         $patients = Patient::with('correction')->get();
         //dd($corrections);
@@ -25,9 +25,9 @@ class CorrectionController extends Controller
     }
 
     public function vision_p(Request $request)
-    {  
+    {
         //dd($request->all());
-        
+
         $correction = new Correction();
         $correction->type_vision = request('type_vision');
         $correction->date = request('date');
@@ -90,8 +90,8 @@ class CorrectionController extends Controller
     public function store(Request $request)
     {
         //
-        
-        
+
+
     }
 
     /**
@@ -100,10 +100,13 @@ class CorrectionController extends Controller
      * @param  \App\Models\Correction  $correction
      * @return \Illuminate\Http\Response
      */
-    public function show(Correction $correction)
+    public function show(Correction $correction, $id)
     {
         //
-        return view("correction.show");
+        $patients = Patient::all();
+        $corrections = Correction::find($id);
+        //dd($patient);
+        return view("correction.show", compact('patients','corrections'));
     }
 
     /**
