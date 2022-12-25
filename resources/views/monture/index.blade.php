@@ -37,15 +37,16 @@
                 <thead>
                     <tr>
                         <th>Id</th>
-                        <th>Code</th>
-                        <th>Fournisseur</th>
-                        <th>Indic</th>
-                        <th>Material</th>
-                        <th>Diametre</th>
-                        <th>Surface</th>
-                        <th>SPH</th>
-                        <th>CLY</th>
-                        <th>Option</th>
+                        <th>Code Monture</th>
+                        <th>Code Fournisseur</th>
+                        <th>Nom Fournisseur</th>
+                        <th>Taille</th>
+                        <th>Model</th>
+                        <th>Type</th>
+                        <th>Coloris</th>
+                        <th>Coloris Libellé</th>
+                        <th>Style</th>
+                        <th>Genre</th>
                         <th>Prix d'achat </th>
                         <th>Prix de vents</th>
                         <th>Actions</th>
@@ -56,17 +57,17 @@
                         <tr>
                             <th scope="row">{{ $monture->id }}</th>
                             <th scope="row">{{ $monture->code_monture }}</th>
-                            <th scope="row">{{ $monture->fournisseur->nom }}</th>
-                            <th scope="row">{{ $monture->fournisseur->code_fournisseur }}</th>
-                            <th scope="row">{{ $monture->index_verre }}</th>
-                            <th scope="row">{{ $monture->material }}</th>
-                            <th scope="row">{{ $monture->diametre }}</th>
-                            <th scope="row">{{ $monture->surface }}</th>
-                            <th scope="row">{{ $monture->sph }}</th>
-                            <th scope="row">{{ $monture->cly }}</th>
-                            <th scope="row">{{ $monture->option }}</th>
-                            <th scope="row">{{ $monture->pa_verre }}</th>
-                            <th scope="row">{{ $monture->pv_verre }}</th>
+                            <th scope="row">{{ $monture->fournisseurs->code_fournisseur }}</th>
+                            <th scope="row">{{ $monture->fournisseurs->nom}}</th>
+                            <th scope="row">{{ $monture->taille_monture }}</th>
+                            <th scope="row">{{ $monture->model_monture }}</th>
+                            <th scope="row">{{ $monture->type_monture }}</th>
+                            <th scope="row">{{ $monture->coloris }}</th>
+                            <th scope="row">{{ $monture->coloris_libellé }}</th>
+                            <th scope="row">{{ $monture->style_monture }}</th>
+                            <th scope="row">{{ $monture->genre_monture }}</th>
+                            <th scope="row">{{ $monture->pa_monture }}</th>
+                            <th scope="row">{{ $monture->pv_monture }}</th>
                             <td>
                                 <div class="dropdown">
                                     <button type="button" class="btn p-0 dropdown-toggle hide-arrow"

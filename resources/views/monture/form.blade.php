@@ -65,6 +65,14 @@
         <input type="text" id="emailWithTitle" class="form-control" placeholder="Traditionnel" required name="style_monture" />
     </div>
 </div>
+
+<div class="row mt-1 g-2">
+    <div class="col mt-1">
+        <label for="emailWithTitle" class="form-label">Type: </label>
+        <input type="text" id="emailWithTitle" class="form-control" placeholder="Solaire" required name="type_monture" />
+    </div>
+</div>
+
 <div class="row mt-1 g-2">
     <div class="col mt-1">
         <label for="emailWithTitle" class="form-label">Gener: </label>

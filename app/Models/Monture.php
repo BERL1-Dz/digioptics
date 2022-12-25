@@ -12,6 +12,6 @@ class Monture extends Model
     public function fournisseurs()
     {
         // code...
-        return $this->belongsTo(Fournisseur::class);
+        return $this->belongsTo(Fournisseur::class,'code_fournisseur', 'id');
     }
 }

@@ -10,7 +10,7 @@ class Fournisseur extends Model
     use HasFactory;
 
      public function montures(){
-      return  $this->hasMany(Monture::class);
+      return  $this->hasMany(Monture::class,'code_fournisseur');
     }
 
     public function verres(){
