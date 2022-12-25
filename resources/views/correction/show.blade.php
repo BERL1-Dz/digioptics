@@ -364,6 +364,13 @@
                 width: 90px;
             }
 
+            @media only screen and (max-width: 1620px) {
+                .tab {
+                    width: auto;
+                }
+            }
+
+
             .form-select-custom {
                 border: 0px solid #000000 !important;
                 border-radius: 0rem !important;
