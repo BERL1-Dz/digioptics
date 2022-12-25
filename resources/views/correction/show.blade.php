@@ -9,7 +9,7 @@
                         <div class="d-flex-column mr-2">
                             <ul>
                                 <li>
-                                    <h5>{{$corrections->patient->nom}} {{$corrections->patient->prenom}}</h5>
+                                    <h5>{{ $corrections->patient->nom }} {{ $corrections->patient->prenom }}</h5>
                                 </li>
                                 <li>
                                     <h5>Obsevation: Sans observation </h5>
@@ -21,11 +21,12 @@
                         </div>
                         <div class="d-flex-column">
                             <div class="column" style="display: -webkit-inline-box">
-                              <h1>N°</h1> <h1>0000{{$corrections->id}}</h1>
+                                <h1>N°</h1>
+                                <h1>0000{{ $corrections->id }}</h1>
                             </div>
                             <div class="">
                                 <ul>
-                                    <li>{{$corrections->date}}</li>
+                                    <li>{{ $corrections->date }}</li>
                                     <li>Livraison Prevue</li>
                                 </ul>
                             </div>
@@ -43,73 +44,73 @@
                                 <div class="d-flex-column tab">
                                     <div class="cell cell-round">SPH</div>
                                     <div class="drop">
-                                        <div class="cell cell-round">{{$corrections->sph_od}}</div>
+                                        <div class="cell cell-round">{{ $corrections->sph_od }}</div>
                                     </div>
                                     <div class="drop">
-                                        <div class="cell cell-round">{{$corrections->interm ?? 'none'}}</div>
+                                        <div class="cell cell-round">{{ $corrections->interm ?? 'none' }}</div>
                                     </div>
                                     <div class="drop">
-                                        <div class="cell cell-round">{{$corrections->pres ?? 'none'}}</div>
+                                        <div class="cell cell-round">{{ $corrections->pres ?? 'none' }}</div>
                                     </div>
                                 </div>
                                 <div class="d-flex-column tab">
                                     <div class="cell cell-round">CYL</div>
                                     <div class="drop">
-                                        <div class="cell cell-round">{{$corrections->cly_od ?? 'none'}}</div>
+                                        <div class="cell cell-round">{{ $corrections->cly_od ?? 'none' }}</div>
                                     </div>
                                     <div class="drop">
-                                        <div class="cell cell-round">{{'none'}}</div>
+                                        <div class="cell cell-round">{{ 'none' }}</div>
                                     </div>
                                     <div class="drop">
-                                        <div class="cell cell-round">{{'none'}}</div>
+                                        <div class="cell cell-round">{{ 'none' }}</div>
                                     </div>
                                 </div>
                                 <div class="d-flex-column tab">
                                     <div class="cell cell-round">AXI</div>
                                     <div class="drop">
-                                        <div class="cell cell-round">{{$corrections->axe_od ?? 'none'}}</div>
+                                        <div class="cell cell-round">{{ $corrections->axe_od ?? 'none' }}</div>
                                     </div>
                                     <div class="drop">
-                                        <div class="cell cell-round">{{'none'}}</div>
+                                        <div class="cell cell-round">{{ 'none' }}</div>
                                     </div>
                                     <div class="drop">
-                                        <div class="cell cell-round">{{'none'}}</div>
+                                        <div class="cell cell-round">{{ 'none' }}</div>
                                     </div>
                                 </div>
                                 <div class="d-flex-column tab">
                                     <div class="cell cell-round">Add</div>
                                     <div class="drop">
-                                        <div class="cell cell-round">{{$corrections->add_od ?? 'none'}}</div>
+                                        <div class="cell cell-round">{{ $corrections->add_od ?? 'none' }}</div>
                                     </div>
                                     <div class="drop">
-                                        <div class="cell cell-round">{{$corrections->add_od ?? 'none'}}</div>
+                                        <div class="cell cell-round">{{ $corrections->add_od ?? 'none' }}</div>
                                     </div>
                                     <div class="drop">
-                                        <div class="cell cell-round">{{$corrections->add_od ?? 'none'}}</div>
+                                        <div class="cell cell-round">{{ $corrections->add_od ?? 'none' }}</div>
                                     </div>
                                 </div>
                                 <div class="d-flex-column tab">
                                     <div class="cell cell-round">Prisme</div>
                                     <div class="drop">
-                                        <div class="cell cell-round">{{$corrections->prise_od ?? 'none'}}</div>
+                                        <div class="cell cell-round">{{ $corrections->prise_od ?? 'none' }}</div>
                                     </div>
                                     <div class="drop">
-                                        <div class="cell cell-round">{{$corrections->prise_od ?? 'none'}}</div>
+                                        <div class="cell cell-round">{{ $corrections->prise_od ?? 'none' }}</div>
                                     </div>
                                     <div class="drop">
-                                        <div class="cell cell-round">{{$corrections->prise_od ?? 'none'}}</div>
+                                        <div class="cell cell-round">{{ $corrections->prise_od ?? 'none' }}</div>
                                     </div>
                                 </div>
                                 <div class="d-flex-column tab">
                                     <div class="cell cell-round">Base</div>
                                     <div class="drop">
-                                        <div class="cell cell-round">{{$corrections->base ?? 'none'}}</div>
+                                        <div class="cell cell-round">{{ $corrections->base ?? 'none' }}</div>
                                     </div>
                                     <div class="drop">
-                                        <div class="cell cell-round">{{$corrections->base ?? 'none'}}</div>
+                                        <div class="cell cell-round">{{ $corrections->base ?? 'none' }}</div>
                                     </div>
                                     <div class="drop">
-                                        <div class="cell cell-round">{{$corrections->base ?? 'none'}}</div>
+                                        <div class="cell cell-round">{{ $corrections->base ?? 'none' }}</div>
                                     </div>
                                 </div>
                             </div>
@@ -125,7 +126,7 @@
                                 <div class="d-flex-column tab">
                                     <div class="cell cell-round">SPH</div>
                                     <div class="drop">
-                                        <div class="cell cell-round">{{$corrections->sph_og ?? 'none'}}</div>
+                                        <div class="cell cell-round">{{ $corrections->sph_og ?? 'none' }}</div>
                                     </div>
                                     <div class="drop">
                                         <div class="cell cell-round">12</div>
@@ -137,7 +138,7 @@
                                 <div class="d-flex-column tab">
                                     <div class="cell cell-round">CYL</div>
                                     <div class="drop">
-                                        <div class="cell cell-round">{{$corrections->cly_og ?? 'none'}}</div>
+                                        <div class="cell cell-round">{{ $corrections->cly_og ?? 'none' }}</div>
                                     </div>
                                     <div class="drop">
                                         <div class="cell cell-round">12</div>
@@ -149,7 +150,7 @@
                                 <div class="d-flex-column tab">
                                     <div class="cell cell-round">AXI</div>
                                     <div class="drop">
-                                        <div class="cell cell-round">{{$corrections->axe_og ?? 'none'}}</div>
+                                        <div class="cell cell-round">{{ $corrections->axe_og ?? 'none' }}</div>
                                     </div>
                                     <div class="drop">
                                         <div class="cell cell-round">12</div>
@@ -216,6 +217,8 @@
                         </div>
                     </div>
 
+                    <Li hidden>{{$corrections->type_vision}}</Li>
+                    @if($corrections->type_vision === 1)
                     <div class="d-flex " style="border: 1px solid #000">
                         <div class="d-flex-column w-100 ">
                             <div class="p-2 text-align-center"
@@ -223,9 +226,9 @@
                             </div>
                             <div class="p-2 "style="border: 1px solid #000">
                                 <ul>
-                                    <Li>OD : Hmc</Li>
-                                    <Li>OG : Hmc</Li>
-                                    <Li>Monture : Silhouette</Li>
+                                    <Li>OD: | {{$corrections->sph_od ?? 'none'}} | {{$corrections->cly_od ?? 'none'}} | {{$corrections->option ?? 'none'}} </Li>
+                                    <Li>OG: | {{$corrections->sph_og ?? 'none'}} | {{$corrections->cly_og ?? 'none'}} | {{$corrections->option ?? 'none'}} </Li>
+                                    <Li>Monture : {{'none'}}</Li>
                                 </ul>
                             </div>
                         </div>
@@ -242,8 +245,9 @@
                                 </ul>
                             </div>
                         </div>
-
                     </div>
+                    
+                    
                     <div class="d-flex " style="border: 1px solid #000">
                         <div class="d-flex-column w-100 ">
                             <div class="p-2 text-align-center"
@@ -251,9 +255,9 @@
                             </div>
                             <div class="p-2 "style="border: 1px solid #000">
                                 <ul>
-                                    <Li>OD : Hmc</Li>
-                                    <Li>OG : Hmc</Li>
-                                    <Li>Monture : Silhouette</Li>
+                                    <Li>OD: | {{'none'}} | {{'none'}} | {{'none'}} </Li>
+                                    <Li>OG: | {{'none'}} | {{'none'}} | {{'none'}} </Li>
+                                    <Li>Monture : {{'none'}}</Li>
                                 </ul>
                             </div>
                         </div>
@@ -270,8 +274,67 @@
                                 </ul>
                             </div>
                         </div>
-
                     </div>
+                    @else{
+                        <div class="d-flex " style="border: 1px solid #000">
+                            <div class="d-flex-column w-100 ">
+                                <div class="p-2 text-align-center"
+                                    style="border: 1px solid #000; text-align:center; font-weight:bold;font-size:18px">Loin
+                                </div>
+                                <div class="p-2 "style="border: 1px solid #000">
+                                    <ul>
+                                        <Li>OD: | {{'none'}} | {{'none'}} | {{'none'}} </Li>
+                                        <Li>OG: | {{'none'}} | {{'none'}} | {{'none'}} </Li>
+                                        <Li>Monture : {{'none'}}</Li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <div class="d-flex-column flex-shrink-1" style=" width: 25%;">
+    
+                                <div class="p-2 "
+                                    style="border: 1px solid #000; text-align:center; font-weight:bold; font-size:18px">Prix
+                                </div>
+                                <div class="p-2 "style="border: 1px solid #000">
+                                    <ul>
+                                        <Li>800.00</Li>
+                                        <Li>800.00</Li>
+                                        <Li>7000.00 </Li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        
+                        <div class="d-flex " style="border: 1px solid #000">
+                            <div class="d-flex-column w-100 ">
+                                <div class="p-2 text-align-center"
+                                    style="border: 1px solid #000; text-align:center; font-weight:bold;font-size:18px">Pres
+                                </div>
+                                <div class="p-2 "style="border: 1px solid #000">
+                                    <ul>
+                                        <Li>OD: | {{$corrections->sph_od ?? 'none'}} | {{$corrections->cly_od ?? 'none'}} | {{$corrections->option ?? 'none'}} </Li>
+                                        <Li>OG: | {{$corrections->sph_og ?? 'none'}} | {{$corrections->cly_og ?? 'none'}} | {{$corrections->option ?? 'none'}} </Li>
+                                        <Li>Monture : {{'none'}}</Li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <div class="d-flex-column flex-shrink-1" style=" width: 25%;">
+    
+                                <div class="p-2 "
+                                    style="border: 1px solid #000; text-align:center; font-weight:bold; font-size:18px">Prix
+                                </div>
+                                <div class="p-2 "style="border: 1px solid #000">
+                                    <ul>
+                                        <Li>800.00</Li>
+                                        <Li>800.00</Li>
+                                        <Li>7000.00 </Li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    }
+                    @endif
+                    
                     <div class="d-flex " style="border: 1px solid #000">
                         <div class="d-flex-column w-100 ">
                             <div class="p-2 text-align-center"
