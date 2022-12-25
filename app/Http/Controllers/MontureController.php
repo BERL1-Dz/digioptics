@@ -39,7 +39,24 @@ class MontureController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        //dd($request->all());
+        $monture = new Monture();
+        $monture->code_fournisseur = request('code_fournisseur');
+        $monture->nom_fournisseur = request('nom_fournisseur');
+        $monture->code_monture = request('code_monture');
+        $monture->marque_monture = request('marque_monture');
+        $monture->matiere_monture = request('matiere_monture');
+        $monture->taille_monture = request('taille_monture');
+        $monture->model_monture = request('model_monture');
+        $monture->coloris = request('coloris');
+        $monture->coloris_libellé = request('coloris_libellé');
+        $monture->style_monture = request('style_monture');
+        $monture->genre_monture = request('genre_monture');
+        $monture->pa_monture = request('pa_monture');
+        $monture->pv_monture = request('pv_monture');
+
+        $monture->save();
+        return back();
     }
 
     /**
