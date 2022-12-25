@@ -1,7 +1,7 @@
 <div class="row">
     <div class="col">
         <label for="emailWithTitle" class="form-label">Code Fournisseur:</label>
-        <select name="code_fournisseur" class="form-control">
+        <select name="code_fournisseur" class="form-control" required>
             @foreach ($fournisseurs as $fournisseur)
                 <option value="{{ $fournisseur->id }}">{{ $fournisseur->code_fournisseur }}</option>
             @endforeach
@@ -12,22 +12,21 @@
 <div class="row">
     <div class="col mt-1">
         <label for="emailWithTitle" class="form-label">Code verre:</label>
-        <input type="text" id="emailWithTitle" class="form-control" placeholder="048700" name="code_verre" />
+        <input type="number" class="form-control" placeholder="048700" name="code_verre" / required>
     </div>
 
 </div>
 <div class="row">
     <div class="col mt-1">
         <label for="emailWithTitle" class="form-label">Verre Indic:</label>
-        <input type="text" id="emailWithTitle" class="form-control" placeholder="1.67" required name="index_verre" />
+        <input type="number" class="form-control" placeholder="1.67" required name="index_verre" />
     </div>
 
 </div>
 <div class="row mt-1 g-2">
     <div class="col mt-1">
         <label for="emailWithTitle" class="form-label">Material:</label>
-        <input type="text" id="emailWithTitle" class="form-control" placeholder="Organique" required
-            name="material" />
+        <input type="text" class="form-control" placeholder="Organique" required name="material" />
     </div>
     <div class="col mt-1">
         <label for="dobWithTitle" class="form-label">Diametre:</label>
@@ -37,7 +36,7 @@
 <div class="row mt-1 g-2">
     <div class="col mt-1">
         <label for="emailWithTitle" class="form-label">Surface</label>
-        <input type="text" id="emailWithTitle" class="form-control" placeholder="Surface" required name="surface" />
+        <input type="text" class="form-control" placeholder="Surface" required name="surface" />
     </div>
     <div class="col mt-1">
         <label for="dobWithTitle" class="form-label">Sphére:</label>
@@ -52,8 +51,7 @@
 <div class="row mt-1 g-2">
     <div class="col mt-1">
         <label for="emailWithTitle" class="form-label">Option:</label>
-        <input type="text" id="emailWithTitle" class="form-control" placeholder="Anti-Réflt" required
-            name="option" />
+        <input type="text" class="form-control" placeholder="Anti-Réflt" required name="option" />
     </div>
 </div>
 

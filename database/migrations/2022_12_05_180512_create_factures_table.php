@@ -26,7 +26,7 @@ class CreateFacturesTable extends Migration
             $table->json("designation");
             $table->json("quantite");
             $table->json("p_unitaire");
-            $table->float("montant");
+            $table->json("montant");
             $table->float("total");
             $table->timestamps();
         });

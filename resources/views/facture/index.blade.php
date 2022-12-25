@@ -45,7 +45,6 @@
                             {{-- <th>DESIGNATION</th>
                             <th>QUANTITE</th>
                             <th>PRIX UNITAIRE</th> --}}
-                            <th>MONTANT</th>
                             <th>TOTAL</th>
                             <th>ACTION</th>
                         </tr>
@@ -77,7 +76,6 @@
                                         <li>{{ $p_unitaire }}</li>
                                     @endforeach
                                 </td> --}}
-                                <td>{{ $facture->montant }}</td>
                                 <td>{{ $facture->total }}</td>
                                 <td>
                                     <div class="dropdown">

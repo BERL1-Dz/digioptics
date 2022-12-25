@@ -74,8 +74,18 @@
             <div id="newinput_p-uni"></div>
         </div>
         <div class="col mb-0">
-            <label for="dobExLarge" class="form-label">Montant</label>
-            <input type="number" id="dobExLarge" class="form-control" placeholder="Montant" name="montant" required />
+            {{-- <label for="dobExLarge" class="form-label">Montant</label>
+            <input type="number" id="dobExLarge" class="form-control" placeholder="Montant" name="montant" required /> --}}
+            <label for="emailExLarge" class="form-label">Montant</label>
+            <div style="display:flex;align-items: baseline;">
+                <button id="rowAdder_montant" type="button" class="btn btn-success valval"
+                    style="border-radius: 5px 0px 0px 5px;">
+                    <i class='bx bxs-plus-square'></i>
+                </button>
+            <input type="number" id="emailExLarge" class="form-control" placeholder="Prix Unitaire" name="montant[]"
+            style="border-radius: 0px 5px 5px 0px;" required />
+            </div>
+            <div id="newinput_montant"></div>
         </div>
     </div>
 

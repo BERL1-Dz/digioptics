@@ -11,9 +11,7 @@
                             <h6>Facture pour : {{ $data['facture_pour'] }}</h6>
                             <small>N° Facture : {{ $data['n_facture'] }}</small>
                         </div>
-                        @foreach ($data['ref'] as $arrayData)
-                            <li>{{ $arrayData }}</li>
-                        @endforeach
+
                         <small class="mt-2">Date : {{ $data['date'] }}</small>
                     </a>
                     <a href="javascript:void(0);"
@@ -31,6 +29,10 @@
                                     @foreach ($data['quantite'] as $arrayData)
                                         <li class="text-muted">{{ $arrayData }}</li>
                                     @endforeach
+                                    <h6>Reference :</h6>
+                                    @foreach ($data['ref'] as $arrayData)
+                                        <li>{{ $arrayData }}</li>
+                                    @endforeach
                                 </Div>
                             </div>
                             <div class="row">
@@ -41,7 +43,10 @@
                                     @endforeach
                                 </div>
                                 <div class="flex-column">
-                                    <h6>Montant : <small class="text-muted">{{ $data['montant'] }} Da</small></h6>
+                                    <h6>Montant : </h6>
+                                    @foreach ($data['montant'] as $arrayData)
+                                        <li class="text-muted"><small class="text-muted">{{ $arrayData }} Da</small></li>
+                                    @endforeach
                                 </div>
                             </div>
                         </div>

@@ -13,5 +13,6 @@ class Facture extends Model
         "designation" => "array",
         "quantite" => "array",
         "p_unitaire" => "array",
+        "montant" => "array",
     ];
 }
