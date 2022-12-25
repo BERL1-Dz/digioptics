@@ -77,9 +77,13 @@ class MontureController extends Controller
      * @param  \App\Models\Monture  $monture
      * @return \Illuminate\Http\Response
      */
-    public function edit(Monture $monture)
+    public function edit(Monture $monture, $id)
     {
         //
+        $fournisseurs = Fournisseur::all();
+        $data = Monture::find($id);
+        $i = 0;
+        return view("monture.edit", compact("data", "fournisseurs","id","i"));
     }
 
     /**
@@ -89,9 +93,29 @@ class MontureController extends Controller
      * @param  \App\Models\Monture  $monture
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Monture $monture)
+    public function update(Request $request, Monture $monture, $id)
     {
-        //
+        //dd($request->all());
+        $monture = Monture::find($id);
+
+        $monture->code_fournisseur = request('code_fournisseur');
+        $monture->nom_fournisseur = request('nom_fournisseur');
+        $monture->code_monture = request('code_monture');
+        $monture->marque_monture = request('marque_monture');
+        $monture->matiere_monture = request('marque_monture');
+        $monture->taille_monture = request('taille_monture');
+        $monture->model_monture = request('model_monture');
+        $monture->type_monture = request('type_monture');
+        $monture->coloris = request('coloris');
+        $monture->coloris_libellé = request('coloris_libellé');
+        $monture->style_monture = request('style_monture');
+        $monture->genre_monture = request('genre_monture');
+        $monture->pa_monture = request('pa_monture');
+        $monture->pv_monture = request('pv_monture');
+
+        $monture->update();
+
+        return redirect('/monture');
     }
 
     /**
@@ -100,8 +124,11 @@ class MontureController extends Controller
      * @param  \App\Models\Monture  $monture
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Monture $monture)
+    public function destroy(Monture $monture, $id)
     {
         //
+        $data = Monture::find($id);
+        $data->delete();
+        return redirect()->back();
     }
 }

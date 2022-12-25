@@ -40,6 +40,13 @@ Route::get('/verre', [VerreController::class, 'index'] )->middleware(['auth'])->
 // monture
 Route::post('/create_monture',[MontureController::class,'store']);
 Route::get('/monture', [MontureController::class, 'index'] )->middleware(['auth'])->name('monture');
+Route::get('/montureEdit/{id}', [MontureController::class, 'edit'] )->middleware(['auth'])->name('edit');
+Route::put('/monture/update/{id}', [MontureController::class, 'update'] )->middleware(['auth'])->name('update');
+Route::get('/monture/delete/{id}', [MontureController::class, 'destroy'] )->middleware(['auth'])->name('update');
+
+
+
+
 
 // correction
 Route::get('/correction', [CorrectionController::class, 'index'] )->middleware(['auth'])->name('correction');
