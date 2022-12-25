@@ -103,6 +103,7 @@ class CorrectionController extends Controller
     public function show(Correction $correction)
     {
         //
+        return view("correction.show");
     }
 
     /**
