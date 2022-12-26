@@ -47,7 +47,7 @@ class CorrectionController extends Controller
         $correction->PD = request('PD');
         $correction->Near_Pd = request('Near_Pd');
         $correction->option = request('option');
-
+        $correction->monture_id = request('monture_id');
         $correction->save();
         return back();
 
@@ -69,6 +69,7 @@ class CorrectionController extends Controller
         $correction->axe_od = request('axe_od');
         $correction->axe_og = request('axe_og');
         $correction->option = request('option');
+        $correction->monture_id = request('monture_id');
         $correction->PD = request('PD');
 
         $correction->save();

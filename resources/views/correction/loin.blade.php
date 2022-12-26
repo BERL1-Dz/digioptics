@@ -126,7 +126,7 @@
             <label for="nameExLarge" class="form-label">Monture</label>
             <select name="monture_id" class="form-control">
                 @foreach ($montures as $monture)
-                    <option value="{{ $monture->id }}">{{ $monture->model_monture }}</option>
+                    <option value="{{ $monture->id }}">{{ $monture->marque_monture }}</option>
                 @endforeach
             </select>
         </div>

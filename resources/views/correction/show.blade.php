@@ -228,7 +228,7 @@
                                 <ul>
                                     <Li>OD: | {{$corrections->sph_od ?? 'none'}} | {{$corrections->cly_od ?? 'none'}} | {{$corrections->option ?? 'none'}} </Li>
                                     <Li>OG: | {{$corrections->sph_og ?? 'none'}} | {{$corrections->cly_og ?? 'none'}} | {{$corrections->option ?? 'none'}} </Li>
-                                    <Li>Monture : {{'none'}}</Li>
+                                    <Li>Monture : {{$corrections->monture_id ?? 'none' }}</Li>
                                 </ul>
                             </div>
                         </div>
@@ -257,7 +257,7 @@
                                 <ul>
                                     <Li>OD: | {{'none'}} | {{'none'}} | {{'none'}} </Li>
                                     <Li>OG: | {{'none'}} | {{'none'}} | {{'none'}} </Li>
-                                    <Li>Monture : {{'none'}}</Li>
+                                    <Li>Monture : {{$corrections->monture_id ?? 'none' }}</Li>
                                 </ul>
                             </div>
                         </div>
@@ -285,7 +285,7 @@
                                     <ul>
                                         <Li>OD: | {{'none'}} | {{'none'}} | {{'none'}} </Li>
                                         <Li>OG: | {{'none'}} | {{'none'}} | {{'none'}} </Li>
-                                        <Li>Monture : {{'none'}}</Li>
+                                        <Li>Monture : {{$corrections->monture_id ?? 'none' }}</Li>
                                     </ul>
                                 </div>
                             </div>
@@ -314,7 +314,7 @@
                                     <ul>
                                         <Li>OD: | {{$corrections->sph_od ?? 'none'}} | {{$corrections->cly_od ?? 'none'}} | {{$corrections->option ?? 'none'}} </Li>
                                         <Li>OG: | {{$corrections->sph_og ?? 'none'}} | {{$corrections->cly_og ?? 'none'}} | {{$corrections->option ?? 'none'}} </Li>
-                                        <Li>Monture : {{'none'}}</Li>
+                                        <Li>Monture : {{$corrections->monture_id ?? 'none' }}</Li>
                                     </ul>
                                 </div>
                             </div>
