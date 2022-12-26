@@ -1,7 +1,7 @@
 @extends('layouts.app')
 @section('content')
     <div class="container-xxl flex-grow-1 container-p-y">
-        <div class="col-md-{{'none'}} mb-4">
+        <div class="col-md-{{ 'none' }} mb-4">
             <div class="card">
                 <h5 class="card-header">Recu : XXX</h5>
                 <div class="card-body">
@@ -141,10 +141,10 @@
                                         <div class="cell cell-round">{{ $corrections->cly_og ?? 'none' }}</div>
                                     </div>
                                     <div class="drop">
-                                        <div class="cell cell-round">{{'none'}}</div>
+                                        <div class="cell cell-round">{{ 'none' }}</div>
                                     </div>
                                     <div class="drop">
-                                        <div class="cell cell-round">{{'none'}}</div>
+                                        <div class="cell cell-round">{{ 'none' }}</div>
                                     </div>
                                 </div>
                                 <div class="d-flex-column tab">
@@ -153,10 +153,10 @@
                                         <div class="cell cell-round">{{ $corrections->axe_og ?? 'none' }}</div>
                                     </div>
                                     <div class="drop">
-                                        <div class="cell cell-round">{{'none'}}</div>
+                                        <div class="cell cell-round">{{ 'none' }}</div>
                                     </div>
                                     <div class="drop">
-                                        <div class="cell cell-round">{{'none'}}</div>
+                                        <div class="cell cell-round">{{ 'none' }}</div>
                                     </div>
                                 </div>
                                 <div class="d-flex-column tab">
@@ -174,25 +174,25 @@
                                 <div class="d-flex-column tab">
                                     <div class="cell cell-round">Prisme</div>
                                     <div class="drop">
-                                        <div class="cell cell-round">{{'none'}}</div>
+                                        <div class="cell cell-round">{{ 'none' }}</div>
                                     </div>
                                     <div class="drop">
-                                        <div class="cell cell-round">{{'none'}}</div>
+                                        <div class="cell cell-round">{{ 'none' }}</div>
                                     </div>
                                     <div class="drop">
-                                        <div class="cell cell-round">{{'none'}}</div>
+                                        <div class="cell cell-round">{{ 'none' }}</div>
                                     </div>
                                 </div>
                                 <div class="d-flex-column tab">
                                     <div class="cell cell-round">Base</div>
                                     <div class="drop">
-                                        <div class="cell cell-round">{{'none'}}</div>
+                                        <div class="cell cell-round">{{ 'none' }}</div>
                                     </div>
                                     <div class="drop">
-                                        <div class="cell cell-round">{{'none'}}</div>
+                                        <div class="cell cell-round">{{ 'none' }}</div>
                                     </div>
                                     <div class="drop">
-                                        <div class="cell cell-round">{{'none'}}</div>
+                                        <div class="cell cell-round">{{ 'none' }}</div>
                                     </div>
                                 </div>
                             </div>
@@ -201,81 +201,24 @@
                     <div class="d-flex justify-content-around" style="border: 1px solid #000">
                         <div class="d-flex self-align-center mt-3 mb-3">
                             <div class="cellmin1">Ecart </div>
-                            <div class="cellmin2"> {{$corrections->ecart ?? 'none'}}</div>
+                            <div class="cellmin2"> {{ $corrections->ecart ?? 'none' }}</div>
                         </div>
                         <div class="d-flex self-align-center mt-3 mb-3">
                             <div class="cellmin1">Hauteur </div>
-                            <div class="cellmin2"> {{$corrections->hauteur ?? 'none'}}</div>
+                            <div class="cellmin2"> {{ $corrections->hauteur ?? 'none' }}</div>
                         </div>
                         <div class="d-flex self-align-center mt-3 mb-3">
                             <div class="cellmin1">Ecart </div>
-                            <div class="cellmin2"> {{$corrections->ecart ?? 'none'}}</div>
+                            <div class="cellmin2"> {{ $corrections->ecart ?? 'none' }}</div>
                         </div>
                         <div class="d-flex self-align-center mt-3 mb-3">
                             <div class="cellmin1">Hauteur </div>
-                            <div class="cellmin2"> {{$corrections->hauteur ?? 'none'}}</div>
+                            <div class="cellmin2"> {{ $corrections->hauteur ?? 'none' }}</div>
                         </div>
                     </div>
 
-                    <Li hidden>{{$corrections->type_vision}}</Li>
-                    @if($corrections->type_vision === 1)
-                    <div class="d-flex " style="border: 1px solid #000">
-                        <div class="d-flex-column w-100 ">
-                            <div class="p-2 text-align-center"
-                                style="border: 1px solid #000; text-align:center; font-weight:bold;font-size:18px">Loin
-                            </div>
-                            <div class="p-2 "style="border: 1px solid #000">
-                                <ul>
-                                    <Li>OD: | {{$corrections->sph_od ?? 'none'}} | {{$corrections->cly_od ?? 'none'}} | {{$corrections->option ?? 'none'}} </Li>
-                                    <Li>OG: | {{$corrections->sph_og ?? 'none'}} | {{$corrections->cly_og ?? 'none'}} | {{$corrections->option ?? 'none'}} </Li>
-                                    <Li>Monture : {{$corrections->monture_id ?? 'none' }}</Li>
-                                </ul>
-                            </div>
-                        </div>
-                        <div class="d-flex-column flex-shrink-1" style=" width: 25%;">
-
-                            <div class="p-2 "
-                                style="border: 1px solid #000; text-align:center; font-weight:bold; font-size:18px">Prix
-                            </div>
-                            <div class="p-2 "style="border: 1px solid #000">
-                                <ul>
-                                    <Li>800.00</Li>
-                                    <Li>800.00</Li>
-                                    <Li>7000.00 </Li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
-
-
-                    <div class="d-flex " style="border: 1px solid #000">
-                        <div class="d-flex-column w-100 ">
-                            <div class="p-2 text-align-center"
-                                style="border: 1px solid #000; text-align:center; font-weight:bold;font-size:18px">Pres
-                            </div>
-                            <div class="p-2 "style="border: 1px solid #000">
-                                <ul>
-                                    <Li>OD: | {{'none'}} | {{'none'}} | {{'none'}} </Li>
-                                    <Li>OG: | {{'none'}} | {{'none'}} | {{'none'}} </Li>
-                                    <Li>Monture : {{$corrections->monture_id ?? 'none' }}</Li>
-                                </ul>
-                            </div>
-                        </div>
-                        <div class="d-flex-column flex-shrink-1" style=" width: 25%;">
-
-                            <div class="p-2 "
-                                style="border: 1px solid #000; text-align:center; font-weight:bold; font-size:18px">Prix
-                            </div>
-                            <div class="p-2 "style="border: 1px solid #000">
-                                <ul>
-                                    <Li>800.00</Li>
-                                    <Li>800.00</Li>
-                                    <Li>7000.00 </Li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
-                    @else{
+                    <Li hidden>{{ $corrections->type_vision }}</Li>
+                    @if ($corrections->type_vision === 1)
                         <div class="d-flex " style="border: 1px solid #000">
                             <div class="d-flex-column w-100 ">
                                 <div class="p-2 text-align-center"
@@ -283,16 +226,21 @@
                                 </div>
                                 <div class="p-2 "style="border: 1px solid #000">
                                     <ul>
-                                        <Li>OD: | {{'none'}} | {{'none'}} | {{'none'}} </Li>
-                                        <Li>OG: | {{'none'}} | {{'none'}} | {{'none'}} </Li>
-                                        <Li>Monture : {{$corrections->monture_id ?? 'none' }}</Li>
+                                        <Li>OD: | {{ $corrections->sph_od ?? 'none' }} |
+                                            {{ $corrections->cly_od ?? 'none' }} | {{ $corrections->option ?? 'none' }}
+                                        </Li>
+                                        <Li>OG: | {{ $corrections->sph_og ?? 'none' }} |
+                                            {{ $corrections->cly_og ?? 'none' }} | {{ $corrections->option ?? 'none' }}
+                                        </Li>
+                                        <Li>Monture : {{ $montures->model_monture ?? 'none' }}</Li>
                                     </ul>
                                 </div>
                             </div>
                             <div class="d-flex-column flex-shrink-1" style=" width: 25%;">
 
                                 <div class="p-2 "
-                                    style="border: 1px solid #000; text-align:center; font-weight:bold; font-size:18px">Prix
+                                    style="border: 1px solid #000; text-align:center; font-weight:bold; font-size:18px">
+                                    Prix
                                 </div>
                                 <div class="p-2 "style="border: 1px solid #000">
                                     <ul>
@@ -312,16 +260,17 @@
                                 </div>
                                 <div class="p-2 "style="border: 1px solid #000">
                                     <ul>
-                                        <Li>OD: | {{$corrections->sph_od ?? 'none'}} | {{$corrections->cly_od ?? 'none'}} | {{$corrections->option ?? 'none'}} </Li>
-                                        <Li>OG: | {{$corrections->sph_og ?? 'none'}} | {{$corrections->cly_og ?? 'none'}} | {{$corrections->option ?? 'none'}} </Li>
-                                        <Li>Monture : {{$corrections->monture_id ?? 'none' }}</Li>
+                                        <Li>OD: | {{ 'none' }} | {{ 'none' }} | {{ 'none' }} </Li>
+                                        <Li>OG: | {{ 'none' }} | {{ 'none' }} | {{ 'none' }} </Li>
+                                        <Li>Monture : {{ 'none' }}</Li>
                                     </ul>
                                 </div>
                             </div>
                             <div class="d-flex-column flex-shrink-1" style=" width: 25%;">
 
                                 <div class="p-2 "
-                                    style="border: 1px solid #000; text-align:center; font-weight:bold; font-size:18px">Prix
+                                    style="border: 1px solid #000; text-align:center; font-weight:bold; font-size:18px">
+                                    Prix
                                 </div>
                                 <div class="p-2 "style="border: 1px solid #000">
                                     <ul>
@@ -332,7 +281,70 @@
                                 </div>
                             </div>
                         </div>
-                    }
+                    @else{
+                        <div class="d-flex " style="border: 1px solid #000">
+                            <div class="d-flex-column w-100 ">
+                                <div class="p-2 text-align-center"
+                                    style="border: 1px solid #000; text-align:center; font-weight:bold;font-size:18px">Loin
+                                </div>
+                                <div class="p-2 "style="border: 1px solid #000">
+                                    <ul>
+                                        <Li>OD: | {{ 'none' }} | {{ 'none' }} | {{ 'none' }} </Li>
+                                        <Li>OG: | {{ 'none' }} | {{ 'none' }} | {{ 'none' }} </Li>
+                                        <Li>Monture : {{ 'none' }}</Li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <div class="d-flex-column flex-shrink-1" style=" width: 25%;">
+
+                                <div class="p-2 "
+                                    style="border: 1px solid #000; text-align:center; font-weight:bold; font-size:18px">
+                                    Prix
+                                </div>
+                                <div class="p-2 "style="border: 1px solid #000">
+                                    <ul>
+                                        <Li>800.00</Li>
+                                        <Li>800.00</Li>
+                                        <Li>7000.00 </Li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+
+
+                        <div class="d-flex " style="border: 1px solid #000">
+                            <div class="d-flex-column w-100 ">
+                                <div class="p-2 text-align-center"
+                                    style="border: 1px solid #000; text-align:center; font-weight:bold;font-size:18px">Pres
+                                </div>
+                                <div class="p-2 "style="border: 1px solid #000">
+                                    <ul>
+                                        <Li>OD: | {{ $corrections->sph_od ?? 'none' }} |
+                                            {{ $corrections->cly_od ?? 'none' }} | {{ $corrections->option ?? 'none' }}
+                                        </Li>
+                                        <Li>OG: | {{ $corrections->sph_og ?? 'none' }} |
+                                            {{ $corrections->cly_og ?? 'none' }} | {{ $corrections->option ?? 'none' }}
+                                        </Li>
+                                        <Li>Monture : {{ $montures->model_monture ?? 'none' }}</Li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <div class="d-flex-column flex-shrink-1" style=" width: 25%;">
+
+                                <div class="p-2 "
+                                    style="border: 1px solid #000; text-align:center; font-weight:bold; font-size:18px">
+                                    Prix
+                                </div>
+                                <div class="p-2 "style="border: 1px solid #000">
+                                    <ul>
+                                        <Li>800.00</Li>
+                                        <Li>800.00</Li>
+                                        <Li>7000.00 </Li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                        }
                     @endif
 
                     <div class="d-flex " style="border: 1px solid #000">

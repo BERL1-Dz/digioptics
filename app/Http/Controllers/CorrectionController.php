@@ -110,8 +110,9 @@ class CorrectionController extends Controller
         //
         $patients = Patient::all();
         $corrections = Correction::find($id);
+        $montures = Monture::find($id);
         //dd($patient);
-        return view("correction.show", compact('patients','corrections'));
+        return view("correction.show", compact('patients','corrections', 'montures'));
     }
 
     /**
