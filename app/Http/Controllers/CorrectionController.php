@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 use Illuminate\Support\Facades\DB;
 use App\Models\Correction;
 use App\Models\Patient;
+use App\Models\Monture;
 use Illuminate\Http\Request;
 
 class CorrectionController extends Controller
@@ -19,7 +20,10 @@ class CorrectionController extends Controller
 
         $corrections = Correction::with('patient')->get();
         $patients = Patient::with('correction')->get();
-        //dd($corrections);
+        $montures = Monture::with('montures')->get();
+        dd($patients);
+        //
+
         return view("correction.index", compact('corrections' ,'patients'));
 
     }

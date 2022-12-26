@@ -25,13 +25,22 @@
                             name="nom" required value="{{ $data['nom'] }}">
                     </div>
                 </div>
+                <div class="row g-2">
 
+                  <div class="col mb-0">
+                      <label for="nameExLarge" class="form-label">Age</label>
+                      <input type="number" id="nameExLarge" class="form-control" placeholder="" name="age"
+                          required value="{{ $data['age'] }}">
+                  </div>
 
-                <div class="col mb-0">
-                    <label for="nameExLarge" class="form-label">Age</label>
-                    <input type="number" id="nameExLarge" class="form-control" placeholder="" name="age"
-                        required value="{{ $data['age'] }}">
+                  <div class="col mb-0">
+                      <label for="nameExLarge" class="form-label">Phone</label>
+                      <input type="number" id="nameExLarge" class="form-control" placeholder="" name="age"
+                          required value="{{ $data['phone'] }}">
+                  </div>
+
                 </div>
+
             </div>
 
             <div class="modal-footer">

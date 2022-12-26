@@ -18,6 +18,7 @@ class CreatePatientsTable extends Migration
             $table->string('nom');
             $table->string('prenom');
             $table->integer('age');
+            $table->char('phone', 12);
             $table->timestamps();
         });
     }

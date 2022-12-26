@@ -43,6 +43,7 @@ class PatientController extends Controller
         $patient->nom = request('nom');
         $patient->prenom = request('prenom');
         $patient->age = request('age');
+        $patient->phone = request('phone');
 
         $patient->save();
         return back();
@@ -88,6 +89,7 @@ class PatientController extends Controller
       $data->prenom = request('prenom');
       $data->nom = request('nom');
       $data->age = request('age');
+      $patient->phone = request('phone');
       $data->update();
       return redirect('/patient');
     }

@@ -29,6 +29,7 @@ class CreateCorrectionsTable extends Migration
             $table->integer('Near_PD')->nullable();
             $table->string('option');
             $table->unsignedBigInteger('patient_id')->nullable();
+            $table->unsignedBigInteger('monture_id')->nullable();
             $table->timestamps();
         });
     }

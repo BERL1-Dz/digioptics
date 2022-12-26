@@ -15,5 +15,11 @@ class Correction extends Model
       return $this->belongsTo(Patient::class, "patient_id", 'id');
     }
 
+    public function montures()
+    {
+      // code
+      return $this->HasMany(Monture::class,);
+    }
+
     protected $fillabel =['nom','prenom','age'];
 }

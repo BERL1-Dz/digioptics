@@ -44,6 +44,7 @@
                             <th>Nom</th>
                             <th>Prénom</th>
                             <th>Age</th>
+                            <th>Telephon</th>
                             <th>Actions</th>
                         </tr>
                     </thead>
@@ -54,6 +55,7 @@
                                 <td>{{ $patient->nom }}</td>
                                 <td>{{ $patient->prenom }}</td>
                                 <td>{{ $patient->age }}</td>
+                                <td>{{ $patient->phone }}</td>
                                 <td>
                                     <div class="dropdown">
                                         <button type="button" class="btn p-0 dropdown-toggle hide-arrow"

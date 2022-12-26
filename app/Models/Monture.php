@@ -14,4 +14,10 @@ class Monture extends Model
         // code...
         return $this->belongsTo(Fournisseur::class,'code_fournisseur', 'id');
     }
+
+    public function corrections()
+    {
+      // code...
+      return $this->belongsTo(Correction::class);
+    }
 }

@@ -121,6 +121,16 @@
             </div>
         </div>
     </div>
+    <div class="row">
+        <div class="col mb-0">
+            <label for="nameExLarge" class="form-label">Patient:</label>
+            <select name="monture_id" class="form-control">
+                @foreach ($montures as $monture)
+                    <option value="{{ $monture->id }}">{{ $monture->id }}</option>
+                @endforeach
+            </select>
+        </div>
+    </div>
     <br>
     <select name="option" class="form-select" aria-label="Default select example">
         <option selected>Choisir votre type de verre</option>

@@ -1,7 +1,7 @@
 @extends('layouts.app')
 @section('content')
     <div class="container-xxl flex-grow-1 container-p-y">
-        <div class="col-md-12 mb-4">
+        <div class="col-md-{{'none'}} mb-4">
             <div class="card">
                 <h5 class="card-header">Recu : XXX</h5>
                 <div class="card-body">
@@ -15,7 +15,7 @@
                                     <h5>Obsevation: Sans observation </h5>
                                 </li>
                                 <li>
-                                    <h5>Telephone: 0520301489</h5>
+                                    <h5>{{ $corrections->patient->phone }}</h5>
                                 </li>
                             </ul>
                         </div>
@@ -129,10 +129,10 @@
                                         <div class="cell cell-round">{{ $corrections->sph_og ?? 'none' }}</div>
                                     </div>
                                     <div class="drop">
-                                        <div class="cell cell-round">12</div>
+                                        <div class="cell cell-round">{{ $corrections->interm ?? 'none' }}</div>
                                     </div>
                                     <div class="drop">
-                                        <div class="cell cell-round">12</div>
+                                        <div class="cell cell-round">{{ $corrections->pres ?? 'none' }}</div>
                                     </div>
                                 </div>
                                 <div class="d-flex-column tab">
@@ -141,10 +141,10 @@
                                         <div class="cell cell-round">{{ $corrections->cly_og ?? 'none' }}</div>
                                     </div>
                                     <div class="drop">
-                                        <div class="cell cell-round">12</div>
+                                        <div class="cell cell-round">{{'none'}}</div>
                                     </div>
                                     <div class="drop">
-                                        <div class="cell cell-round">12</div>
+                                        <div class="cell cell-round">{{'none'}}</div>
                                     </div>
                                 </div>
                                 <div class="d-flex-column tab">
@@ -153,46 +153,46 @@
                                         <div class="cell cell-round">{{ $corrections->axe_og ?? 'none' }}</div>
                                     </div>
                                     <div class="drop">
-                                        <div class="cell cell-round">12</div>
+                                        <div class="cell cell-round">{{'none'}}</div>
                                     </div>
                                     <div class="drop">
-                                        <div class="cell cell-round">12</div>
+                                        <div class="cell cell-round">{{'none'}}</div>
                                     </div>
                                 </div>
                                 <div class="d-flex-column tab">
                                     <div class="cell cell-round">Add</div>
                                     <div class="drop">
-                                        <div class="cell cell-round">12</div>
+                                        <div class="cell cell-round">{{ $corrections->add_og ?? 'none' }}</div>
                                     </div>
                                     <div class="drop">
-                                        <div class="cell cell-round">12</div>
+                                        <div class="cell cell-round">{{ $corrections->add_og ?? 'none' }}</div>
                                     </div>
                                     <div class="drop">
-                                        <div class="cell cell-round">12</div>
+                                        <div class="cell cell-round">{{ $corrections->add_og ?? 'none' }}</div>
                                     </div>
                                 </div>
                                 <div class="d-flex-column tab">
                                     <div class="cell cell-round">Prisme</div>
                                     <div class="drop">
-                                        <div class="cell cell-round">12</div>
+                                        <div class="cell cell-round">{{'none'}}</div>
                                     </div>
                                     <div class="drop">
-                                        <div class="cell cell-round">12</div>
+                                        <div class="cell cell-round">{{'none'}}</div>
                                     </div>
                                     <div class="drop">
-                                        <div class="cell cell-round">12</div>
+                                        <div class="cell cell-round">{{'none'}}</div>
                                     </div>
                                 </div>
                                 <div class="d-flex-column tab">
                                     <div class="cell cell-round">Base</div>
                                     <div class="drop">
-                                        <div class="cell cell-round">12</div>
+                                        <div class="cell cell-round">{{'none'}}</div>
                                     </div>
                                     <div class="drop">
-                                        <div class="cell cell-round">12</div>
+                                        <div class="cell cell-round">{{'none'}}</div>
                                     </div>
                                     <div class="drop">
-                                        <div class="cell cell-round">12</div>
+                                        <div class="cell cell-round">{{'none'}}</div>
                                     </div>
                                 </div>
                             </div>
@@ -201,19 +201,19 @@
                     <div class="d-flex justify-content-around" style="border: 1px solid #000">
                         <div class="d-flex self-align-center mt-3 mb-3">
                             <div class="cellmin1">Ecart </div>
-                            <div class="cellmin2"> 31</div>
+                            <div class="cellmin2"> {{$corrections->ecart ?? 'none'}}</div>
                         </div>
                         <div class="d-flex self-align-center mt-3 mb-3">
                             <div class="cellmin1">Hauteur </div>
-                            <div class="cellmin2"> 31</div>
+                            <div class="cellmin2"> {{$corrections->hauteur ?? 'none'}}</div>
                         </div>
                         <div class="d-flex self-align-center mt-3 mb-3">
                             <div class="cellmin1">Ecart </div>
-                            <div class="cellmin2"> 31</div>
+                            <div class="cellmin2"> {{$corrections->ecart ?? 'none'}}</div>
                         </div>
                         <div class="d-flex self-align-center mt-3 mb-3">
                             <div class="cellmin1">Hauteur </div>
-                            <div class="cellmin2"> 31</div>
+                            <div class="cellmin2"> {{$corrections->hauteur ?? 'none'}}</div>
                         </div>
                     </div>
 
@@ -246,8 +246,8 @@
                             </div>
                         </div>
                     </div>
-                    
-                    
+
+
                     <div class="d-flex " style="border: 1px solid #000">
                         <div class="d-flex-column w-100 ">
                             <div class="p-2 text-align-center"
@@ -290,7 +290,7 @@
                                 </div>
                             </div>
                             <div class="d-flex-column flex-shrink-1" style=" width: 25%;">
-    
+
                                 <div class="p-2 "
                                     style="border: 1px solid #000; text-align:center; font-weight:bold; font-size:18px">Prix
                                 </div>
@@ -303,8 +303,8 @@
                                 </div>
                             </div>
                         </div>
-                        
-                        
+
+
                         <div class="d-flex " style="border: 1px solid #000">
                             <div class="d-flex-column w-100 ">
                                 <div class="p-2 text-align-center"
@@ -319,7 +319,7 @@
                                 </div>
                             </div>
                             <div class="d-flex-column flex-shrink-1" style=" width: 25%;">
-    
+
                                 <div class="p-2 "
                                     style="border: 1px solid #000; text-align:center; font-weight:bold; font-size:18px">Prix
                                 </div>
@@ -334,7 +334,7 @@
                         </div>
                     }
                     @endif
-                    
+
                     <div class="d-flex " style="border: 1px solid #000">
                         <div class="d-flex-column w-100 ">
                             <div class="p-2 text-align-center"
