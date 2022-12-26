@@ -11,7 +11,7 @@
             <label for="nameExLarge" class="form-label">Patient:</label>
             <select name="patient_id" class="form-control">
                 @foreach ($patients as $patients)
-                    <option value="{{ $patients->id }}">{{ $patients->nom }}</option>
+                    <option value="{{ $patients->id }}">{{ $patients->nom }} {{ $patients->prenom }}</option>
                 @endforeach
             </select>
         </div>
@@ -114,7 +114,7 @@
             <div class="drop">
                 <select name="add_od" id="largeSelect" class="form-select form-select-custom form-select-lg">
                     <option>None</option>
-                    @for ($j = 0.75; $j <= 3.50; $j = $j + 0.25)
+                    @for ($j = 0.75; $j <= 3.5; $j = $j + 0.25)
                         <option value="+{{ $j }}">+{{ $j }}</option>
                     @endfor
                 </select>
@@ -122,7 +122,7 @@
             <div class="drop">
                 <select name="add_og" id="largeSelect" class="form-select form-select-custom form-select-lg">
                     <option>None</option>
-                    @for ($j = 0.75; $j <= 3.50; $j = $j + 0.25)
+                    @for ($j = 0.75; $j <= 3.5; $j = $j + 0.25)
                         <option value="+{{ $j }}">+{{ $j }}</option>
                     @endfor
                 </select>
@@ -157,6 +157,16 @@
                     @endfor
                 </select>
             </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col mb-0">
+            <label for="nameExLarge" class="form-label">Monture</label>
+            <select name="monture_id" class="form-control">
+                @foreach ($montures as $monture)
+                    <option value="{{ $monture->id }}">{{ $monture->model_monture }}</option>
+                @endforeach
+            </select>
         </div>
     </div>
     <br>

@@ -1,9 +1,8 @@
 <?php
 
 namespace App\Models;
-
-use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 
 class Monture extends Model
 {
@@ -18,6 +17,6 @@ class Monture extends Model
     public function corrections()
     {
       // code...
-      return $this->belongsTo(Correction::class);
+      return $this->hasMany(Correction::class,'monture_id','id');
     }
 }

@@ -10,8 +10,8 @@
         <div class="col mb-0">
             <label for="nameExLarge" class="form-label">Patient:</label>
             <select name="patient_id" class="form-control">
-                @foreach ($patients as $patients)
-                    <option value="{{ $patients->id }}">{{ $patients->nom }}</option>
+                @foreach ($patients as $patient)
+                    <option value="{{ $patient->id }}">{{ $patient->nom }} {{ $patient->prenom }}</option>
                 @endforeach
             </select>
         </div>
@@ -123,10 +123,10 @@
     </div>
     <div class="row">
         <div class="col mb-0">
-            <label for="nameExLarge" class="form-label">Patient:</label>
+            <label for="nameExLarge" class="form-label">Monture</label>
             <select name="monture_id" class="form-control">
                 @foreach ($montures as $monture)
-                    <option value="{{ $monture->id }}">{{ $monture->id }}</option>
+                    <option value="{{ $monture->id }}">{{ $monture->model_monture }}</option>
                 @endforeach
             </select>
         </div>

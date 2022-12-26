@@ -19,12 +19,12 @@ class CorrectionController extends Controller
         //
 
         $corrections = Correction::with('patient')->get();
-        $patients = Patient::with('correction')->get();
-        $montures = Monture::with('montures')->get();
-        dd($patients);
+        $patients = Patient::with('corrections')->get();
+        $montures = Monture::with('corrections')->get();
+        //dd($montures);
         //
 
-        return view("correction.index", compact('corrections' ,'patients'));
+        return view("correction.index", compact('corrections' ,'patients','montures'));
 
     }
 

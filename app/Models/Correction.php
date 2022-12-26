@@ -18,7 +18,7 @@ class Correction extends Model
     public function montures()
     {
       // code
-      return $this->HasMany(Monture::class,);
+      return $this->HasMany(Monture::class, 'monture_id','id');
     }
 
     protected $fillabel =['nom','prenom','age'];
