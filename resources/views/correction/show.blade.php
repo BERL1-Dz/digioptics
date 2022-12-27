@@ -37,7 +37,7 @@
                             <div class="d-flex">
                                 <div class="d-flex-column tab">
                                     <div class="cell cell-round">OD</div>
-                                    <div class="cell cell-round">Loin</div>
+                                    <div class="cell cell-round">loin</div>
                                     <div class="cell cell-round">Interm</div>
                                     <div class="cell cell-round">Pres</div>
                                 </div>

@@ -1,10 +1,10 @@
 <?php
 
 namespace App\Http\Controllers;
-
+use App\Models\Fournisseur;
 use App\Models\Lentille;
 use Illuminate\Http\Request;
-
+use Illuminate\Support\Facades\DB;
 class LentilleController extends Controller
 {
     /**
@@ -15,6 +15,10 @@ class LentilleController extends Controller
     public function index()
     {
         //
+        $lenttiles = Lentille::all();
+        $fournisseurs = Fournisseur::all();
+
+        return view('lenttile.index', compact('lenttiles','fournisseurs'));
     }
 
     /**
@@ -35,7 +39,20 @@ class LentilleController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        //dd($request->all());
+
+        $lenttile = new Lentille;
+        $lenttile->code_fournisseur = request('code_fournisseur');
+        $lenttile->fabriquant_lentille = request('fabriquant_lentille');
+        $lenttile->libellé = request('libellé');
+        $lenttile->port = request('port');
+        $lenttile->teinte = request('teinte');
+        $lenttile->conditionnement = request('conditionnement');
+        $lenttile->essie = request('essie');
+        $lenttile->pv_lentille = request('pv_lentille');
+
+        $lenttile->save();
+        return back();
     }
 
     /**
