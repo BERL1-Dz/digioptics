@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\PatientController;
+use App\Http\Controllers\AccessoireController;
 use App\Http\Controllers\DevisController;
 use App\Http\Controllers\MontureController;
 use App\Http\Controllers\FactureController;
@@ -32,8 +33,10 @@ Route::get('/dashboard', function () {
 
 // devis
 Route::get('/devis', [DevisController::class, 'index'] )->middleware(['auth'])->name('devis');
+Route::get('/accessoire', [AccessoireController::class, 'index'] )->middleware(['auth'])->name('devis');
 
-//baki is a cunt !
+
+
 // lenttile
 Route::get('/lenttile', [LentilleController::class, 'index'] )->middleware(['auth'])->name('lenttile');
 Route::post('/create_lenttile',[LentilleController::class,'store']);
