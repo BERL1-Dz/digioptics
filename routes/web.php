@@ -7,6 +7,7 @@ use App\Http\Controllers\MontureController;
 use App\Http\Controllers\FactureController;
 use App\Http\Controllers\CorrectionController;
 use App\Http\Controllers\FournisseurController;
+use App\Http\Controllers\LentilleController;
 use App\Http\Controllers\VerreController;
 
 /*
@@ -32,9 +33,14 @@ Route::get('/dashboard', function () {
 // devis
 Route::get('/devis', [DevisController::class, 'index'] )->middleware(['auth'])->name('devis');
 
+//baki is a cunt !
+// lenttile
+Route::get('/lenttile', [LentilleController::class, 'index'] )->middleware(['auth'])->name('lenttile');
+Route::post('/create_lenttile',[LentilleController::class,'store']);
+Route::get('/lenttileEdit/{id}', [LentilleController::class, 'edit'] )->middleware(['auth'])->name('edit');
+Route::put('/lenttile/update/{id}', [LentilleController::class, 'update'] )->middleware(['auth'])->name('update');
+Route::get('/lenttile/delete/{id}', [LentilleController::class, 'destroy'] )->middleware(['auth'])->name('destroy');
 
-// verre
-Route::get('/verre', [VerreController::class, 'index'] )->middleware(['auth'])->name('verre');
 
 
 // monture
@@ -42,7 +48,7 @@ Route::post('/create_monture',[MontureController::class,'store']);
 Route::get('/monture', [MontureController::class, 'index'] )->middleware(['auth'])->name('monture');
 Route::get('/montureEdit/{id}', [MontureController::class, 'edit'] )->middleware(['auth'])->name('edit');
 Route::put('/monture/update/{id}', [MontureController::class, 'update'] )->middleware(['auth'])->name('update');
-Route::get('/monture/delete/{id}', [MontureController::class, 'destroy'] )->middleware(['auth'])->name('update');
+Route::get('/monture/delete/{id}', [MontureController::class, 'destroy'] )->middleware(['auth'])->name('destroy');
 
 
 
@@ -78,6 +84,8 @@ Route::put('/fournisseur/update/{id}', [FournisseurController::class, 'update'] 
 Route::get('/fournisseur/delete/{id}', [FournisseurController::class, 'destroy'] )->middleware(['auth'])->name('destroy');
 
 // verre
+
+Route::get('/verre', [VerreController::class, 'index'] )->middleware(['auth'])->name('verre');
 Route::post('/create_verre',[VerreController::class, 'store']);
 Route::get('/verreEdit/{id}', [VerreController::class, 'edit'] )->middleware(['auth'])->name('edit');
 Route::put('/verre/update/{id}', [VerreController::class, 'update'] )->middleware(['auth'])->name('update');

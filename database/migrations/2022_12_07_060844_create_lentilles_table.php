@@ -15,12 +15,13 @@ class CreateLentillesTable extends Migration
     {
         Schema::create('lentilles', function (Blueprint $table) {
             $table->id();
-            $table->string('code_lentille');
             $table->integer('code_fournisseur')->unsigned();
             $table->string('fabriquant_lentille');
-            $table->string('type_lentille');
-            $table->string('correction');
-            $table->float('pa_lentille');
+            $table->string('libellé');
+            $table->integer('port');
+            $table->string('teinte');
+            $table->boolean('essie');
+            $table->integer('conditionnement');
             $table->float('pv_lentille');
             $table->timestamps();
         });

@@ -20,6 +20,6 @@ class Fournisseur extends Model
      public function lentilles()
     {
       //
-      return $this->hasMany(Lentille::class);
+      return $this->hasMany(Lentille::class,'code_fournisseur');
     }
 }

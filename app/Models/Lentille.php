@@ -9,9 +9,9 @@ class Lentille extends Model
 {
     use HasFactory;
 
-    public function fournisseur($value='')
+    public function fournisseur()
     {
       // code...
-      return $this->belongsTo(Fournisseur::class);
+      return $this->belongsTo(Fournisseur::class, 'code_fournisseur', 'id');
     }
 }
