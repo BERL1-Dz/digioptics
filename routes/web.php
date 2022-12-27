@@ -33,16 +33,22 @@ Route::get('/dashboard', function () {
 // devis
 Route::get('/devis', [DevisController::class, 'index'] )->middleware(['auth'])->name('devis');
 
-
+//baki is a cunt !
 // lenttile
 Route::get('/lenttile', [LentilleController::class, 'index'] )->middleware(['auth'])->name('lenttile');
 Route::post('/create_lenttile',[LentilleController::class,'store']);
+Route::get('/lenttileEdit/{id}', [LentilleController::class, 'edit'] )->middleware(['auth'])->name('edit');
+Route::put('/lenttile/update/{id}', [LentilleController::class, 'update'] )->middleware(['auth'])->name('update');
+Route::get('/lenttile/delete/{id}', [LentilleController::class, 'destroy'] )->middleware(['auth'])->name('destroy');
+
+
+
 // monture
 Route::post('/create_monture',[MontureController::class,'store']);
 Route::get('/monture', [MontureController::class, 'index'] )->middleware(['auth'])->name('monture');
 Route::get('/montureEdit/{id}', [MontureController::class, 'edit'] )->middleware(['auth'])->name('edit');
 Route::put('/monture/update/{id}', [MontureController::class, 'update'] )->middleware(['auth'])->name('update');
-Route::get('/monture/delete/{id}', [MontureController::class, 'destroy'] )->middleware(['auth'])->name('update');
+Route::get('/monture/delete/{id}', [MontureController::class, 'destroy'] )->middleware(['auth'])->name('destroy');
 
 
 

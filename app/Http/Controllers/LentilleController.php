@@ -72,9 +72,14 @@ class LentilleController extends Controller
      * @param  \App\Models\Lentille  $lentille
      * @return \Illuminate\Http\Response
      */
-    public function edit(Lentille $lentille)
+    public function edit(Lentille $lentille, $id)
     {
         //
+        $fournisseurs = Fournisseur::all();
+        $data = Lentille::find($id);
+        $i = 0;
+        return view("lenttile.edit", compact("data", "fournisseurs","id","i"));
+
     }
 
     /**
@@ -84,9 +89,22 @@ class LentilleController extends Controller
      * @param  \App\Models\Lentille  $lentille
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Lentille $lentille)
+    public function update(Request $request, Lentille $lentille,$id)
     {
-        //
+        //dd($request->all());
+        $lenttile = Lentille::find($id);
+        $lenttile->code_fournisseur = request('code_fournisseur');
+        $lenttile->fabriquant_lentille = request('fabriquant_lentille');
+        $lenttile->libellé = request('libellé');
+        $lenttile->port = request('port');
+        $lenttile->teinte = request('teinte');
+        $lenttile->conditionnement = request('conditionnement');
+        $lenttile->essie = request('essie');
+        $lenttile->pv_lentille = request('pv_lentille');
+
+        $lenttile->update();
+          return redirect('/lenttile');
+
     }
 
     /**
@@ -95,8 +113,12 @@ class LentilleController extends Controller
      * @param  \App\Models\Lentille  $lentille
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Lentille $lentille)
+    public function destroy(Lentille $lentille, $id)
     {
         //
+        $data = Lentille::find($id);
+        $data->delete();
+        return redirect()->back();
+
     }
 }

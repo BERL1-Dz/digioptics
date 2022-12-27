@@ -66,7 +66,7 @@
                           @else
 
                               NON
-                            
+
                           @endif
                         </th>
                         <th scope="row">{{ $lenttile->conditionnement }}</th>
