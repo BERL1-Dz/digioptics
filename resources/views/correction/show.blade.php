@@ -232,7 +232,7 @@
                                         <Li>OG: | {{ $corrections->sph_og ?? 'none' }} |
                                             {{ $corrections->cly_og ?? 'none' }} | {{ $corrections->option ?? 'none' }}
                                         </Li>
-                                        <Li>Monture : {{ $montures->model_monture ?? 'none' }}</Li>
+                                        <Li>Monture : {{ $montures->marque_monture ?? 'none' }}</Li>
                                     </ul>
                                 </div>
                             </div>
@@ -325,7 +325,7 @@
                                         <Li>OG: | {{ $corrections->sph_og ?? 'none' }} |
                                             {{ $corrections->cly_og ?? 'none' }} | {{ $corrections->option ?? 'none' }}
                                         </Li>
-                                        <Li>Monture : {{ $montures->model_monture ?? 'none' }}</Li>
+                                        <Li>Monture : {{ $montures->marque_monture ?? 'none' }}</Li>
                                     </ul>
                                 </div>
                             </div>
