@@ -12,7 +12,7 @@
                                     <h5>{{ $corrections->patient->nom }} {{ $corrections->patient->prenom }}</h5>
                                 </li>
                                 <li>
-                                    <h5>Obsevation: Sans observation </h5>
+                                    <h5>Obsevation: <input placeholder="Sans observation"></h5>
                                 </li>
                                 <li>
                                     <h5>{{ $corrections->patient->phone }}</h5>
@@ -32,190 +32,341 @@
                             </div>
                         </div>
                     </div>
-                    <div class="d-flex justify-content-around" style="border: 1px solid #000">
-                        <div class="self-align-center">
-                            <div class="d-flex">
-                                <div class="d-flex-column tab">
-                                    <div class="cell cell-round">OD</div>
-                                    <div class="cell cell-round">loin</div>
-                                    <div class="cell cell-round">Interm</div>
-                                    <div class="cell cell-round">Pres</div>
+                    @if ($corrections->type_vision === 1)
+                        <div class="d-flex justify-content-around" style="border: 1px solid #000">
+                            <div class="self-align-center">
+                                <div class="d-flex">
+                                    <div class="d-flex-column tab">
+                                        <div class="cell cell-round">OD</div>
+                                        <div class="cell cell-round">Loin</div>
+                                        <div class="cell cell-round">Interm</div>
+                                        <div class="cell cell-round">Pres</div>
+                                    </div>
+                                    <div class="d-flex-column tab">
+                                        <div class="cell cell-round">SPH</div>
+                                        <div class="drop">
+                                            <div class="cell cell-round">{{ $corrections->sph_od }}</div>
+                                        </div>
+                                        <div class="drop">
+                                            <div class="cell cell-round">{{ $corrections->interm ?? 'none' }}</div>
+                                        </div>
+                                        <div class="drop">
+                                            <div class="cell cell-round">{{ $corrections->pres ?? 'none' }}</div>
+                                        </div>
+                                    </div>
+                                    <div class="d-flex-column tab">
+                                        <div class="cell cell-round">CYL</div>
+                                        <div class="drop">
+                                            <div class="cell cell-round">{{ $corrections->cly_od ?? 'none' }}</div>
+                                        </div>
+                                        <div class="drop">
+                                            <div class="cell cell-round">{{ 'none' }}</div>
+                                        </div>
+                                        <div class="drop">
+                                            <div class="cell cell-round">{{ 'none' }}</div>
+                                        </div>
+                                    </div>
+                                    <div class="d-flex-column tab">
+                                        <div class="cell cell-round">AXI</div>
+                                        <div class="drop">
+                                            <div class="cell cell-round">{{ $corrections->axe_od ?? 'none' }}</div>
+                                        </div>
+                                        <div class="drop">
+                                            <div class="cell cell-round">{{ 'none' }}</div>
+                                        </div>
+                                        <div class="drop">
+                                            <div class="cell cell-round">{{ 'none' }}</div>
+                                        </div>
+                                    </div>
+                                    <div class="d-flex-column tab">
+                                        <div class="cell cell-round">Add</div>
+                                        <div class="drop">
+                                            <div class="cell cell-round">{{ $corrections->add_od ?? 'none' }}</div>
+                                        </div>
+                                        <div class="drop">
+                                            <div class="cell cell-round">{{ $corrections->add_od ?? 'none' }}</div>
+                                        </div>
+                                        <div class="drop">
+                                            <div class="cell cell-round">{{ $corrections->add_od ?? 'none' }}</div>
+                                        </div>
+                                    </div>
+                                    <div class="d-flex-column tab">
+                                        <div class="cell cell-round">Prisme</div>
+                                        <div class="drop">
+                                            <div class="cell cell-round">{{ $corrections->prise_od ?? 'none' }}</div>
+                                        </div>
+                                        <div class="drop">
+                                            <div class="cell cell-round">{{ $corrections->prise_od ?? 'none' }}</div>
+                                        </div>
+                                        <div class="drop">
+                                            <div class="cell cell-round">{{ $corrections->prise_od ?? 'none' }}</div>
+                                        </div>
+                                    </div>
+                                    <div class="d-flex-column tab">
+                                        <div class="cell cell-round">Base</div>
+                                        <div class="drop">
+                                            <div class="cell cell-round">{{ $corrections->base ?? 'none' }}</div>
+                                        </div>
+                                        <div class="drop">
+                                            <div class="cell cell-round">{{ $corrections->base ?? 'none' }}</div>
+                                        </div>
+                                        <div class="drop">
+                                            <div class="cell cell-round">{{ $corrections->base ?? 'none' }}</div>
+                                        </div>
+                                    </div>
                                 </div>
-                                <div class="d-flex-column tab">
-                                    <div class="cell cell-round">SPH</div>
-                                    <div class="drop">
-                                        <div class="cell cell-round">{{ $corrections->sph_od }}</div>
+                            </div>
+                            <div class="self-align-center">
+                                <div class="d-flex">
+                                    <div class="d-flex-column tab">
+                                        <div class="cell cell-round">OG</div>
+                                        <div class="cell cell-round">Loin</div>
+                                        <div class="cell cell-round">Interm</div>
+                                        <div class="cell cell-round">Pres</div>
                                     </div>
-                                    <div class="drop">
-                                        <div class="cell cell-round">{{ $corrections->interm ?? 'none' }}</div>
+                                    <div class="d-flex-column tab">
+                                        <div class="cell cell-round">SPH</div>
+                                        <div class="drop">
+                                            <div class="cell cell-round">{{ $corrections->sph_og ?? 'none' }}</div>
+                                        </div>
+                                        <div class="drop">
+                                            <div class="cell cell-round">{{ $corrections->interm ?? 'none' }}</div>
+                                        </div>
+                                        <div class="drop">
+                                            <div class="cell cell-round">{{ $corrections->pres ?? 'none' }}</div>
+                                        </div>
                                     </div>
-                                    <div class="drop">
-                                        <div class="cell cell-round">{{ $corrections->pres ?? 'none' }}</div>
+                                    <div class="d-flex-column tab">
+                                        <div class="cell cell-round">CYL</div>
+                                        <div class="drop">
+                                            <div class="cell cell-round">{{ $corrections->cly_og ?? 'none' }}</div>
+                                        </div>
+                                        <div class="drop">
+                                            <div class="cell cell-round">{{ 'none' }}</div>
+                                        </div>
+                                        <div class="drop">
+                                            <div class="cell cell-round">{{ 'none' }}</div>
+                                        </div>
                                     </div>
-                                </div>
-                                <div class="d-flex-column tab">
-                                    <div class="cell cell-round">CYL</div>
-                                    <div class="drop">
-                                        <div class="cell cell-round">{{ $corrections->cly_od ?? 'none' }}</div>
+                                    <div class="d-flex-column tab">
+                                        <div class="cell cell-round">AXI</div>
+                                        <div class="drop">
+                                            <div class="cell cell-round">{{ $corrections->axe_og ?? 'none' }}</div>
+                                        </div>
+                                        <div class="drop">
+                                            <div class="cell cell-round">{{ 'none' }}</div>
+                                        </div>
+                                        <div class="drop">
+                                            <div class="cell cell-round">{{ 'none' }}</div>
+                                        </div>
                                     </div>
-                                    <div class="drop">
-                                        <div class="cell cell-round">{{ 'none' }}</div>
+                                    <div class="d-flex-column tab">
+                                        <div class="cell cell-round">Add</div>
+                                        <div class="drop">
+                                            <div class="cell cell-round">{{ $corrections->add_og ?? 'none' }}</div>
+                                        </div>
+                                        <div class="drop">
+                                            <div class="cell cell-round">{{ $corrections->add_og ?? 'none' }}</div>
+                                        </div>
+                                        <div class="drop">
+                                            <div class="cell cell-round">{{ $corrections->add_og ?? 'none' }}</div>
+                                        </div>
                                     </div>
-                                    <div class="drop">
-                                        <div class="cell cell-round">{{ 'none' }}</div>
+                                    <div class="d-flex-column tab">
+                                        <div class="cell cell-round">Prisme</div>
+                                        <div class="drop">
+                                            <div class="cell cell-round">{{ 'none' }}</div>
+                                        </div>
+                                        <div class="drop">
+                                            <div class="cell cell-round">{{ 'none' }}</div>
+                                        </div>
+                                        <div class="drop">
+                                            <div class="cell cell-round">{{ 'none' }}</div>
+                                        </div>
                                     </div>
-                                </div>
-                                <div class="d-flex-column tab">
-                                    <div class="cell cell-round">AXI</div>
-                                    <div class="drop">
-                                        <div class="cell cell-round">{{ $corrections->axe_od ?? 'none' }}</div>
-                                    </div>
-                                    <div class="drop">
-                                        <div class="cell cell-round">{{ 'none' }}</div>
-                                    </div>
-                                    <div class="drop">
-                                        <div class="cell cell-round">{{ 'none' }}</div>
-                                    </div>
-                                </div>
-                                <div class="d-flex-column tab">
-                                    <div class="cell cell-round">Add</div>
-                                    <div class="drop">
-                                        <div class="cell cell-round">{{ $corrections->add_od ?? 'none' }}</div>
-                                    </div>
-                                    <div class="drop">
-                                        <div class="cell cell-round">{{ $corrections->add_od ?? 'none' }}</div>
-                                    </div>
-                                    <div class="drop">
-                                        <div class="cell cell-round">{{ $corrections->add_od ?? 'none' }}</div>
-                                    </div>
-                                </div>
-                                <div class="d-flex-column tab">
-                                    <div class="cell cell-round">Prisme</div>
-                                    <div class="drop">
-                                        <div class="cell cell-round">{{ $corrections->prise_od ?? 'none' }}</div>
-                                    </div>
-                                    <div class="drop">
-                                        <div class="cell cell-round">{{ $corrections->prise_od ?? 'none' }}</div>
-                                    </div>
-                                    <div class="drop">
-                                        <div class="cell cell-round">{{ $corrections->prise_od ?? 'none' }}</div>
-                                    </div>
-                                </div>
-                                <div class="d-flex-column tab">
-                                    <div class="cell cell-round">Base</div>
-                                    <div class="drop">
-                                        <div class="cell cell-round">{{ $corrections->base ?? 'none' }}</div>
-                                    </div>
-                                    <div class="drop">
-                                        <div class="cell cell-round">{{ $corrections->base ?? 'none' }}</div>
-                                    </div>
-                                    <div class="drop">
-                                        <div class="cell cell-round">{{ $corrections->base ?? 'none' }}</div>
+                                    <div class="d-flex-column tab">
+                                        <div class="cell cell-round">Base</div>
+                                        <div class="drop">
+                                            <div class="cell cell-round">{{ 'none' }}</div>
+                                        </div>
+                                        <div class="drop">
+                                            <div class="cell cell-round">{{ 'none' }}</div>
+                                        </div>
+                                        <div class="drop">
+                                            <div class="cell cell-round">{{ 'none' }}</div>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
-                        <div class="self-align-center">
-                            <div class="d-flex">
-                                <div class="d-flex-column tab">
-                                    <div class="cell cell-round">OG</div>
-                                    <div class="cell cell-round">Loin</div>
-                                    <div class="cell cell-round">Interm</div>
-                                    <div class="cell cell-round">Pres</div>
+                    @else
+                        <div class="d-flex justify-content-around" style="border: 1px solid #000">
+                            <div class="self-align-center">
+                                <div class="d-flex">
+                                    <div class="d-flex-column tab">
+                                        <div class="cell cell-round">OD</div>
+                                        <div class="cell cell-round">Loin</div>
+                                        <div class="cell cell-round">Interm</div>
+                                        <div class="cell cell-round">Pres</div>
+                                    </div>
+                                    <div class="d-flex-column tab">
+                                        <div class="cell cell-round">SPH</div>
+                                        <div class="drop">
+                                            <div class="cell cell-round">{{ 'none' }}</div>
+                                        </div>
+                                        <div class="drop">
+                                            <div class="cell cell-round">{{ $corrections->interm ?? 'none' }}</div>
+                                        </div>
+                                        <div class="drop">
+                                            <div class="cell cell-round">{{ $corrections->sph_od }}</div>
+                                        </div>
+                                    </div>
+                                    <div class="d-flex-column tab">
+                                        <div class="cell cell-round">CYL</div>
+                                        <div class="drop">
+                                            <div class="cell cell-round">{{ 'none' }}</div>
+                                        </div>
+                                        <div class="drop">
+                                            <div class="cell cell-round">{{ 'none' }}</div>
+                                        </div>
+                                        <div class="drop">
+                                            <div class="cell cell-round">{{ $corrections->cly_od ?? 'none' }}</div>
+                                        </div>
+                                    </div>
+                                    <div class="d-flex-column tab">
+                                        <div class="cell cell-round">AXI</div>
+                                        <div class="drop">
+                                            <div class="cell cell-round">{{ 'none' }}</div>
+                                        </div>
+                                        <div class="drop">
+                                            <div class="cell cell-round">{{ 'none' }}</div>
+                                        </div>
+                                        <div class="drop">
+                                            <div class="cell cell-round">{{ $corrections->axe_od ?? 'none' }}</div>
+                                        </div>
+                                    </div>
+                                    <div class="d-flex-column tab">
+                                        <div class="cell cell-round">Add</div>
+                                        <div class="drop">
+                                            <div class="cell cell-round">{{ $corrections->add_od ?? 'none' }}</div>
+                                        </div>
+                                        <div class="drop">
+                                            <div class="cell cell-round">{{ $corrections->add_od ?? 'none' }}</div>
+                                        </div>
+                                        <div class="drop">
+                                            <div class="cell cell-round">{{ $corrections->add_od ?? 'none' }}</div>
+                                        </div>
+                                    </div>
+                                    <div class="d-flex-column tab">
+                                        <div class="cell cell-round">Prisme</div>
+                                        <div class="drop">
+                                            <div class="cell cell-round">{{ $corrections->prise_od ?? 'none' }}</div>
+                                        </div>
+                                        <div class="drop">
+                                            <div class="cell cell-round">{{ $corrections->prise_od ?? 'none' }}</div>
+                                        </div>
+                                        <div class="drop">
+                                            <div class="cell cell-round">{{ $corrections->prise_od ?? 'none' }}</div>
+                                        </div>
+                                    </div>
+                                    <div class="d-flex-column tab">
+                                        <div class="cell cell-round">Base</div>
+                                        <div class="drop">
+                                            <div class="cell cell-round">{{ $corrections->base ?? 'none' }}</div>
+                                        </div>
+                                        <div class="drop">
+                                            <div class="cell cell-round">{{ $corrections->base ?? 'none' }}</div>
+                                        </div>
+                                        <div class="drop">
+                                            <div class="cell cell-round">{{ $corrections->base ?? 'none' }}</div>
+                                        </div>
+                                    </div>
                                 </div>
-                                <div class="d-flex-column tab">
-                                    <div class="cell cell-round">SPH</div>
-                                    <div class="drop">
-                                        <div class="cell cell-round">{{ $corrections->sph_og ?? 'none' }}</div>
+                            </div>
+                            <div class="self-align-center">
+                                <div class="d-flex">
+                                    <div class="d-flex-column tab">
+                                        <div class="cell cell-round">OG</div>
+                                        <div class="cell cell-round">Loin</div>
+                                        <div class="cell cell-round">Interm</div>
+                                        <div class="cell cell-round">Pres</div>
                                     </div>
-                                    <div class="drop">
-                                        <div class="cell cell-round">{{ $corrections->interm ?? 'none' }}</div>
+                                    <div class="d-flex-column tab">
+                                        <div class="cell cell-round">SPH</div>
+                                        <div class="drop">
+                                            <div class="cell cell-round">{{ $corrections->pres ?? 'none' }}</div>
+                                        </div>
+                                        <div class="drop">
+                                            <div class="cell cell-round">{{ $corrections->interm ?? 'none' }}</div>
+                                        </div>
+                                        <div class="drop">
+                                            <div class="cell cell-round">{{ $corrections->sph_og ?? 'none' }}</div>
+                                        </div>
                                     </div>
-                                    <div class="drop">
-                                        <div class="cell cell-round">{{ $corrections->pres ?? 'none' }}</div>
+                                    <div class="d-flex-column tab">
+                                        <div class="cell cell-round">CYL</div>
+                                        <div class="drop">
+                                            <div class="cell cell-round">{{ 'none' }}</div>
+                                        </div>
+                                        <div class="drop">
+                                            <div class="cell cell-round">{{ 'none' }}</div>
+                                        </div>
+                                        <div class="drop">
+                                            <div class="cell cell-round">{{ $corrections->cly_og ?? 'none' }}</div>
+                                        </div>
                                     </div>
-                                </div>
-                                <div class="d-flex-column tab">
-                                    <div class="cell cell-round">CYL</div>
-                                    <div class="drop">
-                                        <div class="cell cell-round">{{ $corrections->cly_og ?? 'none' }}</div>
+                                    <div class="d-flex-column tab">
+                                        <div class="cell cell-round">AXI</div>
+                                        <div class="drop">
+                                            <div class="cell cell-round">{{ 'none' }}</div>
+                                        </div>
+                                        <div class="drop">
+                                            <div class="cell cell-round">{{ 'none' }}</div>
+                                        </div>
+                                        <div class="drop">
+                                            <div class="cell cell-round">{{ $corrections->axe_og ?? 'none' }}</div>
+                                        </div>
                                     </div>
-                                    <div class="drop">
-                                        <div class="cell cell-round">{{ 'none' }}</div>
+                                    <div class="d-flex-column tab">
+                                        <div class="cell cell-round">Add</div>
+                                        <div class="drop">
+                                            <div class="cell cell-round">{{ $corrections->add_og ?? 'none' }}</div>
+                                        </div>
+                                        <div class="drop">
+                                            <div class="cell cell-round">{{ $corrections->add_og ?? 'none' }}</div>
+                                        </div>
+                                        <div class="drop">
+                                            <div class="cell cell-round">{{ $corrections->add_og ?? 'none' }}</div>
+                                        </div>
                                     </div>
-                                    <div class="drop">
-                                        <div class="cell cell-round">{{ 'none' }}</div>
+                                    <div class="d-flex-column tab">
+                                        <div class="cell cell-round">Prisme</div>
+                                        <div class="drop">
+                                            <div class="cell cell-round">{{ 'none' }}</div>
+                                        </div>
+                                        <div class="drop">
+                                            <div class="cell cell-round">{{ 'none' }}</div>
+                                        </div>
+                                        <div class="drop">
+                                            <div class="cell cell-round">{{ 'none' }}</div>
+                                        </div>
                                     </div>
-                                </div>
-                                <div class="d-flex-column tab">
-                                    <div class="cell cell-round">AXI</div>
-                                    <div class="drop">
-                                        <div class="cell cell-round">{{ $corrections->axe_og ?? 'none' }}</div>
-                                    </div>
-                                    <div class="drop">
-                                        <div class="cell cell-round">{{ 'none' }}</div>
-                                    </div>
-                                    <div class="drop">
-                                        <div class="cell cell-round">{{ 'none' }}</div>
-                                    </div>
-                                </div>
-                                <div class="d-flex-column tab">
-                                    <div class="cell cell-round">Add</div>
-                                    <div class="drop">
-                                        <div class="cell cell-round">{{ $corrections->add_og ?? 'none' }}</div>
-                                    </div>
-                                    <div class="drop">
-                                        <div class="cell cell-round">{{ $corrections->add_og ?? 'none' }}</div>
-                                    </div>
-                                    <div class="drop">
-                                        <div class="cell cell-round">{{ $corrections->add_og ?? 'none' }}</div>
-                                    </div>
-                                </div>
-                                <div class="d-flex-column tab">
-                                    <div class="cell cell-round">Prisme</div>
-                                    <div class="drop">
-                                        <div class="cell cell-round">{{ 'none' }}</div>
-                                    </div>
-                                    <div class="drop">
-                                        <div class="cell cell-round">{{ 'none' }}</div>
-                                    </div>
-                                    <div class="drop">
-                                        <div class="cell cell-round">{{ 'none' }}</div>
-                                    </div>
-                                </div>
-                                <div class="d-flex-column tab">
-                                    <div class="cell cell-round">Base</div>
-                                    <div class="drop">
-                                        <div class="cell cell-round">{{ 'none' }}</div>
-                                    </div>
-                                    <div class="drop">
-                                        <div class="cell cell-round">{{ 'none' }}</div>
-                                    </div>
-                                    <div class="drop">
-                                        <div class="cell cell-round">{{ 'none' }}</div>
+                                    <div class="d-flex-column tab">
+                                        <div class="cell cell-round">Base</div>
+                                        <div class="drop">
+                                            <div class="cell cell-round">{{ 'none' }}</div>
+                                        </div>
+                                        <div class="drop">
+                                            <div class="cell cell-round">{{ 'none' }}</div>
+                                        </div>
+                                        <div class="drop">
+                                            <div class="cell cell-round">{{ 'none' }}</div>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
-                    </div>
-                    <div class="d-flex justify-content-around" style="border: 1px solid #000">
-                        <div class="d-flex self-align-center mt-3 mb-3">
-                            <div class="cellmin1">Ecart </div>
-                            <div class="cellmin2"> {{ $corrections->ecart ?? 'none' }}</div>
-                        </div>
-                        <div class="d-flex self-align-center mt-3 mb-3">
-                            <div class="cellmin1">Hauteur </div>
-                            <div class="cellmin2"> {{ $corrections->hauteur ?? 'none' }}</div>
-                        </div>
-                        <div class="d-flex self-align-center mt-3 mb-3">
-                            <div class="cellmin1">Ecart </div>
-                            <div class="cellmin2"> {{ $corrections->ecart ?? 'none' }}</div>
-                        </div>
-                        <div class="d-flex self-align-center mt-3 mb-3">
-                            <div class="cellmin1">Hauteur </div>
-                            <div class="cellmin2"> {{ $corrections->hauteur ?? 'none' }}</div>
-                        </div>
-                    </div>
+                    @endif
 
                     <Li hidden>{{ $corrections->type_vision }}</Li>
                     @if ($corrections->type_vision === 1)
@@ -232,7 +383,7 @@
                                         <Li>OG: | {{ $corrections->sph_og ?? 'none' }} |
                                             {{ $corrections->cly_og ?? 'none' }} | {{ $corrections->option ?? 'none' }}
                                         </Li>
-                                        <Li>Monture : {{ $montures->marque_monture ?? 'none' }}</Li>
+                                        <Li>Monture : {{ $montures->model_monture ?? 'none' }}</Li>
                                     </ul>
                                 </div>
                             </div>
@@ -290,7 +441,8 @@
                                 <div class="p-2 "style="border: 1px solid #000">
                                     <ul>
                                         <Li>OD: | {{ 'none' }} | {{ 'none' }} | {{ 'none' }} </Li>
-                                        <Li>OG: | {{ 'none' }} | {{ 'none' }} | {{ 'none' }} </Li>
+                                        <Li>OG: | {{ 'none' }} | {{ 'none' }} | {{ 'none' }}
+                                        </Li>
                                         <Li>Monture : {{ 'none' }}</Li>
                                     </ul>
                                 </div>
@@ -325,7 +477,7 @@
                                         <Li>OG: | {{ $corrections->sph_og ?? 'none' }} |
                                             {{ $corrections->cly_og ?? 'none' }} | {{ $corrections->option ?? 'none' }}
                                         </Li>
-                                        <Li>Monture : {{ $montures->marque_monture ?? 'none' }}</Li>
+                                        <Li>Monture : {{ $montures->model_monture ?? 'none' }}</Li>
                                     </ul>
                                 </div>
                             </div>
