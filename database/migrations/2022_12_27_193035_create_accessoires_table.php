@@ -15,7 +15,7 @@ class CreateAccessoiresTable extends Migration
     {
         Schema::create('accessoires', function (Blueprint $table) {
             $table->id();
-            $table->string('modele');
+            $table->string('model');
             $table->integer('prix');
             $table->string('genre');
             $table->string('marque')->nullable();

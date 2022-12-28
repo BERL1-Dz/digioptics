@@ -34,9 +34,6 @@ Route::get('/dashboard', function () {
 
 // devis
 Route::get('/devis', [DevisController::class, 'index'] )->middleware(['auth'])->name('devis');
-Route::get('/accessoire', [AccessoireController::class, 'index'] )->middleware(['auth'])->name('accessoire');
-
-
 
 // Lentille
 Route::get('/lentille', [LentilleController::class, 'index'] )->middleware(['auth'])->name('lentille');
@@ -46,16 +43,12 @@ Route::put('/lentille/update/{id}', [LentilleController::class, 'update'] )->mid
 Route::get('/lentille/delete/{id}', [LentilleController::class, 'destroy'] )->middleware(['auth'])->name('destroy');
 
 
-
 // monture
 Route::post('/create_monture',[MontureController::class,'store']);
 Route::get('/monture', [MontureController::class, 'index'] )->middleware(['auth'])->name('monture');
 Route::get('/montureEdit/{id}', [MontureController::class, 'edit'] )->middleware(['auth'])->name('edit');
 Route::put('/monture/update/{id}', [MontureController::class, 'update'] )->middleware(['auth'])->name('update');
 Route::get('/monture/delete/{id}', [MontureController::class, 'destroy'] )->middleware(['auth'])->name('destroy');
-
-
-
 
 
 // correction
@@ -100,6 +93,15 @@ Route::get('/verre/delete/{id}', [VerreController::class, 'destroy'] )->middlewa
 
 Route::get('/categorie', [CategoryController::class, 'index'] )->middleware(['auth'])->name('categorie');
 Route::post('/create_categorie',[CategoryController::class, 'store']);
+
+// accessoir
+
+Route::get('/accessoire', [AccessoireController::class, 'index'] )->middleware(['auth'])->name('accessoire');
+Route::post('/create_accessoire',[AccessoireController::class, 'store']);
+Route::get('/accessoireEdit/{id}', [AccessoireController::class, 'edit'] )->middleware(['auth'])->name('edit');
+Route::put('/accessoire/update/{id}', [AccessoireController::class, 'update'] )->middleware(['auth'])->name('update');
+Route::get('/accessoire/delete/{id}', [AccessoireController::class, 'destroy'] )->middleware(['auth'])->name('update');
+
 
 
 require __DIR__.'/auth.php';

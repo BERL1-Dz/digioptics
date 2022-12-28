@@ -43,25 +43,32 @@
                   <tr class="text-nowrap">
                     <th>#</th>
                     <th>Nomination</th>
+                    <th>Actions</th>
                   </tr>
                 </thead>
-                <tbody>
-                  <tr>
-                    <th scope="row">1</th>
-                    <td>Table cell</td>
+                <tbody class="table-border-bottom-0">
+                    @foreach ($categories as $categorie)
+                        <tr>
+                            <th scope="row">{{ $categorie->id }}</th>
+                            <th scope="row">{{ $categorie->nomination }}</th>
 
-
-                  </tr>
-                  <tr>
-                    <th scope="row">2</th>
-                    <td>Table cell</td>
-
-
-                  </tr>
-                  <tr>
-                    <th scope="row">3</th>
-                    <td>Table cell</td>
-                  </tr>
+                            <td>
+                                <div class="dropdown">
+                                    <button type="button" class="btn p-0 dropdown-toggle hide-arrow"
+                                        data-bs-toggle="dropdown" aria-expanded="false">
+                                        <i class="bx bx-dots-vertical-rounded"></i>
+                                    </button>
+                                    <div class="dropdown-menu" style="">
+                                        <a class="dropdown-item" href=""><i class="bx bx-show me-1"></i> Show</a>
+                                        <a class="dropdown-item" href=""><i
+                                                class="bx bx-edit-alt me-1"></i> Edit</a>
+                                        <a class="dropdown-item" href=""><i
+                                                class="bx bx-trash me-1"></i>Delete</a>
+                                    </div>
+                                </div>
+                            </td>
+                        </tr>
+                    @endforeach
                 </tbody>
               </table>
             </div>

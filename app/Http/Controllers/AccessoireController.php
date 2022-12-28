@@ -2,8 +2,8 @@
 
 namespace App\Http\Controllers;
 use Illuminate\Http\Request;
+use App\Models\Category;
 use App\Models\Accessoire;
-use Illuminate\Http\Category;
 use Illuminate\Support\Facades\DB;
 class AccessoireController extends Controller
 {
@@ -15,7 +15,7 @@ class AccessoireController extends Controller
     public function index()
     {
         //
-        
+
         $accessoires = Accessoire::all();
         $categories = Category::all();
         return view('accessoire.index', compact('accessoires','categories'));
@@ -39,7 +39,17 @@ class AccessoireController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        //dd($request->all());
+        $accessoire = new Accessoire();
+
+        $accessoire->categorie_id = request('categorie_id');
+        $accessoire->model = request('model');
+        $accessoire->marque = request('marque');
+        $accessoire->prix = request('prix');
+        $accessoire->genre = request('genre');
+
+        $accessoire->save();
+        return back();
     }
 
     /**
@@ -59,9 +69,13 @@ class AccessoireController extends Controller
      * @param  \App\Models\Accessoire  $accessoire
      * @return \Illuminate\Http\Response
      */
-    public function edit(Accessoire $accessoire)
+    public function edit(Accessoire $accessoire, $id)
     {
         //
+        $categories = Category::all();
+        $data = Accessoire::find($id);
+        $i = 0;
+        return view("accessoire.edit", compact("data", "categories","id","i"));
     }
 
     /**
@@ -71,9 +85,20 @@ class AccessoireController extends Controller
      * @param  \App\Models\Accessoire  $accessoire
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Accessoire $accessoire)
+    public function update(Request $request, Accessoire $accessoire,$id)
     {
-        //
+        //dd($request->all());
+
+        $accessoire = Accessoire::find($id);
+
+        $accessoire->categorie_id = request('categorie_id');
+        $accessoire->model = request('model');
+        $accessoire->marque = request('marque');
+        $accessoire->prix = request('prix');
+        $accessoire->genre = request('genre');
+
+        $accessoire->update();
+        return redirect('/accessoire');
     }
 
     /**
@@ -82,8 +107,12 @@ class AccessoireController extends Controller
      * @param  \App\Models\Accessoire  $accessoire
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Accessoire $accessoire)
+    public function destroy(Accessoire $accessoire, $id)
     {
         //
+        $data = Accessoire::find($id);
+        $data->delete();
+        return redirect()->back();
+
     }
 }

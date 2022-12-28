@@ -1,7 +1,7 @@
 <div class="row">
     <div class="col">
-        <label for="emailWithTitle" class="form-label">Code Fournisseur:</label>
-        <select name="code_fournisseur" class="form-control" required>
+        <label for="emailWithTitle" class="form-label">Categorie:</label>
+        <select name="categorie_id" class="form-control" required>
             @foreach ($categories as $categorie)
                 <option value="{{ $categorie->id }}">{{ $categorie->nomination }}</option>
             @endforeach
@@ -11,37 +11,29 @@
 
 <div class="row mt-1 g-2">
     <div class="col mt-1">
-        <label for="emailWithTitle" class="form-label">Fabricant: </label>
-        <input type="text" class="form-control" placeholder="BNLFR" required name="fabriquant_lentille" />
+        <label for="emailWithTitle" class="form-label">Model: </label>
+        <input type="text" class="form-control" placeholder="essuie" required name="model" />
     </div>
     <div class="col mt-1">
-        <label for="dobWithTitle" class="form-label">Libellé: </label>
-        <input type="text" id="dobWithTitle" class="form-control" placeholder="PureVision 6L" required name="libellé" />
+        <label for="dobWithTitle" class="form-label">Marque: </label>
+        <input type="text" id="dobWithTitle" class="form-control" placeholder="PureVision 6L" required name="marque" />
     </div>
 </div>
 
 <div class="row mt-1 g-2">
     <div class="col mt-1">
-        <label for="emailWithTitle" class="form-label">Port/Jour: </label>
-        <input type="number" class="form-control" placeholder="1" required name="port" />
+        <label for="emailWithTitle" class="form-label">Prix: </label>
+        <input type="number" class="form-control" placeholder="1" required name="prix" />
     </div>
-    <div class="col mt-1">
-        <label for="dobWithTitle" class="form-label">Teinte :</label>
-        <input type="text" id="dobWithTitle" class="form-control" placeholder="GREEN" name="teinte" />
-    </div>
-    <div class="col mt-1">
-        <label for="dobWithTitle" class="form-label">Conditionnement :</label>
-        <input type="number" id="dobWithTitle" class="form-control" placeholder="90" name="conditionnement" />
-    </div>
+
 </div>
 
 <div class="row mt-1 g-2">
-    <div class="col mt-1">
-        <label for="emailWithTitle" class="form-label">Essie: </label>
-        <input type="text" class="form-control" placeholder="OUI" required name="essie" />
-    </div>
-    <div class="col mt-1">
-        <label for="dobWithTitle" class="form-label">Pv_Lentille</label>
-        <input type="number" id="dobWithTitle" class="form-control" placeholder="Pv_lentille" required name="pv_lentille" />
-    </div>
+  <div class="col mt-1">
+      <label for="emailWithTitle" class="form-label"> Gener: </label>
+      <select name="genre" class="form-control">
+          <option value="Homme">Homme</option>
+          <option value="Homme">Femme</option>
+      </select>
+  </div>
 </div>

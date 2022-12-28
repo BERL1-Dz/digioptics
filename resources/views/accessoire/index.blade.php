@@ -17,7 +17,7 @@
                             <button type="button" class="btn-close" data-bs-dismiss="modal"
                                 aria-label="Close"></button>
                         </div>
-                        <form action="#" method="post" enctype="multipart/form-data">
+                        <form action="{{ url('create_accessoire') }}" method="post" enctype="multipart/form-data">
                           {{csrf_field()}}
                         <div class="modal-body">
                           @include('accessoire.form')
@@ -26,7 +26,7 @@
                             <button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal">
                                 Close
                             </button>
-                            <button type="button" class="btn btn-primary">Save changes</button>
+                            <button type="submit" class="btn btn-primary">Save changes</button>
                         </div>
                       </form>
                     </div>
@@ -42,42 +42,43 @@
                 <thead>
                   <tr class="text-nowrap">
                     <th>#</th>
-                    <th>Table heading</th>
-                    <th>Table heading</th>
-                    <th>Table heading</th>
-                    <th>Table heading</th>
-                    <th>Table heading</th>
+                    <th>Categorie</th>
+                    <th>Model</th>
+                    <th>Marque</th>
+                    <th>Genre</th>
+                    <th>Prix</th>
+                    <th>Action</th>
 
                   </tr>
                 </thead>
                 <tbody>
+                  @foreach ($accessoires as $accessoire)
                   <tr>
-                    <th scope="row">1</th>
-                    <td>Table cell</td>
-                    <td>Table cell</td>
-                    <td>Table cell</td>
-                    <td>Table cell</td>
-                    <td>Table cell</td>
+                    <th scope="row">{{$accessoire->id}}</th>
+                    <td>{{ $accessoire->categorie->nomination ?? 'none' }}</td>
+                    <td>{{$accessoire->model}}</td>
+                    <td>{{$accessoire->marque}}</td>
+                    <td>{{$accessoire->genre}}</td>
+                    <td>{{$accessoire->prix}}</td>
+                    <td>
+                        <div class="dropdown">
+                            <button type="button" class="btn p-0 dropdown-toggle hide-arrow"
+                                data-bs-toggle="dropdown" aria-expanded="false">
+                                <i class="bx bx-dots-vertical-rounded"></i>
+                            </button>
+                            <div class="dropdown-menu" style="">
+                                <a class="dropdown-item" href=""><i class="bx bx-show me-1"></i> Show</a>
+                                <a class="dropdown-item" href="accessoireEdit/{{ $accessoire['id'] }}"><i
+                                        class="bx bx-edit-alt me-1"></i> Edit</a>
+                                <a class="dropdown-item" href="accessoire/delete/{{ $accessoire['id'] }}"><i
+                                        class="bx bx-trash me-1"></i>Delete</a>
+                            </div>
+                        </div>
+                    </td>
 
                   </tr>
-                  <tr>
-                    <th scope="row">2</th>
-                    <td>Table cell</td>
-                    <td>Table cell</td>
-                    <td>Table cell</td>
-                    <td>Table cell</td>
-                    <td>Table cell</td>
+                  @endforeach
 
-                  </tr>
-                  <tr>
-                    <th scope="row">3</th>
-                    <td>Table cell</td>
-                    <td>Table cell</td>
-                    <td>Table cell</td>
-                    <td>Table cell</td>
-                    <td>Table cell</td>
-
-                  </tr>
                 </tbody>
               </table>
             </div>
