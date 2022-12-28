@@ -98,5 +98,7 @@ Route::get('/verre/delete/{id}', [VerreController::class, 'destroy'] )->middlewa
 // categorie
 
 Route::get('/categorie', [CategoryController::class, 'index'] )->middleware(['auth'])->name('categorie');
+Route::post('/create_categorie',[CategoryController::class, 'store']);
+
 
 require __DIR__.'/auth.php';
