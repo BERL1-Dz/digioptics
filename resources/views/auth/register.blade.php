@@ -57,8 +57,8 @@
 
                             <div class="mb-3">
                                 <div class="form-check">
-                                    <input class="form-check-input" type="checkbox" id="terms-conditions"
-                                        name="terms" />
+                                    <input class="form-check-input" type="checkbox" id="terms-conditions" name="terms"
+                                        required />
                                     <label class="form-check-label" for="terms-conditions">
                                         J'accepte
                                         <a href="javascript:void(0);">Les termes et les conditions d'utilisation de

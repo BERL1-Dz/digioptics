@@ -63,6 +63,7 @@ Route::get('/correction', [CorrectionController::class, 'index'] )->middleware([
 Route::get('/correctionShow/{id}', [CorrectionController::class, 'show'] )->middleware(['auth'])->name('show');
 Route::post('/correction_pres',[CorrectionController::class, 'vision_p']);
 Route::post('/correction_loin',[CorrectionController::class, 'vision_l']);
+Route::post('/correction_lentille',[CorrectionController::class, 'lentille']);
 
 
 //facture

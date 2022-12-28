@@ -92,9 +92,17 @@ class CorrectionController extends Controller
         $correction->cly_og = request('cly_og');
         $correction->axe_od = request('axe_od');
         $correction->axe_og = request('axe_og');
-        $correction->option = request('option');
-        $correction->monture_id = request('monture_id');
-        $correction->PD = request('PD');
+        $correction->bc_od = request('bc_od');//new
+        $correction->bc_og = request('bc_og');//new
+        $correction->dia_od = request('dia_od');//new
+        $correction->dia_og = request('dia_og');//new
+        $correction->durabilite = request('durabilite');//new
+        $correction->confort = request('confort');//new
+        $correction->option_supp = request('option_supp');//new
+        $correction->couleurs = request('couleurs');//new
+        $correction->niveau_trans = request('niveau_trans');//new
+        $correction->types = request('types');//new
+        $correction->quantite = request('quantite'); //new
 
         $correction->save();
         return back();

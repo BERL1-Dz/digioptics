@@ -136,6 +136,7 @@
                         <tr class="text-nowrap">
                             <th>#</th>
                             <th>Patient</th>
+                            <th>Correction</th>
                             <th>Date</th>
                             <th>Sph_Od</th>
                             <th>Sph_Og</th>
@@ -153,6 +154,13 @@
                             <tr>
                                 <th scope="row">{{ $correction->id }}</th>
                                 <td>{{ $correction->patient->nom }} {{ $correction->patient->prenom }}</td>
+                                <td>
+                                    @if ($correction->type_vision === 1)
+                                        {{ 'Vision de loin' }}
+                                    @elseif($correction->type_vision === 2)
+                                        {{ 'Vision de pres' }}@else{{ 'Lentilles' }}
+                                    @endif
+                                </td>
                                 <td>{{ $correction->date }}</td>
                                 <td>{{ $correction->sph_od }}</td>
                                 <td>{{ $correction->sph_og }}</td>
@@ -160,7 +168,7 @@
                                 <td>{{ $correction->cly_og }}</td>
                                 <td>{{ $correction->axe_od }}</td>
                                 <td>{{ $correction->axe_og }}</td>
-                                <td>{{ $correction->option }}</td>
+                                <td>{{ $correction->option ?? 'Sans' }}</td>
                                 <td>
                                     <div class="dropdown">
                                         <button type="button" class="btn p-0 dropdown-toggle hide-arrow"

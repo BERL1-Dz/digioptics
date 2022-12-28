@@ -20,8 +20,8 @@
     <div class="d-flex">
         <div class="d-flex-column tab">
             <div class="cell cell-round"></div>
-            <div class="cell cell-round">Right (OD)</div>
-            <div class="cell cell-round">Left (OS)</div>
+            <div class="cell cell-round">Droite (OD)</div>
+            <div class="cell cell-round">Gauche (OS)</div>
         </div>
         <div class="d-flex-column tab">
             <div class="cell cell-round">Sphere (SPH)</div>
@@ -133,7 +133,7 @@
     </div>
     <br>
     <select name="option" class="form-select" aria-label="Default select example">
-        <option selected>Choisir votre type de verre</option>
+        <option selected value ='sans'>Choisir votre type de verre</option>
         <option value="HC">HC</option>
         <option value="HMC">HMC</option>
         <option value="BB">BB</option>

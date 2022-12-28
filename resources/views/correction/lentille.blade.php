@@ -112,7 +112,7 @@
         <div class="d-flex-column tab">
             <div class="cell cell-round">BC (BC)</div>
             <div class="drop">
-                <select name="add_od" id="largeSelect" class="form-select form-select-custom form-select-lg">
+                <select name="bc_od" id="largeSelect" class="form-select form-select-custom form-select-lg">
                     <option>None</option>
                     @for ($j = 8.0; $j <= 10.0; $j = $j + 0.25)
                         <option value="+{{ $j }}">+{{ $j }}</option>
@@ -120,7 +120,7 @@
                 </select>
             </div>
             <div class="drop">
-                <select name="add_og" id="largeSelect" class="form-select form-select-custom form-select-lg">
+                <select name="bc_og" id="largeSelect" class="form-select form-select-custom form-select-lg">
                     <option>None</option>
                     @for ($j = 8.0; $j <= 10.0; $j = $j + 0.25)
                         <option value="+{{ $j }}">+{{ $j }}</option>
@@ -131,7 +131,7 @@
         <div class="d-flex-column tab">
             <div class="cell cell-round">DIA (DIA)</div>
             <div class="drop">
-                <select name="add_od" id="largeSelect" class="form-select form-select-custom form-select-lg">
+                <select name="dia_od" id="largeSelect" class="form-select form-select-custom form-select-lg">
                     <option>None</option>
                     @for ($j = 13.0; $j <= 15.0; $j = $j + 0.25)
                         <option value="+{{ $j }}">+{{ $j }}</option>
@@ -139,7 +139,7 @@
                 </select>
             </div>
             <div class="drop">
-                <select name="add_og" id="largeSelect" class="form-select form-select-custom form-select-lg">
+                <select name="dia_og" id="largeSelect" class="form-select form-select-custom form-select-lg">
                     <option>None</option>
                     @for ($j = 13.0; $j <= 15.0; $j = $j + 0.25)
                         <option value="+{{ $j }}">+{{ $j }}</option>
@@ -153,7 +153,7 @@
     <div class='row'>
         <div class='col mb-0'>
             <label for="nameExLarge" class="form-label">Durabilite</label>
-            <select name="option" class="form-select" aria-label="Default select example">
+            <select name="durabilite" class="form-select" aria-label="Default select example" required>
                 <option selected>Choisir votre durabilte</option>
                 <option value="1">1 Jour</option>
                 <option value="30">30 Jours</option>
@@ -164,7 +164,7 @@
     <div class="row">
         <div class='col mb-0'>
             <label for="nameExLarge" class="form-label">Confort</label>
-            <select name="option" class="form-select" aria-label="Default select example">
+            <select name="confort" class="form-select" aria-label="Default select example" required>
                 <option selected>Choisir votre type confort</option>
                 <option value="Standard">Standard</option>
                 <option value="Super Doux">Super Doux</option>
@@ -174,7 +174,7 @@
     <div class="row">
         <div class='col mb-0'>
             <label for="nameExLarge" class="form-label">Style</label>
-            <select name="option" class="form-select" aria-label="Default select example">
+            <select name="style" class="form-select" aria-label="Default select example" required>
                 <option selected>Choisir votre style</option>
                 <option value="Customiser">Customiser</option>
                 <option value="Naturel">Naturel</option>
@@ -183,9 +183,9 @@
     </div>
     <div class="row">
         <div class='col mb-0'>
-            <label for="nameExLarge" class="form-label">Options</label>
-            <select name="option" class="form-select" aria-label="Default select example">
-                <option selected>Choisir votre options</option>
+            <label for="nameExLarge" class="form-label">Options supplementaires</label>
+            <select name="option_supp" class="form-select" aria-label="Default select example">
+                <option selected value="sans">Choisir votre options</option>
                 <option value="sans">Sans</option>
                 <option value="Reactive UV">Reactive UV</option>
                 <option value="lest a prisme">lest à prisme</option>
@@ -195,8 +195,8 @@
     <div class="row">
         <div class='col mb-0'>
             <label for="nameExLarge" class="form-label">Couleurs</label>
-            <select name="option" class="form-select" aria-label="Default select example">
-                <option selected>Choisir votre couleur</option>
+            <select name="couleurs" class="form-select" aria-label="Default select example">
+                <option selected value="sans">Choisir votre couleur</option>
                 <option value="sans">Sans</option>
                 <option value="Aqua">Aqua</option>
                 <option value="Bleu">Bleu</option>
@@ -215,8 +215,8 @@
     <div class="row">
         <div class='col mb-0'>
             <label for="nameExLarge" class="form-label">Niveau de transparence</label>
-            <select name="option" class="form-select" aria-label="Default select example">
-                <option selected>Choisir votre niveau de transparence</option>
+            <select name="niveau_trans" class="form-select" aria-label="Default select example">
+                <option selected value='sans'>Choisir votre niveau de transparence</option>
                 <option value="sans">Sans</option>
                 <option value="améliorant">améliorant</option>
                 <option value="vibrant">vibrant</option>
@@ -228,8 +228,8 @@
     <div class="row">
         <div class='col mb-0'>
             <label for="nameExLarge" class="form-label">Types</label>
-            <select name="option" class="form-select" aria-label="Default select example">
-                <option selected>Choisir votre type</option>
+            <select name="types" class="form-select" aria-label="Default select example">
+                <option selected value='sans'>Choisir votre type</option>
                 <option value="sans">Sans</option>
                 <option value="prescription">Prescription</option>
                 <option value="toric">tyic</option>
@@ -239,7 +239,7 @@
     <div class="row">
         <div class='col mb-0'>
             <label for="nameExLarge" class="form-label">Quantite</label>
-            <select name="option" class="form-select" aria-label="Default select example">
+            <select name="quantite" class="form-select" aria-label="Default select example" required>
                 <option selected>Choisir votre quantite</option>
                 <option value="2 par pack">2 par pack</option>
                 <option value="10 par pack">10 par pack</option>
