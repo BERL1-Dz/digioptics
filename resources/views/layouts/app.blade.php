@@ -124,7 +124,7 @@
                     </li>
                     <!-- Extended components -->
                     <li class="menu-item">
-                        <a href="{{ url('/lenttile') }}" class="menu-link">
+                        <a href="{{ url('/lentille') }}" class="menu-link">
                             <i class="menu-icon tf-icons bx bx-circle"></i>
                             <div data-i18n="Basic">Lentilles</div>
                         </a>

@@ -37,12 +37,12 @@ Route::get('/accessoire', [AccessoireController::class, 'index'] )->middleware([
 
 
 
-// lenttile
-Route::get('/lenttile', [LentilleController::class, 'index'] )->middleware(['auth'])->name('lenttile');
-Route::post('/create_lenttile',[LentilleController::class,'store']);
-Route::get('/lenttileEdit/{id}', [LentilleController::class, 'edit'] )->middleware(['auth'])->name('edit');
-Route::put('/lenttile/update/{id}', [LentilleController::class, 'update'] )->middleware(['auth'])->name('update');
-Route::get('/lenttile/delete/{id}', [LentilleController::class, 'destroy'] )->middleware(['auth'])->name('destroy');
+// Lentille
+Route::get('/lentille', [LentilleController::class, 'index'] )->middleware(['auth'])->name('lentille');
+Route::post('/create_lentille',[LentilleController::class,'store']);
+Route::get('/lentilleEdit/{id}', [LentilleController::class, 'edit'] )->middleware(['auth'])->name('edit');
+Route::put('/lentille/update/{id}', [LentilleController::class, 'update'] )->middleware(['auth'])->name('update');
+Route::get('/lentille/delete/{id}', [LentilleController::class, 'destroy'] )->middleware(['auth'])->name('destroy');
 
 
 

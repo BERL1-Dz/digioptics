@@ -1,11 +1,12 @@
 @extends('layouts.app')
+
 @section('content')
     <div class="container-xxl flex-grow-1 container-p-y">
         <!-- Vertically Centered Modal -->
 
         <!-- Button trigger modal -->
         <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#modalCenter">
-            Nouvelle Monture
+            Nouveau Lentilles
         </button>
 
         <!-- Modal -->
@@ -13,13 +14,13 @@
             <div class="modal-dialog modal-dialog-centered" role="document">
                 <div class="modal-content">
                     <div class="modal-header">
-                        <h5 class="modal-title" id="modalCenterTitle">Formulaire Monture</h5>
+                        <h5 class="modal-title" id="modalCenterTitle">Formulaire lentilles</h5>
                         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                     </div>
-                    <form action="{{ url('create_monture') }}" method="post" enctype="multipart/form-data">
+                    <form action="{{ url('create_lentille') }}" method="post" enctype="multipart/form-data">
                         @csrf
                         <div class="modal-body">
-                            @include('monture.form')
+                            @include('lentille.form')
                         </div>
                         <div class="modal-footer">
                             <button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal">
@@ -37,37 +38,35 @@
                 <thead>
                     <tr>
                         <th>Id</th>
-                        <th>Code Monture</th>
-                        <th>Code Fournisseur</th>
-                        <th>Nom Fournisseur</th>
-                        <th>Taille</th>
-                        <th>Model</th>
-                        <th>Type</th>
-                        <th>Coloris</th>
-                        <th>Coloris Libellé</th>
-                        <th>Style</th>
-                        <th>Genre</th>
-                        <th>Prix d'achat </th>
+                        <th>Fournisseur</th>
+                        <th>Fabricant</th>
+                        <th>Libellé</th>
+                        <th>Port</th>
+                        <th>Teinte</th>
+                        <th>Essie</th>
+                        <th>Conditionnement</th>
                         <th>Prix de vents</th>
                         <th>Actions</th>
                     </tr>
                 </thead>
                 <tbody class="table-border-bottom-0">
-                    @foreach ($montures as $monture)
+                    @foreach ($lentilles as $lentille)
                         <tr>
-                            <th scope="row">{{ $monture->id }}</th>
-                            <th scope="row">{{ $monture->code_monture }}</th>
-                            <th scope="row">{{ $monture->fournisseurs->code_fournisseur }}</th>
-                            <th scope="row">{{ $monture->fournisseurs->nom }}</th>
-                            <th scope="row">{{ $monture->taille_monture }}</th>
-                            <th scope="row">{{ $monture->model_monture }}</th>
-                            <th scope="row">{{ $monture->type_monture }}</th>
-                            <th scope="row">{{ $monture->coloris }}</th>
-                            <th scope="row">{{ $monture->coloris_libellé }}</th>
-                            <th scope="row">{{ $monture->style_monture }}</th>
-                            <th scope="row">{{ $monture->genre_monture }}</th>
-                            <th scope="row">{{ $monture->pa_monture }}</th>
-                            <th scope="row">{{ $monture->pv_monture }}</th>
+                            <th scope="row">{{ $lentille->id }}</th>
+                            <th scope="row">{{ $lentille->fournisseur->nom }}</th>
+                            <th scope="row">{{ $lentille->fabriquant_lentille }}</th>
+                            <th scope="row">{{ $lentille->libellé }}</th>
+                            <th scope="row">{{ $lentille->port }}</th>
+                            <th scope="row">{{ $lentille->teinte }}</th>
+                            <th scope="row">
+                                @if ($lentille->essie === 1)
+                                    OUI
+                                @else
+                                    NON
+                                @endif
+                            </th>
+                            <th scope="row">{{ $lentille->conditionnement }}</th>
+                            <th scope="row">{{ $lentille->pv_lentille }}</th>
                             <td>
                                 <div class="dropdown">
                                     <button type="button" class="btn p-0 dropdown-toggle hide-arrow"
@@ -76,9 +75,9 @@
                                     </button>
                                     <div class="dropdown-menu" style="">
                                         <a class="dropdown-item" href=""><i class="bx bx-show me-1"></i> Show</a>
-                                        <a class="dropdown-item" href="montureEdit/{{ $monture['id'] }}"><i
+                                        <a class="dropdown-item" href="lentilleEdit/{{ $lentille['id'] }}"><i
                                                 class="bx bx-edit-alt me-1"></i> Edit</a>
-                                        <a class="dropdown-item" href="monture/delete/{{ $monture['id'] }}"><i
+                                        <a class="dropdown-item" href="lentille/delete/{{ $lentille['id'] }}"><i
                                                 class="bx bx-trash me-1"></i>Delete</a>
                                     </div>
                                 </div>

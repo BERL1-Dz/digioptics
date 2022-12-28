@@ -15,10 +15,10 @@ class LentilleController extends Controller
     public function index()
     {
         //
-        $lenttiles = Lentille::all();
+        $lentilles = Lentille::all();
         $fournisseurs = Fournisseur::all();
 
-        return view('lenttile.index', compact('lenttiles','fournisseurs'));
+        return view('lentille.index', compact('lentilles','fournisseurs'));
     }
 
     /**
@@ -41,17 +41,17 @@ class LentilleController extends Controller
     {
         //dd($request->all());
 
-        $lenttile = new Lentille;
-        $lenttile->code_fournisseur = request('code_fournisseur');
-        $lenttile->fabriquant_lentille = request('fabriquant_lentille');
-        $lenttile->libellé = request('libellé');
-        $lenttile->port = request('port');
-        $lenttile->teinte = request('teinte');
-        $lenttile->conditionnement = request('conditionnement');
-        $lenttile->essie = request('essie');
-        $lenttile->pv_lentille = request('pv_lentille');
+        $Lentille = new Lentille;
+        $Lentille->code_fournisseur = request('code_fournisseur');
+        $Lentille->fabriquant_lentille = request('fabriquant_lentille');
+        $Lentille->libellé = request('libellé');
+        $Lentille->port = request('port');
+        $Lentille->teinte = request('teinte');
+        $Lentille->conditionnement = request('conditionnement');
+        $Lentille->essie = request('essie');
+        $Lentille->pv_lentille = request('pv_lentille');
 
-        $lenttile->save();
+        $Lentille->save();
         return back();
     }
 
@@ -78,7 +78,7 @@ class LentilleController extends Controller
         $fournisseurs = Fournisseur::all();
         $data = Lentille::find($id);
         $i = 0;
-        return view("lenttile.edit", compact("data", "fournisseurs","id","i"));
+        return view("Lentille.edit", compact("data", "fournisseurs","id","i"));
 
     }
 
@@ -92,18 +92,18 @@ class LentilleController extends Controller
     public function update(Request $request, Lentille $lentille,$id)
     {
         //dd($request->all());
-        $lenttile = Lentille::find($id);
-        $lenttile->code_fournisseur = request('code_fournisseur');
-        $lenttile->fabriquant_lentille = request('fabriquant_lentille');
-        $lenttile->libellé = request('libellé');
-        $lenttile->port = request('port');
-        $lenttile->teinte = request('teinte');
-        $lenttile->conditionnement = request('conditionnement');
-        $lenttile->essie = request('essie');
-        $lenttile->pv_lentille = request('pv_lentille');
+        $Lentille = Lentille::find($id);
+        $Lentille->code_fournisseur = request('code_fournisseur');
+        $Lentille->fabriquant_lentille = request('fabriquant_lentille');
+        $Lentille->libellé = request('libellé');
+        $Lentille->port = request('port');
+        $Lentille->teinte = request('teinte');
+        $Lentille->conditionnement = request('conditionnement');
+        $Lentille->essie = request('essie');
+        $Lentille->pv_lentille = request('pv_lentille');
 
-        $lenttile->update();
-          return redirect('/lenttile');
+        $Lentille->update();
+          return redirect('/Lentille');
 
     }
 
