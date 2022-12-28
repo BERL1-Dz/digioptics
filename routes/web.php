@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\PatientController;
 use App\Http\Controllers\AccessoireController;
 use App\Http\Controllers\DevisController;
+use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\MontureController;
 use App\Http\Controllers\FactureController;
 use App\Http\Controllers\CorrectionController;
@@ -33,7 +34,7 @@ Route::get('/dashboard', function () {
 
 // devis
 Route::get('/devis', [DevisController::class, 'index'] )->middleware(['auth'])->name('devis');
-Route::get('/accessoire', [AccessoireController::class, 'index'] )->middleware(['auth'])->name('devis');
+Route::get('/accessoire', [AccessoireController::class, 'index'] )->middleware(['auth'])->name('accessoire');
 
 
 
@@ -94,5 +95,8 @@ Route::get('/verreEdit/{id}', [VerreController::class, 'edit'] )->middleware(['a
 Route::put('/verre/update/{id}', [VerreController::class, 'update'] )->middleware(['auth'])->name('update');
 Route::get('/verre/delete/{id}', [VerreController::class, 'destroy'] )->middleware(['auth'])->name('update');
 
+// categorie
+
+Route::get('/categorie', [CategoryController::class, 'index'] )->middleware(['auth'])->name('categorie');
 
 require __DIR__.'/auth.php';

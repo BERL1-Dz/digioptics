@@ -111,6 +111,13 @@
                                     </div>
                                 </a>
                             </li>
+
+                            <li class="menu-item">
+                                <a href="{{ url('/categorie') }}" class="menu-link">
+                                    <div data-i18n="Input groups">Categorie
+                                    </div>
+                                </a>
+                            </li>
                         </ul>
                     </li>
                     <!-- Components -->

@@ -1,10 +1,10 @@
 <?php
 
 namespace App\Http\Controllers;
-
-use App\Models\Accessoire;
 use Illuminate\Http\Request;
+use App\Models\Accessoire;
 use Illuminate\Http\Category;
+use Illuminate\Support\Facades\DB;
 class AccessoireController extends Controller
 {
     /**
@@ -15,8 +15,10 @@ class AccessoireController extends Controller
     public function index()
     {
         //
+        
         $accessoires = Accessoire::all();
-        return view('accessoire.index', compact("accessoires"));
+        $categories = Category::all();
+        return view('accessoire.index', compact('accessoires','categories'));
     }
 
     /**
