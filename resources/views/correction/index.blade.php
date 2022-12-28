@@ -17,23 +17,33 @@
                     id="offcanvasScroll" aria-labelledby="offcanvasScrollLabel"
                     style="width: 650px; box-shadow:1px 1px 3px 1px">
                     <div class="offcanvas-header">
-                        <h5 id="offcanvasScrollLabel" class="offcanvas-title">Offcanvas Scroll</h5>
+                        <h5 id="offcanvasScrollLabel" class="offcanvas-title">Types de corrections</h5>
                         <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas"
                             aria-label="Close"></button>
                     </div>
                     <div class="offcanvas-body my-auto mx-0 flex-grow-0">
-                        <button id='vloin' type="button" class="btn btn-primary mb-2 d-grid w-100"
+                        <button id='vloin' type="button"
+                            class="d-flex justify-content-between p-4 btn btn-primary mb-2 d-grid w-100 font-size-xl"
                             data-bs-toggle="modal" data-bs-target="#exLargeModal-vloin">
 
-                            Vision de Loin
+                            <div style="font-size: x-large"> Vision de Loin </div>
+                            <i class='bx bx-low-vision'style="font-size:2.15rem"></i>
                         </button>
-                        <button id='vproche' type="button" class="btn btn-primary mb-2 d-grid w-100"
+                        <button id='vproche' type="button"
+                            class="d-flex justify-content-between p-4 btn btn-primary mb-2 d-grid w-100"
                             data-bs-toggle="modal" data-bs-target="#exLargeModal-vproche">
-                            Vision de Pres
+                            <div style="font-size: x-large">Vision de Pres</div>
+                            <i class='bx bx-book-open'style="font-size: 2.15rem"></i>
+                        </button>
+                        <button id='lentille' type="button"
+                            class="d-flex justify-content-between p-4 btn btn-primary mb-2 d-grid w-100"
+                            data-bs-toggle="modal" data-bs-target="#exLargeModal-lentille">
+                            <div style="font-size: x-large">Lentilles</div>
+                            <i class='bx bx-circle'style="font-size: 2.15rem"></i>
                         </button>
                         <button id="close" type="button" class="btn btn-outline-secondary d-grid w-100"
                             data-bs-dismiss="offcanvas">
-                            Cancel
+                            Annuler
                         </button>
                     </div>
                 </div>
@@ -78,6 +88,32 @@
                             {{ csrf_field() }}
                             <div class="modal-body">
                                 @include('correction.pres')
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal">
+                                    Close
+                                </button>
+                                <button type="submit" class="btn btn-primary">Save changes</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="table-responsive text-nowrap">
+            <div class="modal fade" id="exLargeModal-lentille" tabindex="-1" aria-hidden="true">
+                <div class="modal-dialog modal-lg" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="exampleModalLabel4">Lentilles</h5>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                aria-label="Close"></button>
+                        </div>
+                        <form action="{{ url('correction_lentille') }}" method="post" enctype="multipart/form-data">
+                            {{ csrf_field() }}
+                            <div class="modal-body">
+                                @include('correction.lentille')
                             </div>
                             <div class="modal-footer">
                                 <button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal">
