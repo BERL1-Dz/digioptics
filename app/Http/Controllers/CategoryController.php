@@ -36,7 +36,13 @@ class CategoryController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        //dd($request->all());
+
+        $categorie = new Category();
+
+        $categorie->nomination = request('nomination');
+        $categorie->save();
+        return back();
     }
 
     /**
