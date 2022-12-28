@@ -16,7 +16,8 @@
     </div>
     <div class="col mt-1">
         <label for="dobWithTitle" class="form-label">Libellé: </label>
-        <input type="text" id="dobWithTitle" class="form-control" placeholder="PureVision 6L" required name="libellé" />
+        <input type="text" id="dobWithTitle" class="form-control" placeholder="PureVision 6L" required
+            name="libellé" />
     </div>
 </div>
 
@@ -37,11 +38,15 @@
 
 <div class="row mt-1 g-2">
     <div class="col mt-1">
-        <label for="emailWithTitle" class="form-label">Essie: </label>
-        <input type="text" class="form-control" placeholder="OUI" required name="essie" />
+        <label for="emailWithTitle" class="form-label"> Deja Utiliser: </label>
+        <select name="essie" class="form-control">
+            <option value="0">Non</option>
+            <option value="1">Oui</option>
+        </select>
     </div>
     <div class="col mt-1">
         <label for="dobWithTitle" class="form-label">Pv_Lentille</label>
-        <input type="number" id="dobWithTitle" class="form-control" placeholder="Pv_lentille" required name="pv_lentille" />
+        <input type="number" id="dobWithTitle" class="form-control" placeholder="Pv_lentille" required
+            name="pv_lentille" />
     </div>
 </div>

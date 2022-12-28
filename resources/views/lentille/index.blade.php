@@ -43,7 +43,7 @@
                         <th>Libellé</th>
                         <th>Port</th>
                         <th>Teinte</th>
-                        <th>Essie</th>
+                        <th>Neuf</th>
                         <th>Conditionnement</th>
                         <th>Prix de vents</th>
                         <th>Actions</th>
