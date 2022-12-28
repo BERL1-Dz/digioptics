@@ -1,5 +1,5 @@
 <div class="">
-    <input type="text" name="type_vision" hidden value="2">
+    <input type="text" name="type_vision" hidden value="3">
     <div class="row">
         <label for="html5-date-input" class="col-md-2 col-form-label">Date: </label>
         <div class="col-md-10">
@@ -26,7 +26,7 @@
             <div class="cell cell-round">Left (OS)</div>
         </div>
         <div class="d-flex-column tab">
-            <div class="cell cell-round">Sphere (SPH)</div>
+            <div class="cell cell-round">Power (PWR)</div>
             <div class="drop">
 
                 <select name="sph_od" id="largeSelect" class="form-select form-select-custom form-select-lg">
@@ -110,7 +110,7 @@
             </div>
         </div>
         <div class="d-flex-column tab">
-            <div class="cell cell-round">Add (add)</div>
+            <div class="cell cell-round">BC (BC)</div>
             <div class="drop">
                 <select name="add_od" id="largeSelect" class="form-select form-select-custom form-select-lg">
                     <option>None</option>
@@ -128,55 +128,127 @@
                 </select>
             </div>
         </div>
-    </div>
-    <!-- Table End-->
-    <div class="d-flex  mt-3">
         <div class="d-flex-column tab">
-            <div class="cell cell-round">PD (PD)</div>
-        </div>
-        <div class="d-flex-column tab ">
+            <div class="cell cell-round">DIA (DIA)</div>
             <div class="drop">
-                <select name="PD" id="largeSelect" class="form-select form-select-custom form-select-lg">
+                <select name="add_od" id="largeSelect" class="form-select form-select-custom form-select-lg">
                     <option>None</option>
-                    @for ($j = 40; $j <= 80; $j = $j + 1)
-                        <option value="{{ $j }}">{{ $j }}</option>
+                    @for ($j = 0.75; $j <= 3.5; $j = $j + 0.25)
+                        <option value="+{{ $j }}">+{{ $j }}</option>
+                    @endfor
+                </select>
+            </div>
+            <div class="drop">
+                <select name="add_og" id="largeSelect" class="form-select form-select-custom form-select-lg">
+                    <option>None</option>
+                    @for ($j = 0.75; $j <= 3.5; $j = $j + 0.25)
+                        <option value="+{{ $j }}">+{{ $j }}</option>
                     @endfor
                 </select>
             </div>
         </div>
 
-        <div class="d-flex-column tab">
-            <div class="cell cell-round">PD near (PD)</div>
-        </div>
-        <div class="d-flex-column tab">
-            <div class="drop">
-                <select name="Near_Pd" id="largeSelect" class="form-select form-select-custom form-select-lg">
-                    <option>None</option>
-                    @for ($j = 40; $j <= 80; $j = $j + 1)
-                        <option value="{{ $j }}">{{ $j }}</option>
-                    @endfor
-                </select>
-            </div>
-        </div>
     </div>
-    <div class="row">
-        <div class="col mb-0">
-            <label for="nameExLarge" class="form-label">Monture</label>
-            <select name="monture_id" class="form-control">
-                @foreach ($montures as $monture)
-                    <option value="{{ $monture->id }}">{{ $monture->marque_monture }}</option>
-                @endforeach
+    <!-- Table End-->
+    <div class='row'>
+        <div class='col mb-0'>
+            <label for="nameExLarge" class="form-label">Durabilite</label>
+            <select name="option" class="form-select" aria-label="Default select example">
+                <option selected>Choisir votre Durabilte</option>
+                <option value="1">1 Jour</option>
+                <option value="30">30 Jours</option>
+                <option value="90">90 Jours</option>
             </select>
         </div>
     </div>
-    <br>
-    <select name="option" class="form-select" aria-label="Default select example">
-        <option selected>Choisir votre type de verre</option>
-        <option value="HC">HC</option>
-        <option value="HMC">HMC</option>
-        <option value="BB">BB</option>
-    </select>
+    <div class="row">
+        <div class='col mb-0'>
+            <label for="nameExLarge" class="form-label">Confort</label>
+            <select name="option" class="form-select" aria-label="Default select example">
+                <option selected>Choisir votre type confort</option>
+                <option value="Standard">Standard</option>
+                <option value="Super Doux">Super Doux</option>
+            </select>
+        </div>
+    </div>
+    <div class="row">
+        <div class='col mb-0'>
+            <label for="nameExLarge" class="form-label">Style</label>
+            <select name="option" class="form-select" aria-label="Default select example">
+                <option selected>Choisir votre style</option>
+                <option value="Customiser">Customiser</option>
+                <option value="Naturel">Naturel</option>
+            </select>
+        </div>
+    </div>
+    <div class="row">
+        <div class='col mb-0'>
+            <label for="nameExLarge" class="form-label">Options</label>
+            <select name="option" class="form-select" aria-label="Default select example">
+                <option selected>Choisir votre style</option>
+                <option value="sans">Sans</option>
+                <option value="Reactive UV">Reactive UV</option>
+                <option value="lest a prisme">lest à prisme</option>
+            </select>
+        </div>
+    </div>
+    <div class="row">
+        <div class='col mb-0'>
+            <label for="nameExLarge" class="form-label">Couleurs</label>
+            <select name="option" class="form-select" aria-label="Default select example">
+                <option selected>Choisir votre couleur</option>
+                <option value="sans">Sans</option>
+                <option value="Aqua">Aqua</option>
+                <option value="Bleu">Bleu</option>
+                <option value="Vert">Vert</option>
+                <option value="Gris">Gris</option>
+                <option value="Maron">Maron</option>
+                <option value="Orange">Orange</option>
+                <option value="Violet">Violet</option>
+                <option value="Rouge">Rouge</option>
+                <option value="Metaliser">Metaliser</option>
+                <option value="Blanc">Blanc</option>
+                <option value="Jaune">Jaune</option>
+            </select>
+        </div>
+    </div>
+    <div class="row">
+        <div class='col mb-0'>
+            <label for="nameExLarge" class="form-label">Niveau de transparence</label>
+            <select name="option" class="form-select" aria-label="Default select example">
+                <option selected>Choisir votre niveau de transparence</option>
+                <option value="sans">Sans</option>
+                <option value="améliorant">améliorant</option>
+                <option value="vibrant">vibrant</option>
+                <option value="opaque">opaque</option>
+                <option value="tinter">tinter</option>
+            </select>
+        </div>
+    </div>
+    <div class="row">
+        <div class='col mb-0'>
+            <label for="nameExLarge" class="form-label">Types</label>
+            <select name="option" class="form-select" aria-label="Default select example">
+                <option selected>Choisir votre type</option>
+                <option value="sans">Sans</option>
+                <option value="prescription">Prescription</option>
+                <option value="toric">tyic</option>
+            </select>
+        </div>
+    </div>
+    <div class="row">
+        <div class='col mb-0'>
+            <label for="nameExLarge" class="form-label">Quantite</label>
+            <select name="option" class="form-select" aria-label="Default select example">
+                <option selected>Choisir votre Quantite</option>
+                <option value="2 par pack">2 par pack</option>
+                <option value="10 par pack">10 par pack</option>
+                <option value="1 par pack">1 par pack</option>
+            </select>
+        </div>
+    </div>
 </div>
+
 <style type="text/css">
     .cell-round {
         height: 50px;
