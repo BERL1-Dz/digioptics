@@ -191,12 +191,16 @@
         let offcanvas = document.querySelector('.offcanvas');
         let vproche = document.querySelector('#vproche');
         let vloin = document.querySelector('#vloin');
+        let lentille = document.querySelector('#lentille');
         let closeBtn = document.querySelector('#close');
         vproche.addEventListener('click', function() {
 
             closeBtn.click();
         });
         vloin.addEventListener('click', function() {
+            closeBtn.click();
+        });
+        lentille.addEventListener('click', function() {
             closeBtn.click();
         });
 

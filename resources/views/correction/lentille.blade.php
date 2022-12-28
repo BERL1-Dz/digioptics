@@ -154,7 +154,7 @@
         <div class='col mb-0'>
             <label for="nameExLarge" class="form-label">Durabilite</label>
             <select name="option" class="form-select" aria-label="Default select example">
-                <option selected>Choisir votre Durabilte</option>
+                <option selected>Choisir votre durabilte</option>
                 <option value="1">1 Jour</option>
                 <option value="30">30 Jours</option>
                 <option value="90">90 Jours</option>
@@ -185,7 +185,7 @@
         <div class='col mb-0'>
             <label for="nameExLarge" class="form-label">Options</label>
             <select name="option" class="form-select" aria-label="Default select example">
-                <option selected>Choisir votre style</option>
+                <option selected>Choisir votre options</option>
                 <option value="sans">Sans</option>
                 <option value="Reactive UV">Reactive UV</option>
                 <option value="lest a prisme">lest à prisme</option>
@@ -240,7 +240,7 @@
         <div class='col mb-0'>
             <label for="nameExLarge" class="form-label">Quantite</label>
             <select name="option" class="form-select" aria-label="Default select example">
-                <option selected>Choisir votre Quantite</option>
+                <option selected>Choisir votre quantite</option>
                 <option value="2 par pack">2 par pack</option>
                 <option value="10 par pack">10 par pack</option>
                 <option value="1 par pack">1 par pack</option>
