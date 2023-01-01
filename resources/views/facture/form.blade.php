@@ -1,6 +1,12 @@
-<div class="col mb-0">
-    <label for="nameExLarge" class="form-label">Facture Pour:</label>
-    <input type="text" id="nameExLarge" class="form-control" placeholder="Facture Pour" name="facture_pour" required />
+<div class="row">
+    <div class="col mb-0">
+        <label for="nameExLarge" class="form-label">Patient:</label>
+        <select name="patient_id" class="form-control">
+            @foreach ($patients as $patient)
+                <option value="{{ $patient->id }}">{{ $patient->nom }} {{ $patient->prenom }}</option>
+            @endforeach
+        </select>
+    </div>
 </div>
 
 <div class="row g-3">

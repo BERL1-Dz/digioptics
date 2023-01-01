@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 use Illuminate\Support\Facades\DB;
 use App\Models\Facture;
+use App\Models\Patient;
 use Illuminate\Http\Request;
 
 class FactureController extends Controller
@@ -14,9 +15,10 @@ class FactureController extends Controller
      */
     public function index()
     {
+        $patients = Patient::all();
         $factures = Facture::all();
         //dd($factures);
-        return view("facture.index", compact("factures"));
+        return view("facture.index", compact('factures','patients'));
     }
 
     /**
@@ -39,7 +41,8 @@ class FactureController extends Controller
     {
         //dd($request->all());
         $facture = new Facture();
-        $facture->facture_pour = request("facture_pour");
+        $facture->patient_id = request("patient_id");
+        //$facture->facture_pour = request("facture_pour");
         $facture->ref = request("ref");
         $facture->n_facture = request("n_facture");
         $facture->date = request("date");
@@ -96,7 +99,8 @@ class FactureController extends Controller
     {
         //dd($request->all());
         $data = Facture::find($id);
-        $data->facture_pour = request("facture_pour");
+        $facture->patient_id = request("patient_id");
+        //$data->facture_pour = request("facture_pour");
         $data->ref = request("ref");
         $data->n_facture = request("n_facture");
         $data->date = request("date");

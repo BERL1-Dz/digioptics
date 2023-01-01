@@ -15,4 +15,10 @@ class Patient extends Model
       return $this->hasMany(Correction::class, 'patient_id');
     }
 
+    public function factures()
+    {
+      // code ...
+      return $this->hasMany(Facture::class, 'patient_id');
+    }
+
 }

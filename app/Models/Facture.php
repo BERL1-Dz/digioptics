@@ -15,4 +15,10 @@ class Facture extends Model
         "p_unitaire" => "array",
         "montant" => "array",
     ];
+
+    public function patient()
+    {
+        // code ...
+        return $this->belongsTo(Patient::class, 'patient_id', 'id');
+    }
 }

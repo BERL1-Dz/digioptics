@@ -15,7 +15,6 @@ class CreateFacturesTable extends Migration
     {
         Schema::create("factures", function (Blueprint $table) {
             $table->id();
-            $table->string("facture_pour");
             $table->integer("n_facture");
             $table->string("date");
             $table->json("ref");
@@ -28,6 +27,7 @@ class CreateFacturesTable extends Migration
             $table->json("p_unitaire");
             $table->json("montant");
             $table->float("total");
+            $table->unsignedBigInteger('patient_id')->nullable();
             $table->timestamps();
         });
     }
