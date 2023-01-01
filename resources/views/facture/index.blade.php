@@ -53,7 +53,7 @@
                         @foreach ($factures as $facture)
                             <tr>
                                 <th scope="row">{{ $facture->id }}</th>
-                                <td>{{ $facture->facture_pour }}</td>
+                                <td>{{ $facture->patient->nom }} {{ $facture->patient->prenom }}</td>
                                 {{-- <td>
                                     @foreach ($facture->ref as $reference)
                                         <li>{{ $reference }}</li>
