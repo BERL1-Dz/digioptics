@@ -122,3 +122,41 @@ $("body").on("click", "#DeleteRow_montant", function () {
     i_montant--;
 });
 // --------------------    montant input End --------------------
+
+// ------------------- sum of tow values ----------------
+
+let prix_unitaire = document.querySelectorAll('[name="p_unitaire[]"]');
+
+const prix_unitaireLength = prix_unitaire.length;
+for (let i = 0; i < prix_unitaireLength; i++) {
+   prix_unitaireLength[i].value;
+   sum++;
+   console.log(sum);
+}
+
+
+let total = document.getElementById('total');
+let quantite = document.getElementById('quantite');
+let montant = document.getElementById('montant');
+
+
+
+prix_unitaire,quantite.addEventListener('input', function(){
+    let sum_p = prix_unitaire.value;
+    let sum_q = quantite.value;
+    let res = sum_p * sum_q;
+    montant.value = res;
+    total.value = res;
+
+})
+quantite,prix_unitaire.addEventListener('input', function(){
+    let sum_p = prix_unitaire.value;
+    let sum_q = quantite.value;
+    let res = sum_p * sum_q;
+    montant.value = res;
+    total.value = res;
+
+})
+
+
+
