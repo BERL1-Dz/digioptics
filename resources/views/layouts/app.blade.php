@@ -89,11 +89,6 @@
                                 </a>
                             </li>
                             <li class="menu-item">
-                                <a href="{{ url('/devis') }}" class="menu-link">
-                                    <div data-i18n="Input groups">Devis</div>
-                                </a>
-                            </li>
-                            <li class="menu-item">
                                 <a href="{{ url('/facture') }}" class="menu-link">
                                     <div data-i18n="Input groups">Facture</div>
                                 </a>
@@ -122,6 +117,12 @@
                     </li>
                     <!-- Components -->
                     <li class="menu-header small text-uppercase"><span class="menu-header-text">Stock</span></li>
+                    <li class="menu-item">
+                        <a href="{{ url('/devis') }}" class="menu-link">
+                            <i class='menu-icon tf-icons bx bxs-file-doc'></i>
+                            <div data-i18n="Basic">Devis</div>
+                        </a>
+                    </li>
                     <!-- User interface -->
                     <li class="menu-item">
                         <a href="{{ url('/verre') }}" class="menu-link">
