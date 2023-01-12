@@ -117,10 +117,10 @@
                     </li>
                     <!-- Components -->
                     <li class="menu-header small text-uppercase"><span class="menu-header-text">Stock</span></li>
-                    <li class="menu-item" id='open'>
+                    <li class="menu-item">
                         <a href="{{ url('/devis') }}" class="menu-link">
                             <i class='menu-icon tf-icons bx bxs-file-doc'></i>
-                            <div data-i18n="Form Elements">Devis</div>
+                            <div data-i18n="Basic">Devis</div>
                         </a>
                     </li>
                     <!-- User interface -->
