@@ -115,14 +115,29 @@
                             </li>
                         </ul>
                     </li>
+                    <li class="menu-item" id='open'>
+                        <a href="javascript:void(0);" class="menu-link menu-toggle">
+                            <i class='menu-icon tf-icons bx bxs-file-doc'></i>
+                            <div data-i18n="Form Elements">Devis</div>
+                        </a>
+                        <ul class="menu-sub">
+                            <li class="menu-item">
+                                <a href="/" class="menu-link">
+                                    <div data-i18n="Basic Inputs">Achat</div>
+                                </a>
+                            </li>
+                           
+
+                            <li class="menu-item">
+                                <a href="/" class="menu-link">
+                                    <div data-i18n="Input groups">Vente
+                                    </div>
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
                     <!-- Components -->
                     <li class="menu-header small text-uppercase"><span class="menu-header-text">Stock</span></li>
-                    <li class="menu-item">
-                        <a href="{{ url('/devis') }}" class="menu-link">
-                            <i class='menu-icon tf-icons bx bxs-file-doc'></i>
-                            <div data-i18n="Basic">Devis</div>
-                        </a>
-                    </li>
                     <!-- User interface -->
                     <li class="menu-item">
                         <a href="{{ url('/verre') }}" class="menu-link">
