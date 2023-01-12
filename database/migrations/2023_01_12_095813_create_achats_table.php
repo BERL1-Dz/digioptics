@@ -15,6 +15,11 @@ class CreateAchatsTable extends Migration
     {
         Schema::create('achats', function (Blueprint $table) {
             $table->id();
+            $table->date('date');
+            $table->string('produit');
+            $table->integer('prix_da');
+            $table->integer('quantite');
+            $table->integer('code_fournisseur')->unsigned();
             $table->timestamps();
         });
     }
