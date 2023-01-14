@@ -50,14 +50,15 @@ $("body").on("click", "#DeleteRow_des", function () {
 // --------------------    Designation input End --------------------
 
 // --------------------    Designatioin input start --------------------
-let i_quantite = 0;
+const quantArr = []
+let i_quantite = 1;
 $("#rowAdder_quantite").click(function () {
     newRowAdd =
         '<div id="row"> <div class="input-group mb-2 mt-2">' +
-        '<input id="des_' +
+        '<input id="quant_' +
         i_quantite +
         '"placeholder="Quantite ' +
-        (i_quantite + 2) +
+        (i_quantite + 1) +
         '"name="quantite[]" type="number" class="form-control m-input" required>' +
         '<div class="input-group-prepend">' +
         '<button class="btn btn-danger" id="DeleteRow_quantite" type="button" style="border-radius: 0px 5px 5px 0;">' +
@@ -65,23 +66,33 @@ $("#rowAdder_quantite").click(function () {
         "</div> </div>";
 
     $("#newinput_quantite").append(newRowAdd);
+    let val = document.getElementById(`quant_${i_quantite - 1}`).value;
+    if (val !== ''){
+        quantArr.push(val);
+        console.log(quantArr);
+    }else{
+        console.log('Error');
+    }
+
     i_quantite++;
 });
 
 $("body").on("click", "#DeleteRow_quantite", function () {
     $(this).parents("#row").remove();
+    quantArr.pop();
+    console.log(quantArr);
     i_quantite--;
 });
 // --------------------    Designation input End --------------------
-
-let i_puni = 0;
+const p_uniArr = []
+let i_puni = 1;
 $("#rowAdder_p-uni").click(function () {
     newRowAdd =
         '<div id="row"> <div class="input-group mb-2 mt-2">' +
-        '<input id="des_' +
+        '<input id="p-uni_' +
         i_puni +
         '"placeholder="Prix Unitaire ' +
-        (i_puni + 2) +
+        (i_puni + 1) +
         '" name="p_unitaire[]" type="number" class="form-control m-input" required>' +
         '<div class="input-group-prepend">' +
         '<button class="btn btn-danger" id="DeleteRow_p-uni" type="button" style="border-radius: 0px 5px 5px 0;">' +
@@ -89,21 +100,33 @@ $("#rowAdder_p-uni").click(function () {
         "</div> </div>";
 
     $("#newinput_p-uni").append(newRowAdd);
+    console.log(`"p-uni_${i_puni - 1}"`);
+    
+    let val = document.getElementById(`p-uni_${i_puni - 1}`).value;
+    if (val !== ''){
+        p_uniArr.push(val);
+        console.log(p_uniArr);
+    }else{
+        console.log('Error');
+    }
     i_puni++;
 });
 
 $("body").on("click", "#DeleteRow_p-uni", function () {
     $(this).parents("#row").remove();
+    p_uniArr.pop();
+    console.log(p_uniArr);
     i_puni--;
 });
 // --------------------    Designation input End --------------------
 
+
 // --------------------    montant input End ------------------------
-let i_montant = 0;
+let i_montant = 1;
 $("#rowAdder_montant").click(function () {
     newRowAdd =
         '<div id="row"> <div class="input-group mb-2 mt-2">' +
-        '<input id="des_' +
+        '<input id="mont_' +
         i_montant +
         '"placeholder="montant ' +
         (i_montant + 2) +
@@ -115,6 +138,16 @@ $("#rowAdder_montant").click(function () {
 
     $("#newinput_montant").append(newRowAdd);
     i_montant++;
+    const montantArr =[];
+if(quantArr.length == p_uniArr.length){
+    quantArr.forEach(function( calc1, index){
+        const calc2 = p_uniArr[index];
+        montantArr.push(calc1 * calc2);
+        
+    })
+}
+    document.getElementById(`mont_${i_montant - 2}`).value = montantArr[i_montant - 2]; 
+    console.log(montantArr);
 });
 
 $("body").on("click", "#DeleteRow_montant", function () {
@@ -124,41 +157,6 @@ $("body").on("click", "#DeleteRow_montant", function () {
 // --------------------    montant input End --------------------
 
 // ------------------- sum of tow values ----------------
-
-const prix_unitaire = document.querySelectorAll('p_unitaire');
-console.log(prix_unitaire);
-const buttonPunitaire = document.querySelector('#rowAdder_p-uni');
-const punitaireLength = prix_unitaire.length;
-console.log(punitaireLength);
-buttonPunitaire.addEventListener('click', function (){
-    
-  
-});
-
-
-
-// let total = document.getElementById('total');
-// let quantite = document.getElementById('quantite');
-// let montant = document.getElementById('montant');
-
-
-
-// prix_unitaire,quantite.addEventListener('input', function(){
-//     let sum_p = prix_unitaire.value;
-//     let sum_q = quantite.value;
-//     let res = sum_p * sum_q;
-//     montant.value = res;
-//     total.value = res;
-
-// })
-// quantite,prix_unitaire.addEventListener('input', function(){
-//     let sum_p = prix_unitaire.value;
-//     let sum_q = quantite.value;
-//     let res = sum_p * sum_q;
-//     montant.value = res;
-//     total.value = res;
-
-// })
 
 
 

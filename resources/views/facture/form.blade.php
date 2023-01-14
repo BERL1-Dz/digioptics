@@ -59,7 +59,7 @@
                     style="border-radius: 5px 0px 0px 5px;">
                     <i class='bx bxs-plus-square'></i>
                 </button>
-            <input type="number" id="quantite" class="form-control" placeholder="Quantite" name="quantite[]"
+            <input type="number" id="quant_0" class="form-control" placeholder="Quantite" name="quantite[]"
             style="border-radius: 0px 5px 5px 0px;" required />
             </div>
             <div id="newinput_quantite"></div>
@@ -74,7 +74,7 @@
                     style="border-radius: 5px 0px 0px 5px;">
                     <i class='bx bxs-plus-square'></i>
                 </button>
-            <input type="number" id="prix_unitaire" class="form-control" placeholder="Prix Unitaire" name="p_unitaire[]"
+            <input type="number" id="p-uni_0" class="form-control" placeholder="Prix Unitaire" name="p_unitaire[]"
             style="border-radius: 0px 5px 5px 0px;" required />
             </div>
             <div id="newinput_p-uni"></div>
@@ -88,7 +88,7 @@
                     style="border-radius: 5px 0px 0px 5px;">
                     <i class='bx bxs-plus-square'></i>
                 </button>
-            <input type="number" id="montant" class="form-control" placeholder="Montant"  name="montant[]"
+            <input type="number" id="mont_0" class="form-control" placeholder="Montant"  name="montant[]"
             style="border-radius: 0px 5px 5px 0px;" required />
             </div>
             <div id="newinput_montant"></div>
