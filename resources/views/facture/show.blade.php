@@ -60,7 +60,7 @@
                             <p>T.T.C : {{ $data['t_t_c'] }}</p>
                         </div>
                         <div class="d-flex justify-content-center w-100 mt-3">
-                            <h5>Total : <small class="text-muted">{{ $data['total'] }} Da</small></h5>
+                            <h5>T.T.C : <small class="text-muted">{{ $data['t_t_c'] }} Da</small></h5>
                         </div>
                     </a>
                 </div>

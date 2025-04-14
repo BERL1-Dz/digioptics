@@ -45,7 +45,7 @@
                             {{-- <th>DESIGNATION</th>
                             <th>QUANTITE</th>
                             <th>PRIX UNITAIRE</th> --}}
-                            <th>TOTAL</th>
+                            <th>T.T.C</th>
                             <th>ACTION</th>
                         </tr>
                     </thead>
@@ -76,7 +76,7 @@
                                         <li>{{ $p_unitaire }}</li>
                                     @endforeach
                                 </td> --}}
-                                <td>{{ $facture->total }}</td>
+                                <td>{{ $facture->t_t_c }}</td>
                                 <td>
                                     <div class="dropdown">
                                         <button type="button" class="btn p-0 dropdown-toggle hide-arrow"

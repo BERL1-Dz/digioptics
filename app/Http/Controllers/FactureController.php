@@ -54,7 +54,6 @@ class FactureController extends Controller
         $facture->t_v_a_p = request("t_v_a_p");
         $facture->t_v_a = request("t_v_a");
         $facture->t_t_c = request("t_t_c");
-        $facture->total = request("total");
 
         $facture->save();
         return back();
@@ -112,7 +111,6 @@ class FactureController extends Controller
         $data->t_v_a_p = request("t_v_a_p");
         $data->t_v_a = request("t_v_a");
         $data->t_t_c = request("t_t_c");
-        $data->total = request("total");
         $data->update();
         return redirect('/facture');
     }

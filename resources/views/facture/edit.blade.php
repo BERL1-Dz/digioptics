@@ -156,9 +156,9 @@
                         </div>
 
                         <div class="col mb-0">
-                            <label for="dobExLarge" class="form-label">T.T.C</label>
-                            <input type="number" id="dobExLarge" class="form-control" placeholder="T.T.C "
-                                name="t_t_c" value="{{ $data['t_t_c'] }}">
+                            <label for="nameExLarge" class="form-label">T.T.C</label>
+                            <input type="number" id="nameExLarge" class="form-control" placeholder="T.T.C" name="t_t_c"
+                            required value="{{ $data['t_t_c'] }}">
                         </div>
                     </div>
 
