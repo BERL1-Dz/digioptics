@@ -37,18 +37,15 @@ class PatientController extends Controller
      */
     public function store(Request $request)
     {
-        $validated = $request->validate([
-            'nom' => 'required|string|max:255',
-            'prenom' => 'required|string|max:255',
-            'telephone' => 'required|string|max:12',
-            'adresse' => 'nullable|string|max:255',
-            'age' => 'required|integer|min:0|max:120'
-        ]);
+        $patients = new Patient;
+        $patients->nom = request('nom');
+        $patients->prenom = request('prenom');
+        $patients->age = request('age');
+        $patients->adresse = request('adresse');
+        $patients->phone = request('phone');
+        $patients->save();
 
-        Patient::create($validated);
-
-        return redirect()->route('patient.index')
-            ->with('success', 'Patient créé avec succès.');
+        return back()->with('success', 'Patient créé avec succès.');
     }
 
     /**

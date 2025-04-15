@@ -18,6 +18,7 @@ return new class extends Migration
             $table->string('logo')->nullable();
             $table->string('siret')->nullable();
             $table->string('tva')->nullable();
+            $table->boolean('is_active')->default(true);
             $table->timestamps();
         });
     }

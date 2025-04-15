@@ -17,7 +17,7 @@
 <div class="row g-2">
     <div class="col mb-3">
         <label for="telephone" class="form-label">Téléphone: </label>
-        <input type="text" id="telephone" class="form-control @error('telephone') is-invalid @enderror" placeholder="Téléphone" name="telephone" maxlength="12" required />
+        <input type="text" id="telephone" class="form-control @error('telephone') is-invalid @enderror" placeholder="Téléphone" name="phone" maxlength="12" required />
         @error('telephone')
             <div class="invalid-feedback">{{ $message }}</div>
         @enderror
@@ -34,7 +34,7 @@
 <div class="mb-3">
     <label class="form-label" for="adresse">Adresse</label>
     <textarea class="form-control @error('adresse') is-invalid @enderror" 
-              id="adresse" name="adresse">{{ old('adresse') }}</textarea>
+        id="adresse" name="adresse">{{ old('adresse') }}</textarea>
     @error('adresse')
         <div class="invalid-feedback">{{ $message }}</div>
     @enderror

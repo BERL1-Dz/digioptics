@@ -8,7 +8,7 @@
                 <div class="card-header d-flex justify-content-between align-items-center">
                     <h5 class="mb-0">Détails de la Correction</h5>
                     <div class="d-flex">
-                        <a href="{{ route('correction.edit', $corrections->id) }}" class="btn btn-primary me-2">
+                        <a href="{{ route('corrections.edit', $corrections->id) }}" class="btn btn-primary me-2">
                             <i class='bx bx-edit-alt me-1'></i> Modifier
                         </a>
                         <a href="{{ route('correction.index') }}" class="btn btn-secondary">

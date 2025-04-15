@@ -89,7 +89,7 @@
                                 </a>
                             </li>
                             <li class="menu-item">
-                                <a href="{{ url('/facture') }}" class="menu-link">
+                                <a href="{{ route('facture.index') }}" class="menu-link">
                                     <div data-i18n="Input groups">Facture</div>
                                 </a>
                             </li>
