@@ -32,12 +32,12 @@
                 <select name="sph_od" id="largeSelect" class="form-select form-select-custom form-select-lg">
                     <option value="None">None</option>
                     @for ($i = -14.0; $i < 0.25; $i = $i + 0.25)
-                        <option value="{{ $i }}">{{ $i }}</option>
+                        <option value="{{ $i }}">{{ number_format($i, 2) }}</option>
                     @endfor
                     <option value="SPH">SPH</option>
-                    <option value="None">None</option>
+                    <option value="PLAN">PLAN</option>
                     @for ($i = 0.25; $i < 9.25; $i = $i + 0.25)
-                        <option value="+{{ $i }}">+{{ $i }}</option>
+                        <option value="+{{ $i }}">+{{ number_format($i, 2) }}</option>
                     @endfor
                 </select>
 
@@ -47,12 +47,12 @@
                 <select name="sph_og" id="largeSelect" class="form-select form-select-custom form-select-lg">
                     <option value="None">None</option>
                     @for ($i = -14.0; $i < 0.25; $i = $i + 0.25)
-                        <option value="{{ $i }}">{{ $i }}</option>
+                        <option value="{{ $i }}">{{ number_format($i, 2) }}</option>
                     @endfor
                     <option value="SPH">SPH</option>
-                    <option value="None">None</option>
+                    <option value="PLAN">PLAN</option>
                     @for ($i = 0.25; $i < 9.25; $i = $i + 0.25)
-                        <option value="+{{ $i }}">+{{ $i }}</option>
+                        <option value="+{{ $i }}">+{{ number_format($i, 2) }}</option>
                     @endfor
                 </select>
             </div>
@@ -65,12 +65,12 @@
                 <select name="cly_od"id="largeSelect" class="form-select form-select-custom form-select-lg">
                     <option value="None">None</option>
                     @for ($k = -5.0; $k <= 5; $k = $k + 0.25)
-                        <option value="{{ $k }}">{{ $k }}</option>
+                        <option value="{{ $k }}">{{ number_format($k, 2) }}</option>
                     @endfor
                     <option value="SPH">SPH</option>
-                    <option value="None">None</option>
+                    <option value="PLAN">PLAN</option>
                     @for ($k = 0.25; $k <= 5.0; $k = $k + 0.25)
-                        <option value="+{{ $k }}">+{{ $k }}</option>
+                        <option value="+{{ $k }}">+{{ number_format($k, 2) }}</option>
                     @endfor
                 </select>
 
@@ -80,12 +80,12 @@
                 <select name="cly_og" id="largeSelect" class="form-select form-select-custom form-select-lg">
                     <option value="None">None</option>
                     @for ($k = -5.0; $k <= 5; $k = $k + 0.25)
-                        <option value="{{ $k }}">{{ $k }}</option>
+                        <option value="{{ $k }}">{{ number_format($k, 2) }}</option>
                     @endfor
                     <option value="SPH">SPH</option>
-                    <option value="None">None</option>
+                    <option value="PLAN">PLAN</option>
                     @for ($k = 0.25; $k <= 5.0; $k = $k + 0.25)
-                        <option value="+{{ $k }}">+{{ $k }}</option>
+                        <option value="+{{ $k }}">+{{ number_format($k, 2) }}</option>
                     @endfor
                 </select>
             </div>
@@ -96,7 +96,7 @@
                 <select name="axe_od" id="largeSelect" class="form-select form-select-custom form-select-lg">
                     <option>None</option>
                     @for ($j = 0; $j <= 180; $j = $j + 1)
-                        <option value="{{ $j }}"°>{{ $j }}°</option>
+                        <option value="{{ $j }}">{{ number_format($j, 0) }}°</option>
                     @endfor
                 </select>
             </div>
@@ -104,7 +104,7 @@
                 <select name="axe_og" id="largeSelect" class="form-select form-select-custom form-select-lg">
                     <option>None</option>
                     @for ($j = 0; $j <= 180; $j = $j + 1)
-                        <option value="{{ $j }}"°>{{ $j }}°</option>
+                        <option value="{{ $j }}">{{ number_format($j, 0) }}°</option>
                     @endfor
                 </select>
             </div>
@@ -115,7 +115,7 @@
                 <select name="add_od" id="largeSelect" class="form-select form-select-custom form-select-lg">
                     <option>None</option>
                     @for ($j = 0.75; $j <= 3.5; $j = $j + 0.25)
-                        <option value="+{{ $j }}">+{{ $j }}</option>
+                        <option value="+{{ $j }}">+{{ number_format($j, 2) }}</option>
                     @endfor
                 </select>
             </div>
@@ -123,7 +123,7 @@
                 <select name="add_og" id="largeSelect" class="form-select form-select-custom form-select-lg">
                     <option>None</option>
                     @for ($j = 0.75; $j <= 3.5; $j = $j + 0.25)
-                        <option value="+{{ $j }}">+{{ $j }}</option>
+                        <option value="+{{ $j }}">+{{ number_format($j, 2) }}</option>
                     @endfor
                 </select>
             </div>
@@ -139,7 +139,7 @@
                 <select name="PD" id="largeSelect" class="form-select form-select-custom form-select-lg">
                     <option>None</option>
                     @for ($j = 40; $j <= 80; $j = $j + 1)
-                        <option value="{{ $j }}">{{ $j }}</option>
+                        <option value="{{ $j }}">{{ number_format($j, 0) }}</option>
                     @endfor
                 </select>
             </div>
@@ -153,7 +153,7 @@
                 <select name="Near_Pd" id="largeSelect" class="form-select form-select-custom form-select-lg">
                     <option>None</option>
                     @for ($j = 40; $j <= 80; $j = $j + 1)
-                        <option value="{{ $j }}">{{ $j }}</option>
+                        <option value="{{ $j }}">{{ number_format($j, 0) }}</option>
                     @endfor
                 </select>
             </div>

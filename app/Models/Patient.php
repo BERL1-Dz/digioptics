@@ -8,6 +8,13 @@ class Patient extends Model
 {
     use HasFactory;
 
+    protected $fillable = [
+        'nom',
+        'prenom',
+        'telephone',
+        'adresse',
+        'date_naissance'
+    ];
 
     public function corrections()
     {

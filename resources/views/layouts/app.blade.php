@@ -182,6 +182,12 @@
                             <div data-i18n="Documentation">Documentation</div>
                         </a>
                     </li>
+                    <li class="menu-item">
+                        <a href="{{ route('opticien-info.index') }}" class="menu-link">
+                            <i class="menu-icon tf-icons bx bx-user-circle"></i>
+                            <div>Information Opticien</div>
+                        </a>
+                    </li>
                 </ul>
             </aside>
             <!-- / Menu -->

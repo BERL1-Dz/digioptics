@@ -6,9 +6,13 @@ use App\Models\Correction;
 use App\Models\Patient;
 use App\Models\Monture;
 use Illuminate\Http\Request;
+use Barryvdh\DomPDF\Facade\Pdf;
+use App\Traits\OpticienInfoTrait;
 
 class CorrectionController extends Controller
 {
+    use OpticienInfoTrait;
+
     /**
      * Display a listing of the resource.
      *
@@ -153,9 +157,12 @@ class CorrectionController extends Controller
      * @param  \App\Models\Correction  $correction
      * @return \Illuminate\Http\Response
      */
-    public function edit(Correction $correction)
+    public function edit($id)
     {
-        //
+        $corrections = Correction::find($id);
+        $patients = Patient::all();
+        $montures = Monture::all();
+        return view('correction.edit', compact('corrections', 'patients', 'montures'));
     }
 
     /**
@@ -165,9 +172,11 @@ class CorrectionController extends Controller
      * @param  \App\Models\Correction  $correction
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Correction $correction)
+    public function update(Request $request, $id)
     {
-        //
+        $correction = Correction::findOrFail($id);
+        $correction->update($request->all());
+        return redirect()->route('correction.index')->with('success', 'Correction mise à jour avec succès');
     }
 
     /**
@@ -176,8 +185,21 @@ class CorrectionController extends Controller
      * @param  \App\Models\Correction  $correction
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Correction $correction)
+    public function destroy($id)
     {
-        //
+        $correction = Correction::findOrFail($id);
+        $correction->delete();
+        return redirect()->route('correction.index')->with('success', 'Correction supprimée avec succès');
+    }
+
+    public function printPDF($id)
+    {
+        $correction = Correction::findOrFail($id);
+        $patient = Patient::findOrFail($correction->patient_id);
+        $monture = Monture::findOrFail($correction->monture_id);
+        $opticienInfo = $this->getActiveOpticienInfo();
+        
+        $pdf = PDF::loadView('correction.pdf', compact('correction', 'patient', 'monture', 'opticienInfo'));
+        return $pdf->download('correction.pdf');
     }
 }

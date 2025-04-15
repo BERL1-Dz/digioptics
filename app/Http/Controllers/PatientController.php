@@ -26,7 +26,7 @@ class PatientController extends Controller
      */
     public function create()
     {
-        //
+        return view('patient.create');
     }
 
     /**
@@ -37,16 +37,18 @@ class PatientController extends Controller
      */
     public function store(Request $request)
     {
-        //dd($request->all());
-        $patient = new Patient();
+        $validated = $request->validate([
+            'nom' => 'required|string|max:255',
+            'prenom' => 'required|string|max:255',
+            'telephone' => 'required|string|max:12',
+            'adresse' => 'nullable|string|max:255',
+            'age' => 'required|integer|min:0|max:120'
+        ]);
 
-        $patient->nom = request('nom');
-        $patient->prenom = request('prenom');
-        $patient->age = request('age');
-        $patient->phone = request('phone');
+        Patient::create($validated);
 
-        $patient->save();
-        return back();
+        return redirect()->route('patient.index')
+            ->with('success', 'Patient créé avec succès.');
     }
 
     /**
@@ -66,13 +68,9 @@ class PatientController extends Controller
      * @param  \App\Models\Patient  $patient
      * @return \Illuminate\Http\Response
      */
-    public function edit(Patient $patient, $id)
+    public function edit(Patient $patient)
     {
-      //dd($request->all());
-        $data = Patient::find($id);
-        $i = 0;
-        //dd ($data);
-        return view("patient.edit", compact("data","id","i"));
+        return view('patient.edit', compact('patient'));
     }
 
     /**
@@ -82,16 +80,20 @@ class PatientController extends Controller
      * @param  \App\Models\Patient  $patient
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Patient $patient, $id)
+    public function update(Request $request, Patient $patient)
     {
-        //dd($request->all());
-      $data = Patient::find($id);
-      $data->prenom = request('prenom');
-      $data->nom = request('nom');
-      $data->age = request('age');
-      $patient->phone = request('phone');
-      $data->update();
-      return redirect('/patient');
+        $validated = $request->validate([
+            'nom' => 'required|string|max:255',
+            'prenom' => 'required|string|max:255',
+            'telephone' => 'required|string|max:20',
+            'adresse' => 'nullable|string|max:255',
+            'age' => 'nullable|date'
+        ]);
+
+        $patient->update($validated);
+
+        return redirect()->route('patient.index')
+            ->with('success', 'Patient mis à jour avec succès.');
     }
 
     /**
@@ -100,11 +102,10 @@ class PatientController extends Controller
      * @param  \App\Models\Patient  $patient
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Patient $patient, $id)
+    public function destroy(Patient $patient)
     {
-        //
-        $data = Patient::find($id);
-        $data->delete();
-        return redirect()->back();
+        $patient->delete();
+        return redirect()->route('patient.index')
+            ->with('success', 'Patient supprimé avec succès.');
     }
 }

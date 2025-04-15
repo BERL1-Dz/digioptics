@@ -5,9 +5,12 @@ use Illuminate\Support\Facades\DB;
 use App\Models\Facture;
 use App\Models\Patient;
 use Illuminate\Http\Request;
+use App\Traits\OpticienInfoTrait;
 
 class FactureController extends Controller
 {
+    use OpticienInfoTrait;
+
     /**
      * Display a listing of the resource.
      *
@@ -126,5 +129,29 @@ class FactureController extends Controller
         $data = Facture::find($id);
         $data->delete();
         return redirect()->back();
+    }
+
+    public function print($id)
+    {
+        $facture = Facture::with('patient')->findOrFail($id);
+        
+        // Transform the data into the expected format
+        $details = [];
+        for ($i = 0; $i < count($facture->designation); $i++) {
+            $details[] = [
+                'description' => $facture->designation[$i],
+                'quantite' => $facture->quantite[$i],
+                'p_unitaire' => $facture->p_unitaire[$i],
+                'montant' => $facture->montant[$i]
+            ];
+        }
+        $facture->details = $details;
+        $facture->total = $facture->t_t_c;
+        $facture->numero = $facture->n_facture;
+
+        // Get optician info from trait
+        $opticienInfo = $this->getActiveOpticienInfo();
+
+        return view('facture.print', compact('facture', 'opticienInfo'));
     }
 }

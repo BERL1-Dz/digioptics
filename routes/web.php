@@ -11,6 +11,7 @@ use App\Http\Controllers\CorrectionController;
 use App\Http\Controllers\FournisseurController;
 use App\Http\Controllers\LentilleController;
 use App\Http\Controllers\VerreController;
+use App\Http\Controllers\OpticienInfoController;
 
 /*
 |--------------------------------------------------------------------------
@@ -102,6 +103,7 @@ Route::get('/accessoireEdit/{id}', [AccessoireController::class, 'edit'] )->midd
 Route::put('/accessoire/update/{id}', [AccessoireController::class, 'update'] )->middleware(['auth'])->name('update');
 Route::get('/accessoire/delete/{id}', [AccessoireController::class, 'destroy'] )->middleware(['auth'])->name('update');
 
-
+// opticien info
+Route::resource('opticien-info', OpticienInfoController::class)->middleware(['auth']);
 
 require __DIR__.'/auth.php';

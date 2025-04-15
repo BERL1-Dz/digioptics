@@ -4,10 +4,10 @@
         <div class="modal-content card">
             <div class="modal-header">
                 <h5 class="modal-title" id="exampleModalLabel4">Modifier Facture</h5>
-                <a href="/facture"><button type="button" class="btn" data-bs-dismiss="modal" aria-label="Retour"><i
+                <a href="{{ route('facture.index') }}"><button type="button" class="btn" data-bs-dismiss="modal" aria-label="Retour"><i
                             class='bx bx-left-arrow-alt'></i></button></a>
             </div>
-            <form action="{{ url('facture/update/' . $data->id) }}" method="post" enctype="multipart/form-data">
+            <form action="{{ route('facture.update', $data['id']) }}" method="post" enctype="multipart/form-data">
                 @method('PUT')
                 @csrf
                 <div class="modal-body" id="myform">
@@ -25,10 +25,10 @@
                             </button>
                         </div>
                         <div id="newinput_ref">
-                            @foreach ($data['ref'] as $arrayData)
+                            @foreach ($data['ref'] as $key => $arrayData)
                                 <div id="row">
-                                    <div class="input-group mb-2 mt-2"><input id="ref_{{ $i++ }}"
-                                            placeholder="Ref.2" name="ref[]" type="text" class="form-control m-input"
+                                    <div class="input-group mb-2 mt-2"><input id="ref_{{ $key }}"
+                                            placeholder="Ref." name="ref[]" type="text" class="form-control m-input"
                                             required value='{{ $arrayData }}'>
                                         <div class="input-group-prepend"><button class="btn btn-danger" id="DeleteRow_ref"
                                                 type="button" style="border-radius: 0px 5px 5px 0;"><i
@@ -36,7 +36,6 @@
                                     </div>
                                 </div>
                             @endforeach
-                            <input type="text" id="iteration" value="{{ $i }}" hidden>
                         </div>
                     </div>
 
@@ -52,7 +51,6 @@
                             <input type="text" id="dobExLarge" class="form-control" placeholder="DD / MM / YY"
                                 name="date" required value="{{ $data['date'] }}">
                         </div>
-
                     </div>
 
                     <div class="row g-2">
@@ -63,16 +61,15 @@
                                     style="border-radius: 5px 5px 5px 5px;">
                                     <i class="bx bxs-plus-square"></i>
                                 </button>
-
                             </div>
                             <div id="newinput_des">
-                                @foreach ($data['designation'] as $arrayData)
+                                @foreach ($data['designation'] as $key => $arrayData)
                                     <div id="row">
-                                        <div class="input-group mb-2 mt-2"><input id="ref_{{ $i++ }}"
-                                                placeholder="Ref.2" name="designation[]" type="text"
+                                        <div class="input-group mb-2 mt-2"><input id="designation_{{ $key }}"
+                                                placeholder="Designation" name="designation[]" type="text"
                                                 class="form-control m-input" required value='{{ $arrayData }}'>
                                             <div class="input-group-prepend"><button class="btn btn-danger"
-                                                    id="DeleteRow_ref" type="button"
+                                                    id="DeleteRow_des" type="button"
                                                     style="border-radius: 0px 5px 5px 0;"><i
                                                         class="bi bi-trash"></i></button> </div>
                                         </div>
@@ -90,13 +87,13 @@
                                 </button>
                             </div>
                             <div id="newinput_quantite">
-                                @foreach ($data['quantite'] as $arrayData)
+                                @foreach ($data['quantite'] as $key => $arrayData)
                                     <div id="row">
-                                        <div class="input-group mb-2 mt-2"><input id="ref_{{ $i++ }}"
-                                                placeholder="Ref.2" name="quantite[]" type="text"
+                                        <div class="input-group mb-2 mt-2"><input id="quantite_{{ $key }}"
+                                                placeholder="Quantite" name="quantite[]" type="text"
                                                 class="form-control m-input" required value='{{ $arrayData }}'>
                                             <div class="input-group-prepend"><button class="btn btn-danger"
-                                                    id="DeleteRow_ref" type="button"
+                                                    id="DeleteRow_quantite" type="button"
                                                     style="border-radius: 0px 5px 5px 0;"><i
                                                         class="bi bi-trash"></i></button> </div>
                                         </div>
@@ -116,13 +113,13 @@
                                 </button>
                             </div>
                             <div id="newinput_p-uni">
-                                @foreach ($data['p_unitaire'] as $arrayData)
+                                @foreach ($data['p_unitaire'] as $key => $arrayData)
                                     <div id="row">
-                                        <div class="input-group mb-2 mt-2"><input id="ref_{{ $i++ }}"
-                                                placeholder="Ref.2" name="p_unitaire[]" type="text"
+                                        <div class="input-group mb-2 mt-2"><input id="p_unitaire_{{ $key }}"
+                                                placeholder="Prix Unitaire" name="p_unitaire[]" type="text"
                                                 class="form-control m-input" required value='{{ $arrayData }}'>
                                             <div class="input-group-prepend"><button class="btn btn-danger"
-                                                    id="DeleteRow_ref" type="button"
+                                                    id="DeleteRow_p-uni" type="button"
                                                     style="border-radius: 0px 5px 5px 0;"><i
                                                         class="bi bi-trash"></i></button> </div>
                                         </div>
@@ -132,8 +129,26 @@
                         </div>
                         <div class="col mb-0">
                             <label for="dobExLarge" class="form-label">Montant</label>
-                            <input type="number" id="dobExLarge" class="form-control" placeholder="Montant"
-                                name="montant" required value="{{ $data['montant'] }}">
+                            <div style="display:flex;align-items: baseline;">
+                                <button id="rowAdder_montant" type="button" class="btn btn-success valval"
+                                    style="border-radius: 5px 5px 5px 5px;">
+                                    <i class="bx bxs-plus-square"></i>
+                                </button>
+                            </div>
+                            <div id="newinput_montant">
+                                @foreach ($data['montant'] as $key => $arrayData)
+                                    <div id="row">
+                                        <div class="input-group mb-2 mt-2"><input id="montant_{{ $key }}"
+                                                placeholder="Montant" name="montant[]" type="text"
+                                                class="form-control m-input" required value='{{ $arrayData }}'>
+                                            <div class="input-group-prepend"><button class="btn btn-danger"
+                                                    id="DeleteRow_montant" type="button"
+                                                    style="border-radius: 0px 5px 5px 0;"><i
+                                                        class="bi bi-trash"></i></button> </div>
+                                        </div>
+                                    </div>
+                                @endforeach
+                            </div>
                         </div>
                     </div>
 
@@ -175,4 +190,76 @@
             </form>
         </div>
     </div>
+
+    <script>
+        // Add row functionality for all sections
+        document.addEventListener('DOMContentLoaded', function() {
+            // Reference section
+            $("#rowAdder_ref").click(function() {
+                newRowAdd = '<div id="row"> <div class="input-group mb-2 mt-2">' +
+                    '<input type="text" class="form-control m-input" placeholder="Ref." name="ref[]">' +
+                    '<div class="input-group-prepend">' +
+                    '<button class="btn btn-danger" id="DeleteRow_ref" type="button">' +
+                    '<i class="bi bi-trash"></i></button> </div> </div> </div>';
+                $('#newinput_ref').append(newRowAdd);
+            });
+
+            // Designation section
+            $("#rowAdder_des").click(function() {
+                newRowAdd = '<div id="row"> <div class="input-group mb-2 mt-2">' +
+                    '<input type="text" class="form-control m-input" placeholder="Designation" name="designation[]">' +
+                    '<div class="input-group-prepend">' +
+                    '<button class="btn btn-danger" id="DeleteRow_des" type="button">' +
+                    '<i class="bi bi-trash"></i></button> </div> </div> </div>';
+                $('#newinput_des').append(newRowAdd);
+            });
+
+            // Quantity section
+            $("#rowAdder_quantite").click(function() {
+                newRowAdd = '<div id="row"> <div class="input-group mb-2 mt-2">' +
+                    '<input type="text" class="form-control m-input" placeholder="Quantite" name="quantite[]">' +
+                    '<div class="input-group-prepend">' +
+                    '<button class="btn btn-danger" id="DeleteRow_quantite" type="button">' +
+                    '<i class="bi bi-trash"></i></button> </div> </div> </div>';
+                $('#newinput_quantite').append(newRowAdd);
+            });
+
+            // Price section
+            $("#rowAdder_p-uni").click(function() {
+                newRowAdd = '<div id="row"> <div class="input-group mb-2 mt-2">' +
+                    '<input type="text" class="form-control m-input" placeholder="Prix Unitaire" name="p_unitaire[]">' +
+                    '<div class="input-group-prepend">' +
+                    '<button class="btn btn-danger" id="DeleteRow_p-uni" type="button">' +
+                    '<i class="bi bi-trash"></i></button> </div> </div> </div>';
+                $('#newinput_p-uni').append(newRowAdd);
+            });
+
+            // Amount section
+            $("#rowAdder_montant").click(function() {
+                newRowAdd = '<div id="row"> <div class="input-group mb-2 mt-2">' +
+                    '<input type="text" class="form-control m-input" placeholder="Montant" name="montant[]">' +
+                    '<div class="input-group-prepend">' +
+                    '<button class="btn btn-danger" id="DeleteRow_montant" type="button">' +
+                    '<i class="bi bi-trash"></i></button> </div> </div> </div>';
+                $('#newinput_montant').append(newRowAdd);
+            });
+
+            // Delete row functionality for all sections
+            $("body").on("click", "#DeleteRow_ref", function() {
+                $(this).parents("#row").remove();
+            });
+            $("body").on("click", "#DeleteRow_des", function() {
+                $(this).parents("#row").remove();
+            });
+            $("body").on("click", "#DeleteRow_quantite", function() {
+                $(this).parents("#row").remove();
+            });
+            $("body").on("click", "#DeleteRow_p-uni", function() {
+                $(this).parents("#row").remove();
+            });
+            $("body").on("click", "#DeleteRow_montant", function() {
+                $(this).parents("#row").remove();
+            });
+        });
+    </script>
 @endsection
