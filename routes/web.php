@@ -12,6 +12,7 @@ use App\Http\Controllers\FournisseurController;
 use App\Http\Controllers\LentilleController;
 use App\Http\Controllers\VerreController;
 use App\Http\Controllers\OpticienInfoController;
+use App\Http\Controllers\AchatController;
 
 /*
 |--------------------------------------------------------------------------
@@ -53,11 +54,15 @@ Route::get('/monture/delete/{id}', [MontureController::class, 'destroy'])->middl
 
 
 // correction
-Route::get('/correction', [CorrectionController::class, 'index'])->middleware(['auth'])->name('correction');
-Route::get('/correctionShow/{id}', [CorrectionController::class, 'show'])->middleware(['auth'])->name('show');
-Route::post('/correction_pres', [CorrectionController::class, 'vision_p']);
-Route::post('/correction_loin', [CorrectionController::class, 'vision_l']);
-Route::post('/correction_lentille', [CorrectionController::class, 'lentille']);
+Route::get('/correction', [CorrectionController::class, 'index'])->middleware(['auth'])->name('correction.index');
+Route::get('/correction/{id}', [CorrectionController::class, 'show'])->middleware(['auth'])->name('correction.show');
+Route::get('/correction/{id}/edit', [CorrectionController::class, 'edit'])->middleware(['auth'])->name('correction.edit');
+Route::put('/correction/{id}', [CorrectionController::class, 'update'])->middleware(['auth'])->name('correction.update');
+Route::delete('/correction/{id}', [CorrectionController::class, 'destroy'])->middleware(['auth'])->name('correction.destroy');
+Route::get('/correction/{id}/print', [CorrectionController::class, 'printPDF'])->middleware(['auth'])->name('correction.print');
+Route::post('/correction_pres', [CorrectionController::class, 'vision_p'])->name('correction.vision_p');
+Route::post('/correction_loin', [CorrectionController::class, 'vision_l'])->name('correction.vision_l');
+Route::post('/correction_lentille', [CorrectionController::class, 'lentille'])->name('correction.lentille');
 
 
 //facture
@@ -110,5 +115,14 @@ Route::get('/accessoire/delete/{id}', [AccessoireController::class, 'destroy'])-
 
 // opticien info
 Route::resource('opticien-info', OpticienInfoController::class)->middleware(['auth']);
+
+// Achat Routes
+Route::get('/achat', [AchatController::class, 'index'])->middleware(['auth'])->name('achat.index');
+Route::get('/achat/create', [AchatController::class, 'create'])->middleware(['auth'])->name('achat.create');
+Route::post('/achat', [AchatController::class, 'store'])->middleware(['auth'])->name('achat.store');
+Route::get('/achat/{achat}', [AchatController::class, 'show'])->middleware(['auth'])->name('achat.show');
+Route::get('/achat/{achat}/edit', [AchatController::class, 'edit'])->middleware(['auth'])->name('achat.edit');
+Route::put('/achat/{achat}', [AchatController::class, 'update'])->middleware(['auth'])->name('achat.update');
+Route::delete('/achat/{achat}', [AchatController::class, 'destroy'])->middleware(['auth'])->name('achat.destroy');
 
 require __DIR__ . '/auth.php';

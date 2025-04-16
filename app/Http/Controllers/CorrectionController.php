@@ -141,14 +141,14 @@ class CorrectionController extends Controller
      * @param  \App\Models\Correction  $correction
      * @return \Illuminate\Http\Response
      */
-    public function show(Correction $correction, $id)
+    public function show($id)
     {
-        //
-        $patients = Patient::all();
-        $corrections = Correction::find($id);
-        $montures = Monture::find($id);
-        //dd($patient);
-        return view("correction.show", compact('patients','corrections', 'montures'));
+        try {
+            $corrections = Correction::with(['patient', 'monture'])->findOrFail($id);
+            return view("correction.show", compact('corrections'));
+        } catch (\Exception $e) {
+            return redirect()->route('correction.index')->with('error', 'Correction non trouvée');
+        }
     }
 
     /**
@@ -159,10 +159,14 @@ class CorrectionController extends Controller
      */
     public function edit($id)
     {
-        $corrections = Correction::find($id);
-        $patients = Patient::all();
-        $montures = Monture::all();
-        return view('correction.edit', compact('corrections', 'patients', 'montures'));
+        try {
+            $corrections = Correction::findOrFail($id);
+            $patients = Patient::all();
+            $montures = Monture::all();
+            return view('correction.edit', compact('corrections', 'patients', 'montures'));
+        } catch (\Exception $e) {
+            return redirect()->route('correction.index')->with('error', 'Correction non trouvée');
+        }
     }
 
     /**
@@ -174,9 +178,13 @@ class CorrectionController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $correction = Correction::findOrFail($id);
-        $correction->update($request->all());
-        return redirect()->route('correction.index')->with('success', 'Correction mise à jour avec succès');
+        try {
+            $correction = Correction::findOrFail($id);
+            $correction->update($request->all());
+            return redirect()->route('correction.show', $id)->with('success', 'Correction mise à jour avec succès');
+        } catch (\Exception $e) {
+            return redirect()->route('correction.edit', $id)->with('error', 'Erreur lors de la mise à jour de la correction');
+        }
     }
 
     /**
@@ -194,12 +202,14 @@ class CorrectionController extends Controller
 
     public function printPDF($id)
     {
-        $correction = Correction::findOrFail($id);
-        $patient = Patient::findOrFail($correction->patient_id);
-        $monture = Monture::findOrFail($correction->monture_id);
-        $opticienInfo = $this->getActiveOpticienInfo();
-        
-        $pdf = PDF::loadView('correction.pdf', compact('correction', 'patient', 'monture', 'opticienInfo'));
-        return $pdf->download('correction.pdf');
+        try {
+            $correction = Correction::with(['patient', 'monture'])->findOrFail($id);
+            $opticienInfo = $this->getActiveOpticienInfo();
+            
+            $pdf = PDF::loadView('correction.pdf', compact('correction', 'opticienInfo'));
+            return $pdf->download('correction_' . $correction->id . '.pdf');
+        } catch (\Exception $e) {
+            return redirect()->route('correction.show', $id)->with('error', 'Erreur lors de la génération du PDF');
+        }
     }
 }

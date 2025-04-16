@@ -176,11 +176,11 @@
                                             <i class="bx bx-dots-vertical-rounded"></i>
                                         </button>
                                         <div class="dropdown-menu" style="">
-                                            <a class="dropdown-item" href="correctionShow/{{ $correction['id'] }}"><i
+                                            <a class="dropdown-item" href="{{ route('correction.show', $correction->id) }}"><i
                                                     class="bx bx-show me-1"></i> Show</a>
-                                            <a class="dropdown-item" href="correctionEdit/{{ $correction['id'] }}"><i
+                                            <a class="dropdown-item" href="{{ route('correction.edit', $correction->id) }}"><i
                                                     class="bx bx-edit-alt me-1"></i> Edit</a>
-                                            <a class="dropdown-item" href="correction/delete/{{ $correction['id'] }}"><i
+                                            <a class="dropdown-item" href="{{ route('correction.destroy', $correction->id) }}"><i
                                                     class="bx bx-trash me-1"></i>
                                                 Delete</a>
                                         </div>
