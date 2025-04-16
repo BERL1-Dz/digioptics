@@ -266,60 +266,64 @@
             calculateRowTotal(row);
         }
 
+        function addNewRow(type) {
+            const tableId = `${type}sTable`;
+            const tbody = document.querySelector(`#${tableId} tbody`);
+            const rowCount = type === 'verre' ? verreRowCount : (type === 'lentille' ? lentilleRowCount : montureRowCount);
+            
+            const newRow = document.createElement('tr');
+            let optionsHtml = '<option value="">Sélectionner un ' + type + '</option>';
+            
+            // Add options based on type
+            if (type === 'verre') {
+                @foreach($verres as $verre)
+                    optionsHtml += `<option value="{{ $verre->id }}" data-price="{{ $verre->prix_achat }}">{{ $verre->sph }}</option>`;
+                @endforeach
+            } else if (type === 'lentille') {
+                @foreach($lentilles as $lentille)
+                    optionsHtml += `<option value="{{ $lentille->id }}" data-price="{{ $lentille->prix_achat }}">{{ $lentille->libellé }}</option>`;
+                @endforeach
+            } else if (type === 'monture') {
+                @foreach($montures as $monture)
+                    optionsHtml += `<option value="{{ $monture->id }}" data-price="{{ $monture->prix_achat }}">{{ $monture->model_monture }}</option>`;
+                @endforeach
+            }
+            
+            newRow.innerHTML = `
+                <td>
+                    <select name="${type}s[${rowCount}][id]" class="form-select ${type}-select" required>
+                        ${optionsHtml}
+                    </select>
+                </td>
+                <td>
+                    <input type="number" name="${type}s[${rowCount}][quantite]" class="form-control quantity" min="1" required>
+                </td>
+                <td>
+                    <input type="number" name="${type}s[${rowCount}][prix_unitaire]" class="form-control price" step="0.01" min="0" required>
+                </td>
+                <td>
+                    <input type="text" class="form-control total" readonly>
+                </td>
+                <td>
+                    <button type="button" class="btn btn-danger btn-sm remove-row">
+                        <i class='bx bx-trash'></i>
+                    </button>
+                </td>
+            `;
+            
+            tbody.appendChild(newRow);
+            initializeRowEvents(newRow);
+            
+            if (type === 'verre') verreRowCount++;
+            else if (type === 'lentille') lentilleRowCount++;
+            else montureRowCount++;
+        }
+
         // Add event listeners to the "Add" buttons
         document.querySelectorAll('[data-add-row]').forEach(button => {
             button.addEventListener('click', function() {
                 const type = this.dataset.addRow;
-                const tableId = `${type}sTable`;
-                const tbody = document.querySelector(`#${tableId} tbody`);
-                const rowCount = type === 'verre' ? verreRowCount : (type === 'lentille' ? lentilleRowCount : montureRowCount);
-                
-                const newRow = document.createElement('tr');
-                let optionsHtml = '<option value="">Sélectionner un ' + type + '</option>';
-                
-                // Add options based on type
-                if (type === 'verre') {
-                    @foreach($verres as $verre)
-                        optionsHtml += `<option value="{{ $verre->id }}" data-price="{{ $verre->prix_achat }}">{{ $verre->index_verre }}</option>`;
-                    @endforeach
-                } else if (type === 'lentille') {
-                    @foreach($lentilles as $lentille)
-                        optionsHtml += `<option value="{{ $lentille->id }}" data-price="{{ $lentille->prix_achat }}">{{ $lentille->libellé }}</option>`;
-                    @endforeach
-                } else if (type === 'monture') {
-                    @foreach($montures as $monture)
-                        optionsHtml += `<option value="{{ $monture->id }}" data-price="{{ $monture->prix_achat }}">{{ $monture->model_monture }}</option>`;
-                    @endforeach
-                }
-                
-                newRow.innerHTML = `
-                    <td>
-                        <select name="${type}s[${rowCount}][id]" class="form-select ${type}-select" required>
-                            ${optionsHtml}
-                        </select>
-                    </td>
-                    <td>
-                        <input type="number" name="${type}s[${rowCount}][quantite]" class="form-control quantity" min="1" required>
-                    </td>
-                    <td>
-                        <input type="number" name="${type}s[${rowCount}][prix_unitaire]" class="form-control price" step="0.01" min="0" required>
-                    </td>
-                    <td>
-                        <input type="text" class="form-control total" readonly>
-                    </td>
-                    <td>
-                        <button type="button" class="btn btn-danger btn-sm remove-row">
-                            <i class='bx bx-trash'></i>
-                        </button>
-                    </td>
-                `;
-                
-                tbody.appendChild(newRow);
-                initializeRowEvents(newRow);
-                
-                if (type === 'verre') verreRowCount++;
-                else if (type === 'lentille') lentilleRowCount++;
-                else montureRowCount++;
+                addNewRow(type);
             });
         });
 
