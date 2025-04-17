@@ -13,6 +13,7 @@ use App\Http\Controllers\LentilleController;
 use App\Http\Controllers\VerreController;
 use App\Http\Controllers\OpticienInfoController;
 use App\Http\Controllers\AchatController;
+use App\Http\Controllers\VentController;
 
 /*
 |--------------------------------------------------------------------------
@@ -124,5 +125,15 @@ Route::get('/achat/{achat}', [AchatController::class, 'show'])->middleware(['aut
 Route::get('/achat/{achat}/edit', [AchatController::class, 'edit'])->middleware(['auth'])->name('achat.edit');
 Route::put('/achat/{achat}', [AchatController::class, 'update'])->middleware(['auth'])->name('achat.update');
 Route::delete('/achat/{achat}', [AchatController::class, 'destroy'])->middleware(['auth'])->name('achat.destroy');
+
+// Vent Routes
+Route::get('/vent', [VentController::class, 'index'])->name('vent.index');
+Route::get('/vent/create', [VentController::class, 'create'])->name('vent.create');
+Route::post('/vent', [VentController::class, 'store'])->name('vent.store');
+Route::get('/vent/{vent}', [VentController::class, 'show'])->name('vent.show');
+Route::get('/vent/{vent}/edit', [VentController::class, 'edit'])->name('vent.edit');
+Route::put('/vent/{vent}', [VentController::class, 'update'])->name('vent.update');
+Route::delete('/vent/{vent}', [VentController::class, 'destroy'])->name('vent.destroy');
+Route::get('/vent/{vent}/pdf', [VentController::class, 'pdf'])->name('vent.pdf');
 
 require __DIR__ . '/auth.php';

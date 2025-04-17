@@ -128,9 +128,8 @@
                            
 
                             <li class="menu-item">
-                                <a href="/" class="menu-link">
-                                    <div data-i18n="Input groups">Vente
-                                    </div>
+                                <a href="{{ url('/vent') }}" class="menu-link">
+                                    <div data-i18n="Input groups">Vente</div>
                                 </a>
                             </li>
                         </ul>
