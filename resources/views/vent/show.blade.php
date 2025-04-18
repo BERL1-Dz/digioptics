@@ -10,9 +10,14 @@
                 <div class="card-header d-flex justify-content-between align-items-center">
                     <h5 class="mb-0">Détails de la Vente</h5>
                     <div>
-                        <a href="{{ route('vent.pdf', $vent) }}" class="btn btn-success me-2" target="_blank">
-                            <i class='bx bx-printer me-1'></i> Imprimer
-                        </a>
+                        <div class="btn-group me-2">
+                            <a href="{{ route('vent.pdf', ['vent' => $vent, 'preview' => true]) }}" class="btn btn-info" target="_blank">
+                                <i class='bx bx-show me-1'></i> Aperçu PDF
+                            </a>
+                            <a href="{{ route('vent.pdf', $vent) }}" class="btn btn-success">
+                                <i class='bx bx-download me-1'></i> Télécharger
+                            </a>
+                        </div>
                         <a href="{{ route('vent.edit', $vent) }}" class="btn btn-primary me-2">
                             <i class='bx bx-edit me-1'></i> Modifier
                         </a>
@@ -26,16 +31,16 @@
                         <div class="invoice-header">
                             <div class="row">
                                 <div class="col-md-6">
-                                    <img src="{{ asset('assets/img/logo.png') }}" alt="Logo" class="invoice-logo" style="max-height: 100px;">
+                                <img src="http://127.0.0.1:8000/storage/logos/logo_1744975878_6802380604528.png" alt="Logo" class="invoice-logo" style="max-height: 75px;margin-bottom: 20px;">
                                     <h2 class="invoice-title">Facture de Vente</h2>
                                     <p class="invoice-number">N°: VENT-{{ str_pad($vent->id, 6, '0', STR_PAD_LEFT) }}</p>
                                 </div>
                                 <div class="col-md-6 text-end">
-                                    <h4>DigiOptics</h4>
-                                    <p>123 Rue Example<br>
-                                       Alger, Algérie<br>
-                                       Tél: +213 XX XX XX XX<br>
-                                       Email: contact@digioptics.com</p>
+                                    <h4>{{ $vent->opticienInfo->nom_entreprise }}</h4>
+                                    <p>{{ $vent->opticienInfo->adresse }}<br>
+                                       {{ $vent->opticienInfo && isset($vent->opticienInfo->ville) ? $vent->opticienInfo->ville . ', ' . $vent->opticienInfo->code_postal : 'Alger, Algérie' }}<br>
+                                       Tél: {{ $vent->opticienInfo ? $vent->opticienInfo->telephone : '+213 XX XX XX XX' }}<br>
+                                       Email: {{ $vent->opticienInfo ? $vent->opticienInfo->email : 'contact@example.com' }}</p>
                                 </div>
                             </div>
                         </div>
@@ -45,8 +50,8 @@
                                 <div class="col-md-6">
                                     <h5>Informations du Fournisseur</h5>
                                     <p><strong>Nom:</strong> {{ $vent->fournisseur->nom }}<br>
-                                       <strong>Adresse:</strong> {{ $vent->fournisseur->adresse ?? 'Non spécifiée' }}<br>
-                                       <strong>Téléphone:</strong> {{ $vent->fournisseur->telephone ?? 'Non spécifié' }}</p>
+                                       <strong>Email:</strong> {{ $vent->fournisseur->mail_fournisseur ?? 'Non spécifiée' }}<br>
+                                       <strong>Téléphone:</strong> {{ $vent->fournisseur->numero_fournisseur ?? 'Non spécifié' }}</p>
                                 </div>
                                 <div class="col-md-6 text-end">
                                     <h5>Détails de la Facture</h5>

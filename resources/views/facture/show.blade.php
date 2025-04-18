@@ -8,9 +8,14 @@
                 <div class="card-header d-flex justify-content-between align-items-center">
                     <h5 class="mb-0">Détails de la Facture</h5>
                     <div class="d-flex">
-                        <a href="{{ route('facture.print', $data['id']) }}" class="btn btn-primary me-2" target="_blank">
-                            <i class="bx bx-printer me-1"></i> Imprimer
-                        </a>
+                        <div class="btn-group me-2">
+                            <a href="{{ route('facture.print', $data['id']) }}" class="btn btn-info" target="_blank">
+                                <i class="bx bx-show me-1"></i> Aperçu
+                            </a>
+                            <a href="#" class="btn btn-success" onclick="window.print()">
+                                <i class="bx bx-download me-1"></i> Imprimer/Télécharger
+                            </a>
+                        </div>
                         <a href="{{ route('facture.edit', $data['id']) }}" class="btn btn-warning me-2">
                             <i class="bx bx-edit me-1"></i> Modifier
                         </a>

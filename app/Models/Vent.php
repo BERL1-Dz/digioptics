@@ -46,4 +46,9 @@ class Vent extends Model
             ->withPivot('quantite', 'prix_unitaire', 'total')
             ->withTimestamps();
     }
+
+    public function opticienInfo()
+    {
+        return $this->belongsTo(OpticienInfo::class, 'opticien_info_id');
+    }
 }

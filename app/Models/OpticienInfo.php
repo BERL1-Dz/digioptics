@@ -19,7 +19,7 @@ class OpticienInfo extends Model
         'numero_finess',
         'numero_siret',
         'tva_numero',
-        'logo_path',
+        'logo',
         'is_active'
     ];
 

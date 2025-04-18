@@ -11,12 +11,17 @@
                         <a href="{{ route('correction.edit', $corrections->id) }}" class="btn btn-primary me-2">
                             <i class='bx bx-edit-alt me-1'></i> Modifier
                         </a>
-                        <a href="{{ route('correction.index') }}" class="btn btn-secondary">
+                        <a href="{{ route('correction.index') }}" class="btn btn-secondary me-2">
                             <i class='bx bx-arrow-back me-1'></i> Retour
                         </a>
-                        <a href="{{ route('correction.print', $corrections->id) }}" class="btn btn-primary">
-                            <i class="fas fa-print"></i> Print Prescription
-                        </a>
+                        <div class="btn-group">
+                            <a href="{{ route('correction.print', ['id' => $corrections->id, 'preview' => true]) }}" class="btn btn-info" target="_blank">
+                                <i class='bx bx-show me-1'></i> Aperçu PDF
+                            </a>
+                            <a href="{{ route('correction.print', $corrections->id) }}" class="btn btn-success">
+                                <i class='bx bx-download me-1'></i> Télécharger
+                            </a>
+                        </div>
                     </div>
                 </div>
                 <div class="card-body">

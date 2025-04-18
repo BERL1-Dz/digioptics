@@ -8,6 +8,7 @@ use App\Models\Verre;
 use App\Models\Lentille;
 use App\Models\Monture;
 use App\Models\Vent;
+use App\Models\OpticienInfo;
 use Illuminate\Support\Facades\DB;
 
 class VentForm extends Component
@@ -182,19 +183,23 @@ class VentForm extends Component
         }
     }
 
-    public function submit()
+    public function save()
     {
         $validatedData = $this->validate();
         $this->calculateTotals(); // Ensure totals are up-to-date before saving
 
         DB::beginTransaction();
         try {
+            // Get active OpticienInfo
+            $opticienInfo = OpticienInfo::where('is_active', true)->first();
+
             // Create the Vent record
             $vent = Vent::create([
                 'date' => $this->date,
                 'fournisseur_id' => $this->fournisseur_id,
                 'notes' => $this->notes,
                 'total' => $this->grandTotal, // Changed from montant_total to total to match your schema
+                'opticien_info_id' => $opticienInfo ? $opticienInfo->id : null
             ]);
 
             // Attach verres with their totals

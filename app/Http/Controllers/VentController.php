@@ -66,12 +66,16 @@ class VentController extends Controller
             'montures.*.prix_unitaire' => 'required|numeric|min:0',
         ]);
 
+        // Get active OpticienInfo
+        $opticienInfo = OpticienInfo::where('is_active', true)->first();
+
         // Create the Vent record
         $vent = Vent::create([
             'date' => $validatedData['date'],
             'fournisseur_id' => $validatedData['fournisseur_id'],
             'notes' => $validatedData['notes'] ?? null,
-            'total' => $validatedData['total']
+            'total' => $validatedData['total'],
+            'opticien_info_id' => $opticienInfo ? $opticienInfo->id : null
         ]);
 
         // Attach verres with their totals
@@ -116,7 +120,7 @@ class VentController extends Controller
      */
     public function show(Vent $vent)
     {
-        $vent->load(['fournisseur', 'verres', 'lentilles', 'montures']);
+        $vent->load(['fournisseur', 'verres', 'lentilles', 'montures', 'opticienInfo']);
         return view('vent.show', compact('vent'));
     }
 
@@ -165,12 +169,21 @@ class VentController extends Controller
             'montures.*.prix_unitaire' => 'required|numeric|min:0',
         ]);
 
+        // If opticien_info is not set, get the active one
+        if (!$vent->opticien_info_id) {
+            $opticienInfo = OpticienInfo::where('is_active', true)->first();
+            $opticienInfoId = $opticienInfo ? $opticienInfo->id : null;
+        } else {
+            $opticienInfoId = $vent->opticien_info_id;
+        }
+
         // Update the Vent record
         $vent->update([
             'date' => $validatedData['date'],
             'fournisseur_id' => $validatedData['fournisseur_id'],
             'notes' => $validatedData['notes'] ?? null,
-            'total' => $validatedData['total']
+            'total' => $validatedData['total'],
+            'opticien_info_id' => $opticienInfoId
         ]);
 
         // Sync verres with their totals
@@ -225,13 +238,20 @@ class VentController extends Controller
         return redirect()->route('vent.index')->with('success', 'Vente supprimée avec succès.');
     }
 
-    public function pdf(Vent $vent)
+    public function pdf(Vent $vent, Request $request)
     {
         $opticienInfo = OpticienInfo::where('is_active', true)->first();
         $pdf = Pdf::loadView('vent.pdf', [
             'vent' => $vent,
             'opticienInfo' => $opticienInfo
         ]);
+        
+        // If preview parameter is set, show PDF in browser
+        if ($request->has('preview')) {
+            return $pdf->stream('vent-' . str_pad($vent->id, 6, '0', STR_PAD_LEFT) . '.pdf');
+        }
+        
+        // Otherwise download it
         return $pdf->download('vent-' . str_pad($vent->id, 6, '0', STR_PAD_LEFT) . '.pdf');
     }
 }

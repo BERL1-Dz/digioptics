@@ -48,8 +48,8 @@
                             <p class="form-control-static">{{ $opticienInfo->tva }}</p>
                         </div>
                         @if($opticienInfo->logo)
-                            <div class="mb-3">
-                                <label class="form-label">Logo</label>
+                        <div class="mb-3" style="display:inline-flex;max-width: 75px;">
+                                <label class="form-label" style="margin-right: 12px;">Logo</label>
                                 <div>
                                     <img src="{{ asset('storage/' . $opticienInfo->logo) }}" alt="Logo" class="img-thumbnail" style="max-height: 100px;">
                                 </div>

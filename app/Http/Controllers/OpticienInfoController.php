@@ -9,6 +9,33 @@ use Illuminate\Support\Facades\Storage;
 class OpticienInfoController extends Controller
 {
     /**
+     * The storage path for logo files.
+     *
+     * @var string
+     */
+    protected $logoPath = 'logos';
+
+    /**
+     * Store a logo file and return the path.
+     *
+     * @param  \Illuminate\Http\UploadedFile  $file
+     * @return string
+     */
+    protected function storeLogo($file)
+    {
+        // Ensure the directory exists
+        Storage::disk('public')->makeDirectory($this->logoPath);
+        
+        // Generate a unique filename with timestamp
+        $filename = 'logo_' . time() . '_' . uniqid() . '.' . $file->getClientOriginalExtension();
+        
+        // Store the file with the custom filename
+        $path = $file->storeAs($this->logoPath, $filename, 'public');
+        
+        return $path;
+    }
+
+    /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
@@ -49,8 +76,13 @@ class OpticienInfoController extends Controller
         ]);
 
         if ($request->hasFile('logo')) {
-            $path = $request->file('logo')->store('logos', 'public');
-            $validated['logo'] = $path;
+            // Delete the old logo if it exists
+            if ($opticienInfo->logo && Storage::exists('public/' . $opticienInfo->logo)) {
+                Storage::delete('public/' . $opticienInfo->logo);
+            }
+            
+            // Store the new logo
+            $validated['logo'] = $this->storeLogo($request->file('logo'));
         }
 
         OpticienInfo::create($validated);
@@ -102,8 +134,13 @@ class OpticienInfoController extends Controller
         ]);
 
         if ($request->hasFile('logo')) {
-            $path = $request->file('logo')->store('logos', 'public');
-            $validated['logo'] = $path;
+            // Delete the old logo if it exists
+            if ($opticienInfo->logo && Storage::exists('public/' . $opticienInfo->logo)) {
+                Storage::delete('public/' . $opticienInfo->logo);
+            }
+            
+            // Store the new logo
+            $validated['logo'] = $this->storeLogo($request->file('logo'));
         }
 
         $opticienInfo->update($validated);

@@ -200,13 +200,20 @@ class CorrectionController extends Controller
         return redirect()->route('correction.index')->with('success', 'Correction supprimée avec succès');
     }
 
-    public function printPDF($id)
+    public function printPDF($id, Request $request)
     {
         try {
             $correction = Correction::with(['patient', 'monture'])->findOrFail($id);
             $opticienInfo = $this->getActiveOpticienInfo();
             
             $pdf = PDF::loadView('correction.pdf', compact('correction', 'opticienInfo'));
+            
+            // If preview parameter is set, show PDF in browser
+            if ($request->has('preview')) {
+                return $pdf->stream('correction_' . $correction->id . '.pdf');
+            }
+            
+            // Otherwise download it
             return $pdf->download('correction_' . $correction->id . '.pdf');
         } catch (\Exception $e) {
             return redirect()->route('correction.show', $id)->with('error', 'Erreur lors de la génération du PDF');

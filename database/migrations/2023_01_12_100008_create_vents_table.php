@@ -19,6 +19,7 @@ class CreateVentsTable extends Migration
             $table->foreignId('fournisseur_id')->constrained()->onDelete('cascade');
             $table->text('notes')->nullable();
             $table->decimal('total', 10, 2);
+            $table->foreignId('opticien_info_id')->nullable()->constrained('opticien_infos')->nullOnDelete();
             $table->timestamps();
         });
 
