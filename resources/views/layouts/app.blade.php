@@ -186,6 +186,12 @@
                             <div>Information Opticien</div>
                         </a>
                     </li>
+                    <li class="menu-item">
+                        <a href="{{ route('recette.index') }}" class="menu-link">
+                            <i class="menu-icon tf-icons bx bx-receipt"></i>
+                            <div data-i18n="Recettes">Recettes</div>
+                        </a>
+                    </li>
                 </ul>
             </aside>
             <!-- / Menu -->

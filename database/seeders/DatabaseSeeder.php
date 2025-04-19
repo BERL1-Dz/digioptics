@@ -22,6 +22,7 @@ class DatabaseSeeder extends Seeder
             LentilleSeeder::class,
             MontureSeeder::class,
             OpticienInfoSeeder::class,
+            RecetteSeeder::class,
         ]);
     }
 }

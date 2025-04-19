@@ -14,6 +14,7 @@ use App\Http\Controllers\VerreController;
 use App\Http\Controllers\OpticienInfoController;
 use App\Http\Controllers\AchatController;
 use App\Http\Controllers\VentController;
+use App\Http\Controllers\RecetteController;
 
 /*
 |--------------------------------------------------------------------------
@@ -135,5 +136,9 @@ Route::get('/vent/{vent}/edit', [VentController::class, 'edit'])->name('vent.edi
 Route::put('/vent/{vent}', [VentController::class, 'update'])->name('vent.update');
 Route::delete('/vent/{vent}', [VentController::class, 'destroy'])->name('vent.destroy');
 Route::get('/vent/{vent}/pdf', [VentController::class, 'pdf'])->name('vent.pdf');
+
+// Recette Routes
+Route::resource('recette', RecetteController::class);
+Route::get('recette/{recette}/pdf', [RecetteController::class, 'pdf'])->name('recette.pdf');
 
 require __DIR__ . '/auth.php';
