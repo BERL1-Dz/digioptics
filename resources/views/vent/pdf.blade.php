@@ -209,7 +209,7 @@
             <!-- Remove the row container and place divs directly in the parent -->
             
             <!-- Supplier Info (Blue) - Positioned on the left with float -->
-            <div style="padding: 10px; border-radius: 5px; width: 45%; float: left; box-sizing: border-box; border: 1px solid #ddd; margin-top: 0px;">
+            <div style="background-color: rgb(9, 44, 241); color: white; padding: 10px; border-radius: 5px; width: 45%; float: left; box-sizing: border-box;">
                 <h5 style="margin: 0 0 5px 0; font-size: 10px; color: white; font-weight: bold;">Informations du Fournisseur</h5>
                 <p style="margin: 0 0 2px 0;"><strong>Nom:</strong> {{ $vent->fournisseur->nom }}</p>
                 <p style="margin: 0 0 2px 0;"><strong>Adresse:</strong> {{ $vent->fournisseur->adresse ?? 'Non spécifiée' }}</p>
@@ -217,7 +217,7 @@
             </div>
             
             <!-- Invoice Details (Red) - Positioned on the right with float -->
-            <div style="padding: 10px; border-radius: 5px; width: 45%; float: right; box-sizing: border-box; border: 1px solid #ddd;">
+            <div style="background-color: rgb(255, 0, 0); color: white; padding: 10px; border-radius: 5px; width: 45%; float: right; box-sizing: border-box;">
                 <h5 style="margin: 0 0 5px 0; font-size: 10px; color: white; font-weight: bold;">Détails de la Facture</h5>
                 <p style="margin: 0 0 2px 0;"><strong>Date:</strong> {{ $vent->date->format('d/m/Y') }}</p>
                 <p style="margin: 0 0 2px 0;"><strong>Référence:</strong> VENT-{{ str_pad($vent->id, 6, '0', STR_PAD_LEFT) }}</p>

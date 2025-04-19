@@ -15,71 +15,55 @@
 </div> --}}
 
 <div>
-    <form action="{{ $isEdit ? route('recette.update', $recette) : route('recette.store') }}" method="POST">
-        @csrf
-        @if($isEdit)
-            @method('PUT')
-        @endif
-
-        <div class="row mb-3">
-            <div class="col-md-4">
-                <label for="total" class="form-label">Total</label>
-                <div class="input-group">
-                    <input type="number" 
-                           step="0.01" 
-                           class="form-control @error('total') is-invalid @enderror" 
-                           id="total" 
-                           name="total"
-                           wire:model="total"
-                           required>
-                    <span class="input-group-text">DH</span>
-                    @error('total')
-                        <div class="invalid-feedback">{{ $message }}</div>
-                    @enderror
-                </div>
-            </div>
-
-            <div class="col-md-4">
-                <label for="montant_paye" class="form-label">Montant Payé</label>
-                <div class="input-group">
-                    <input type="number" 
-                           step="0.01" 
-                           class="form-control @error('montant_paye') is-invalid @enderror" 
-                           id="montant_paye" 
-                           name="montant_paye"
-                           wire:model="montant_paye"
-                           required>
-                    <span class="input-group-text">DH</span>
-                    @error('montant_paye')
-                        <div class="invalid-feedback">{{ $message }}</div>
-                    @enderror
-                </div>
-            </div>
-
-            <div class="col-md-4">
-                <label for="reste_a_payer" class="form-label">Reste à Payer</label>
-                <div class="input-group">
-                    <input type="number" 
-                           step="0.01" 
-                           class="form-control" 
-                           id="reste_a_payer" 
-                           name="reste_a_payer"
-                           wire:model="reste_a_payer"
-                           readonly>
-                    <span class="input-group-text">DH</span>
-                </div>
+    <div class="row mb-3">
+        <div class="col-md-4">
+            <label for="total" class="form-label">Total</label>
+            <div class="input-group">
+                <input type="number" 
+                       step="0.01" 
+                       class="form-control @error('total') is-invalid @enderror" 
+                       id="total" 
+                       name="total"
+                       wire:model="total"
+                       required>
+                <span class="input-group-text">DA</span>
+                @error('total')
+                    <div class="invalid-feedback">{{ $message }}</div>
+                @enderror
             </div>
         </div>
 
-        <div class="row">
-            <div class="col-12">
-                <button type="submit" class="btn btn-primary">
-                    {{ $isEdit ? 'Mettre à jour' : 'Enregistrer' }}
-                </button>
-                <a href="{{ route('recette.index') }}" class="btn btn-secondary">Annuler</a>
+        <div class="col-md-4">
+            <label for="montant_paye" class="form-label">Montant Payé</label>
+            <div class="input-group">
+                <input type="number" 
+                       step="0.01" 
+                       class="form-control @error('montant_paye') is-invalid @enderror" 
+                       id="montant_paye" 
+                       name="montant_paye"
+                       wire:model="montant_paye"
+                       required>
+                <span class="input-group-text">DA</span>
+                @error('montant_paye')
+                    <div class="invalid-feedback">{{ $message }}</div>
+                @enderror
             </div>
         </div>
-    </form>
+
+        <div class="col-md-4">
+            <label for="reste_a_payer" class="form-label">Reste à Payer</label>
+            <div class="input-group">
+                <input type="number" 
+                       step="0.01" 
+                       class="form-control" 
+                       id="reste_a_payer" 
+                       name="reste_a_payer"
+                       wire:model="reste_a_payer"
+                       readonly>
+                <span class="input-group-text">DA</span>
+            </div>
+        </div>
+    </div>
 
     @push('scripts')
     <script>
@@ -92,12 +76,14 @@
             }
 
             Livewire.on('calculationsUpdated', () => {
-                const elements = ['total', 'montant_paye', 'reste_a_payer'];
+                const elements = ['total', 'montant_paye', 'reste_a_payer', 'monture_price'];
                 elements.forEach(id => {
                     const input = document.getElementById(id);
-                    const value = parseFloat(input.value);
-                    if (!isNaN(value)) {
-                        input.setAttribute('data-formatted', formatNumber(value));
+                    if (input) {
+                        const value = parseFloat(input.value);
+                        if (!isNaN(value)) {
+                            input.setAttribute('data-formatted', formatNumber(value));
+                        }
                     }
                 });
             });

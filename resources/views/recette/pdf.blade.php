@@ -7,151 +7,143 @@
         body {
             font-family: Arial, sans-serif;
             margin: 0;
-            padding: 10px;
+            padding: 0;
             color: #333;
-            font-size: 9px;
-            line-height: 1.2;
+            font-size: 10px;
         }
-        .invoice-container {
-            max-width: 800px;
+        .page {
+            width: 210mm;
+            height: 297mm;
             margin: 0 auto;
-            padding: 15px;
-            border: 1px solid #ddd;
+            padding: 10mm;
+            box-sizing: border-box;
         }
-        .invoice-header {
-            position: relative;
-            margin-bottom: 12px;
-            padding-bottom: 12px;
-            border-bottom: 1px solid #eee;
-            min-height: 80px;
+        .header {
             display: flex;
-            flex-direction: row;
             justify-content: space-between;
-            align-items: center;
-        }
-        .logo-container {
-            height: 60px;
-            width: 120px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
+            margin-bottom: 10mm;
+            padding-bottom: 5mm;
+            border-bottom: 1px solid #ddd;
         }
         .logo {
-            max-height: 60px;
-            max-width: 120px;
-            object-fit: contain;
+            max-width: 40mm;
+            max-height: 20mm;
         }
-        .header-content {
-            display: flex;
-            flex: 1;
-            justify-content: space-between;
-            padding-left: 10px;
+        .opticien-info {
+            text-align: right;
         }
-        .invoice-title-container {
-            width: 45%;
+        .opticien-info h2 {
+            margin: 0;
+            font-size: 12px;
+            color: #2c3e50;
+        }
+        .opticien-info p {
+            margin: 2px 0;
+            font-size: 9px;
+            color: #666;
         }
         .invoice-title {
-            color: #333;
+            text-align: center;
+            margin: 5mm 0;
+        }
+        .invoice-title h1 {
             margin: 0;
             font-size: 14px;
-            font-weight: bold;
+            color: #2c3e50;
         }
-        .invoice-number {
-            color: #666;
+        .invoice-title p {
+            margin: 2px 0;
             font-size: 10px;
-            margin: 3px 0 0 0;
+            color: #666;
         }
-        .company-info {
-            text-align: right;
-            font-size: 12px;
-            width: 45%;
+        .grid-container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 5mm;
+            margin-bottom: 5mm;
         }
-        .company-info h4 {
-            margin: 0 0 3px 0;
-            font-size: 11px;
-            color: #333;
-        }
-        .company-info p {
-            margin: 0 0 2px 0;
-        }
-        .client-info {
-            margin-bottom: 12px;
-            padding: 10px;
+        .section {
             background: #f9f9f9;
-            border-radius: 3px;
-            font-size: 9px;
-            border: 1px solid #eee;
+            padding: 3mm;
+            border-radius: 2mm;
         }
-        .prescription-info {
-            margin-bottom: 12px;
-            padding: 10px;
-            background: #f5f5f5;
-            border-radius: 3px;
-            font-size: 9px;
-            border: 1px solid #eee;
+        .section-title {
+            font-size: 10px;
+            color: #2c3e50;
+            margin-bottom: 2mm;
+            padding-bottom: 1mm;
+            border-bottom: 1px solid #eee;
+        }
+        .info-group {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            margin-bottom: 1mm;
+        }
+        .info-label {
+            font-weight: bold;
+            color: #666;
+        }
+        .info-value {
+            color: #333;
         }
         .prescription-grid {
             display: grid;
             grid-template-columns: 1fr 1fr;
-            gap: 10px;
+            gap: 3mm;
         }
         .prescription-section {
-            padding: 10px;
             background: #fff;
-            border-radius: 3px;
+            padding: 2mm;
+            border-radius: 2mm;
             border: 1px solid #eee;
         }
-        .prescription-section h5 {
-            margin: 0 0 5px 0;
+        .prescription-section h4 {
+            margin: 0 0 2mm 0;
             font-size: 10px;
-            color: #333;
-            font-weight: bold;
-        }
-        .prescription-row {
-            display: flex;
-            justify-content: space-between;
-            margin-bottom: 2px;
-        }
-        .product-info {
-            margin-bottom: 12px;
-            padding: 10px;
-            background: #f9f9f9;
-            border-radius: 3px;
-            font-size: 9px;
-            border: 1px solid #eee;
+            color: #2c3e50;
         }
         .financial-info {
-            margin-bottom: 12px;
-            padding: 10px;
-            background: #f5f5f5;
-            border-radius: 3px;
-            font-size: 9px;
-            border: 1px solid #eee;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 2mm;
         }
-        .financial-row {
+        .financial-item {
             display: flex;
             justify-content: space-between;
-            margin-bottom: 2px;
+            padding: 2mm;
+            background: #fff;
+            border-radius: 2mm;
+            border: 1px solid #eee;
         }
-        .invoice-footer {
-            margin-top: 12px;
-            padding-top: 12px;
-            border-top: 1px solid #eee;
-            font-size: 9px;
+        .total {
+            font-weight: bold;
+            color: #2c3e50;
+        }
+        .footer {
+            margin-top: 5mm;
+            padding-top: 2mm;
+            border-top: 1px solid #ddd;
+            text-align: center;
+            color: #666;
+            font-size: 8px;
+        }
+        .signature {
+            margin-top: 10mm;
+            text-align: right;
         }
         .signature-line {
-            width: 120px;
+            width: 50mm;
             border-top: 1px solid #000;
-            margin-top: 20px;
+            margin-top: 2mm;
         }
-        .text-end {
-            text-align: right;
+        @page {
+            margin: 0;
         }
     </style>
 </head>
 <body>
-    <div class="invoice-container">
-        <div class="invoice-header">
+    <div class="page">
+        <div class="header">
             <div class="logo-container">
                 @if($opticienInfo && $opticienInfo->logo)
                     <img src="{{ public_path('storage/' . $opticienInfo->logo) }}" alt="Logo" class="logo">
@@ -159,111 +151,135 @@
                     <img src="{{ public_path('assets/img/logo.jpg') }}" alt="Logo" class="logo">
                 @endif
             </div>
-            <div class="header-content">
-                <div class="invoice-title-container">
-                    <h2 class="invoice-title">Recette</h2>
-                    <p class="invoice-number">N°: REC-{{ str_pad($recette->id, 6, '0', STR_PAD_LEFT) }}</p>
+            <div class="opticien-info">
+                <h2>{{ $opticienInfo->nom_entreprise ?? 'DigiOptics' }}</h2>
+                <p>{{ $opticienInfo->adresse ?? '' }}</p>
+                <p>{{ $opticienInfo->code_postal ?? '' }} {{ $opticienInfo->ville ?? '' }}</p>
+                <p>Tél: {{ $opticienInfo->telephone ?? '' }}</p>
+                <p>Email: {{ $opticienInfo->email ?? '' }}</p>
+            </div>
+        </div>
+
+        <div class="invoice-title">
+            <h1>Recette</h1>
+            <p>N°: REC-{{ str_pad($recette->id, 6, '0', STR_PAD_LEFT) }}</p>
+        </div>
+
+        <div class="grid-container">
+            <div class="section">
+                <h3 class="section-title">Informations du Client</h3>
+                <div class="info-group">
+                    <div class="info-label">Nom</div>
+                    <div class="info-value">{{ $recette->client_nom }} {{ $recette->client_prenom }}</div>
                 </div>
-                <div class="company-info">
-                    <h4>{{ $opticienInfo->nom_entreprise ?? 'DigiOptics' }}</h4>
-                    <p>{{ $opticienInfo->adresse ?? '' }}</p>
-                    <p>{{ $opticienInfo->code_postal ?? '' }} {{ $opticienInfo->ville ?? '' }}</p>
-                    <p>Tél: {{ $opticienInfo->telephone ?? '' }}</p>
-                    <p>Email: {{ $opticienInfo->email ?? '' }}</p>
+                <div class="info-group">
+                    <div class="info-label">Téléphone</div>
+                    <div class="info-value">{{ $recette->client_telephone }}</div>
+                </div>
+            </div>
+
+            <div class="section">
+                <h3 class="section-title">Produits</h3>
+                <div class="info-group">
+                    <div class="info-label">Monture</div>
+                    <div class="info-value">{{ $recette->monture->model_monture }}</div>
+                </div>
+                <div class="info-group">
+                    <div class="info-label">Type de Verre</div>
+                    <div class="info-value">{{ $recette->type_verre }}</div>
                 </div>
             </div>
         </div>
 
-        <div class="client-info">
-            <h5>Informations du Client</h5>
-            <p><strong>Nom:</strong> {{ $recette->client_nom }} {{ $recette->client_prenom }}</p>
-            <p><strong>Téléphone:</strong> {{ $recette->client_telephone }}</p>
-        </div>
-
-        <div class="prescription-info">
-            <h5>Prescription</h5>
+        <div class="section">
+            <h3 class="section-title">Prescription</h3>
             <div class="prescription-grid">
                 <div class="prescription-section">
-                    <h5>Œil Droit</h5>
-                    <div class="prescription-row">
-                        <span>Sphère:</span>
-                        <span>{{ $recette->oeil_droit_sphere ?? '-' }}</span>
+                    <h4>Œil Droit</h4>
+                    <div class="info-group">
+                        <div class="info-label">Sphère</div>
+                        <div class="info-value">{{ $recette->oeil_droit_sphere ?? '-' }}</div>
                     </div>
-                    <div class="prescription-row">
-                        <span>Cylindre:</span>
-                        <span>{{ $recette->oeil_droit_cylindre ?? '-' }}</span>
+                    <div class="info-group">
+                        <div class="info-label">Cylindre</div>
+                        <div class="info-value">{{ $recette->oeil_droit_cylindre ?? '-' }}</div>
                     </div>
-                    <div class="prescription-row">
-                        <span>Axe:</span>
-                        <span>{{ $recette->oeil_droit_axe ?? '-' }}</span>
+                    <div class="info-group">
+                        <div class="info-label">Axe</div>
+                        <div class="info-value">{{ $recette->oeil_droit_axe ?? '-' }}</div>
                     </div>
-                    <div class="prescription-row">
-                        <span>Addition:</span>
-                        <span>{{ $recette->oeil_droit_addition ?? '-' }}</span>
+                    @if($recette->oeil_droit_addition)
+                    <div class="info-group">
+                        <div class="info-label">Addition</div>
+                        <div class="info-value">{{ $recette->oeil_droit_addition }}</div>
                     </div>
+                    @endif
                 </div>
                 <div class="prescription-section">
-                    <h5>Œil Gauche</h5>
-                    <div class="prescription-row">
-                        <span>Sphère:</span>
-                        <span>{{ $recette->oeil_gauche_sphere ?? '-' }}</span>
+                    <h4>Œil Gauche</h4>
+                    <div class="info-group">
+                        <div class="info-label">Sphère</div>
+                        <div class="info-value">{{ $recette->oeil_gauche_sphere ?? '-' }}</div>
                     </div>
-                    <div class="prescription-row">
-                        <span>Cylindre:</span>
-                        <span>{{ $recette->oeil_gauche_cylindre ?? '-' }}</span>
+                    <div class="info-group">
+                        <div class="info-label">Cylindre</div>
+                        <div class="info-value">{{ $recette->oeil_gauche_cylindre ?? '-' }}</div>
                     </div>
-                    <div class="prescription-row">
-                        <span>Axe:</span>
-                        <span>{{ $recette->oeil_gauche_axe ?? '-' }}</span>
+                    <div class="info-group">
+                        <div class="info-label">Axe</div>
+                        <div class="info-value">{{ $recette->oeil_gauche_axe ?? '-' }}</div>
                     </div>
-                    <div class="prescription-row">
-                        <span>Addition:</span>
-                        <span>{{ $recette->oeil_gauche_addition ?? '-' }}</span>
+                    @if($recette->oeil_gauche_addition)
+                    <div class="info-group">
+                        <div class="info-label">Addition</div>
+                        <div class="info-value">{{ $recette->oeil_gauche_addition }}</div>
                     </div>
+                    @endif
                 </div>
             </div>
         </div>
 
-        <div class="product-info">
-            <h5>Produits</h5>
-            <div class="prescription-row">
-                <span>Monture:</span>
-                <span>{{ $recette->monture->model_monture }}</span>
-            </div>
-            <div class="prescription-row">
-                <span>Type de Verre:</span>
-                <span>{{ $recette->type_verre }}</span>
-            </div>
-        </div>
-
-        <div class="financial-info">
-            <h5>Informations Financières</h5>
-            <div class="financial-row">
-                <span>Total:</span>
-                <span>{{ number_format($recette->total, 2, ',', ' ') }} DA</span>
-            </div>
-            <div class="financial-row">
-                <span>Montant Payé:</span>
-                <span>{{ number_format($recette->montant_paye, 2, ',', ' ') }} DA</span>
-            </div>
-            <div class="financial-row">
-                <span>Reste à Payer:</span>
-                <span>{{ number_format($recette->reste_a_payer, 2, ',', ' ') }} DA</span>
+        <div class="section">
+            <h3 class="section-title">Informations Financières</h3>
+            <div class="financial-info">
+                <div class="financial-item">
+                    <span>Prix Monture:</span>
+                    <span>{{ number_format($recette->monture_price, 2, ',', ' ') }} DA</span>
+                </div>
+                <div class="financial-item">
+                    <span>Prix Verres:</span>
+                    <span>{{ number_format($recette->lens_price, 2, ',', ' ') }} DA</span>
+                </div>
+                <div class="financial-item total">
+                    <span>Total:</span>
+                    <span>{{ number_format($recette->total, 2, ',', ' ') }} DA</span>
+                </div>
+                <div class="financial-item">
+                    <span>Montant Payé:</span>
+                    <span>{{ number_format($recette->montant_paye, 2, ',', ' ') }} DA</span>
+                </div>
+                <div class="financial-item">
+                    <span>Reste à Payer:</span>
+                    <span>{{ number_format($recette->reste_a_payer, 2, ',', ' ') }} DA</span>
+                </div>
             </div>
         </div>
 
         @if($recette->notes)
-        <div class="notes">
-            <h5>Notes</h5>
+        <div class="section">
+            <h3 class="section-title">Notes</h3>
             <p>{{ $recette->notes }}</p>
         </div>
         @endif
 
-        <div class="invoice-footer">
-            <div class="text-end">
-                <p>Signature</p>
-                <div class="signature-line"></div>
-            </div>
+        <div class="signature">
+            <p>Signature</p>
+            <div class="signature-line"></div>
+        </div>
+
+        <div class="footer">
+            <p>Merci de votre confiance</p>
+            <p>{{ $opticienInfo->nom_entreprise ?? 'DigiOptics' }}</p>
         </div>
     </div>
 </body>

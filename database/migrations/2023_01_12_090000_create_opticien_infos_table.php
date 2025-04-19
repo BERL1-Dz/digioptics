@@ -12,12 +12,15 @@ return new class extends Migration
             $table->id();
             $table->string('nom_entreprise');
             $table->string('adresse');
+            $table->string('code_postal')->nullable();
+            $table->string('ville')->nullable();
             $table->string('telephone');
             $table->string('email')->nullable();
             $table->string('site_web')->nullable();
-            $table->string('logo')->nullable();
-            $table->string('siret')->nullable();
-            $table->string('tva')->nullable();
+            $table->string('logo_path')->nullable();
+            $table->string('numero_finess')->nullable();
+            $table->string('numero_siret')->nullable();
+            $table->string('tva_numero')->nullable();
             $table->boolean('is_active')->default(true);
             $table->timestamps();
         });

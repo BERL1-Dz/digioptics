@@ -35,7 +35,16 @@ class RecetteFactory extends Factory
             'oeil_gauche_axe_pres' => $this->faker->numberBetween(0, 180),
             'oeil_gauche_addition' => $this->faker->randomElement(['+1.00', '+1.25', '+1.50', '+1.75', '+2.00', '+2.25', '+2.50']),
             
-            'monture_id' => Monture::factory(),
+            'monture_id' => function() {
+                return Monture::inRandomOrder()->first()->id ?? Monture::create([
+                    'model_monture' => 'Default Model',
+                    'couleur' => 'Black',
+                    'prix_achat' => 100,
+                    'prix_vente' => 200,
+                    'quantite' => 10,
+                    'fournisseur_id' => 1
+                ])->id;
+            },
             'type_verre' => $this->faker->randomElement(['HMC', 'HC', 'BB']),
             
             'total' => $this->faker->randomFloat(2, 100, 2000),

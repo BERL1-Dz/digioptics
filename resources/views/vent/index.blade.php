@@ -31,19 +31,21 @@
                                     <td>{{ $vent->fournisseur->nom }}</td>
                                     <td>{{ number_format($vent->total, 2, ',', ' ') }} DA</td>
                                     <td>
-                                        <a href="{{ route('vent.show', $vent) }}" class="btn btn-info btn-sm">
-                                            <i class='bx bx-show me-1'></i> Voir
-                                        </a>
-                                        <a href="{{ route('vent.edit', $vent) }}" class="btn btn-primary btn-sm">
-                                            <i class='bx bx-edit me-1'></i> Modifier
-                                        </a>
-                                        <form action="{{ route('vent.destroy', $vent) }}" method="POST" class="d-inline">
-                                            @csrf
-                                            @method('DELETE')
-                                            <button type="submit" class="btn btn-danger btn-sm" onclick="return confirm('Êtes-vous sûr de vouloir supprimer cette vente ?')">
-                                                <i class='bx bx-trash me-1'></i> Supprimer
-                                            </button>
-                                        </form>
+                                        <div class="d-flex gap-2">
+                                            <a href="{{ route('vent.show', $vent) }}" class="btn btn-sm btn-info" title="Voir">
+                                                <i class="bx bx-show"></i>
+                                            </a>
+                                            <a href="{{ route('vent.edit', $vent) }}" class="btn btn-sm btn-primary" title="Modifier">
+                                                <i class="bx bx-edit"></i>
+                                            </a>
+                                            <form action="{{ route('vent.destroy', $vent) }}" method="POST" class="d-inline">
+                                                @csrf
+                                                @method('DELETE')
+                                                <button type="submit" class="btn btn-sm btn-danger" title="Supprimer" onclick="return confirm('Êtes-vous sûr de vouloir supprimer cette vente ?')">
+                                                    <i class="bx bx-trash"></i>
+                                                </button>
+                                            </form>
+                                        </div>
                                     </td>
                                 </tr>
                                 @endforeach

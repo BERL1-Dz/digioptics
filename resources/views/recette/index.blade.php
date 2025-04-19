@@ -8,9 +8,9 @@
                 <div class="card-header">
                     <h3 class="card-title">Liste des Recettes</h3>
                     <div class="card-tools">
-                        <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#createRecetteModal">
+                        <a href="{{ route('recette.create') }}" class="btn btn-primary">
                             <i class="fas fa-plus"></i> Nouvelle Recette
-                        </button>
+                        </a>
                     </div>
                 </div>
                 <div class="card-body">
@@ -40,43 +40,27 @@
                                 <td>{{ number_format($recette->montant_paye, 2, ',', ' ') }} DA</td>
                                 <td>{{ number_format($recette->reste_a_payer, 2, ',', ' ') }} DA</td>
                                 <td>
-                                    <a href="{{ route('recette.show', $recette) }}" class="btn btn-info btn-sm">
-                                        <i class="fas fa-eye"></i>
-                                    </a>
-                                    <a href="{{ route('recette.edit', $recette) }}" class="btn btn-primary btn-sm">
-                                        <i class="fas fa-edit"></i>
-                                    </a>
-                                    <a href="{{ route('recette.pdf', $recette) }}" class="btn btn-success btn-sm">
-                                        <i class="fas fa-file-pdf"></i>
-                                    </a>
-                                    <form action="{{ route('recette.destroy', $recette) }}" method="POST" class="d-inline">
-                                        @csrf
-                                        @method('DELETE')
-                                        <button type="submit" class="btn btn-danger btn-sm" onclick="return confirm('Êtes-vous sûr de vouloir supprimer cette recette ?')">
-                                            <i class="fas fa-trash"></i>
-                                        </button>
-                                    </form>
+                                    <div class="d-flex gap-2">
+                                        <a href="recette/{{ $recette->id }}" class="btn btn-sm btn-info" title="Voir">
+                                            <i class="bx bx-show"></i>
+                                        </a>
+                                        <a href="recetteEdit/{{ $recette->id }}" class="btn btn-sm btn-primary" title="Modifier">
+                                            <i class="bx bx-edit"></i>
+                                        </a>
+                                        <form action="recette/delete/{{ $recette->id }}" method="POST" class="d-inline">
+                                            @csrf
+                                            @method('DELETE')
+                                            <button type="submit" class="btn btn-sm btn-danger" title="Supprimer" onclick="return confirm('Êtes-vous sûr de vouloir supprimer cette recette ?')">
+                                                <i class="bx bx-trash"></i>
+                                            </button>
+                                        </form>
+                                    </div>
                                 </td>
                             </tr>
                             @endforeach
                         </tbody>
                     </table>
                 </div>
-            </div>
-        </div>
-    </div>
-</div>
-
-<!-- Create Recette Modal -->
-<div class="modal fade" id="createRecetteModal" tabindex="-1" aria-labelledby="createRecetteModalLabel" aria-hidden="true">
-    <div class="modal-dialog modal-lg">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title" id="createRecetteModalLabel">Nouveau Bon</h5>
-                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-            </div>
-            <div class="modal-body">
-                @include('recette.form')
             </div>
         </div>
     </div>
@@ -91,9 +75,6 @@
                 "url": "//cdn.datatables.net/plug-ins/1.10.24/i18n/French.json"
             }
         });
-
-        // Initialize Bootstrap modal
-        var createRecetteModal = new bootstrap.Modal(document.getElementById('createRecetteModal'));
     });
 </script>
 @endpush 

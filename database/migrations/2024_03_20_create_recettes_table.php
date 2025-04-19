@@ -35,6 +35,8 @@ return new class extends Migration
             // Monture et Verres
             $table->foreignId('monture_id')->constrained()->onDelete('cascade');
             $table->string('type_verre');
+            $table->decimal('monture_price', 10, 2)->default(0);
+            $table->decimal('lens_price', 10, 2)->default(0);
             
             // Informations Financières
             $table->decimal('total', 10, 2);

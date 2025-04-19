@@ -16,10 +16,11 @@ class OpticienInfo extends Model
         'ville',
         'telephone',
         'email',
+        'site_web',
         'numero_finess',
         'numero_siret',
         'tva_numero',
-        'logo',
+        'logo_path',
         'is_active'
     ];
 

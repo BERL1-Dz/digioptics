@@ -29,19 +29,21 @@
                                         <td>{{ $achat->fournisseur->nom }}</td>
                                         <td>{{ number_format($achat->total, 2) }}</td>
                                         <td>
-                                            <a href="{{ route('achat.show', $achat) }}" class="btn btn-info btn-sm">
-                                                <i class='bx bx-show'></i>
-                                            </a>
-                                            <a href="{{ route('achat.edit', $achat) }}" class="btn btn-warning btn-sm">
-                                                <i class='bx bx-edit'></i>
-                                            </a>
-                                            <form action="{{ route('achat.destroy', $achat) }}" method="POST" class="d-inline">
-                                                @csrf
-                                                @method('DELETE')
-                                                <button type="submit" class="btn btn-danger btn-sm" onclick="return confirm('Êtes-vous sûr de vouloir supprimer cet achat ?')">
-                                                    <i class='bx bx-trash'></i>
-                                                </button>
-                                            </form>
+                                            <div class="d-flex gap-2">
+                                                <a href="{{ route('achat.show', $achat) }}" class="btn btn-sm btn-info" title="Voir">
+                                                    <i class="bx bx-show"></i>
+                                                </a>
+                                                <a href="{{ route('achat.edit', $achat) }}" class="btn btn-sm btn-primary" title="Modifier">
+                                                    <i class="bx bx-edit"></i>
+                                                </a>
+                                                <form action="{{ route('achat.destroy', $achat) }}" method="POST" class="d-inline">
+                                                    @csrf
+                                                    @method('DELETE')
+                                                    <button type="submit" class="btn btn-sm btn-danger" title="Supprimer" onclick="return confirm('Êtes-vous sûr de vouloir supprimer cet achat ?')">
+                                                        <i class="bx bx-trash"></i>
+                                                    </button>
+                                                </form>
+                                            </div>
                                         </td>
                                     </tr>
                                 @endforeach

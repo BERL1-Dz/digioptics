@@ -6,6 +6,7 @@ use App\Models\Recette;
 use App\Models\Monture;
 use Illuminate\Http\Request;
 use Barryvdh\DomPDF\Facade\Pdf;
+use App\Models\OpticienInfo;
 
 class RecetteController extends Controller
 {
@@ -53,7 +54,9 @@ class RecetteController extends Controller
             'monture_id' => 'required|exists:montures,id',
             'total' => 'required|numeric|min:0',
             'montant_paye' => 'required|numeric|min:0',
-            'notes' => 'nullable|string'
+            'notes' => 'nullable|string',
+            'monture_price' => 'nullable|numeric|min:0',
+            'lens_price' => 'nullable|numeric|min:0',
         ]);
 
         $validated['reste_a_payer'] = $validated['total'] - $validated['montant_paye'];
@@ -100,6 +103,8 @@ class RecetteController extends Controller
             'total' => 'required|numeric|min:0',
             'montant_paye' => 'required|numeric|min:0',
             'notes' => 'nullable|string',
+            'monture_price' => 'nullable|numeric|min:0',
+            'lens_price' => 'nullable|numeric|min:0',
         ]);
 
         $validated['reste_a_payer'] = max(0, $validated['total'] - $validated['montant_paye']);
@@ -118,9 +123,16 @@ class RecetteController extends Controller
             ->with('success', 'Recette supprimée avec succès.');
     }
 
-    public function pdf(Recette $recette)
+    public function pdf($id)
     {
-        $pdf = Pdf::loadView('recette.pdf', compact('recette'));
+        $recette = Recette::findOrFail($id);
+        $opticienInfo = OpticienInfo::where('is_active', true)->first();
+        
+        $pdf = Pdf::loadView('recette.pdf', [
+            'recette' => $recette,
+            'opticienInfo' => $opticienInfo
+        ]);
+        
         return $pdf->download('recette-' . str_pad($recette->id, 6, '0', STR_PAD_LEFT) . '.pdf');
     }
 } 

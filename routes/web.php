@@ -15,6 +15,7 @@ use App\Http\Controllers\OpticienInfoController;
 use App\Http\Controllers\AchatController;
 use App\Http\Controllers\VentController;
 use App\Http\Controllers\RecetteController;
+use App\Http\Controllers\TestController;
 
 /*
 |--------------------------------------------------------------------------
@@ -140,5 +141,8 @@ Route::get('/vent/{vent}/pdf', [VentController::class, 'pdf'])->name('vent.pdf')
 // Recette Routes
 Route::resource('recette', RecetteController::class);
 Route::get('recette/{recette}/pdf', [RecetteController::class, 'pdf'])->name('recette.pdf');
+
+// Test route
+Route::get('/test-opticien-info', [TestController::class, 'testOpticienInfo']);
 
 require __DIR__ . '/auth.php';

@@ -16,13 +16,16 @@ class OpticienInfoSeeder extends Seeder
     {
         OpticienInfo::create([
             'nom_entreprise' => 'DigiOptics',
-            'adresse' => '123 Rue de la Vision, 75001 Paris',
+            'adresse' => '123 Rue de la Vision',
+            'code_postal' => '75001',
+            'ville' => 'Paris',
             'telephone' => '+33 1 23 45 67 89',
             'email' => 'contact@digioptics.fr',
             'site_web' => 'www.digioptics.fr',
-            'logo' => 'logo.png',
-            'siret' => '123 456 789 00012',
-            'tva' => 'FR 12 345678900',
+            'logo_path' => null,
+            'numero_finess' => '12 345 6789 0',
+            'numero_siret' => '123 456 789 00012',
+            'tva_numero' => 'FR 12 345678900',
             'is_active' => true
         ]);
     }
