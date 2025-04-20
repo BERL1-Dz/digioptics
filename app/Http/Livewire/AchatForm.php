@@ -24,6 +24,8 @@ class AchatForm extends Component
     public $montureRows = [];
     
     public $grandTotal = 0;
+    
+    protected $listeners = ['refreshTotals' => 'calculateTotals'];
 
     public function mount()
     {
@@ -89,13 +91,63 @@ class AchatForm extends Component
         $this->calculateTotals();
     }
 
-    public function updated($name, $value)
+    public function updatedVerreRows($value, $key)
     {
-        if (str_contains($name, 'verreRows') || 
-            str_contains($name, 'lentilleRows') || 
-            str_contains($name, 'montureRows')) {
-            $this->calculateTotals();
+        $parts = explode('.', $key);
+        $index = $parts[0];
+        $field = $parts[1] ?? null;
+
+        if ($field === 'id' && $value) {
+            $verre = Verre::find($value);
+            if ($verre) {
+                $this->verreRows[$index]['prix_unitaire'] = $verre->prix_achat;
+            }
         }
+        
+        $this->calculateTotals();
+    }
+
+    public function updatedLentilleRows($value, $key)
+    {
+        $parts = explode('.', $key);
+        $index = $parts[0];
+        $field = $parts[1] ?? null;
+
+        if ($field === 'id' && $value) {
+            $lentille = Lentille::find($value);
+            if ($lentille) {
+                $this->lentilleRows[$index]['prix_unitaire'] = $lentille->prix_achat;
+            }
+        }
+        
+        $this->calculateTotals();
+    }
+
+    public function updatedMontureRows($value, $key)
+    {
+        $parts = explode('.', $key);
+        $index = $parts[0];
+        $field = $parts[1] ?? null;
+
+        if ($field === 'id' && $value) {
+            $monture = Monture::find($value);
+            if ($monture) {
+                $this->montureRows[$index]['prix_unitaire'] = $monture->prix_achat;
+            }
+        }
+        
+        $this->calculateTotals();
+    }
+    
+    // Generic updated method to catch any other changes
+    public function updated()
+    {
+        $this->calculateTotals();
+    }
+
+    public function hydrate()
+    {
+        $this->calculateTotals();
     }
 
     public function calculateTotals()
@@ -103,22 +155,46 @@ class AchatForm extends Component
         $this->grandTotal = 0;
 
         // Calculate verre totals
-        foreach ($this->verreRows as &$row) {
-            $row['total'] = $row['quantite'] * $row['prix_unitaire'];
+        foreach ($this->verreRows as $index => &$row) {
+            if (!isset($row['quantite']) || !isset($row['prix_unitaire'])) {
+                $row['total'] = 0;
+                continue;
+            }
+            
+            $quantite = floatval($row['quantite']);
+            $prix = floatval($row['prix_unitaire']);
+            $row['total'] = $quantite * $prix;
             $this->grandTotal += $row['total'];
         }
 
         // Calculate lentille totals
-        foreach ($this->lentilleRows as &$row) {
-            $row['total'] = $row['quantite'] * $row['prix_unitaire'];
+        foreach ($this->lentilleRows as $index => &$row) {
+            if (!isset($row['quantite']) || !isset($row['prix_unitaire'])) {
+                $row['total'] = 0;
+                continue;
+            }
+            
+            $quantite = floatval($row['quantite']);
+            $prix = floatval($row['prix_unitaire']);
+            $row['total'] = $quantite * $prix;
             $this->grandTotal += $row['total'];
         }
 
         // Calculate monture totals
-        foreach ($this->montureRows as &$row) {
-            $row['total'] = $row['quantite'] * $row['prix_unitaire'];
+        foreach ($this->montureRows as $index => &$row) {
+            if (!isset($row['quantite']) || !isset($row['prix_unitaire'])) {
+                $row['total'] = 0;
+                continue;
+            }
+            
+            $quantite = floatval($row['quantite']);
+            $prix = floatval($row['prix_unitaire']);
+            $row['total'] = $quantite * $prix;
             $this->grandTotal += $row['total'];
         }
+        
+        // Emit an event to refresh the UI
+        $this->emit('refreshTotals');
     }
 
     public function render()

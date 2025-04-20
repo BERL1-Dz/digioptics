@@ -62,7 +62,7 @@ class FournisseurController extends Controller
      */
     public function show(Fournisseur $fournisseur)
     {
-        //
+        return view('fournisseur.show', compact('fournisseur'));
     }
 
     /**
@@ -71,13 +71,9 @@ class FournisseurController extends Controller
      * @param  \App\Models\Fournisseur  $fournisseur
      * @return \Illuminate\Http\Response
      */
-    public function edit(Fournisseur $fournisseur, $id)
+    public function edit(Fournisseur $fournisseur)
     {
-        //
-        $data = Fournisseur::find($id);
-        $i = 0;
-
-        return view("fournisseur.edit", compact("data","id","i"));
+        return view('fournisseur.edit', compact('fournisseur'));
     }
 
     /**
@@ -87,21 +83,10 @@ class FournisseurController extends Controller
      * @param  \App\Models\Fournisseur  $fournisseur
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Fournisseur $fournisseur, $id)
+    public function update(Request $request, Fournisseur $fournisseur)
     {
-        //dd($request->all());
-
-        $fournisseur = Fournisseur::find($id);
-
-        $fournisseur->code_fournisseur = request('code_fournisseur');
-        $fournisseur->nom = request('nom');
-        $fournisseur->fabricant_associe = request('fabricant_associe');
-        $fournisseur->mail_fournisseur = request('mail_fournisseur');
-        $fournisseur->numero_fournisseur = request('numero_fournisseur');
-
-        $fournisseur->update();
-        return redirect('/fournisseur');
-
+        $fournisseur->update($request->all());
+        return redirect()->route('fournisseur.index')->with('success', 'Fournisseur mis à jour avec succès');
     }
 
     /**
@@ -110,11 +95,9 @@ class FournisseurController extends Controller
      * @param  \App\Models\Fournisseur  $fournisseur
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Fournisseur $fournisseur, $id)
+    public function destroy(Fournisseur $fournisseur)
     {
-        //
-        $fournisseur = Fournisseur::find($id);
         $fournisseur->delete();
-        return redirect()->back();
+        return redirect()->route('fournisseur.index')->with('success', 'Fournisseur supprimé avec succès');
     }
 }

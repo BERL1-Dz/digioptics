@@ -78,20 +78,20 @@
                                 </td> --}}
                                 <td>{{ $facture->t_t_c }}</td>
                                 <td>
-                                    <div class="dropdown">
-                                        <button type="button" class="btn p-0 dropdown-toggle hide-arrow"
-                                            data-bs-toggle="dropdown" aria-expanded="false">
-                                            <i class="bx bx-dots-vertical-rounded"></i>
-                                        </button>
-                                        <div class="dropdown-menu" style="">
-                                            <a class="dropdown-item" href="factureShow/{{ $facture['id'] }}"><i
-                                                    class="bx bx-show me-1"></i> Show</a>
-                                            <a class="dropdown-item" href="factureEdit/{{ $facture['id'] }}"><i
-                                                    class="bx bx-edit-alt me-1"></i> Edit</a>
-                                            <a class="dropdown-item" href="facture/delete/{{ $facture['id'] }}"><i
-                                                    class="bx bx-trash me-1"></i>
-                                                Delete</a>
-                                        </div>
+                                    <div class="d-flex gap-2">
+                                        <a href="factureShow/{{ $facture['id'] }}" class="btn btn-sm btn-info" title="Voir">
+                                            <i class="bx bx-show"></i>
+                                        </a>
+                                        <a href="factureEdit/{{ $facture['id'] }}" class="btn btn-sm btn-primary" title="Modifier">
+                                            <i class="bx bx-edit"></i>
+                                        </a>
+                                        <form action="facture/delete/{{ $facture['id'] }}" method="POST" class="d-inline">
+                                            @csrf
+                                            @method('DELETE')
+                                            <button type="submit" class="btn btn-sm btn-danger" title="Supprimer" onclick="return confirm('Êtes-vous sûr de vouloir supprimer cette facture ?')">
+                                                <i class="bx bx-trash"></i>
+                                            </button>
+                                        </form>
                                     </div>
                                 </td>
                             </tr>

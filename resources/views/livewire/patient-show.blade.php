@@ -62,10 +62,10 @@
                                     </td>
                                     <td>
                                         <a href="{{ route('recette.show', $recette) }}" class="btn btn-sm btn-info">
-                                            <i class="fas fa-eye"></i>
+                                            <i class="bx bx-show"></i>
                                         </a>
                                         <a href="{{ route('recette.pdf', $recette) }}" class="btn btn-sm btn-primary">
-                                            <i class="fas fa-file-pdf"></i>
+                                            <i class="bx bx-download me-1"></i>
                                         </a>
                                     </td>
                                 </tr>

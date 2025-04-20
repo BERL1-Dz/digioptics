@@ -59,7 +59,7 @@
                                     <input type="number" wire:model="verreRows.{{ $index }}.prix_unitaire" class="form-control" step="0.01" min="0" required>
                                 </td>
                                 <td>
-                                    <input type="text" class="form-control" value="{{ number_format($row['total'], 2) }}" readonly>
+                                    {{ number_format($row['total'], 2) }}
                                 </td>
                                 <td>
                                     <button type="button" wire:click="removeVerreRow({{ $index }})" class="btn btn-danger btn-sm">
@@ -114,7 +114,7 @@
                                     <input type="number" wire:model="lentilleRows.{{ $index }}.prix_unitaire" class="form-control" step="0.01" min="0" required>
                                 </td>
                                 <td>
-                                    <input type="text" class="form-control" value="{{ number_format($row['total'], 2) }}" readonly>
+                                    {{ number_format($row['total'], 2) }}
                                 </td>
                                 <td>
                                     <button type="button" wire:click="removeLentilleRow({{ $index }})" class="btn btn-danger btn-sm">
@@ -169,7 +169,7 @@
                                     <input type="number" wire:model="montureRows.{{ $index }}.prix_unitaire" class="form-control" step="0.01" min="0" required>
                                 </td>
                                 <td>
-                                    <input type="text" class="form-control" value="{{ number_format($row['total'], 2) }}" readonly>
+                                    {{ number_format($row['total'], 2) }}
                                 </td>
                                 <td>
                                     <button type="button" wire:click="removeMontureRow({{ $index }})" class="btn btn-danger btn-sm">
@@ -192,7 +192,7 @@
             <table class="table table-bordered">
                 <tr>
                     <th>Total Général</th>
-                    <td><input type="text" class="form-control" value="{{ number_format($grandTotal, 2) }}" readonly /></td>
+                    <td>{{ number_format($grandTotal, 2) }}</td>
                 </tr>
             </table>
         </div>

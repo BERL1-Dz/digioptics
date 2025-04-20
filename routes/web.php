@@ -90,11 +90,12 @@ Route::get('/patient/delete/{id}', [PatientController::class, 'destroy'])->middl
 Route::get('/patient/{patient}', [PatientController::class, 'show'])->middleware(['auth'])->name('show');
 
 // fournisseur
-Route::get('/fournisseur', [FournisseurController::class, 'index'])->middleware(['auth'])->name('fournisseur');
-Route::post('/create_fournisseur', [FournisseurController::class, 'store']);
-Route::get('/fournisseurEdit/{id}', [FournisseurController::class, 'edit'])->middleware(['auth'])->name('edit');
-Route::put('/fournisseur/update/{id}', [FournisseurController::class, 'update'])->middleware(['auth'])->name('update');
-Route::get('/fournisseur/delete/{id}', [FournisseurController::class, 'destroy'])->middleware(['auth'])->name('destroy');
+Route::get('/fournisseur', [FournisseurController::class, 'index'])->middleware(['auth'])->name('fournisseur.index');
+Route::post('/create_fournisseur', [FournisseurController::class, 'store'])->name('fournisseur.store');
+Route::get('/fournisseur/{fournisseur}', [FournisseurController::class, 'show'])->middleware(['auth'])->name('fournisseur.show');
+Route::get('/fournisseur/{fournisseur}/edit', [FournisseurController::class, 'edit'])->middleware(['auth'])->name('fournisseur.edit');
+Route::put('/fournisseur/{fournisseur}', [FournisseurController::class, 'update'])->middleware(['auth'])->name('fournisseur.update');
+Route::delete('/fournisseur/{fournisseur}', [FournisseurController::class, 'destroy'])->middleware(['auth'])->name('fournisseur.destroy');
 
 // verre
 
