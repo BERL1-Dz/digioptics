@@ -9,6 +9,7 @@ use Illuminate\Http\Request;
 use Barryvdh\DomPDF\Facade\Pdf;
 use App\Models\OpticienInfo;
 use Illuminate\Support\Facades\Log;
+use Livewire\Livewire;
 
 class RecetteController extends Controller
 {
@@ -29,7 +30,6 @@ class RecetteController extends Controller
 
     public function store(Request $request)
     {
-        // Debug the incoming requestdd($request->all());dd($request->all());
         $recettes = new Recette();
         $recettes->patient_id = $request->input('patient_id');
         $recettes->client_nom = $request->input('client_nom');
@@ -59,6 +59,9 @@ class RecetteController extends Controller
 
         $recettes->save();
 
+        // Emit event for Livewire component
+        broadcast(new \App\Events\RecetteCreated($recettes->patient_id))->toOthers();
+
         return redirect()->route('recette.index')
             ->with('success', 'Recette créée avec succès.');
     }
@@ -77,37 +80,45 @@ class RecetteController extends Controller
 
     public function update(Request $request, Recette $recette)
     {
-        $validated = $request->validate([
-            'client_nom' => 'required|string|max:255',
-            'client_prenom' => 'required|string|max:255',
-            'client_telephone' => 'required|string|max:255',
-            'patient_id' => 'nullable|exists:patients,id',
-            'oeil_droit_sphere' => 'required|string|max:255',
-            'oeil_droit_cylindre' => 'required|string|max:255',
-            'oeil_droit_axe' => 'required|string|max:255',
-            'oeil_gauche_sphere' => 'required|string|max:255',
-            'oeil_gauche_cylindre' => 'required|string|max:255',
-            'oeil_gauche_axe' => 'required|string|max:255',
-            'oeil_droit_sphere_pres' => 'nullable|string|max:255',
-            'oeil_droit_cylindre_pres' => 'nullable|string|max:255',
-            'oeil_droit_axe_pres' => 'nullable|string|max:255',
-            'oeil_droit_addition' => 'nullable|string|max:255',
-            'oeil_gauche_sphere_pres' => 'nullable|string|max:255',
-            'oeil_gauche_cylindre_pres' => 'nullable|string|max:255',
-            'oeil_gauche_axe_pres' => 'nullable|string|max:255',
-            'oeil_gauche_addition' => 'nullable|string|max:255',
-            'monture_id' => 'required|exists:montures,id',
-            'type_verre' => 'required|string|max:255',
-            'total' => 'required|numeric|min:0',
-            'montant_paye' => 'required|numeric|min:0',
-            'notes' => 'nullable|string',
-            'monture_price' => 'nullable|numeric|min:0',
-            'lens_price' => 'nullable|numeric|min:0',
-        ]);
+        $recette->patient_id = $request->input('patient_id');
+        $recette->client_nom = $request->input('client_nom');
+        $recette->client_prenom = $request->input('client_prenom');
+        $recette->client_telephone = $request->input('client_telephone');
+        
+        // Vision de Loin
+        $recette->oeil_droit_sphere = $request->input('oeil_droit_sphere');
+        $recette->oeil_droit_cylindre = $request->input('oeil_droit_cylindre');
+        $recette->oeil_droit_axe = $request->input('oeil_droit_axe');
+        $recette->oeil_gauche_sphere = $request->input('oeil_gauche_sphere');
+        $recette->oeil_gauche_cylindre = $request->input('oeil_gauche_cylindre');
+        $recette->oeil_gauche_axe = $request->input('oeil_gauche_axe');
 
-        $validated['reste_a_payer'] = max(0, $validated['total'] - $validated['montant_paye']);
+        // Vision de Près
+        $recette->oeil_droit_sphere_pres = $request->input('oeil_droit_sphere_pres');
+        $recette->oeil_droit_cylindre_pres = $request->input('oeil_droit_cylindre_pres');
+        $recette->oeil_droit_axe_pres = $request->input('oeil_droit_axe_pres');
+        $recette->oeil_droit_addition = $request->input('oeil_droit_addition');
+        $recette->oeil_gauche_sphere_pres = $request->input('oeil_gauche_sphere_pres');
+        $recette->oeil_gauche_cylindre_pres = $request->input('oeil_gauche_cylindre_pres');
+        $recette->oeil_gauche_axe_pres = $request->input('oeil_gauche_axe_pres');
+        $recette->oeil_gauche_addition = $request->input('oeil_gauche_addition');
 
-        $recette->update($validated);
+        // Monture et Verres
+        $recette->type_verre = $request->input('type_verre');
+        $recette->monture_id = $request->input('monture_id');
+        $recette->monture_price = $request->input('monture_price');
+        $recette->lens_price = $request->input('lens_price');
+
+        // Informations Financières
+        $recette->total = $request->input('total');
+        $recette->montant_paye = $request->input('montant_paye');
+        $recette->reste_a_payer = $request->input('reste_a_payer');
+        $recette->notes = $request->input('notes');
+
+        $recette->save();
+
+        // Emit event for Livewire component
+        broadcast(new \App\Events\RecetteUpdated($recette->patient_id))->toOthers();
 
         return redirect()->route('recette.show', $recette)
             ->with('success', 'Recette mise à jour avec succès.');
@@ -115,7 +126,11 @@ class RecetteController extends Controller
 
     public function destroy(Recette $recette)
     {
+        $patientId = $recette->patient_id;
         $recette->delete();
+
+        // Emit event for Livewire component
+        broadcast(new \App\Events\RecetteDeleted($patientId))->toOthers();
 
         return redirect()->route('recette.index')
             ->with('success', 'Recette supprimée avec succès.');

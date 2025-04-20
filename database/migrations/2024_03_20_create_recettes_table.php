@@ -16,12 +16,12 @@ return new class extends Migration
             $table->string('client_telephone')->nullable();
             
             // Vision de Loin
-            $table->string('oeil_droit_sphere');
-            $table->string('oeil_droit_cylindre');
-            $table->string('oeil_droit_axe');
-            $table->string('oeil_gauche_sphere');
-            $table->string('oeil_gauche_cylindre');
-            $table->string('oeil_gauche_axe');
+            $table->string('oeil_droit_sphere')->nullable();
+            $table->string('oeil_droit_cylindre')->nullable();
+            $table->string('oeil_droit_axe')->nullable();
+            $table->string('oeil_gauche_sphere')->nullable();
+            $table->string('oeil_gauche_cylindre')->nullable();
+            $table->string('oeil_gauche_axe')->nullable();
             
             // Vision de Près
             $table->string('oeil_droit_sphere_pres')->nullable();
@@ -34,15 +34,15 @@ return new class extends Migration
             $table->string('oeil_gauche_addition')->nullable();
             
             // Monture et Verres
-            $table->foreignId('monture_id')->constrained()->onDelete('cascade');
-            $table->string('type_verre');
+            $table->foreignId('monture_id')->constrained()->onDelete('cascade')->nullable();
+            $table->string('type_verre')->nullable();
             $table->decimal('monture_price', 10, 2)->default(0);
             $table->decimal('lens_price', 10, 2)->default(0);
             
             // Informations Financières
-            $table->decimal('total', 10, 2);
-            $table->decimal('montant_paye', 10, 2);
-            $table->decimal('reste_a_payer', 10, 2);
+            $table->decimal('total', 10, 2)->default(0);
+            $table->decimal('montant_paye', 10, 2)->default(0);
+            $table->decimal('reste_a_payer', 10, 2)->default(0);
             
             $table->text('notes')->nullable();
             $table->timestamps();

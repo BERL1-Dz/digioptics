@@ -32,11 +32,9 @@ class RecetteForm extends Component
             $this->total = $recette->total;
             $this->montant_paye = $recette->montant_paye;
             $this->monture_id = $recette->monture_id;
-            if ($recette->monture) {
-                $this->monture_price = $recette->monture->pv_monture;
-            }
-            $this->lens_price = $recette->lens_price ?? 0;
-            $this->calculateResteAPayer();
+            $this->monture_price = $recette->monture_price;
+            $this->lens_price = $recette->lens_price;
+            $this->reste_a_payer = $recette->reste_a_payer;
         }
     }
 
@@ -68,26 +66,26 @@ class RecetteForm extends Component
     public function updatedTotal()
     {
         $this->validateOnly('total');
-        $this->calculateResteAPayer();
+        $this->calculateRemaining();
         $this->emit('calculationsUpdated');
     }
 
     public function updatedMontantPaye()
     {
         $this->validateOnly('montant_paye');
-        $this->calculateResteAPayer();
+        $this->calculateRemaining();
         $this->emit('calculationsUpdated');
     }
 
-    private function calculateResteAPayer()
+    private function calculateRemaining()
     {
-        $this->reste_a_payer = max(0, $this->total - $this->montant_paye);
+        $this->reste_a_payer = $this->total - $this->montant_paye;
     }
 
     private function calculateTotal()
     {
         $this->total = $this->monture_price + $this->lens_price;
-        $this->calculateResteAPayer();
+        $this->calculateRemaining();
         $this->emit('calculationsUpdated');
     }
 

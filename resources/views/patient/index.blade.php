@@ -54,8 +54,15 @@
                                 <th scope="row">{{ $patient->id }}</th>
                                 <td>{{ $patient->nom }}</td>
                                 <td>{{ $patient->prenom }}</td>
-                                <td>{{ $patient->age }}</td>
-                                <td>{{ $patient->phone }}</td>
+                                <td>
+                                    @php
+                                        $birthDate = new DateTime($patient->date_naissance);
+                                        $today = new DateTime();
+                                        $age = $birthDate->diff($today)->y;
+                                        echo $age . ' ans';
+                                    @endphp
+                                </td>
+                                <td>{{ $patient->telephone }}</td>
                                 <td>
                                     <div class="d-flex gap-2">
                                         <a href="patient/{{ $patient->id }}" class="btn btn-sm btn-info" title="Voir">

@@ -44,7 +44,7 @@
                                             <strong>Date de Naissance:</strong>
                                         </div>
                                         <div class="col-md-8">
-                                            
+                                            {{ $patient->date_naissance->format('d/m/Y') }}
                                         </div>
                                     </div>
                                     <div class="row mb-3">
@@ -52,7 +52,7 @@
                                             <strong>Téléphone:</strong>
                                         </div>
                                         <div class="col-md-8">
-                                            
+                                            {{ $patient->telephone }}
                                         </div>
                                     </div>
                                     <div class="row mb-3">
@@ -60,7 +60,7 @@
                                             <strong>Email:</strong>
                                         </div>
                                         <div class="col-md-8">
-                                           
+                                            {{ $patient->email ?? 'Non spécifié' }}
                                         </div>
                                     </div>
                                 </div>
@@ -77,7 +77,7 @@
                                             <strong>Groupe Sanguin:</strong>
                                         </div>
                                         <div class="col-md-8">
-                                            {{ $patient->groupe_sanguin }}
+                                            {{ $patient->groupe_sanguin ?? 'Non spécifié' }}
                                         </div>
                                     </div>
                                     <div class="row mb-3">
@@ -101,53 +101,8 @@
                         </div>
                     </div>
 
-                    <!-- Recettes History -->
-                    <div class="row mt-4">
-                        <div class="col-12">
-                            <div class="info-box">
-                                <h4 class="info-box-title">Historique des Recettes</h4>
-                                <div class="table-responsive">
-                                    <table class="table table-bordered table-hover">
-                                        <thead>
-                                            <tr>
-                                                <th>Date</th>
-                                                <th>Type de Verre</th>
-                                                <th>Monture</th>
-                                                <th>Total</th>
-                                                <th>Montant Payé</th>
-                                                <th>Reste à Payer</th>
-                                                <th>Actions</th>
-                                            </tr>
-                                        </thead>
-                                        {{-- <tbody>
-                                            @forelse($patient->recettes as $recette)
-                                                <tr>
-                                                    <td>{{ $recette->created_at->format('d/m/Y') }}</td>
-                                                    <td>{{ $recette->type_verre }}</td>
-                                                    <td>{{ $recette->monture->model_monture }}</td>
-                                                    <td>{{ number_format($recette->total, 2) }} €</td>
-                                                    <td>{{ number_format($recette->montant_paye, 2) }} €</td>
-                                                    <td>{{ number_format($recette->reste_a_payer, 2) }} €</td>
-                                                    <td>
-                                                        <a href="{{ route('recette.show', $recette) }}" class="btn btn-sm btn-info">
-                                                            <i class="fas fa-eye"></i>
-                                                        </a>
-                                                        <a href="{{ route('recette.pdf', $recette) }}" class="btn btn-sm btn-primary">
-                                                            <i class="fas fa-file-pdf"></i>
-                                                        </a>
-                                                    </td>
-                                                </tr>
-                                            @empty
-                                                <tr>
-                                                    <td colspan="7" class="text-center">Aucune recette trouvée</td>
-                                                </tr>
-                                            @endforelse
-                                        </tbody> --}}
-                                    </table>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+                    <!-- Livewire Component for Recettes -->
+                    <livewire:patient-show :patientId="$patient->id" />
                 </div>
             </div>
         </div>
@@ -193,6 +148,27 @@
 .card-title {
     margin-bottom: 0;
     color: #566a7f;
+}
+
+.badge {
+    padding: 0.5em 0.75em;
+    font-size: 0.75em;
+    font-weight: 600;
+    line-height: 1;
+    text-align: center;
+    white-space: nowrap;
+    vertical-align: baseline;
+    border-radius: 0.25rem;
+}
+
+.bg-success {
+    background-color: #71dd37 !important;
+    color: #fff;
+}
+
+.bg-warning {
+    background-color: #ffab00 !important;
+    color: #fff;
 }
 </style>
 @endsection 

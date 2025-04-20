@@ -40,15 +40,15 @@
                             <table class="table">
                                 <tr>
                                     <th>Total:</th>
-                                    <td>{{ number_format($recette->total, 2, ',', ' ') }} DH</td>
+                                    <td>{{ number_format($recette->total, 2, ',', ' ') }} DA</td>
                                 </tr>
                                 <tr>
                                     <th>Montant Payé:</th>
-                                    <td>{{ number_format($recette->montant_paye, 2, ',', ' ') }} DH</td>
+                                    <td>{{ number_format($recette->montant_paye, 2, ',', ' ') }} DA</td>
                                 </tr>
                                 <tr>
                                     <th>Reste à Payer:</th>
-                                    <td>{{ number_format($recette->reste_a_payer, 2, ',', ' ') }} DH</td>
+                                    <td>{{ number_format($recette->reste_a_payer, 2, ',', ' ') }} DA</td>
                                 </tr>
                             </table>
                         </div>

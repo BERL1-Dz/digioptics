@@ -60,7 +60,6 @@ class PatientController extends Controller
      */
     public function show(Patient $patient)
     {
-        $patient->load('recettes.monture');
         return view('patient.show', compact('patient'));
     }
 

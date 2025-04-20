@@ -1,9 +1,11 @@
+@csrf
+
 <!-- Client Information -->
 <div class="row">
     <div class="col-md-6">
         <div class="form-group">
             <label for="patient_id">Sélectionner un Patient</label>
-            <select class="form-control" id="patient_id" name="patient_id" wire:model="patient_id">
+            <select class="form-control" id="patient_id" name="patient_id">
                 <option value="">Sélectionner un patient</option>
                 @foreach($patients as $patient)
                     <option value="{{ $patient->id }}" 
@@ -288,12 +290,14 @@
     <div class="col-md-6">
         <div class="form-group">
             <label for="monture_id">Monture</label>
-            <select class="form-control" id="monture_id" name="monture_id" wire:model="monture_id">
+            <select class="form-control" id="monture_id" name="monture_id">
                 <option value="">Sélectionner une monture</option>
                 @foreach($montures as $monture)
-                <option value="{{ $monture->id }}" data-price="{{ $monture->pv_monture }}">
-                    {{ $monture->model_monture }}
-                </option>
+                    <option value="{{ $monture->id }}" 
+                            data-price="{{ $monture->pv_monture }}"
+                            {{ (isset($recette) && $recette->monture_id == $monture->id) || old('monture_id') == $monture->id ? 'selected' : '' }}>
+                        {{ $monture->model_monture }}
+                    </option>
                 @endforeach
             </select>
         </div>
@@ -306,6 +310,9 @@
                 <option value="HMC" {{ (isset($recette) && $recette->type_verre == 'HMC') || old('type_verre') == 'HMC' ? 'selected' : '' }}>HMC</option>
                 <option value="HC" {{ (isset($recette) && $recette->type_verre == 'HC') || old('type_verre') == 'HC' ? 'selected' : '' }}>HC</option>
                 <option value="BB" {{ (isset($recette) && $recette->type_verre == 'BB') || old('type_verre') == 'BB' ? 'selected' : '' }}>BB</option>
+                <option value="PROGRESSIF" {{ (isset($recette) && $recette->type_verre == 'PROGRESSIF') || old('type_verre') == 'PROGRESSIF' ? 'selected' : '' }}>PROGRESSIF</option>
+                <option value="BIFOCAL" {{ (isset($recette) && $recette->type_verre == 'BIFOCAL') || old('type_verre') == 'BIFOCAL' ? 'selected' : '' }}>BIFOCAL</option>
+                <option value="MONOFOCAL" {{ (isset($recette) && $recette->type_verre == 'MONOFOCAL') || old('type_verre') == 'MONOFOCAL' ? 'selected' : '' }}>MONOFOCAL</option>
             </select>
         </div>
     </div>
@@ -321,7 +328,7 @@
                        class="form-control" 
                        id="monture_price" 
                        name="monture_price"
-                       wire:model="monture_price">
+                       value="{{ isset($recette) ? $recette->monture_price : old('monture_price') }}">
                 <span class="input-group-text">DA</span>
             </div>
         </div>
@@ -335,7 +342,7 @@
                        class="form-control" 
                        id="lens_price" 
                        name="lens_price"
-                       wire:model="lens_price">
+                       value="{{ isset($recette) ? $recette->lens_price : old('lens_price') }}">
                 <span class="input-group-text">DA</span>
             </div>
         </div>
@@ -343,6 +350,7 @@
 </div>
 
 @livewire('recette-form', ['recette' => $recette ?? null])
+
 
 <div class="row mt-4">
     <div class="col-12">
@@ -352,6 +360,7 @@
         </div>
     </div>
 </div>
+
 
 @push('scripts')
 <script>
@@ -371,6 +380,15 @@
             $('#client_telephone').val(telephone);
         });
 
+        // Handle monture selection
+        $('#monture_id').on('change', function() {
+            const selectedOption = $(this).find('option:selected');
+            const price = selectedOption.data('price');
+            if (price) {
+                $('#monture_price').val(price);
+            }
+        });
+
         // Calculate remaining amount
         function calculateRemaining() {
             var total = parseFloat($('#total').val()) || 0;
@@ -379,7 +397,22 @@
             $('#reste_a_payer').val(remaining.toFixed(2));
         }
 
-        $('#total, #montant_paye').on('input', calculateRemaining);
+        // Calculate total when monture or lens price changes
+        function calculateTotal() {
+            var monturePrice = parseFloat($('#monture_price').val()) || 0;
+            var lensPrice = parseFloat($('#lens_price').val()) || 0;
+            var total = monturePrice + lensPrice;
+            $('#total').val(total.toFixed(2));
+            calculateRemaining();
+        }
+
+        // Handle price changes
+        $('#monture_price, #lens_price').on('input', calculateTotal);
+        $('#montant_paye').on('input', calculateRemaining);
+
+        // Initialize calculations
+        calculateTotal();
+        calculateRemaining();
     });
 </script>
 @endpush
