@@ -13,10 +13,8 @@ class PatientController extends Controller
      */
     public function index()
     {
-        //
-          $patients = Patient::all();
-        //dd($patients);
-        return view('patient.index', compact("patients"));
+        $patients = Patient::with('recettes')->latest()->paginate(10);
+        return view('patient.index', compact('patients'));
     }
 
     /**
@@ -37,15 +35,21 @@ class PatientController extends Controller
      */
     public function store(Request $request)
     {
-        $patients = new Patient;
-        $patients->nom = request('nom');
-        $patients->prenom = request('prenom');
-        $patients->age = request('age');
-        $patients->adresse = request('adresse');
-        $patients->phone = request('phone');
-        $patients->save();
+        $validated = $request->validate([
+            'nom' => 'required|string|max:255',
+            'prenom' => 'required|string|max:255',
+            'date_naissance' => 'required|date',
+            'telephone' => 'required|string|max:20',
+            'email' => 'nullable|email|max:255',
+            'groupe_sanguin' => 'nullable|string|max:10',
+            'allergies' => 'nullable|string',
+            'antecedents' => 'nullable|string',
+        ]);
 
-        return back()->with('success', 'Patient créé avec succès.');
+        Patient::create($validated);
+
+        return redirect()->route('patient.index')
+            ->with('success', 'Patient créé avec succès.');
     }
 
     /**
@@ -56,7 +60,8 @@ class PatientController extends Controller
      */
     public function show(Patient $patient)
     {
-        //
+        $patient->load('recettes.monture');
+        return view('patient.show', compact('patient'));
     }
 
     /**
@@ -82,14 +87,17 @@ class PatientController extends Controller
         $validated = $request->validate([
             'nom' => 'required|string|max:255',
             'prenom' => 'required|string|max:255',
+            'date_naissance' => 'required|date',
             'telephone' => 'required|string|max:20',
-            'adresse' => 'nullable|string|max:255',
-            'age' => 'nullable|date'
+            'email' => 'nullable|email|max:255',
+            'groupe_sanguin' => 'nullable|string|max:10',
+            'allergies' => 'nullable|string',
+            'antecedents' => 'nullable|string',
         ]);
 
         $patient->update($validated);
 
-        return redirect()->route('patient.index')
+        return redirect()->route('patient.show', $patient)
             ->with('success', 'Patient mis à jour avec succès.');
     }
 

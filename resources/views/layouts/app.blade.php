@@ -189,7 +189,9 @@
                     <li class="menu-item">
                         <a href="{{ route('recette.index') }}" class="menu-link">
                             <i class="menu-icon tf-icons bx bx-receipt"></i>
-                            <div data-i18n="Recettes">Recettes</div>
+                            <div data-i18n="Recettes">
+                                Bon de commande
+                            </div>
                         </a>
                     </li>
                 </ul>

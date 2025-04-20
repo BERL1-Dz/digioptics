@@ -4,9 +4,11 @@ namespace App\Http\Controllers;
 
 use App\Models\Recette;
 use App\Models\Monture;
+use App\Models\Patient;
 use Illuminate\Http\Request;
 use Barryvdh\DomPDF\Facade\Pdf;
 use App\Models\OpticienInfo;
+use Illuminate\Support\Facades\Log;
 
 class RecetteController extends Controller
 {
@@ -21,47 +23,41 @@ class RecetteController extends Controller
     public function create()
     {
         $montures = Monture::all();
-        return view('recette.create', compact('montures'));
+        $patients = Patient::orderBy('prenom')->get();
+        return view('recette.create', compact('montures', 'patients'));
     }
 
     public function store(Request $request)
     {
-        //dd($request->all());
-        $validated = $request->validate([
-            'client_nom' => 'required|string|max:255',
-            'client_prenom' => 'required|string|max:255',
-            'client_telephone' => 'required|string|max:20',
-            // Vision de Loin - Right Eye
-            'oeil_droit_sphere' => 'nullable|string',
-            'oeil_droit_cylindre' => 'nullable|string',
-            'oeil_droit_axe' => 'nullable|string',
-            // Vision de Loin - Left Eye
-            'oeil_gauche_sphere' => 'nullable|string',
-            'oeil_gauche_cylindre' => 'nullable|string',
-            'oeil_gauche_axe' => 'nullable|string',
-            // Vision de Près - Right Eye
-            'oeil_droit_sphere_pres' => 'nullable|string',
-            'oeil_droit_cylindre_pres' => 'nullable|string',
-            'oeil_droit_axe_pres' => 'nullable|string',
-            'oeil_droit_addition' => 'nullable|string',
-            // Vision de Près - Left Eye
-            'oeil_gauche_sphere_pres' => 'nullable|string',
-            'oeil_gauche_cylindre_pres' => 'nullable|string',
-            'oeil_gauche_axe_pres' => 'nullable|string',
-            'oeil_gauche_addition' => 'nullable|string',
-            // Other fields
-            'type_verre' => 'required|in:HMC,HC,BB',
-            'monture_id' => 'required|exists:montures,id',
-            'total' => 'required|numeric|min:0',
-            'montant_paye' => 'required|numeric|min:0',
-            'notes' => 'nullable|string',
-            'monture_price' => 'nullable|numeric|min:0',
-            'lens_price' => 'nullable|numeric|min:0',
-        ]);
+        // Debug the incoming requestdd($request->all());dd($request->all());
+        $recettes = new Recette();
+        $recettes->patient_id = $request->input('patient_id');
+        $recettes->client_nom = $request->input('client_nom');
+        $recettes->client_prenom = $request->input('client_prenom');
+        $recettes->client_telephone = $request->input('client_telephone');
+        $recettes->oeil_droit_sphere = $request->input('oeil_droit_sphere');
+        $recettes->oeil_droit_cylindre = $request->input('oeil_droit_cylindre');
+        $recettes->oeil_droit_axe = $request->input('oeil_droit_axe');
+        $recettes->oeil_gauche_sphere = $request->input('oeil_gauche_sphere');
+        $recettes->oeil_gauche_cylindre = $request->input('oeil_gauche_cylindre');
+        $recettes->oeil_gauche_axe = $request->input('oeil_gauche_axe');
+        $recettes->oeil_droit_sphere_pres = $request->input('oeil_droit_sphere_pres');
+        $recettes->oeil_droit_cylindre_pres = $request->input('oeil_droit_cylindre_pres');
+        $recettes->oeil_droit_axe_pres = $request->input('oeil_droit_axe_pres');
+        $recettes->oeil_gauche_sphere_pres = $request->input('oeil_gauche_sphere_pres');
+        $recettes->oeil_gauche_cylindre_pres = $request->input('oeil_gauche_cylindre_pres');
+        $recettes->oeil_gauche_axe_pres = $request->input('oeil_gauche_axe_pres');
+        $recettes->oeil_gauche_addition = $request->input('oeil_gauche_addition');
+        $recettes->type_verre = $request->input('type_verre');
+        $recettes->monture_id = $request->input('monture_id');
+        $recettes->total = $request->input('total');
+        $recettes->montant_paye = $request->input('montant_paye');
+        $recettes->notes = $request->input('notes');
+        $recettes->monture_price = $request->input('monture_price');
+        $recettes->lens_price = $request->input('lens_price');
+        $recettes->reste_a_payer = $request->input('reste_a_payer');
 
-        $validated['reste_a_payer'] = $validated['total'] - $validated['montant_paye'];
-
-        Recette::create($validated);
+        $recettes->save();
 
         return redirect()->route('recette.index')
             ->with('success', 'Recette créée avec succès.');
@@ -75,7 +71,8 @@ class RecetteController extends Controller
     public function edit(Recette $recette)
     {
         $montures = Monture::all();
-        return view('recette.edit', compact('recette', 'montures'));
+        $patients = Patient::orderBy('prenom')->get();
+        return view('recette.edit', compact('recette', 'montures', 'patients'));
     }
 
     public function update(Request $request, Recette $recette)
@@ -84,6 +81,7 @@ class RecetteController extends Controller
             'client_nom' => 'required|string|max:255',
             'client_prenom' => 'required|string|max:255',
             'client_telephone' => 'required|string|max:255',
+            'patient_id' => 'nullable|exists:patients,id',
             'oeil_droit_sphere' => 'required|string|max:255',
             'oeil_droit_cylindre' => 'required|string|max:255',
             'oeil_droit_axe' => 'required|string|max:255',

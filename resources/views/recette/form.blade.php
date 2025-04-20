@@ -2,14 +2,19 @@
 <div class="row">
     <div class="col-md-6">
         <div class="form-group">
-            <label for="client_nom">Nom du Client</label>
-            <input type="text" class="form-control" id="client_nom" name="client_nom" value="{{ isset($recette) ? $recette->client_nom : old('client_nom') }}" required>
-        </div>
-    </div>
-    <div class="col-md-6">
-        <div class="form-group">
-            <label for="client_prenom">Prénom du Client</label>
-            <input type="text" class="form-control" id="client_prenom" name="client_prenom" value="{{ isset($recette) ? $recette->client_prenom : old('client_prenom') }}" required>
+            <label for="patient_id">Sélectionner un Patient</label>
+            <select class="form-control" id="patient_id" name="patient_id" wire:model="patient_id">
+                <option value="">Sélectionner un patient</option>
+                @foreach($patients as $patient)
+                    <option value="{{ $patient->id }}" 
+                            data-nom="{{ $patient->nom }}"
+                            data-prenom="{{ $patient->prenom }}"
+                            data-telephone="{{ $patient->telephone }}"
+                            {{ (isset($recette) && $recette->patient_id == $patient->id) || old('patient_id') == $patient->id ? 'selected' : '' }}>
+                        {{ $patient->prenom }} {{ $patient->nom }}
+                    </option>
+                @endforeach
+            </select>
         </div>
     </div>
     <div class="col-md-6">
@@ -19,6 +24,11 @@
         </div>
     </div>
 </div>
+
+<!-- Hidden fields for client information -->
+<input type="hidden" id="client_nom" name="client_nom" value="{{ isset($recette) ? $recette->client_nom : old('client_nom') }}">
+<input type="hidden" id="client_prenom" name="client_prenom" value="{{ isset($recette) ? $recette->client_prenom : old('client_prenom') }}">
+
 <!-- Far Vision (Vision de loin) -->
 <div class="row mt-4">
     <h4>Vision de Loin</h4>
@@ -346,6 +356,21 @@
 @push('scripts')
 <script>
     $(document).ready(function() {
+        // Handle patient selection
+        $('#patient_id').on('change', function() {
+            const selectedOption = $(this).find('option:selected');
+            const nom = selectedOption.data('nom');
+            const prenom = selectedOption.data('prenom');
+            const telephone = selectedOption.data('telephone');
+
+            // Update hidden fields
+            $('#client_nom').val(nom);
+            $('#client_prenom').val(prenom);
+            
+            // Update telephone field
+            $('#client_telephone').val(telephone);
+        });
+
         // Calculate remaining amount
         function calculateRemaining() {
             var total = parseFloat($('#total').val()) || 0;

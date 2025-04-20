@@ -87,6 +87,7 @@ Route::get('/patient', [PatientController::class, 'index'])->middleware(['auth']
 Route::get('/patientEdit/{id}', [PatientController::class, 'edit'])->middleware(['auth'])->name('edit');
 Route::put('/patient/update/{id}', [PatientController::class, 'update'])->middleware(['auth'])->name('update');
 Route::get('/patient/delete/{id}', [PatientController::class, 'destroy'])->middleware(['auth'])->name('destroy');
+Route::get('/patient/{patient}', [PatientController::class, 'show'])->middleware(['auth'])->name('show');
 
 // fournisseur
 Route::get('/fournisseur', [FournisseurController::class, 'index'])->middleware(['auth'])->name('fournisseur');
@@ -142,7 +143,11 @@ Route::get('/vent/{vent}/pdf', [VentController::class, 'pdf'])->name('vent.pdf')
 Route::resource('recette', RecetteController::class);
 Route::get('recette/{recette}/pdf', [RecetteController::class, 'pdf'])->name('recette.pdf');
 
+
 // Test route
 Route::get('/test-opticien-info', [TestController::class, 'testOpticienInfo']);
+
+// Patient Routes
+Route::resource('patient', PatientController::class);
 
 require __DIR__ . '/auth.php';

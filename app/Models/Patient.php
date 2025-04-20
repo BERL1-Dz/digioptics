@@ -11,9 +11,16 @@ class Patient extends Model
     protected $fillable = [
         'nom',
         'prenom',
+        'date_naissance',
         'telephone',
-        'adresse',
-        'date_naissance'
+        'email',
+        'groupe_sanguin',
+        'allergies',
+        'antecedents',
+    ];
+
+    protected $casts = [
+        'date_naissance' => 'date',
     ];
 
     public function corrections()
@@ -28,4 +35,13 @@ class Patient extends Model
       return $this->hasMany(Facture::class, 'patient_id');
     }
 
+    public function recettes()
+    {
+        return $this->hasMany(Recette::class, 'patient_id');
+    }
+
+    public function getFullNameAttribute()
+    {
+        return "{$this->prenom} {$this->nom}";
+    }
 }

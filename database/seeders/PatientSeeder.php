@@ -4,6 +4,7 @@ namespace Database\Seeders;
 
 use Illuminate\Database\Seeder;
 use App\Models\Patient;
+use Carbon\Carbon;
 
 class PatientSeeder extends Seeder
 {
@@ -13,37 +14,52 @@ class PatientSeeder extends Seeder
             [
                 'nom' => 'KESSOUM',
                 'prenom' => 'MOHAMED',
-                'age' => 35,
-                'adresse' => '123 Rue de la République, 75001 Paris',
-                'phone' => '+33612345678'
+                'date_naissance' => Carbon::now()->subYears(35),
+                'telephone' => '+33612345678',
+                'email' => 'mohamed.kessoum@example.com',
+                'groupe_sanguin' => 'A+',
+                'allergies' => 'Pollen, Poussière',
+                'antecedents' => 'Hypertension artérielle'
             ],
             [
                 'nom' => 'HAMZA',
                 'prenom' => 'AHMED',
-                'age' => 28,
-                'adresse' => '45 Avenue des Champs-Élysées, 75008 Paris',
-                'phone' => '+33623456789'
+                'date_naissance' => Carbon::now()->subYears(28),
+                'telephone' => '+33623456789',
+                'email' => 'ahmed.hamza@example.com',
+                'groupe_sanguin' => 'B+',
+                'allergies' => 'Aucune',
+                'antecedents' => 'Aucun'
             ],
             [
                 'nom' => 'ADDECHE',
                 'prenom' => 'KAMEL',
-                'age' => 42,
-                'adresse' => '78 Boulevard Saint-Germain, 75006 Paris',
-                'phone' => '+33634567890'
+                'date_naissance' => Carbon::now()->subYears(42),
+                'telephone' => '+33634567890',
+                'email' => 'kamel.addeche@example.com',
+                'groupe_sanguin' => 'O+',
+                'allergies' => 'Pénicilline',
+                'antecedents' => 'Diabète type 2'
             ],
             [
                 'nom' => 'LINA',
                 'prenom' => 'NINA',
-                'age' => 25,
-                'adresse' => '12 Rue de Rivoli, 75004 Paris',
-                'phone' => '+33645678901'
+                'date_naissance' => Carbon::now()->subYears(25),
+                'telephone' => '+33645678901',
+                'email' => 'nina.lina@example.com',
+                'groupe_sanguin' => 'AB+',
+                'allergies' => 'Aucune',
+                'antecedents' => 'Aucun'
             ],
             [
                 'nom' => 'RAFIK',
                 'prenom' => 'BZDJ',
-                'age' => 31,
-                'adresse' => '56 Rue du Faubourg Saint-Honoré, 75008 Paris',
-                'phone' => '+33656789012'
+                'date_naissance' => Carbon::now()->subYears(31),
+                'telephone' => '+33656789012',
+                'email' => 'rafik.bzdj@example.com',
+                'groupe_sanguin' => 'A-',
+                'allergies' => 'Arachides',
+                'antecedents' => 'Asthme'
             ]
         ];
 

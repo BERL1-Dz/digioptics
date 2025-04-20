@@ -10,9 +10,10 @@ return new class extends Migration
     {
         Schema::create('recettes', function (Blueprint $table) {
             $table->id();
-            $table->string('client_nom');
-            $table->string('client_prenom');
-            $table->string('client_telephone');
+            $table->string('client_nom')->nullable();
+            $table->string('client_prenom')->nullable();
+            $table->foreignId('patient_id')->constrained()->onDelete('cascade');
+            $table->string('client_telephone')->nullable();
             
             // Vision de Loin
             $table->string('oeil_droit_sphere');

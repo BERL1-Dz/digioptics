@@ -37,7 +37,8 @@ class Recette extends Model
         'total',
         'montant_paye',
         'reste_a_payer',
-        'notes'
+        'notes',
+        'patient_id'
     ];
 
     protected $casts = [
@@ -49,6 +50,11 @@ class Recette extends Model
     public function monture()
     {
         return $this->belongsTo(Monture::class);
+    }
+
+    public function patient()
+    {
+        return $this->belongsTo(Patient::class, 'patient_id');
     }
 
     public function getFormattedTotalAttribute()

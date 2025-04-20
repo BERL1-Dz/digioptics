@@ -6,10 +6,10 @@
         <div class="col-12">
             <div class="card">
                 <div class="card-header">
-                    <h3 class="card-title">Liste des Recettes</h3>
+                    <h3 class="card-title">Liste des Bon de commande</h3>
                     <div class="card-tools">
                         <a href="{{ route('recette.create') }}" class="btn btn-primary">
-                            <i class="fas fa-plus"></i> Nouvelle Recette
+                            <i class="fas fa-plus"></i> Nouveau Bon de commande
                         </a>
                     </div>
                 </div>
@@ -32,7 +32,7 @@
                             @foreach($recettes as $recette)
                             <tr>
                                 <td>{{ str_pad($recette->id, 6, '0', STR_PAD_LEFT) }}</td>
-                                <td>{{ $recette->client_nom }} {{ $recette->client_prenom }}</td>
+                                <td>{{ $recette->patient->nom }}</td>
                                 <td>{{ $recette->client_telephone }}</td>
                                 <td>{{ $recette->monture->model_monture }}</td>
                                 <td>{{ $recette->type_verre }}</td>
@@ -41,13 +41,13 @@
                                 <td>{{ number_format($recette->reste_a_payer, 2, ',', ' ') }} DA</td>
                                 <td>
                                     <div class="d-flex gap-2">
-                                        <a href="recette/{{ $recette->id }}" class="btn btn-sm btn-info" title="Voir">
+                                        <a href="{{ route('recette.show', $recette) }}" class="btn btn-sm btn-info" title="Voir">
                                             <i class="bx bx-show"></i>
                                         </a>
-                                        <a href="recetteEdit/{{ $recette->id }}" class="btn btn-sm btn-primary" title="Modifier">
+                                        <a href="{{ route('recette.edit', $recette) }}" class="btn btn-sm btn-primary" title="Modifier">
                                             <i class="bx bx-edit"></i>
                                         </a>
-                                        <form action="recette/delete/{{ $recette->id }}" method="POST" class="d-inline">
+                                        <form action="{{ route('recette.destroy', $recette) }}" method="POST" class="d-inline">
                                             @csrf
                                             @method('DELETE')
                                             <button type="submit" class="btn btn-sm btn-danger" title="Supprimer" onclick="return confirm('Êtes-vous sûr de vouloir supprimer cette recette ?')">
