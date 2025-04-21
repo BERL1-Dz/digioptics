@@ -1,5 +1,36 @@
 @csrf
 
+<!-- Status Field -->
+<div class="row mb-3">
+    <div class="col-md-6">
+        <div class="form-group">
+            <label for="status">Status</label>
+            <select class="form-control" id="status" name="status" required>
+                <option value="not_ready" {{ (isset($recette) && $recette->status == 'not_ready') || old('status') == 'not_ready' ? 'selected' : '' }}>Not Ready</option>
+                <option value="ready" {{ (isset($recette) && $recette->status == 'ready') || old('status') == 'ready' ? 'selected' : '' }}>Ready</option>
+            </select>
+        </div>
+    </div>
+</div>
+
+<!-- Monture Selection -->
+<div class="row mb-3">
+    <div class="col-md-6">
+        <div class="form-group">
+            <label for="monture_id">Sélectionner une Monture</label>
+            <select class="form-control" id="monture_id" name="monture_id">
+                <option value="">Sélectionner une monture</option>
+                @foreach($montures as $monture)
+                    <option value="{{ $monture->id }}" 
+                            {{ (isset($recette) && $recette->monture_id == $monture->id) || old('monture_id') == $monture->id ? 'selected' : '' }}>
+                        {{ $monture->nom }} - {{ $monture->reference }}
+                    </option>
+                @endforeach
+            </select>
+        </div>
+    </div>
+</div>
+
 <!-- Client Information -->
 <div class="row">
     <div class="col-md-6">
@@ -286,22 +317,6 @@
 </div>
 
 <div class="row mt-4">
-    <!-- Frame and Lens Type -->
-    <div class="col-md-6">
-        <div class="form-group">
-            <label for="monture_id">Monture</label>
-            <select class="form-control" id="monture_id" name="monture_id">
-                <option value="">Sélectionner une monture</option>
-                @foreach($montures as $monture)
-                    <option value="{{ $monture->id }}" 
-                            data-price="{{ $monture->pv_monture }}"
-                            {{ (isset($recette) && $recette->monture_id == $monture->id) || old('monture_id') == $monture->id ? 'selected' : '' }}>
-                        {{ $monture->model_monture }}
-                    </option>
-                @endforeach
-            </select>
-        </div>
-    </div>
     <div class="col-md-6">
         <div class="form-group">
             <label for="type_verre">Type de Verre</label>

@@ -10,20 +10,49 @@ class Vent extends Model
     use HasFactory;
 
     protected $fillable = [
-        'date',
         'fournisseur_id',
-        'notes',
-        'total'
+        'monture_id',
+        'verre_id',
+        'lentille_id',
+        'total',
+        'date_vente',
+        'notes'
     ];
 
     protected $casts = [
-        'date' => 'date',
+        'date_vente' => 'date',
         'total' => 'decimal:2'
     ];
+
+    protected static function boot()
+    {
+        parent::boot();
+
+        static::creating(function ($vent) {
+            if (empty($vent->date_vente)) {
+                $vent->date_vente = now();
+            }
+        });
+    }
 
     public function fournisseur()
     {
         return $this->belongsTo(Fournisseur::class);
+    }
+
+    public function monture()
+    {
+        return $this->belongsTo(Monture::class);
+    }
+
+    public function verre()
+    {
+        return $this->belongsTo(Verre::class);
+    }
+
+    public function lentille()
+    {
+        return $this->belongsTo(Lentille::class);
     }
 
     public function verres()

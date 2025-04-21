@@ -38,13 +38,18 @@ class Recette extends Model
         'montant_paye',
         'reste_a_payer',
         'notes',
-        'patient_id'
+        'patient_id',
+        'date',
+        'status',
+        'ready_at'
     ];
 
     protected $casts = [
         'total' => 'decimal:2',
         'montant_paye' => 'decimal:2',
-        'reste_a_payer' => 'decimal:2'
+        'reste_a_payer' => 'decimal:2',
+        'date' => 'date',
+        'ready_at' => 'datetime'
     ];
 
     public function monture()
@@ -70,5 +75,36 @@ class Recette extends Model
     public function getFormattedResteAPayerAttribute()
     {
         return number_format($this->reste_a_payer, 2, ',', ' ');
+    }
+
+    public function scopeReady($query)
+    {
+        return $query->where('status', 'ready');
+    }
+
+    public function scopeNotReady($query)
+    {
+        return $query->where('status', 'not_ready');
+    }
+
+    public function markAsReady()
+    {
+        $this->update([
+            'status' => 'ready',
+            'ready_at' => now()
+        ]);
+    }
+
+    public function markAsNotReady()
+    {
+        $this->update([
+            'status' => 'not_ready',
+            'ready_at' => null
+        ]);
+    }
+
+    public function isReady()
+    {
+        return $this->status === 'ready';
     }
 } 

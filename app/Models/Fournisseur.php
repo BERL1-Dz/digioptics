@@ -9,17 +9,36 @@ class Fournisseur extends Model
 {
     use HasFactory;
 
-     public function montures(){
-      return  $this->hasMany(Monture::class,'code_fournisseur');
-    }
+    protected $fillable = [
+        'nom',
+        'prenom',
+        'telephone',
+        'email',
+        'adresse',
+        'ville',
+        'pays',
+        'code_postal',
+        'notes'
+    ];
 
-    public function verres(){
-      return  $this->hasMany(Verre::class,'code_fournisseur');
-    }
-
-     public function lentilles()
+    public function montures()
     {
-      //
-      return $this->hasMany(Lentille::class,'code_fournisseur');
+        return $this->hasMany(Monture::class, 'code_fournisseur', 'id');
+    }
+
+    public function verres()
+    {
+        return $this->hasMany(Verre::class, 'code_fournisseur');
+    }
+
+    public function lentilles()
+    {
+        //
+        return $this->hasMany(Lentille::class, 'code_fournisseur');
+    }
+
+    public function vents()
+    {
+        return $this->hasMany(Vent::class);
     }
 }

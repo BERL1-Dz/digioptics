@@ -16,6 +16,7 @@ use App\Http\Controllers\AchatController;
 use App\Http\Controllers\VentController;
 use App\Http\Controllers\RecetteController;
 use App\Http\Controllers\TestController;
+use App\Http\Controllers\DashboardController;
 
 /*
 |--------------------------------------------------------------------------
@@ -28,13 +29,8 @@ use App\Http\Controllers\TestController;
 |
 */
 
-Route::get('/', function () {
-    return view('dashboard');
-})->middleware(['auth'])->name('dashboard');
-
-Route::get('/dashboard', function () {
-    return view('dashboard');
-})->middleware(['auth'])->name('dashboard');
+Route::get('/', [DashboardController::class, 'index'])->middleware(['auth'])->name('dashboard');
+Route::get('/dashboard', [DashboardController::class, 'index'])->middleware(['auth'])->name('dashboard');
 
 
 // devis
@@ -143,6 +139,8 @@ Route::get('/vent/{vent}/pdf', [VentController::class, 'pdf'])->name('vent.pdf')
 // Recette Routes
 Route::resource('recette', RecetteController::class);
 Route::get('recette/{recette}/pdf', [RecetteController::class, 'pdf'])->name('recette.pdf');
+Route::post('recette/{recette}/mark-as-ready', [RecetteController::class, 'markAsReady'])->name('recette.mark-as-ready');
+Route::post('recette/{recette}/mark-as-not-ready', [RecetteController::class, 'markAsNotReady'])->name('recette.mark-as-not-ready');
 
 
 // Test route

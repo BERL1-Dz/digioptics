@@ -13,132 +13,119 @@ use Livewire\Livewire;
 
 class RecetteController extends Controller
 {
+    /**
+     * Display a listing of the resource.
+     */
     public function index()
     {
-        $recettes = Recette::all();
-        $montures = Monture::all();
-        
-        return view('recette.index', compact('recettes', 'montures'));
+        $recettes = Recette::with('patient')->latest()->get();
+        return view('recette.index', compact('recettes'));
     }
 
+    /**
+     * Show the form for creating a new resource.
+     */
     public function create()
     {
+        $patients = Patient::all();
         $montures = Monture::all();
-        $patients = Patient::orderBy('prenom')->get();
-        return view('recette.create', compact('montures', 'patients'));
+        return view('recette.create', compact('patients', 'montures'));
     }
 
+    /**
+     * Store a newly created resource in storage.
+     */
     public function store(Request $request)
     {
-        $recettes = new Recette();
-        $recettes->patient_id = $request->input('patient_id');
-        $recettes->client_nom = $request->input('client_nom');
-        $recettes->client_prenom = $request->input('client_prenom');
-        $recettes->client_telephone = $request->input('client_telephone');
-        $recettes->oeil_droit_sphere = $request->input('oeil_droit_sphere');
-        $recettes->oeil_droit_cylindre = $request->input('oeil_droit_cylindre');
-        $recettes->oeil_droit_axe = $request->input('oeil_droit_axe');
-        $recettes->oeil_gauche_sphere = $request->input('oeil_gauche_sphere');
-        $recettes->oeil_gauche_cylindre = $request->input('oeil_gauche_cylindre');
-        $recettes->oeil_gauche_axe = $request->input('oeil_gauche_axe');
-        $recettes->oeil_droit_sphere_pres = $request->input('oeil_droit_sphere_pres');
-        $recettes->oeil_droit_cylindre_pres = $request->input('oeil_droit_cylindre_pres');
-        $recettes->oeil_droit_axe_pres = $request->input('oeil_droit_axe_pres');
-        $recettes->oeil_gauche_sphere_pres = $request->input('oeil_gauche_sphere_pres');
-        $recettes->oeil_gauche_cylindre_pres = $request->input('oeil_gauche_cylindre_pres');
-        $recettes->oeil_gauche_axe_pres = $request->input('oeil_gauche_axe_pres');
-        $recettes->oeil_gauche_addition = $request->input('oeil_gauche_addition');
-        $recettes->type_verre = $request->input('type_verre');
-        $recettes->monture_id = $request->input('monture_id');
-        $recettes->total = $request->input('total');
-        $recettes->montant_paye = $request->input('montant_paye');
-        $recettes->notes = $request->input('notes');
-        $recettes->monture_price = $request->input('monture_price');
-        $recettes->lens_price = $request->input('lens_price');
-        $recettes->reste_a_payer = $request->input('reste_a_payer');
+        $validated = $request->validate([
+            'patient_id' => 'required|exists:patients,id',
+            'date' => 'required|date',
+            'total' => 'required|numeric',
+            'status' => 'required|in:ready,not_ready'
+        ]);
 
-        $recettes->save();
+        $recette = Recette::create($validated);
 
-        // Emit event for Livewire component
-        broadcast(new \App\Events\RecetteCreated($recettes->patient_id))->toOthers();
+        if ($request->status === 'ready') {
+            $recette->markAsReady();
+        }
 
-        return redirect()->route('recette.index')
-            ->with('success', 'Recette créée avec succès.');
+        return redirect()->route('recettes.index')->with('success', 'Recette créée avec succès.');
     }
 
+    /**
+     * Display the specified resource.
+     */
     public function show(Recette $recette)
     {
         return view('recette.show', compact('recette'));
     }
 
+    /**
+     * Show the form for editing the specified resource.
+     */
     public function edit(Recette $recette)
     {
+        $patients = Patient::all();
         $montures = Monture::all();
-        $patients = Patient::orderBy('prenom')->get();
-        return view('recette.edit', compact('recette', 'montures', 'patients'));
+        return view('recette.edit', compact('recette', 'patients', 'montures'));
     }
 
+    /**
+     * Update the specified resource in storage.
+     */
     public function update(Request $request, Recette $recette)
     {
-        $recette->patient_id = $request->input('patient_id');
-        $recette->client_nom = $request->input('client_nom');
-        $recette->client_prenom = $request->input('client_prenom');
-        $recette->client_telephone = $request->input('client_telephone');
-        
-        // Vision de Loin
-        $recette->oeil_droit_sphere = $request->input('oeil_droit_sphere');
-        $recette->oeil_droit_cylindre = $request->input('oeil_droit_cylindre');
-        $recette->oeil_droit_axe = $request->input('oeil_droit_axe');
-        $recette->oeil_gauche_sphere = $request->input('oeil_gauche_sphere');
-        $recette->oeil_gauche_cylindre = $request->input('oeil_gauche_cylindre');
-        $recette->oeil_gauche_axe = $request->input('oeil_gauche_axe');
+        $validated = $request->validate([
+            'patient_id' => 'required|exists:patients,id',
+            'date' => 'required|date',
+            'total' => 'required|numeric',
+            'status' => 'required|in:ready,not_ready'
+        ]);
 
-        // Vision de Près
-        $recette->oeil_droit_sphere_pres = $request->input('oeil_droit_sphere_pres');
-        $recette->oeil_droit_cylindre_pres = $request->input('oeil_droit_cylindre_pres');
-        $recette->oeil_droit_axe_pres = $request->input('oeil_droit_axe_pres');
-        $recette->oeil_droit_addition = $request->input('oeil_droit_addition');
-        $recette->oeil_gauche_sphere_pres = $request->input('oeil_gauche_sphere_pres');
-        $recette->oeil_gauche_cylindre_pres = $request->input('oeil_gauche_cylindre_pres');
-        $recette->oeil_gauche_axe_pres = $request->input('oeil_gauche_axe_pres');
-        $recette->oeil_gauche_addition = $request->input('oeil_gauche_addition');
+        $recette->update($validated);
 
-        // Monture et Verres
-        $recette->type_verre = $request->input('type_verre');
-        $recette->monture_id = $request->input('monture_id');
-        $recette->monture_price = $request->input('monture_price');
-        $recette->lens_price = $request->input('lens_price');
+        if ($request->status === 'ready') {
+            $recette->markAsReady();
+        } else {
+            $recette->markAsNotReady();
+        }
 
-        // Informations Financières
-        $recette->total = $request->input('total');
-        $recette->montant_paye = $request->input('montant_paye');
-        $recette->reste_a_payer = $request->input('reste_a_payer');
-        $recette->notes = $request->input('notes');
-
-        $recette->save();
-
-        // Emit event for Livewire component
-        broadcast(new \App\Events\RecetteUpdated($recette->patient_id))->toOthers();
-
-        return redirect()->route('recette.show', $recette)
-            ->with('success', 'Recette mise à jour avec succès.');
+        return redirect()->route('recettes.index')->with('success', 'Recette mise à jour avec succès.');
     }
 
+    /**
+     * Remove the specified resource from storage.
+     */
     public function destroy(Recette $recette)
     {
-        $patientId = $recette->patient_id;
         $recette->delete();
-
-        // Emit event for Livewire component
-        broadcast(new \App\Events\RecetteDeleted($patientId))->toOthers();
-
-        return redirect()->route('recette.index')
-            ->with('success', 'Recette supprimée avec succès.');
+        return redirect()->route('recettes.index')->with('success', 'Recette supprimée avec succès.');
     }
 
-    public function pdf($id)
+    /**
+     * Mark a recette as ready.
+     */
+    public function markAsReady(Recette $recette)
     {
-        $recette = Recette::findOrFail($id);
+        $recette->update(['status' => 'ready']);
+        return redirect()->route('recettes.index')->with('success', 'Recette marked as ready successfully.');
+    }
+
+    /**
+     * Mark a recette as not ready.
+     */
+    public function markAsNotReady(Recette $recette)
+    {
+        $recette->update(['status' => 'not_ready']);
+        return redirect()->route('recettes.index')->with('success', 'Recette marked as not ready successfully.');
+    }
+
+    /**
+     * Generate PDF for the recette.
+     */
+    public function pdf(Recette $recette)
+    {
         $opticienInfo = OpticienInfo::where('is_active', true)->first();
         
         $pdf = Pdf::loadView('recette.pdf', [
@@ -146,6 +133,6 @@ class RecetteController extends Controller
             'opticienInfo' => $opticienInfo
         ]);
         
-        return $pdf->download('recette-' . str_pad($recette->id, 6, '0', STR_PAD_LEFT) . '.pdf');
+        return $pdf->download('recette-' . $recette->id . '.pdf');
     }
 } 

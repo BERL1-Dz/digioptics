@@ -8,6 +8,19 @@ class Monture extends Model
 {
     use HasFactory;
 
+    protected $fillable = [
+        'nom',
+        'marque',
+        'modele',
+        'couleur',
+        'taille',
+        'prix_achat',
+        'prix_vente',
+        'quantite',
+        'description',
+        'image'
+    ];
+
     public function fournisseurs()
     {
         // code...
@@ -18,5 +31,10 @@ class Monture extends Model
     {
       // code...
       return $this->hasMany(Correction::class,'monture_id','id');
+    }
+
+    public function vents()
+    {
+        return $this->hasMany(Vent::class);
     }
 }
