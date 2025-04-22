@@ -139,12 +139,53 @@ Route::get('/vent/{vent}/pdf', [VentController::class, 'pdf'])->name('vent.pdf')
 // Recette Routes
 Route::resource('recette', RecetteController::class);
 Route::get('recette/{recette}/pdf', [RecetteController::class, 'pdf'])->name('recette.pdf');
-Route::post('recette/{recette}/mark-as-ready', [RecetteController::class, 'markAsReady'])->name('recette.mark-as-ready');
-Route::post('recette/{recette}/mark-as-not-ready', [RecetteController::class, 'markAsNotReady'])->name('recette.mark-as-not-ready');
+Route::put('recette/{recette}/mark-as-ready', [RecetteController::class, 'markAsReady'])->name('recette.mark-as-ready');
+Route::put('recette/{recette}/mark-as-not-ready', [RecetteController::class, 'markAsNotReady'])->name('recette.mark-as-not-ready');
 
 
 // Test route
 Route::get('/test-opticien-info', [TestController::class, 'testOpticienInfo']);
+
+// Test route for WhatsApp
+Route::get('/test-whatsapp/{phone?}', function ($phone = null) {
+    $whatsAppService = app(App\Services\WhatsAppService::class);
+    
+    if (!$phone) {
+        return "Please provide a phone number: /test-whatsapp/0555555555";
+    }
+    
+    $message = "Test message from DigiOptics. This is a test of the WhatsApp integration.";
+    
+    try {
+        // Log the attempt with all details
+        \Log::info('Testing WhatsApp send', [
+            'phone' => $phone,
+            'twilio_sid' => config('services.twilio.sid'),
+            'twilio_from' => config('services.twilio.whatsapp_from'),
+            'message' => $message
+        ]);
+        
+        $result = $whatsAppService->sendMessage($phone, $message);
+        
+        if ($result) {
+            return "Message sent successfully to {$phone}!";
+        } else {
+            $error = "Failed to send message. Check the logs for details.";
+            \Log::error($error, [
+                'phone' => $phone,
+                'config' => config('services.twilio')
+            ]);
+            return $error;
+        }
+    } catch (\Exception $e) {
+        $error = "Error: " . $e->getMessage() . "\nStack trace: " . $e->getTraceAsString();
+        \Log::error($error, [
+            'phone' => $phone,
+            'config' => config('services.twilio')
+        ]);
+        return $error;
+    }
+})->name('test.whatsapp');
 
 // Patient Routes
 Route::resource('patient', PatientController::class);

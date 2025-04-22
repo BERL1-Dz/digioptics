@@ -43,11 +43,13 @@ return new class extends Migration
             $table->decimal('total', 10, 2)->default(0);
             $table->decimal('montant_paye', 10, 2)->default(0);
             $table->decimal('reste_a_payer', 10, 2)->default(0);
-            
+            $table->boolean('status')->nullable();
+            $table->timestamp('ready_at')->nullable();
             $table->text('notes')->nullable();
             $table->timestamps();
         });
     }
+
 
     public function down()
     {

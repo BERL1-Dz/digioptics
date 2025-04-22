@@ -1,35 +1,10 @@
 @csrf
 
 <!-- Status Field -->
-<div class="row mb-3">
-    <div class="col-md-6">
-        <div class="form-group">
-            <label for="status">Status</label>
-            <select class="form-control" id="status" name="status" required>
-                <option value="not_ready" {{ (isset($recette) && $recette->status == 'not_ready') || old('status') == 'not_ready' ? 'selected' : '' }}>Not Ready</option>
-                <option value="ready" {{ (isset($recette) && $recette->status == 'ready') || old('status') == 'ready' ? 'selected' : '' }}>Ready</option>
-            </select>
-        </div>
-    </div>
-</div>
+
 
 <!-- Monture Selection -->
-<div class="row mb-3">
-    <div class="col-md-6">
-        <div class="form-group">
-            <label for="monture_id">Sélectionner une Monture</label>
-            <select class="form-control" id="monture_id" name="monture_id">
-                <option value="">Sélectionner une monture</option>
-                @foreach($montures as $monture)
-                    <option value="{{ $monture->id }}" 
-                            {{ (isset($recette) && $recette->monture_id == $monture->id) || old('monture_id') == $monture->id ? 'selected' : '' }}>
-                        {{ $monture->nom }} - {{ $monture->reference }}
-                    </option>
-                @endforeach
-            </select>
-        </div>
-    </div>
-</div>
+
 
 <!-- Client Information -->
 <div class="row">
@@ -39,13 +14,9 @@
             <select class="form-control" id="patient_id" name="patient_id">
                 <option value="">Sélectionner un patient</option>
                 @foreach($patients as $patient)
-                    <option value="{{ $patient->id }}" 
-                            data-nom="{{ $patient->nom }}"
-                            data-prenom="{{ $patient->prenom }}"
-                            data-telephone="{{ $patient->telephone }}"
-                            {{ (isset($recette) && $recette->patient_id == $patient->id) || old('patient_id') == $patient->id ? 'selected' : '' }}>
-                        {{ $patient->prenom }} {{ $patient->nom }}
-                    </option>
+                <option value="{{ $patient->id }}" data-nom="{{ $patient->nom }}" data-prenom="{{ $patient->prenom }}" data-telephone="{{ $patient->telephone }}" {{ (isset($recette) && $recette->patient_id == $patient->id) || old('patient_id') == $patient->id ? 'selected' : '' }}>
+                    {{ $patient->prenom }} {{ $patient->nom }}
+                </option>
                 @endforeach
             </select>
         </div>
@@ -74,18 +45,16 @@
                     <label for="oeil_droit_sphere">Sphère</label>
                     <select class="form-select form-select-lg" id="oeil_droit_sphere" name="oeil_droit_sphere">
                         <option value="">None</option>
-                        @for ($i = -14.0; $i < 0.25; $i = $i + 0.25)
-                            <option value="{{ $i }}" {{ (isset($recette) && $recette->oeil_droit_sphere == $i) || old('oeil_droit_sphere') == $i ? 'selected' : '' }}>
-                                {{ number_format($i, 2) }}
+                        @for ($i = -14.0; $i < 0.25; $i=$i + 0.25) <option value="{{ $i }}" {{ (isset($recette) && $recette->oeil_droit_sphere == $i) || old('oeil_droit_sphere') == $i ? 'selected' : '' }}>
+                            {{ number_format($i, 2) }}
                             </option>
-                        @endfor
-                        <option value="SPH" {{ (isset($recette) && $recette->oeil_droit_sphere == 'SPH') || old('oeil_droit_sphere') == 'SPH' ? 'selected' : '' }}>SPH</option>
-                        <option value="PLAN" {{ (isset($recette) && $recette->oeil_droit_sphere == 'PLAN') || old('oeil_droit_sphere') == 'PLAN' ? 'selected' : '' }}>PLAN</option>
-                        @for ($i = 0.25; $i < 9.25; $i = $i + 0.25)
-                            <option value="+{{ $i }}" {{ (isset($recette) && $recette->oeil_droit_sphere == '+'.$i) || old('oeil_droit_sphere') == '+'.$i ? 'selected' : '' }}>
+                            @endfor
+                            <option value="SPH" {{ (isset($recette) && $recette->oeil_droit_sphere == 'SPH') || old('oeil_droit_sphere') == 'SPH' ? 'selected' : '' }}>SPH</option>
+                            <option value="PLAN" {{ (isset($recette) && $recette->oeil_droit_sphere == 'PLAN') || old('oeil_droit_sphere') == 'PLAN' ? 'selected' : '' }}>PLAN</option>
+                            @for ($i = 0.25; $i < 9.25; $i=$i + 0.25) <option value="+{{ $i }}" {{ (isset($recette) && $recette->oeil_droit_sphere == '+'.$i) || old('oeil_droit_sphere') == '+'.$i ? 'selected' : '' }}>
                                 +{{ number_format($i, 2) }}
-                            </option>
-                        @endfor
+                                </option>
+                                @endfor
                     </select>
                 </div>
             </div>
@@ -94,13 +63,12 @@
                     <label for="oeil_droit_cylindre">Cylindre</label>
                     <select class="form-select form-select-lg" id="oeil_droit_cylindre" name="oeil_droit_cylindre">
                         <option value="">None</option>
-                        @for ($i = -5.0; $i <= 5; $i = $i + 0.25)
-                            <option value="{{ $i }}" {{ (isset($recette) && $recette->oeil_droit_cylindre == $i) || old('oeil_droit_cylindre') == $i ? 'selected' : '' }}>
-                                {{ number_format($i, 2) }}
+                        @for ($i = -5.0; $i <= 5; $i=$i + 0.25) <option value="{{ $i }}" {{ (isset($recette) && $recette->oeil_droit_cylindre == $i) || old('oeil_droit_cylindre') == $i ? 'selected' : '' }}>
+                            {{ number_format($i, 2) }}
                             </option>
-                        @endfor
-                        <option value="SPH" {{ (isset($recette) && $recette->oeil_droit_cylindre == 'SPH') || old('oeil_droit_cylindre') == 'SPH' ? 'selected' : '' }}>SPH</option>
-                        <option value="PLAN" {{ (isset($recette) && $recette->oeil_droit_cylindre == 'PLAN') || old('oeil_droit_cylindre') == 'PLAN' ? 'selected' : '' }}>PLAN</option>
+                            @endfor
+                            <option value="SPH" {{ (isset($recette) && $recette->oeil_droit_cylindre == 'SPH') || old('oeil_droit_cylindre') == 'SPH' ? 'selected' : '' }}>SPH</option>
+                            <option value="PLAN" {{ (isset($recette) && $recette->oeil_droit_cylindre == 'PLAN') || old('oeil_droit_cylindre') == 'PLAN' ? 'selected' : '' }}>PLAN</option>
                     </select>
                 </div>
             </div>
@@ -109,11 +77,10 @@
                     <label for="oeil_droit_axe">Axe</label>
                     <select class="form-select form-select-lg" id="oeil_droit_axe" name="oeil_droit_axe">
                         <option value="">None</option>
-                        @for ($j = 0; $j <= 180; $j = $j + 1)
-                            <option value="{{ $j }}" {{ (isset($recette) && $recette->oeil_droit_axe == $j) || old('oeil_droit_axe') == $j ? 'selected' : '' }}>
-                                {{ number_format($j, 0) }}°
+                        @for ($j = 0; $j <= 180; $j=$j + 1) <option value="{{ $j }}" {{ (isset($recette) && $recette->oeil_droit_axe == $j) || old('oeil_droit_axe') == $j ? 'selected' : '' }}>
+                            {{ number_format($j, 0) }}°
                             </option>
-                        @endfor
+                            @endfor
                     </select>
                 </div>
             </div>
@@ -129,18 +96,16 @@
                     <label for="oeil_gauche_sphere">Sphère</label>
                     <select class="form-select form-select-lg" id="oeil_gauche_sphere" name="oeil_gauche_sphere">
                         <option value="">None</option>
-                        @for ($i = -14.0; $i < 0.25; $i = $i + 0.25)
-                            <option value="{{ $i }}" {{ (isset($recette) && $recette->oeil_gauche_sphere == $i) || old('oeil_gauche_sphere') == $i ? 'selected' : '' }}>
-                                {{ number_format($i, 2) }}
+                        @for ($i = -14.0; $i < 0.25; $i=$i + 0.25) <option value="{{ $i }}" {{ (isset($recette) && $recette->oeil_gauche_sphere == $i) || old('oeil_gauche_sphere') == $i ? 'selected' : '' }}>
+                            {{ number_format($i, 2) }}
                             </option>
-                        @endfor
-                        <option value="SPH" {{ (isset($recette) && $recette->oeil_gauche_sphere == 'SPH') || old('oeil_gauche_sphere') == 'SPH' ? 'selected' : '' }}>SPH</option>
-                        <option value="PLAN" {{ (isset($recette) && $recette->oeil_gauche_sphere == 'PLAN') || old('oeil_gauche_sphere') == 'PLAN' ? 'selected' : '' }}>PLAN</option>
-                        @for ($i = 0.25; $i < 9.25; $i = $i + 0.25)
-                            <option value="+{{ $i }}" {{ (isset($recette) && $recette->oeil_gauche_sphere == '+'.$i) || old('oeil_gauche_sphere') == '+'.$i ? 'selected' : '' }}>
+                            @endfor
+                            <option value="SPH" {{ (isset($recette) && $recette->oeil_gauche_sphere == 'SPH') || old('oeil_gauche_sphere') == 'SPH' ? 'selected' : '' }}>SPH</option>
+                            <option value="PLAN" {{ (isset($recette) && $recette->oeil_gauche_sphere == 'PLAN') || old('oeil_gauche_sphere') == 'PLAN' ? 'selected' : '' }}>PLAN</option>
+                            @for ($i = 0.25; $i < 9.25; $i=$i + 0.25) <option value="+{{ $i }}" {{ (isset($recette) && $recette->oeil_gauche_sphere == '+'.$i) || old('oeil_gauche_sphere') == '+'.$i ? 'selected' : '' }}>
                                 +{{ number_format($i, 2) }}
-                            </option>
-                        @endfor
+                                </option>
+                                @endfor
                     </select>
                 </div>
             </div>
@@ -149,13 +114,12 @@
                     <label for="oeil_gauche_cylindre">Cylindre</label>
                     <select class="form-select form-select-lg" id="oeil_gauche_cylindre" name="oeil_gauche_cylindre">
                         <option value="">None</option>
-                        @for ($i = -5.0; $i <= 5; $i = $i + 0.25)
-                            <option value="{{ $i }}" {{ (isset($recette) && $recette->oeil_gauche_cylindre == $i) || old('oeil_gauche_cylindre') == $i ? 'selected' : '' }}>
-                                {{ number_format($i, 2) }}
+                        @for ($i = -5.0; $i <= 5; $i=$i + 0.25) <option value="{{ $i }}" {{ (isset($recette) && $recette->oeil_gauche_cylindre == $i) || old('oeil_gauche_cylindre') == $i ? 'selected' : '' }}>
+                            {{ number_format($i, 2) }}
                             </option>
-                        @endfor
-                        <option value="SPH" {{ (isset($recette) && $recette->oeil_gauche_cylindre == 'SPH') || old('oeil_gauche_cylindre') == 'SPH' ? 'selected' : '' }}>SPH</option>
-                        <option value="PLAN" {{ (isset($recette) && $recette->oeil_gauche_cylindre == 'PLAN') || old('oeil_gauche_cylindre') == 'PLAN' ? 'selected' : '' }}>PLAN</option>
+                            @endfor
+                            <option value="SPH" {{ (isset($recette) && $recette->oeil_gauche_cylindre == 'SPH') || old('oeil_gauche_cylindre') == 'SPH' ? 'selected' : '' }}>SPH</option>
+                            <option value="PLAN" {{ (isset($recette) && $recette->oeil_gauche_cylindre == 'PLAN') || old('oeil_gauche_cylindre') == 'PLAN' ? 'selected' : '' }}>PLAN</option>
                     </select>
                 </div>
             </div>
@@ -164,11 +128,10 @@
                     <label for="oeil_gauche_axe">Axe</label>
                     <select class="form-select form-select-lg" id="oeil_gauche_axe" name="oeil_gauche_axe">
                         <option value="">None</option>
-                        @for ($j = 0; $j <= 180; $j = $j + 1)
-                            <option value="{{ $j }}" {{ (isset($recette) && $recette->oeil_gauche_axe == $j) || old('oeil_gauche_axe') == $j ? 'selected' : '' }}>
-                                {{ number_format($j, 0) }}°
+                        @for ($j = 0; $j <= 180; $j=$j + 1) <option value="{{ $j }}" {{ (isset($recette) && $recette->oeil_gauche_axe == $j) || old('oeil_gauche_axe') == $j ? 'selected' : '' }}>
+                            {{ number_format($j, 0) }}°
                             </option>
-                        @endfor
+                            @endfor
                     </select>
                 </div>
             </div>
@@ -188,18 +151,16 @@
                     <label for="oeil_droit_sphere_pres">Sphère</label>
                     <select class="form-select form-select-lg" id="oeil_droit_sphere_pres" name="oeil_droit_sphere_pres">
                         <option value="">None</option>
-                        @for ($i = -14.0; $i < 0.25; $i = $i + 0.25)
-                            <option value="{{ $i }}" {{ (isset($recette) && $recette->oeil_droit_sphere_pres == $i) || old('oeil_droit_sphere_pres') == $i ? 'selected' : '' }}>
-                                {{ number_format($i, 2) }}
+                        @for ($i = -14.0; $i < 0.25; $i=$i + 0.25) <option value="{{ $i }}" {{ (isset($recette) && $recette->oeil_droit_sphere_pres == $i) || old('oeil_droit_sphere_pres') == $i ? 'selected' : '' }}>
+                            {{ number_format($i, 2) }}
                             </option>
-                        @endfor
-                        <option value="SPH" {{ (isset($recette) && $recette->oeil_droit_sphere_pres == 'SPH') || old('oeil_droit_sphere_pres') == 'SPH' ? 'selected' : '' }}>SPH</option>
-                        <option value="PLAN" {{ (isset($recette) && $recette->oeil_droit_sphere_pres == 'PLAN') || old('oeil_droit_sphere_pres') == 'PLAN' ? 'selected' : '' }}>PLAN</option>
-                        @for ($i = 0.25; $i < 9.25; $i = $i + 0.25)
-                            <option value="+{{ $i }}" {{ (isset($recette) && $recette->oeil_droit_sphere_pres == '+'.$i) || old('oeil_droit_sphere_pres') == '+'.$i ? 'selected' : '' }}>
+                            @endfor
+                            <option value="SPH" {{ (isset($recette) && $recette->oeil_droit_sphere_pres == 'SPH') || old('oeil_droit_sphere_pres') == 'SPH' ? 'selected' : '' }}>SPH</option>
+                            <option value="PLAN" {{ (isset($recette) && $recette->oeil_droit_sphere_pres == 'PLAN') || old('oeil_droit_sphere_pres') == 'PLAN' ? 'selected' : '' }}>PLAN</option>
+                            @for ($i = 0.25; $i < 9.25; $i=$i + 0.25) <option value="+{{ $i }}" {{ (isset($recette) && $recette->oeil_droit_sphere_pres == '+'.$i) || old('oeil_droit_sphere_pres') == '+'.$i ? 'selected' : '' }}>
                                 +{{ number_format($i, 2) }}
-                            </option>
-                        @endfor
+                                </option>
+                                @endfor
                     </select>
                 </div>
             </div>
@@ -208,13 +169,12 @@
                     <label for="oeil_droit_cylindre_pres">Cylindre</label>
                     <select class="form-select form-select-lg" id="oeil_droit_cylindre_pres" name="oeil_droit_cylindre_pres">
                         <option value="">None</option>
-                        @for ($i = -5.0; $i <= 5; $i = $i + 0.25)
-                            <option value="{{ $i }}" {{ (isset($recette) && $recette->oeil_droit_cylindre_pres == $i) || old('oeil_droit_cylindre_pres') == $i ? 'selected' : '' }}>
-                                {{ number_format($i, 2) }}
+                        @for ($i = -5.0; $i <= 5; $i=$i + 0.25) <option value="{{ $i }}" {{ (isset($recette) && $recette->oeil_droit_cylindre_pres == $i) || old('oeil_droit_cylindre_pres') == $i ? 'selected' : '' }}>
+                            {{ number_format($i, 2) }}
                             </option>
-                        @endfor
-                        <option value="SPH" {{ (isset($recette) && $recette->oeil_droit_cylindre_pres == 'SPH') || old('oeil_droit_cylindre_pres') == 'SPH' ? 'selected' : '' }}>SPH</option>
-                        <option value="PLAN" {{ (isset($recette) && $recette->oeil_droit_cylindre_pres == 'PLAN') || old('oeil_droit_cylindre_pres') == 'PLAN' ? 'selected' : '' }}>PLAN</option>
+                            @endfor
+                            <option value="SPH" {{ (isset($recette) && $recette->oeil_droit_cylindre_pres == 'SPH') || old('oeil_droit_cylindre_pres') == 'SPH' ? 'selected' : '' }}>SPH</option>
+                            <option value="PLAN" {{ (isset($recette) && $recette->oeil_droit_cylindre_pres == 'PLAN') || old('oeil_droit_cylindre_pres') == 'PLAN' ? 'selected' : '' }}>PLAN</option>
                     </select>
                 </div>
             </div>
@@ -223,11 +183,10 @@
                     <label for="oeil_droit_axe_pres">Axe</label>
                     <select class="form-select form-select-lg" id="oeil_droit_axe_pres" name="oeil_droit_axe_pres">
                         <option value="">None</option>
-                        @for ($j = 0; $j <= 180; $j = $j + 1)
-                            <option value="{{ $j }}" {{ (isset($recette) && $recette->oeil_droit_axe_pres == $j) || old('oeil_droit_axe_pres') == $j ? 'selected' : '' }}>
-                                {{ number_format($j, 0) }}°
+                        @for ($j = 0; $j <= 180; $j=$j + 1) <option value="{{ $j }}" {{ (isset($recette) && $recette->oeil_droit_axe_pres == $j) || old('oeil_droit_axe_pres') == $j ? 'selected' : '' }}>
+                            {{ number_format($j, 0) }}°
                             </option>
-                        @endfor
+                            @endfor
                     </select>
                 </div>
             </div>
@@ -236,11 +195,10 @@
                     <label for="oeil_droit_addition">Addition</label>
                     <select class="form-select form-select-lg" id="oeil_droit_addition" name="oeil_droit_addition">
                         <option value="">None</option>
-                        @for ($j = 0.75; $j <= 3.5; $j = $j + 0.25)
-                            <option value="+{{ $j }}" {{ (isset($recette) && $recette->oeil_droit_addition == '+'.$j) || old('oeil_droit_addition') == '+'.$j ? 'selected' : '' }}>
-                                +{{ number_format($j, 2) }}
+                        @for ($j = 0.75; $j <= 3.5; $j=$j + 0.25) <option value="+{{ $j }}" {{ (isset($recette) && $recette->oeil_droit_addition == '+'.$j) || old('oeil_droit_addition') == '+'.$j ? 'selected' : '' }}>
+                            +{{ number_format($j, 2) }}
                             </option>
-                        @endfor
+                            @endfor
                     </select>
                 </div>
             </div>
@@ -256,18 +214,16 @@
                     <label for="oeil_gauche_sphere_pres">Sphère</label>
                     <select class="form-select form-select-lg" id="oeil_gauche_sphere_pres" name="oeil_gauche_sphere_pres">
                         <option value="">None</option>
-                        @for ($i = -14.0; $i < 0.25; $i = $i + 0.25)
-                            <option value="{{ $i }}" {{ (isset($recette) && $recette->oeil_gauche_sphere_pres == $i) || old('oeil_gauche_sphere_pres') == $i ? 'selected' : '' }}>
-                                {{ number_format($i, 2) }}
+                        @for ($i = -14.0; $i < 0.25; $i=$i + 0.25) <option value="{{ $i }}" {{ (isset($recette) && $recette->oeil_gauche_sphere_pres == $i) || old('oeil_gauche_sphere_pres') == $i ? 'selected' : '' }}>
+                            {{ number_format($i, 2) }}
                             </option>
-                        @endfor
-                        <option value="SPH" {{ (isset($recette) && $recette->oeil_gauche_sphere_pres == 'SPH') || old('oeil_gauche_sphere_pres') == 'SPH' ? 'selected' : '' }}>SPH</option>
-                        <option value="PLAN" {{ (isset($recette) && $recette->oeil_gauche_sphere_pres == 'PLAN') || old('oeil_gauche_sphere_pres') == 'PLAN' ? 'selected' : '' }}>PLAN</option>
-                        @for ($i = 0.25; $i < 9.25; $i = $i + 0.25)
-                            <option value="+{{ $i }}" {{ (isset($recette) && $recette->oeil_gauche_sphere_pres == '+'.$i) || old('oeil_gauche_sphere_pres') == '+'.$i ? 'selected' : '' }}>
+                            @endfor
+                            <option value="SPH" {{ (isset($recette) && $recette->oeil_gauche_sphere_pres == 'SPH') || old('oeil_gauche_sphere_pres') == 'SPH' ? 'selected' : '' }}>SPH</option>
+                            <option value="PLAN" {{ (isset($recette) && $recette->oeil_gauche_sphere_pres == 'PLAN') || old('oeil_gauche_sphere_pres') == 'PLAN' ? 'selected' : '' }}>PLAN</option>
+                            @for ($i = 0.25; $i < 9.25; $i=$i + 0.25) <option value="+{{ $i }}" {{ (isset($recette) && $recette->oeil_gauche_sphere_pres == '+'.$i) || old('oeil_gauche_sphere_pres') == '+'.$i ? 'selected' : '' }}>
                                 +{{ number_format($i, 2) }}
-                            </option>
-                        @endfor
+                                </option>
+                                @endfor
                     </select>
                 </div>
             </div>
@@ -276,13 +232,12 @@
                     <label for="oeil_gauche_cylindre_pres">Cylindre</label>
                     <select class="form-select form-select-lg" id="oeil_gauche_cylindre_pres" name="oeil_gauche_cylindre_pres">
                         <option value="">None</option>
-                        @for ($i = -5.0; $i <= 5; $i = $i + 0.25)
-                            <option value="{{ $i }}" {{ (isset($recette) && $recette->oeil_gauche_cylindre_pres == $i) || old('oeil_gauche_cylindre_pres') == $i ? 'selected' : '' }}>
-                                {{ number_format($i, 2) }}
+                        @for ($i = -5.0; $i <= 5; $i=$i + 0.25) <option value="{{ $i }}" {{ (isset($recette) && $recette->oeil_gauche_cylindre_pres == $i) || old('oeil_gauche_cylindre_pres') == $i ? 'selected' : '' }}>
+                            {{ number_format($i, 2) }}
                             </option>
-                        @endfor
-                        <option value="SPH" {{ (isset($recette) && $recette->oeil_gauche_cylindre_pres == 'SPH') || old('oeil_gauche_cylindre_pres') == 'SPH' ? 'selected' : '' }}>SPH</option>
-                        <option value="PLAN" {{ (isset($recette) && $recette->oeil_gauche_cylindre_pres == 'PLAN') || old('oeil_gauche_cylindre_pres') == 'PLAN' ? 'selected' : '' }}>PLAN</option>
+                            @endfor
+                            <option value="SPH" {{ (isset($recette) && $recette->oeil_gauche_cylindre_pres == 'SPH') || old('oeil_gauche_cylindre_pres') == 'SPH' ? 'selected' : '' }}>SPH</option>
+                            <option value="PLAN" {{ (isset($recette) && $recette->oeil_gauche_cylindre_pres == 'PLAN') || old('oeil_gauche_cylindre_pres') == 'PLAN' ? 'selected' : '' }}>PLAN</option>
                     </select>
                 </div>
             </div>
@@ -291,11 +246,10 @@
                     <label for="oeil_gauche_axe_pres">Axe</label>
                     <select class="form-select form-select-lg" id="oeil_gauche_axe_pres" name="oeil_gauche_axe_pres">
                         <option value="">None</option>
-                        @for ($j = 0; $j <= 180; $j = $j + 1)
-                            <option value="{{ $j }}" {{ (isset($recette) && $recette->oeil_gauche_axe_pres == $j) || old('oeil_gauche_axe_pres') == $j ? 'selected' : '' }}>
-                                {{ number_format($j, 0) }}°
+                        @for ($j = 0; $j <= 180; $j=$j + 1) <option value="{{ $j }}" {{ (isset($recette) && $recette->oeil_gauche_axe_pres == $j) || old('oeil_gauche_axe_pres') == $j ? 'selected' : '' }}>
+                            {{ number_format($j, 0) }}°
                             </option>
-                        @endfor
+                            @endfor
                     </select>
                 </div>
             </div>
@@ -304,11 +258,10 @@
                     <label for="oeil_gauche_addition">Addition</label>
                     <select class="form-select form-select-lg" id="oeil_gauche_addition" name="oeil_gauche_addition">
                         <option value="">None</option>
-                        @for ($j = 0.75; $j <= 3.5; $j = $j + 0.25)
-                            <option value="+{{ $j }}" {{ (isset($recette) && $recette->oeil_gauche_addition == '+'.$j) || old('oeil_gauche_addition') == '+'.$j ? 'selected' : '' }}>
-                                +{{ number_format($j, 2) }}
+                        @for ($j = 0.75; $j <= 3.5; $j=$j + 0.25) <option value="+{{ $j }}" {{ (isset($recette) && $recette->oeil_gauche_addition == '+'.$j) || old('oeil_gauche_addition') == '+'.$j ? 'selected' : '' }}>
+                            +{{ number_format($j, 2) }}
                             </option>
-                        @endfor
+                            @endfor
                     </select>
                 </div>
             </div>
@@ -317,6 +270,42 @@
 </div>
 
 <div class="row mt-4">
+    
+</div>
+
+<div class="row mt-4">
+    <div class="col-md-6">
+        <div class="form-group">
+            <label for="monture_price">Prix de la Monture</label>
+            <div class="input-group">
+                <input type="number" step="0.01" class="form-control" id="monture_price" name="monture_price" value="{{ isset($recette) ? $recette->monture_price : old('monture_price') }}">
+                <span class="input-group-text">DA</span>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-md-6">
+        <div class="form-group">
+            <label for="monture_id">Sélectionner une Monture</label>
+            <select class="form-control" id="monture_id" name="monture_id">
+                <option value="">Sélectionner une monture</option>
+                @foreach($montures as $monture)
+                <option value="{{ $monture->id }}" {{ (isset($recette) && $recette->monture_id == $monture->id) || old('monture_id') == $monture->id ? 'selected' : '' }}>
+                    {{ $monture->model_monture }} - {{ $monture->code_monture }}
+                </option>
+                @endforeach
+            </select>
+        </div>
+    </div>
+    <div class="col-md-6">
+        <div class="form-group">
+            <label for="lens_price">Prix des Verres</label>
+            <div class="input-group">
+                <input type="number" step="0.01" class="form-control" id="lens_price" name="lens_price" value="{{ isset($recette) ? $recette->lens_price : old('lens_price') }}">
+                <span class="input-group-text">DA</span>
+            </div>
+        </div>
+    </div>
     <div class="col-md-6">
         <div class="form-group">
             <label for="type_verre">Type de Verre</label>
@@ -333,37 +322,6 @@
     </div>
 </div>
 
-<div class="row mt-4">
-    <div class="col-md-6">
-        <div class="form-group">
-            <label for="monture_price">Prix de la Monture</label>
-            <div class="input-group">
-                <input type="number" 
-                       step="0.01" 
-                       class="form-control" 
-                       id="monture_price" 
-                       name="monture_price"
-                       value="{{ isset($recette) ? $recette->monture_price : old('monture_price') }}">
-                <span class="input-group-text">DA</span>
-            </div>
-        </div>
-    </div>
-    <div class="col-md-6">
-        <div class="form-group">
-            <label for="lens_price">Prix des Verres</label>
-            <div class="input-group">
-                <input type="number" 
-                       step="0.01" 
-                       class="form-control" 
-                       id="lens_price" 
-                       name="lens_price"
-                       value="{{ isset($recette) ? $recette->lens_price : old('lens_price') }}">
-                <span class="input-group-text">DA</span>
-            </div>
-        </div>
-    </div>
-</div>
-
 @livewire('recette-form', ['recette' => $recette ?? null])
 
 
@@ -375,6 +333,21 @@
         </div>
     </div>
 </div>
+
+@if(isset($recette))
+<div class="row mt-4">
+    <div class="col-md-6">
+        <div class="form-group">
+            <label for="status">Status</label>
+            <select class="form-control" id="status" name="status">
+                <option default value="0" {{ $recette->status == 'en_attend' ? 'selected' : '' }}>En cours</option>
+                <option value="1" {{ $recette->status == 'ready' ? 'selected' : '' }}>Prêt</option>
+            </select>
+        </div>
+    </div>
+</div>
+@endif
+
 
 
 @push('scripts')
@@ -390,7 +363,7 @@
             // Update hidden fields
             $('#client_nom').val(nom);
             $('#client_prenom').val(prenom);
-            
+
             // Update telephone field
             $('#client_telephone').val(telephone);
         });
@@ -429,5 +402,6 @@
         calculateTotal();
         calculateRemaining();
     });
+
 </script>
 @endpush

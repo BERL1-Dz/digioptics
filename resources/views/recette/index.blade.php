@@ -34,6 +34,7 @@
                                     <th>ID</th>
                                     <th>Patient</th>
                                     <th>Date</th>
+                                    <th>Telephone</th>
                                     <th>Status</th>
                                     <th>Total</th>
                                     <th>Actions</th>
@@ -44,17 +45,33 @@
                                     <tr>
                                         <td>{{ $recette->id }}</td>
                                         <td>{{ $recette->patient->nom ?? 'N/A' }}</td>
-                                        <td>{{ $recette->date->format('d/m/Y') }}</td>
+                                        <td>{{ $recette->created_at->format('d/m/Y') }}</td>
+                                        <td>{{ $recette->client_telephone ?? 'N/A' }}</td>
                                         <td>
-                                            @if($recette->status === 'ready')
-                                                <span class="badge bg-label-success">Prêt</span>
-                                            @else
+                                            @if($recette->status === 0)
                                                 <span class="badge bg-label-warning">En cours</span>
+                                            @else
+                                                <span class="badge bg-label-success">Prêt</span>
                                             @endif
                                         </td>
                                         <td>{{ number_format($recette->total, 2) }} DA</td>
                                         <td>
-                                            <div class="dropdown">
+                                            <div class="d-flex gap-2">
+                                                <a href="{{ route('recette.show', $recette) }}" class="btn btn-sm btn-info" title="Voir">
+                                                    <i class="bx bx-show"></i>
+                                                </a>
+                                                <a href="{{ route('recette.edit', $recette) }}" class="btn btn-sm btn-primary" title="Modifier">
+                                                    <i class="bx bx-edit"></i>
+                                                </a>
+                                                <form action="{{ route('recette.destroy', $recette) }}" method="POST" class="d-inline">
+                                                    @csrf
+                                                    @method('DELETE')
+                                                    <button type="submit" class="btn btn-sm btn-danger" title="Supprimer" onclick="return confirm('Êtes-vous sûr de vouloir supprimer ce patient ?')">
+                                                        <i class="bx bx-trash"></i>
+                                                    </button>
+                                                </form>
+                                            </div>
+                                            {{-- <div class="dropdown">
                                                 <button type="button" class="btn p-0 dropdown-toggle hide-arrow" data-bs-toggle="dropdown">
                                                     <i class="bx bx-dots-vertical-rounded"></i>
                                                 </button>
@@ -65,21 +82,7 @@
                                                     <a class="dropdown-item" href="{{ route('recette.edit', $recette) }}">
                                                         <i class="bx bx-edit-alt me-1"></i> Modifier
                                                     </a>
-                                                    @if($recette->status === 'not_ready')
-                                                        <form action="{{ route('recette.ready', $recette) }}" method="POST" class="d-inline">
-                                                            @csrf
-                                                            <button type="submit" class="dropdown-item">
-                                                                <i class="bx bx-check me-1"></i> Marquer comme prêt
-                                                            </button>
-                                                        </form>
-                                                    @else
-                                                        <form action="{{ route('recette.not-ready', $recette) }}" method="POST" class="d-inline">
-                                                            @csrf
-                                                            <button type="submit" class="dropdown-item">
-                                                                <i class="bx bx-x me-1"></i> Marquer comme non prêt
-                                                            </button>
-                                                        </form>
-                                                    @endif
+                                                    
                                                     <a class="dropdown-item" href="{{ route('recette.pdf', $recette) }}">
                                                         <i class="bx bx-download me-1"></i> PDF
                                                     </a>
@@ -91,7 +94,7 @@
                                                         </button>
                                                     </form>
                                                 </div>
-                                            </div>
+                                            </div> --}}
                                         </td>
                                     </tr>
                                 @endforeach
